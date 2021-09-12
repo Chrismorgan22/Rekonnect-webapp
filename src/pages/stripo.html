@@ -73,6 +73,12 @@
             padding: 0px 64px;
         }
 
+        @media (max-width: 576px) {
+            .section-padding {
+            padding: 0px 32px;
+            }
+        }
+
         .section-short-padding {
             padding: 0 24px;
         }
@@ -101,6 +107,12 @@
             padding: 0 75px;
         }
 
+        @media (max-width: 576px) {
+            .padding {
+            padding: 0px 32px;
+            }
+        }
+
         .section-content-card {
             margin-top: 40px;
             background-image: url(../resources/images/blob_illustration.png);
@@ -112,12 +124,25 @@
             background-size: contain;
         }
 
+        @media (max-width: 576px) {
+            .section-content-card {
+                height: auto;
+                background-image: none;
+            }
+              
+        }
         .section-content-card .card{
             border: none;
+            background: transparent;
         }
 
         .section-content-card .card img{
            height: 250px;
+        }
+
+        .section-content-card .card .card-body{
+           padding-left: 0;
+           padding-right: 0;
         }
 
         .section-footer {
@@ -171,7 +196,7 @@
                     <div class="card">
                         <img class="img-fluid" src="../resources/images/visit_website.jpg"/>
                         <div class="card-body">
-                            <h5 class="card-title text-center">You've got a dream and we help you get there</h5>
+                            <h4 class="card-title text-center">You've got a dream and we help you get there</h4>
                              <a href="#" class="btn btn-primary mt-16">Visit Website</a>
                           </div>
                     </div>
@@ -180,14 +205,14 @@
                     <div class="card">
                         <img class="img-fluid" src="../resources/images/webinar.jpg"/>
                         <div class="card-body">
-                            <h5 class="card-title text-center"> We hold webinars more often than you think</h5>
+                            <h4 class="card-title text-center"> We hold webinars more often than you think</h4>
                             <a href="#" class="btn btn-primary mt-16">Check out upcoming webinars</a>
                           </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="section-footer mt-24">
+        <div class="section-footer section-padding mt-24">
             <p>You are receiving this email because you are a registered member of ReKonnect </p>
             <p>© 2021 ReKonnect B 19/20 green acres, Salunkhe Vihar road, Kondhwa, Pune 41104</p>
             <div><img src="../resources/images/inventivay-logo.png"/><strong class="section-short-padding">Product of Inventiway</strong></div>
