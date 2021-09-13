@@ -31,8 +31,10 @@ export class SignUpComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      speacialization: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      // speacialization: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.pattern('^[789]{1}[0-9]{9}$')]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
     });
     this.getSpecializationData();
   }
@@ -59,7 +61,8 @@ export class SignUpComponent implements OnInit {
       json['first_name'] = this.form.controls.firstName.value;
       json['last_name'] = this.form.controls.lastName.value;
       json['email'] = this.form.controls.email.value;
-      json['specialization'] = this.form.controls.specialization.value;
+      json['phone'] = this.form.controls.phone.value;
+      // json['specialization'] = this.form.controls.specialization.value;
       json['password'] = this.form.controls.password.value;
       this._authService.candidateRegister(json).subscribe(response => {
         if (response.result !== 'fail') {
