@@ -1,0 +1,425 @@
+/* You can add global styles to this file, and also import other style files */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+.font-normal {
+  font-weight: 400;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-extrabold {
+  font-weight: 800;
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  h4 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  h5 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  h6 {
+    font-size: 0.8rem;
+  }
+}
+
+.text-decoration-underline {
+  text-decoration: underline;
+}
+
+.text-primary {
+  color: #15759A;
+}
+
+.text-color-light {
+  color: #949597 !important;
+}
+
+.mt-8 {
+  margin-top: 8px;
+}
+
+.mb-8 {
+  margin-bottom: 8px;
+}
+
+.mt-16 {
+  margin-top: 16px;
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.mt-22 {
+  margin-top: 22px;
+}
+
+.mb-22 {
+  margin-bottom: 22px;
+}
+
+.mt-24 {
+  margin-top: 24px;
+}
+
+.mb-24 {
+  margin-bottom: 24px;
+}
+
+.mr-24 {
+  margin-right: 24px;
+}
+
+.ml-24 {
+  margin-left: 24px;
+}
+
+.mt-28 {
+  margin-top: 28px;
+}
+
+.mb-28 {
+  margin-bottom: 28px;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.mr-30 {
+  margin-right: 30px;
+}
+
+.ml-30 {
+  margin-left: 30px;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden;
+}
+
+.d-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.align-items-center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.justify-content-center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.section {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+@media (max-width: 576px) {
+  .section {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+
+.section.section-compact {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+@media (max-width: 576px) {
+  .section.section-compact {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+}
+
+.material-icons {
+  vertical-align: middle;
+}
+
+.section-main-title {
+  font-family: "Inter", sans-serif;
+  font-size: 9.4rem;
+  color: transparent;
+  text-shadow: none;
+  -webkit-text-stroke: 1px #fff;
+  line-height: 180px;
+  padding: 3rem 0rem 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .section-main-title {
+    font-size: 2.5rem;
+    line-height: 48px;
+  }
+}
+
+.section-title {
+  font-family: "Inter", sans-serif;
+  font-size: 2.5rem;
+  line-height: normal;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.5rem;
+  }
+}
+
+.section-subtitle {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.section-wrapper-title {
+  font-size: 3.5rem;
+  font-family: "Inter", sans-serif;
+  color: transparent;
+  text-shadow: none;
+  -webkit-text-stroke: 1px #fff;
+}
+
+@media (max-width: 768px) {
+  .section-wrapper-title {
+    font-size: 2rem;
+  }
+}
+
+.section-content {
+  font-weight: 300;
+  line-height: 28px;
+  font-size: 1.2rem;
+}
+
+.btn {
+  border-radius: 50px;
+}
+
+.btn.btn-primary {
+  background-color: #15759A;
+  color: #fff;
+  border-color: #15759A;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  color: #0C1A27;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #b9e4f5;
+  border-radius: 24px;
+  height: 50px;
+}
+
+.login-image {
+  height: 100vh;
+  width: 500px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: fixed;
+}
+
+@media (max-width: 1200px) {
+  .login-image {
+    width: 350px;
+  }
+}
+
+@media (max-width: 992px) {
+  .login-image {
+    display: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .start-section {
+    padding: 50px;
+  }
+}
+
+@media (max-width: 576px) {
+  .start-section {
+    padding: 50px 0 0 24px;
+  }
+}
+
+.start-section .section-heading {
+  padding-bottom: 24px;
+}
+
+.start-section .section-form-content .form-control {
+  height: calc(3rem + 2px);
+  border-color: #EEEEEE;
+}
+
+.start-section .section-form-content .form-control:focus, .start-section .section-form-content .form-control:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-color: #15759A;
+}
+
+.start-section .section-form-content .form-text > button {
+  font-size: 12px;
+  color: #0C1A27;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
+}
+
+.start-section .section-form-content .form-text > button > span {
+  font-size: inherit;
+}
+
+.start-section .section-footer {
+  padding: 16px 0;
+}
+
+.start-section .section-footer .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 3rem;
+}
+
+.start-section .section-footer .title::after, .start-section .section-footer .title::before {
+  content: '';
+  width: 45%;
+  height: 1px;
+  background: #C1D4D9;
+  display: block;
+}
+
+.start-section .section-footer .title > span {
+  background: #fff;
+  min-width: 90px;
+}
+
+.start-section .section-footer .border-outline-box {
+  border: 1px solid #EEEEEE;
+  border-radius: 4px;
+  height: 60px;
+  position: relative;
+  cursor: pointer;
+  width: 200px;
+}
+
+@media (max-width: 1200px) {
+  .start-section .section-footer .border-outline-box {
+    width: 144px;
+  }
+}
+
+@media (max-width: 992px) {
+  .start-section .section-footer .border-outline-box {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .start-section .section-footer .border-outline-box {
+    margin-bottom: 8px;
+  }
+}
+
+.start-section .section-footer .border-outline-box > img {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 15px;
+  left: 78px;
+}
+
+@media (max-width: 1200px) {
+  .start-section .section-footer .border-outline-box > img {
+    left: 50%;
+  }
+}
+/*# sourceMappingURL=styles.css.map */
