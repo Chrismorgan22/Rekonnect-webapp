@@ -133,3 +133,206 @@ body {
         }
     }
 }
+
+
+//navbar
+.navbar-custom {
+    .navbar-brand > .brand-img{
+        height: 70px;
+        width: 70px;
+    }
+    .custom-navbar-collapse {
+        justify-content: space-between;
+    }
+
+    .navbar-nav {
+        .nav-item {
+            margin-right: 32px;
+            font-size: 20px;
+            
+            & > a {
+                color: $color-footer;
+                font-weight: $font-semibold;
+            }
+
+            &:hover {
+                .dropdown-menu {
+                    display: block !important;
+                }
+            }
+        }
+    }
+
+    .form-inline {
+        display: contents;
+        & .form-control , &::placeholder{
+            border-radius: 50px;
+            min-width: 150px;
+            border-color: $color-primary;
+            color: $color-primary;
+            height: calc(3.25rem + 2px);
+            font-size: 1rem;
+        }
+
+        & > .btn {
+            min-width: 150px;
+            height: calc(3.25rem + 2px);
+            font-size: 1rem;
+        }
+    }
+}
+
+//landing
+.section {
+    .image-transform-section {
+
+        & > img {
+            height: 500px;
+            width: 550px;
+        }
+    }
+}
+
+//counter band
+.counter-band {
+    .section-emphasis-letter {
+        color: $text-color-light;
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+}
+
+//partner band
+.partner-band {
+    background: $background-light-green;
+
+    .partner-image {
+        width: 150px;
+        height: auto;
+        filter: grayscale(100%);
+        cursor: pointer;
+
+        &:hover {
+            filter: grayscale(0%);
+        }
+    }
+}
+
+//service
+.services-section {
+    position: relative;
+   .service-img {
+       width: 1330px;
+       z-index: -2;
+       position: absolute;
+       top: 0;
+       right: 0;
+   }
+
+   .section-alignment {
+       display: flex;
+       flex-direction: column;
+       height: 100vh;
+   }
+
+   .service-card {
+       
+       margin-bottom: 24px;
+       margin-right: 24px;
+       width: 235px;
+       padding: 0;
+       border-radius: 8px;
+       
+       & .service-image {
+        width: 235px;
+        height: 196px;
+        object-fit: cover;
+       }
+
+       & h5 {
+        padding: 16px 8px 8px;
+        text-align: center;
+        
+       }
+   }
+
+   .flip-card {
+       position: relative;
+       height: 250px;
+
+       &:hover {
+        .flip-card-inner {
+            transform: rotateY(180deg);
+          }
+       }
+
+        .flip-card-inner {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px 0 rgba(121, 93, 93, 0.1);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .flip-card-front {
+            background: #fff;
+        }
+          
+        .flip-card-back {
+            background-color: $color-primary;
+            color: white;
+            transform: rotateY(180deg);
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+    }
+}
+
+//webinar section
+.webinar-section {
+    .webinar-image {
+        width: 100%;
+        height: 520px;
+    }
+}
+
+.onboarding-section {
+    .onboard-card {
+        .how-it-works-image {
+            width: auto;
+            height: 160px; 
+         }
+
+         .onboard-title {
+             margin-top: 24px;
+         }
+
+         .onboarding-content {
+             padding: 16px 32px 8px 0;
+         }
+
+         .border-line {
+            
+             border-radius: 12px;
+             background: $text-color;
+             height: 6px;
+         }
+
+         &:nth-child(1) {
+            .border-line {
+                width: calc(100% - 170px);
+            }
+         }
+    }
+}
+

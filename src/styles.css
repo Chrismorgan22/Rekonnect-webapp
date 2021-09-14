@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 .container {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -204,12 +204,11 @@
 
 .section-main-title {
   font-family: "Inter", sans-serif;
-  font-size: 9.4rem;
-  color: transparent;
+  font-size: 3.3rem;
   text-shadow: none;
-  -webkit-text-stroke: 1px #fff;
-  line-height: 180px;
-  padding: 3rem 0rem 1.5rem;
+  font-weight: 700;
+  line-height: 100px;
+  padding: 2rem 0rem;
 }
 
 @media (max-width: 768px) {
@@ -254,8 +253,9 @@
 
 .section-content {
   font-weight: 300;
-  line-height: 28px;
-  font-size: 1.2rem;
+  line-height: 50px;
+  font-size: 2rem;
+  color: #949597;
 }
 
 .btn {
@@ -421,5 +421,127 @@ body::-webkit-scrollbar-thumb {
   .start-section .section-footer .border-outline-box > img {
     left: 50%;
   }
+}
+
+.navbar-custom .navbar-brand > .brand-img {
+  height: 70px;
+  width: 70px;
+}
+
+.navbar-custom .custom-navbar-collapse {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.navbar-custom .navbar-nav .nav-item {
+  margin-right: 32px;
+  font-size: 20px;
+}
+
+.navbar-custom .navbar-nav .nav-item > a {
+  color: #3E3E3E;
+  font-weight: 600;
+}
+
+.navbar-custom .navbar-nav .nav-item:hover .dropdown-menu {
+  display: block !important;
+}
+
+.navbar-custom .form-inline {
+  display: contents;
+}
+
+.navbar-custom .form-inline .form-control, .navbar-custom .form-inline::-webkit-input-placeholder {
+  border-radius: 50px;
+  min-width: 150px;
+  border-color: #15759A;
+  color: #15759A;
+  height: calc(3.25rem + 2px);
+  font-size: 1rem;
+}
+
+.navbar-custom .form-inline .form-control, .navbar-custom .form-inline:-ms-input-placeholder {
+  border-radius: 50px;
+  min-width: 150px;
+  border-color: #15759A;
+  color: #15759A;
+  height: calc(3.25rem + 2px);
+  font-size: 1rem;
+}
+
+.navbar-custom .form-inline .form-control, .navbar-custom .form-inline::-ms-input-placeholder {
+  border-radius: 50px;
+  min-width: 150px;
+  border-color: #15759A;
+  color: #15759A;
+  height: calc(3.25rem + 2px);
+  font-size: 1rem;
+}
+
+.navbar-custom .form-inline .form-control, .navbar-custom .form-inline::placeholder {
+  border-radius: 50px;
+  min-width: 150px;
+  border-color: #15759A;
+  color: #15759A;
+  height: calc(3.25rem + 2px);
+  font-size: 1rem;
+}
+
+.navbar-custom .form-inline > .btn {
+  min-width: 150px;
+  height: calc(3.25rem + 2px);
+  font-size: 1rem;
+}
+
+.section .image-transform-section > img {
+  height: 500px;
+  width: 550px;
+}
+
+.counter-band .section-emphasis-letter {
+  color: #949597;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.partner-band {
+  background: #f0f8eb;
+}
+
+.partner-band .partner-image {
+  width: 150px;
+  height: auto;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+  cursor: pointer;
+}
+
+.partner-band .partner-image:hover {
+  -webkit-filter: grayscale(0%);
+          filter: grayscale(0%);
+}
+
+.services-section {
+  position: relative;
+}
+
+.services-section .service-img {
+  width: 1330px;
+  z-index: -2;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.services-section .section-alignment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
 }
 /*# sourceMappingURL=styles.css.map */
