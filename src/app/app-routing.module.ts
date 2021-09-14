@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'base', loadChildren: () => import('./base/base.module').then(m => m.BaseModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
     // component:BaseComponent
   },
   {
@@ -25,12 +25,12 @@ const routes: Routes = [
   {
     path: '**',
     redirectTo: '/'
-  }
-  // {
-  //   path: '',
-  //   redirectTo: '/',
-  //   pathMatch: 'full'
-  // },
+  },
+  {
+    path: '',
+    redirectTo: '/',
+    pathMatch: 'full'
+  },
   // {
   //   path: '**',
   //   redirectTo: '/'
