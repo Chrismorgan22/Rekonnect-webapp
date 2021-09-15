@@ -193,6 +193,10 @@ body {
             @media (max-width: $information-mobile-xl) {
                width: 400px;
             }
+
+            @media (max-width: $information-mobile-md) {
+                display: none;
+            }
         }
 
     }
@@ -232,6 +236,10 @@ body {
        position: absolute;
        top: 0;
        right: 0;
+
+       @media (max-width: $information-mobile-md) {
+            display: none;
+        }
    }
 
    .section-alignment {
@@ -321,6 +329,10 @@ body {
 
 .onboarding-section {
     .onboard-card {
+        @media (max-width: $information-mobile-md) {
+            text-align: center;
+        }
+
         .how-it-works-image {
             width: auto;
             height: 160px; 
@@ -378,12 +390,20 @@ body {
           & > p {
               font-size: 32px;
               font-weight: $font-light;
+
+              @media (max-width: $information-mobile-md) {
+                font-size: 18px;
+              }
           }
 
           & > h5 {
               margin-top: 24px;
               font-size: 32px;
               font-weight: $font-bold;
+
+              @media (max-width: $information-mobile-md) {
+                font-size: 18px;
+              }
           }
       }
     }
@@ -419,6 +439,11 @@ body {
             width: 100%;
             object-fit: cover;
             height: 100%;
+
+            @media (max-width: $information-mobile-md) {
+                display: none;
+            }
+    
         }
     }
 }

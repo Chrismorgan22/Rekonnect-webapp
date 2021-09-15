@@ -208,7 +208,7 @@
   padding-bottom: 50px;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .section {
     padding-top: 32px;
     padding-bottom: 32px;
@@ -282,7 +282,7 @@
 
 @media (max-width: 768px) {
   .section-wrapper-title {
-    font-size: 0.6rem;
+    font-size: 1rem;
   }
 }
 
@@ -291,6 +291,13 @@
   line-height: 50px;
   font-size: 2rem;
   color: #949597;
+}
+
+@media (max-width: 768px) {
+  .section-content {
+    line-height: 32px;
+    font-size: 1.5rem;
+  }
 }
 
 .btn {

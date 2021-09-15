@@ -253,10 +253,11 @@ h6 {
     padding-top: 50px;
     padding-bottom: 50px;
  
-    @media (max-width: $information-mobile-sm) {
+    @media (max-width: $information-mobile-md) {
         padding-top: 32px;
         padding-bottom: 32px;
     }
+
     &.section-compact {
         padding-top: 32px;
         padding-bottom: 32px;
@@ -316,7 +317,7 @@ h6 {
     font-family: $inter;
     font-weight: $font-medium;
     @media (max-width: $information-mobile-md) {
-        font-size: 0.6rem;
+        font-size: 1rem;
     }
 }
 
@@ -325,6 +326,11 @@ h6 {
     line-height: 50px;
     font-size: 2rem;
     color: $text-color-light;
+
+    @media (max-width: $information-mobile-md) {
+        line-height: 32px;
+        font-size: 1.5rem;
+    }
 }
 
 

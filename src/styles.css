@@ -209,7 +209,7 @@
   padding-bottom: 50px;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .section {
     padding-top: 32px;
     padding-bottom: 32px;
@@ -283,7 +283,7 @@
 
 @media (max-width: 768px) {
   .section-wrapper-title {
-    font-size: 0.6rem;
+    font-size: 1rem;
   }
 }
 
@@ -292,6 +292,13 @@
   line-height: 50px;
   font-size: 2rem;
   color: #949597;
+}
+
+@media (max-width: 768px) {
+  .section-content {
+    line-height: 32px;
+    font-size: 1.5rem;
+  }
 }
 
 .btn {
@@ -541,6 +548,12 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
+@media (max-width: 768px) {
+  .section .image-transform-section > img {
+    display: none;
+  }
+}
+
 .counter-band .section-emphasis-letter {
   color: #949597;
   font-size: 18px;
@@ -574,6 +587,12 @@ body::-webkit-scrollbar-thumb {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+@media (max-width: 768px) {
+  .services-section .service-img {
+    display: none;
+  }
 }
 
 .services-section .section-alignment {
@@ -670,6 +689,12 @@ body::-webkit-scrollbar-thumb {
   height: 520px;
 }
 
+@media (max-width: 768px) {
+  .onboarding-section .onboard-card {
+    text-align: center;
+  }
+}
+
 .onboarding-section .onboard-card .how-it-works-image {
   width: auto;
   height: 160px;
@@ -722,10 +747,22 @@ body::-webkit-scrollbar-thumb {
   font-weight: 300;
 }
 
+@media (max-width: 768px) {
+  .testimonial-section .testimonial-section-content .testimonial-text > p {
+    font-size: 18px;
+  }
+}
+
 .testimonial-section .testimonial-section-content .testimonial-text > h5 {
   margin-top: 24px;
   font-size: 32px;
   font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .testimonial-section .testimonial-section-content .testimonial-text > h5 {
+    font-size: 18px;
+  }
 }
 
 .testimonial-section .testimonial-image-section {
@@ -763,6 +800,12 @@ body::-webkit-scrollbar-thumb {
   -o-object-fit: cover;
      object-fit: cover;
   height: 100%;
+}
+
+@media (max-width: 768px) {
+  .testimonial-section .testimonial-image-section .testimonial-image {
+    display: none;
+  }
 }
 
 .footer .footer-branding > img {
