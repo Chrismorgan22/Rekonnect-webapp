@@ -44,7 +44,8 @@ export class SignInComponent implements OnInit {
         if (response.result !== 'fail') {
           this.submitted = false;
           // sessionStorage.setItem('_ud', JSON.stringify(response.data))
-          this._router.navigate(['/auth/candidate/sigin'])
+          sessionStorage.setItem('_ud', JSON.stringify([response.data]))
+          this._router.navigate(['/auth/welcome'])
           this.form.reset();
           this._toastrService.success(
             'User Registered successfully', response.result,

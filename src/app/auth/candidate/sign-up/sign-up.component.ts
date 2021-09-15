@@ -5,6 +5,7 @@ import { AuthService } from '../../../services/auth.service';
 import { LayoutService } from '../../../services/layout.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { SocialAuthService, GoogleLoginProvider, SocialUser, FacebookLoginProvider } from 'angularx-social-login';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -17,13 +18,14 @@ export class SignUpComponent implements OnInit {
   loading = false;
   submitted = false;
   specializationData: any;
-
+  socialUser: SocialUser;
+  isLoggedin: boolean;
   constructor(
     private formBuilder: FormBuilder,
     private _router: Router,
     private _authService: AuthService,
     private _layoutService: LayoutService,
-    private _toastrService: ToastrService, private SpinnerService: NgxSpinnerService
+    private _toastrService: ToastrService, private SpinnerService: NgxSpinnerService, private socialAuthService: SocialAuthService
   ) { }
 
   ngOnInit() {
@@ -37,6 +39,35 @@ export class SignUpComponent implements OnInit {
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
     });
     this.getSpecializationData();
+    this.socialAuthService.authState.subscribe((user) => {
+      this.socialUser = user;
+      this.isLoggedin = (user != null);
+      console.log(this.socialUser);
+      const json = {};
+      json['first_name'] = this.socialUser.firstName;
+      json['last_name'] = this.socialUser.lastName;
+      json['email'] = this.socialUser.email;
+      // json['phone'] = this.form.controls.phone.value;
+      // json['specialization'] = this.form.controls.specialization.value;
+      // json['password'] = this.form.controls.password.value;
+      this._authService.candidateRegister(json).subscribe(response => {
+        if (response.result !== 'fail') {
+          this.submitted = false;
+          // sessionStorage.setItem('_ud', JSON.stringify(response.data))
+          sessionStorage.setItem('_ud', JSON.stringify([response.data]))
+          this._router.navigate(['/auth/welcome'])
+          this.form.reset();
+          this._toastrService.success(
+            'User Registered successfully', response.result,
+            { toastClass: 'toast ngx-toastr', closeButton: true }
+          );
+        } else {
+          this._toastrService.error(
+            response.message, response.result
+          )
+        }
+      })
+    });
   }
 
   // convenience getter for easy access to form fields
@@ -81,5 +112,8 @@ export class SignUpComponent implements OnInit {
         }
       })
     }
+  }
+  loginWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 }
