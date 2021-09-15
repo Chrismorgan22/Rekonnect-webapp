@@ -5,14 +5,15 @@ import { HeaderComponent } from './header/header.component';
 import { BaseComponent } from './base.component';
 import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from '../auth/welcome/welcome.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
-  declarations: [BaseComponent, HeaderComponent, HomeComponent],
+  declarations: [BaseComponent, HeaderComponent, HomeComponent, FooterComponent],
   imports: [
     CommonModule,
     BaseRoutingModule
   ],
-  exports: [BaseComponent, HeaderComponent, HomeComponent]
+  exports: [BaseComponent, HeaderComponent, HomeComponent, FooterComponent]
 })
 export class BaseModule { }
