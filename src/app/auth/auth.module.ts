@@ -26,7 +26,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '221831887863-9u9p27n9kq7eupp9a6l2rvicd33can2s.apps.googleusercontent.com'
+              '221831887863-smioflkrsmtc8fmveqm0mn99iuivois9.apps.googleusercontent.com'
             )
           },
           // {
