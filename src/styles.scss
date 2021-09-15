@@ -197,6 +197,9 @@ body {
             @media (max-width: $information-mobile-md) {
                 display: none;
             }
+            @media (max-width: $information-mobile-sm) {
+                display: none;
+            }
         }
 
     }
