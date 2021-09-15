@@ -67,8 +67,8 @@ export class SignUpComponent implements OnInit {
       this._authService.candidateRegister(json).subscribe(response => {
         if (response.result !== 'fail') {
           this.submitted = false;
-          // sessionStorage.setItem('_ud', JSON.stringify(response.data))
-          this._router.navigate(['/auth/candidate/sigin'])
+          sessionStorage.setItem('_wd', JSON.stringify(response.data))
+          this._router.navigate(['/auth/welcome'])
           this.form.reset();
           this._toastrService.success(
             'User Registered successfully', response.result,

@@ -6,9 +6,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [WelcomeComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,

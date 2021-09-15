@@ -50,7 +50,7 @@ export class SignUpComponent implements OnInit {
         if (response.result !== 'fail') {
           this.submitted = false;
           // sessionStorage.setItem('_ud', JSON.stringify(response.data))
-          this._router.navigate(['/auth/expert/sigin'])
+          this._router.navigate(['/auth/expert/signin'])
           this.form.reset();
           this._toastrService.success(
             'User Registered successfully', response.result,

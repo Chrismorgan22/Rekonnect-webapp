@@ -4,6 +4,7 @@ import { BaseRoutingModule } from './base-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { BaseComponent } from './base.component';
 import { HomeComponent } from './home/home.component';
+import { WelcomeComponent } from '../auth/welcome/welcome.component';
 
 
 @NgModule({

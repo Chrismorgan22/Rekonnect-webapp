@@ -31,4 +31,11 @@ export class LayoutService {
       })
     );
   }
+  getUserList() {
+    return this._httpClient.get<any>(`${environment.apiUrl}/candidate`).pipe(
+      map(response => {
+        return response;
+      })
+    );
+  }
 }
