@@ -336,3 +336,132 @@ body {
     }
 }
 
+//testimonial section
+.testimonial-section {
+    .testimonial-section-content {
+      .text-secondary {
+          & * {
+              color: $color-secondary;
+              font-size: 48px;
+          }
+
+          &:first-of-type {
+            text-align: left;
+              & span {
+                transform: rotateZ(180deg);
+              }
+          }
+
+          &:last-of-type {
+            text-align: right;
+          }
+      }
+
+      .testimonial-text {
+          border-left: 4px solid #15759A;
+          padding-left: 32px;
+          margin-left: 22px;
+
+          & > p {
+              font-size: 32px;
+              font-weight: $font-light;
+          }
+
+          & > h5 {
+              margin-top: 24px;
+              font-size: 32px;
+              font-weight: $font-bold;
+          }
+      }
+    }
+   
+
+    .testimonial-image-section {
+        position: relative;
+        .curve-skew {
+            position: absolute;
+            left: 0;
+            height: 100%;
+            top: 0;
+
+            & > img {
+                height: inherit;
+                width: 100px;
+            }
+
+            .text-secondary {
+                position: absolute;
+                left: 40px;
+                top: 43%;
+                font-size: 40px;
+                font-weight: $font-bold;
+            }
+        }
+
+        .testimonial-image {
+            width: 100%;
+            object-fit: cover;
+            height: auto;
+        }
+    }
+}
+
+//footer
+.footer {
+    .footer-branding {
+        & > img {
+            width: 70px;
+            height: 70px;
+        }
+    }
+
+    .footer-title {
+        font-family: $inter;
+        font-size: 1.5rem;
+        font-weight: $font-medium;
+    }
+
+    .footer-parent-branding {
+        margin-top: 40px;
+
+        & > img {
+            width: 70px;
+            height: 70px;
+            margin-right: 32px;
+        }
+
+        & h5 {
+            font-size: 1rem;
+            font-weight: $font-bold;
+        }
+    }
+
+    .card {
+        background-color: transparent;
+        border:none;
+
+        & .card-header {
+            background: transparent;
+            border:none;
+            padding-left: 0;
+           
+
+            & * {
+                font-family: $inter;
+                font-size: 1.5rem;
+                font-weight: $font-medium;
+            }
+        }
+
+        & .card-body {
+            & > ul {
+                & li {
+                    margin-bottom: 5px;
+                    & > a {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}

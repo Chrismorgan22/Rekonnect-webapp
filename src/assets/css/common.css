@@ -27,6 +27,18 @@
   font-weight: 800;
 }
 
+.font-14 {
+  font-size: 14px !important;
+}
+
+.font-16 {
+  font-size: 16px !important;
+}
+
+.line-height-normal {
+  line-height: normal !important;
+}
+
 @media (max-width: 576px) {
   h1 {
     font-size: 2rem;
@@ -63,12 +75,30 @@
   }
 }
 
+.background-light-green {
+  background: #f0f8eb;
+}
+
+.background-dark {
+  background-color: #3E3E3E;
+  color: #fff;
+}
+
+.background-dark-blue {
+  background: #141327;
+  color: #fff;
+}
+
 .text-decoration-underline {
   text-decoration: underline;
 }
 
 .text-primary {
   color: #15759A;
+}
+
+.text-secondary {
+  color: #FF6400 !important;
 }
 
 .text-color-light {
@@ -221,6 +251,7 @@
   font-family: "Inter", sans-serif;
   font-size: 2.5rem;
   line-height: normal;
+  font-weight: 700;
 }
 
 @media (max-width: 768px) {
@@ -237,16 +268,14 @@
 }
 
 .section-wrapper-title {
-  font-size: 3.5rem;
+  font-size: 1.5rem;
   font-family: "Inter", sans-serif;
-  color: transparent;
-  text-shadow: none;
-  -webkit-text-stroke: 1px #fff;
+  font-weight: 500;
 }
 
 @media (max-width: 768px) {
   .section-wrapper-title {
-    font-size: 2rem;
+    font-size: 0.6rem;
   }
 }
 
