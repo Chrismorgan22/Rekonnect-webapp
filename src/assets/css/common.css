@@ -240,10 +240,17 @@
   padding: 2rem 0rem;
 }
 
+@media (max-width: 1200px) {
+  .section-main-title {
+    font-size: 2.8rem;
+    line-height: 48px;
+  }
+}
+
 @media (max-width: 768px) {
   .section-main-title {
-    font-size: 2.5rem;
-    line-height: 48px;
+    font-size: 2.4rem;
+    line-height: 34px;
   }
 }
 

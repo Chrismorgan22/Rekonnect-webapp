@@ -241,10 +241,17 @@
   padding: 2rem 0rem;
 }
 
+@media (max-width: 1200px) {
+  .section-main-title {
+    font-size: 2.8rem;
+    line-height: 48px;
+  }
+}
+
 @media (max-width: 768px) {
   .section-main-title {
-    font-size: 2.5rem;
-    line-height: 48px;
+    font-size: 2.4rem;
+    line-height: 34px;
   }
 }
 
@@ -528,6 +535,12 @@ body::-webkit-scrollbar-thumb {
   width: 550px;
 }
 
+@media (max-width: 1200px) {
+  .section .image-transform-section > img {
+    width: 400px;
+  }
+}
+
 .counter-band .section-emphasis-letter {
   color: #949597;
   font-size: 18px;
@@ -574,6 +587,12 @@ body::-webkit-scrollbar-thumb {
   height: 100vh;
 }
 
+@media (max-width: 1200px) {
+  .services-section .section-alignment {
+    height: 100%;
+  }
+}
+
 .services-section .service-card {
   margin-bottom: 24px;
   margin-right: 24px;
@@ -587,6 +606,12 @@ body::-webkit-scrollbar-thumb {
   height: 196px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+@media (max-width: 1200px) {
+  .services-section .service-card .service-image {
+    width: 100%;
+  }
 }
 
 .services-section .service-card h5 {
@@ -714,6 +739,12 @@ body::-webkit-scrollbar-thumb {
   top: 0;
 }
 
+@media (max-width: 1200px) {
+  .testimonial-section .testimonial-image-section .curve-skew {
+    display: none;
+  }
+}
+
 .testimonial-section .testimonial-image-section .curve-skew > img {
   height: inherit;
   width: 100px;
@@ -731,7 +762,7 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  height: auto;
+  height: 100%;
 }
 
 .footer .footer-branding > img {
