@@ -201,6 +201,12 @@ h6 {
     margin-bottom: 28px;
 }
 
+.mb-sm-3 {
+    @media (max-width: $information-mobile-sm) {
+        margin-bottom: 16px;
+    }
+}
+
 .mt-30 {
     margin-top: 30px;    
 }
