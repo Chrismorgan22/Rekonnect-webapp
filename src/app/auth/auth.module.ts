@@ -7,9 +7,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { LinkedinResponseComponent } from './linkedin-response/linkedin-response.component';
 
 @NgModule({
-  declarations: [WelcomeComponent],
+  declarations: [WelcomeComponent, LinkedinResponseComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,

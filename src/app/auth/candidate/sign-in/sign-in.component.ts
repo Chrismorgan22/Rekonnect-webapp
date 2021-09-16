@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SocialAuthService, GoogleLoginProvider, SocialUser, FacebookLoginProvider } from 'angularx-social-login';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -21,6 +22,8 @@ export class SignInComponent implements OnInit {
     private formBuilder: FormBuilder,
     private _router: Router,
     private _authService: AuthService,
+    private _route: ActivatedRoute,
+    public http: HttpClient,
     private _toastrService: ToastrService, private SpinnerService: NgxSpinnerService, private socialAuthService: SocialAuthService
   ) { }
 
@@ -94,8 +97,58 @@ export class SignInComponent implements OnInit {
   loginInWithFB(): void {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => console.log(x));
   }
-
-  // signInWithLinkedIn(): void {
-  //   this.socialAuthService.signIn(LinkedInLoginProvider.PROVIDER_ID).then(x => console.log(x));
-  // }
+  loginWithLinkedIn(): void {
+    const linkedInCredentials = {
+      clientId: "78q6vjqcmmldlg",
+      redirectUrl: "https://rekonnect-web.herokuapp.com//auth/linkedinLoginResponse",
+      scope: "r_liteprofile%20r_emailaddress" // To read basic user profile data and email
+    };
+    const newWindow = window.open(`https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=${linkedInCredentials.clientId}&redirect_uri=${linkedInCredentials.redirectUrl}&scope=${linkedInCredentials.scope}`, 'popup', 'width=600,height=600')
+    const interval = setInterval(() => {
+      const url = newWindow.location.href;
+      console.log(newWindow.location.href);
+      if (url !== undefined) {
+        let url1 = new URL(url)
+        let params = new URLSearchParams(url1.search);
+        let sourceid = params.get('code');
+        this.callAuthAPI(sourceid, newWindow);
+        clearInterval(interval);
+        console.log(sourceid);
+      }
+    }, 1500)
+  }
+  callAuthAPI(sourceid, newWindow) {
+    const json = {
+      grant_type: "authorization_code",  // value of this field should always be: 'authorization_code'
+      code: sourceid,
+      redirect_uri: "https://rekonnect-web.herokuapp.com/linkedinLoginResponse",  // The same redirect_url used in step 2.1 (in login.component.ts)
+      client_id: '78q6vjqcmmldlg', // Follow step 1.2
+      client_secret: 'vM8eY6XNqyO0rX5I'   // Follow step 1.2
+    }
+    this._authService.linkedInLogin(json).subscribe(res => {
+      console.log(res)
+      const json = {};
+      json['first_name'] = res.data.first_name;
+      json['last_name'] = res.data.last_name;
+      json['email'] = res.data.email;
+      this._authService.candidateRegister(json).subscribe(response => {
+        if (response.result !== 'fail') {
+          this.submitted = false;
+          sessionStorage.setItem('_ud', JSON.stringify([response.data]))
+          this._router.navigate(['/auth/welcome'])
+          this.form.reset();
+          newWindow.close();
+          this._toastrService.success(
+            'User Registered successfully', response.result,
+            { toastClass: 'toast ngx-toastr', closeButton: true }
+          );
+        } else {
+          newWindow.close();
+          this._toastrService.error(
+            response.message, response.result
+          )
+        }
+      })
+    })
+  }
 }

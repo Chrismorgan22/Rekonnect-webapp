@@ -52,4 +52,11 @@ export class AuthService {
       })
     );
   }
+  linkedInLogin(body) {
+    return this._httpClient.post<any>(`${environment.apiUrl}/candidate/linkedin`, body).pipe(
+      map(response => {
+        return response;
+      })
+    );
+  }
 }
