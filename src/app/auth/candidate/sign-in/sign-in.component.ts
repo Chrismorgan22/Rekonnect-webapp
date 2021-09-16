@@ -100,7 +100,7 @@ export class SignInComponent implements OnInit {
   loginWithLinkedIn(): void {
     const linkedInCredentials = {
       clientId: "78q6vjqcmmldlg",
-      redirectUrl: "https://rekonnect-web.herokuapp.com//auth/linkedinLoginResponse",
+      redirectUrl: "https://rekonnect-web.herokuapp.com/auth/linkedinLoginResponse",
       scope: "r_liteprofile%20r_emailaddress" // To read basic user profile data and email
     };
     const newWindow = window.open(`https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=${linkedInCredentials.clientId}&redirect_uri=${linkedInCredentials.redirectUrl}&scope=${linkedInCredentials.scope}`, 'popup', 'width=600,height=600')
