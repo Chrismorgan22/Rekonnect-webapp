@@ -15,5 +15,7 @@ export class WelcomeComponent implements OnInit {
       this.userData = JSON.parse(welcomDetails)[0];
     }
   }
-
+  signOut(){
+    sessionStorage.clear();
+  }
 }

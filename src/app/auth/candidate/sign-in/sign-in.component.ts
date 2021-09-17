@@ -37,13 +37,13 @@ export class SignInComponent implements OnInit {
       this.isLoggedin = (user != null);
       console.log(this.socialUser);
       const json = {};
-      json['first_name'] = this.socialUser.firstName;
-      json['last_name'] = this.socialUser.lastName;
+      // json['first_name'] = this.socialUser.firstName;
+      // json['last_name'] = this.socialUser.lastName;
       json['email'] = this.socialUser.email;
       // json['phone'] = this.form.controls.phone.value;
       // json['specialization'] = this.form.controls.specialization.value;
       // json['password'] = this.form.controls.password.value;
-      this._authService.candidateRegister(json).subscribe(response => {
+      this._authService.candidateLogin(json).subscribe(response => {
         if (response.result !== 'fail') {
           this.submitted = false;
           // sessionStorage.setItem('_ud', JSON.stringify(response.data))
@@ -51,7 +51,7 @@ export class SignInComponent implements OnInit {
           this._router.navigate(['/auth/welcome'])
           this.form.reset();
           this._toastrService.success(
-            'User Registered successfully', response.result,
+            'User LoggedIn successfully', response.result,
             { toastClass: 'toast ngx-toastr', closeButton: true }
           );
         } else {
@@ -121,34 +121,36 @@ export class SignInComponent implements OnInit {
     const json = {
       grant_type: "authorization_code",  // value of this field should always be: 'authorization_code'
       code: sourceid,
-      redirect_uri: "https://rekonnect-web.herokuapp.com/linkedinLoginResponse",  // The same redirect_url used in step 2.1 (in login.component.ts)
+      redirect_uri: "https://rekonnect-web.herokuapp.com/auth/linkedinLoginResponse",  // The same redirect_url used in step 2.1 (in login.component.ts)
       client_id: '78q6vjqcmmldlg', // Follow step 1.2
       client_secret: 'vM8eY6XNqyO0rX5I'   // Follow step 1.2
     }
     this._authService.linkedInLogin(json).subscribe(res => {
       console.log(res)
-      const json = {};
-      json['first_name'] = res.data.first_name;
-      json['last_name'] = res.data.last_name;
-      json['email'] = res.data.email;
-      this._authService.candidateRegister(json).subscribe(response => {
-        if (response.result !== 'fail') {
-          this.submitted = false;
-          sessionStorage.setItem('_ud', JSON.stringify([response.data]))
-          this._router.navigate(['/auth/welcome'])
-          this.form.reset();
-          newWindow.close();
-          this._toastrService.success(
-            'User Registered successfully', response.result,
-            { toastClass: 'toast ngx-toastr', closeButton: true }
-          );
-        } else {
-          newWindow.close();
-          this._toastrService.error(
-            response.message, response.result
-          )
-        }
-      })
+      if (res !== null && res !== {}) {
+        const json = {};
+        // json['first_name'] = res.data.first_name;
+        // json['last_name'] = res.data.last_name;
+        json['email'] = res.data.email;
+        this._authService.candidateLogin(json).subscribe(response => {
+          if (response.result !== 'fail') {
+            this.submitted = false;
+            sessionStorage.setItem('_ud', JSON.stringify([response.data]))
+            this._router.navigate(['/auth/welcome'])
+            this.form.reset();
+            newWindow.close();
+            this._toastrService.success(
+              'User LoggedIn successfully', response.result,
+              { toastClass: 'toast ngx-toastr', closeButton: true }
+            );
+          } else {
+            newWindow.close();
+            this._toastrService.error(
+              response.message, response.result
+            )
+          }
+        })
+      }
     })
   }
 }
