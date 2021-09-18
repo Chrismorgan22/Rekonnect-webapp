@@ -92,28 +92,31 @@ export class SignUpComponent implements OnInit {
       this.socialAuthService.authState.subscribe((user) => {
         this.socialUser = user;
         console.log(this.socialUser);
-        const json = {};
-        json['first_name'] = this.socialUser.firstName;
-        json['last_name'] = this.socialUser.lastName;
-        json['email'] = this.socialUser.email;
-        this.SpinnerService.show()
-        this._authService.candidateRegister(json).subscribe(response => {
-          this.SpinnerService.hide();
-          if (response.result !== 'fail') {
-            this.submitted = false;
-            sessionStorage.setItem('_ud', JSON.stringify([response.data]))
-            this._router.navigate(['/auth/welcome'])
-            this.form.reset();
-            this._toastrService.success(
-              'User Registered successfully', response.result,
-              { toastClass: 'toast ngx-toastr', closeButton: true }
-            );
-          } else {
-            this._toastrService.error(
-              response.message, response.result
-            )
-          }
-        })
+        if (this.socialUser !== null) {
+          const json = {};
+          json['first_name'] = this.socialUser.firstName;
+          json['last_name'] = this.socialUser.lastName;
+          json['email'] = this.socialUser.email;
+          this.SpinnerService.show()
+          this._authService.candidateRegister(json).subscribe(response => {
+            this.SpinnerService.hide();
+            if (response.result !== 'fail') {
+              this.submitted = false;
+              sessionStorage.setItem('_ud', JSON.stringify([response.data]))
+              this._router.navigate(['/auth/welcome'])
+              this.form.reset();
+              this._toastrService.success(
+                'User Registered successfully', response.result,
+                { toastClass: 'toast ngx-toastr', closeButton: true }
+              );
+            } else {
+              this.socialAuthService.signOut();
+              this._toastrService.error(
+                response.message, response.result
+              )
+            }
+          })
+        }
       })
     })
   }
@@ -123,28 +126,31 @@ export class SignUpComponent implements OnInit {
       this.socialAuthService.authState.subscribe((user) => {
         this.socialUser = user;
         console.log(this.socialUser);
-        const json = {};
-        json['first_name'] = this.socialUser.firstName;
-        json['last_name'] = this.socialUser.lastName;
-        json['email'] = this.socialUser.email;
-        this.SpinnerService.show();
-        this._authService.candidateRegister(json).subscribe(response => {
-          this.SpinnerService.hide();
-          if (response.result !== 'fail') {
-            this.submitted = false;
-            sessionStorage.setItem('_ud', JSON.stringify([response.data]))
-            this._router.navigate(['/auth/welcome'])
-            this.form.reset();
-            this._toastrService.success(
-              'User Registered successfully', response.result,
-              { toastClass: 'toast ngx-toastr', closeButton: true }
-            );
-          } else {
-            this._toastrService.error(
-              response.message, response.result
-            )
-          }
-        })
+        if (this.socialUser !== null) {
+          const json = {};
+          json['first_name'] = this.socialUser.firstName;
+          json['last_name'] = this.socialUser.lastName;
+          json['email'] = this.socialUser.email;
+          this.SpinnerService.show();
+          this._authService.candidateRegister(json).subscribe(response => {
+            this.SpinnerService.hide();
+            if (response.result !== 'fail') {
+              this.submitted = false;
+              sessionStorage.setItem('_ud', JSON.stringify([response.data]))
+              this._router.navigate(['/auth/welcome'])
+              this.form.reset();
+              this._toastrService.success(
+                'User Registered successfully', response.result,
+                { toastClass: 'toast ngx-toastr', closeButton: true }
+              );
+            } else {
+              this.socialAuthService.signOut();
+              this._toastrService.error(
+                response.message, response.result
+              )
+            }
+          })
+        }
       })
     })
   }
@@ -178,7 +184,7 @@ export class SignUpComponent implements OnInit {
       client_secret: 'vM8eY6XNqyO0rX5I'   // Follow step 1.2
     }
     this._authService.linkedInLogin(json).subscribe(res => {
-    this.SpinnerService.hide()
+      this.SpinnerService.hide()
       console.log(res)
       const json = {};
       json['first_name'] = res.data.first_name;

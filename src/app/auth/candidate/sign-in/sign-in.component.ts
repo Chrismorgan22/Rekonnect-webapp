@@ -73,26 +73,29 @@ export class SignInComponent implements OnInit {
         this.SpinnerService.show();
         this.socialUser = user;
         console.log(this.socialUser);
-        const json = {};
-        json['email'] = this.socialUser.email;
-        this._authService.candidateLogin(json).subscribe(response => {
-          this.SpinnerService.hide();
-          if (response.result !== 'fail') {
-            this.submitted = false;
-            sessionStorage.setItem('_ud', JSON.stringify([response.data]))
-            this._router.navigate(['/auth/welcome'])
-            this.form.reset();
-            this._toastrService.success(
-              'User LoggedIn successfully', response.result,
-              { toastClass: 'toast ngx-toastr', closeButton: true }
-            );
-            // this.socialAuthService.signOut(true); 
-          } else {
-            this._toastrService.error(
-              response.message, response.result
-            )
-          }
-        })
+        if (this.socialUser !== null) {
+          const json = {};
+          json['email'] = this.socialUser.email;
+          this._authService.candidateLogin(json).subscribe(response => {
+            this.SpinnerService.hide();
+            if (response.result !== 'fail') {
+              this.submitted = false;
+              sessionStorage.setItem('_ud', JSON.stringify([response.data]))
+              this._router.navigate(['/auth/welcome'])
+              this.form.reset();
+              this._toastrService.success(
+                'User LoggedIn successfully', response.result,
+                { toastClass: 'toast ngx-toastr', closeButton: true }
+              );
+              // this.socialAuthService.signOut(true); 
+            } else {
+              this.socialAuthService.signOut();
+              this._toastrService.error(
+                response.message, response.result
+              )
+            }
+          })
+        }
       });
     })
   }
@@ -102,26 +105,29 @@ export class SignInComponent implements OnInit {
         this.SpinnerService.show();
         this.socialUser = user;
         console.log(this.socialUser);
-        const json = {};
-        json['email'] = this.socialUser.email;
-        this._authService.candidateLogin(json).subscribe(response => {
-          this.SpinnerService.hide();
-          if (response.result !== 'fail') {
-            this.submitted = false;
-            sessionStorage.setItem('_ud', JSON.stringify([response.data]))
-            this._router.navigate(['/auth/welcome'])
-            this.form.reset();
-            this._toastrService.success(
-              'User LoggedIn successfully', response.result,
-              { toastClass: 'toast ngx-toastr', closeButton: true }
-            );
-            // this.socialAuthService.signOut(true);
-          } else {
-            this._toastrService.error(
-              response.message, response.result
-            )
-          }
-        })
+        if (this.socialUser !== null) {
+          const json = {};
+          json['email'] = this.socialUser.email;
+          this._authService.candidateLogin(json).subscribe(response => {
+            this.SpinnerService.hide();
+            if (response.result !== 'fail') {
+              this.submitted = false;
+              sessionStorage.setItem('_ud', JSON.stringify([response.data]))
+              this._router.navigate(['/auth/welcome'])
+              this.form.reset();
+              this._toastrService.success(
+                'User LoggedIn successfully', response.result,
+                { toastClass: 'toast ngx-toastr', closeButton: true }
+              );
+              // this.socialAuthService.signOut(true);
+            } else {
+              this.socialAuthService.signOut();
+              this._toastrService.error(
+                response.message, response.result
+              )
+            }
+          })
+        }
       })
     });
   }
