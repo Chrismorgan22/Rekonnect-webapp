@@ -33,35 +33,7 @@ export class SignInComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
-    this.socialAuthService.authState.subscribe((user) => {
-      this.socialUser = user;
-      this.isLoggedin = (user != null);
-      console.log(this.socialUser);
-      const json = {};
-      // json['first_name'] = this.socialUser.firstName;
-      // json['last_name'] = this.socialUser.lastName;
-      json['email'] = this.socialUser.email;
-      // json['phone'] = this.form.controls.phone.value;
-      // json['specialization'] = this.form.controls.specialization.value;
-      // json['password'] = this.form.controls.password.value;
-      this._authService.candidateLogin(json).subscribe(response => {
-        if (response.result !== 'fail') {
-          this.submitted = false;
-          // sessionStorage.setItem('_ud', JSON.stringify(response.data))
-          sessionStorage.setItem('_ud', JSON.stringify([response.data]))
-          this._router.navigate(['/auth/welcome'])
-          this.form.reset();
-          this._toastrService.success(
-            'User LoggedIn successfully', response.result,
-            { toastClass: 'toast ngx-toastr', closeButton: true }
-          );
-        } else {
-          this._toastrService.error(
-            response.message, response.result
-          )
-        }
-      })
-    });
+
   }
 
   // convenience getter for easy access to form fields
@@ -93,10 +65,68 @@ export class SignInComponent implements OnInit {
     }
   }
   loginWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x =>
+      this.socialAuthService.authState.subscribe((user) => {
+        this.socialUser = user;
+        this.isLoggedin = (user != null);
+        console.log(this.socialUser);
+        const json = {};
+        // json['first_name'] = this.socialUser.firstName;
+        // json['last_name'] = this.socialUser.lastName;
+        json['email'] = this.socialUser.email;
+        // json['phone'] = this.form.controls.phone.value;
+        // json['specialization'] = this.form.controls.specialization.value;
+        // json['password'] = this.form.controls.password.value;
+        this._authService.candidateLogin(json).subscribe(response => {
+          if (response.result !== 'fail') {
+            this.submitted = false;
+            // sessionStorage.setItem('_ud', JSON.stringify(response.data))
+            sessionStorage.setItem('_ud', JSON.stringify([response.data]))
+            this._router.navigate(['/auth/welcome'])
+            this.form.reset();
+            this._toastrService.success(
+              'User LoggedIn successfully', response.result,
+              { toastClass: 'toast ngx-toastr', closeButton: true }
+            );
+          } else {
+            this._toastrService.error(
+              response.message, response.result
+            )
+          }
+        })
+      }));
   }
   loginInWithFB(): void {
-    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => console.log(x));
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x =>
+      this.socialAuthService.authState.subscribe((user) => {
+        this.socialUser = user;
+        this.isLoggedin = (user != null);
+        console.log(this.socialUser);
+        const json = {};
+        // json['first_name'] = this.socialUser.firstName;
+        // json['last_name'] = this.socialUser.lastName;
+        json['email'] = this.socialUser.email;
+        // json['phone'] = this.form.controls.phone.value;
+        // json['specialization'] = this.form.controls.specialization.value;
+        // json['password'] = this.form.controls.password.value;
+        this._authService.candidateLogin(json).subscribe(response => {
+          if (response.result !== 'fail') {
+            this.submitted = false;
+            // sessionStorage.setItem('_ud', JSON.stringify(response.data))
+            sessionStorage.setItem('_ud', JSON.stringify([response.data]))
+            this._router.navigate(['/auth/welcome'])
+            this.form.reset();
+            this._toastrService.success(
+              'User LoggedIn successfully', response.result,
+              { toastClass: 'toast ngx-toastr', closeButton: true }
+            );
+          } else {
+            this._toastrService.error(
+              response.message, response.result
+            )
+          }
+        })
+      }));
   }
   loginWithLinkedIn(): void {
     const linkedInCredentials = {
