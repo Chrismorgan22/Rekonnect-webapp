@@ -116,6 +116,8 @@ export class SignUpComponent implements OnInit {
               )
             }
           })
+        } else {
+          this.SpinnerService.hide();
         }
       })
     })
@@ -150,6 +152,8 @@ export class SignUpComponent implements OnInit {
               )
             }
           })
+        } else {
+          this.SpinnerService.hide();
         }
       })
     })

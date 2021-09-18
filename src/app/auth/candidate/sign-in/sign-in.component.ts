@@ -95,6 +95,8 @@ export class SignInComponent implements OnInit {
               )
             }
           })
+        } else {
+          this.SpinnerService.hide();
         }
       });
     })
@@ -127,6 +129,9 @@ export class SignInComponent implements OnInit {
               )
             }
           })
+        }
+        else {
+          this.SpinnerService.hide();
         }
       })
     });
