@@ -28,6 +28,7 @@ export class SignInComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.socialUser = new SocialUser;
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
