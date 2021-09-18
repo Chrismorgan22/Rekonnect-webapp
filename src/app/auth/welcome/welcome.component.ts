@@ -17,6 +17,6 @@ export class WelcomeComponent implements OnInit {
   }
   signOut(){
     sessionStorage.clear();
-    this.socialAuthService.signOut();
+    // this.socialAuthService.signOut();
   }
 }
