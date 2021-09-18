@@ -65,22 +65,17 @@ export class SignInComponent implements OnInit {
     }
   }
   loginWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x =>
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => {
+      console.log(x)
       this.socialAuthService.authState.subscribe((user) => {
         this.socialUser = user;
         this.isLoggedin = (user != null);
         console.log(this.socialUser);
         const json = {};
-        // json['first_name'] = this.socialUser.firstName;
-        // json['last_name'] = this.socialUser.lastName;
         json['email'] = this.socialUser.email;
-        // json['phone'] = this.form.controls.phone.value;
-        // json['specialization'] = this.form.controls.specialization.value;
-        // json['password'] = this.form.controls.password.value;
         this._authService.candidateLogin(json).subscribe(response => {
           if (response.result !== 'fail') {
             this.submitted = false;
-            // sessionStorage.setItem('_ud', JSON.stringify(response.data))
             sessionStorage.setItem('_ud', JSON.stringify([response.data]))
             this._router.navigate(['/auth/welcome'])
             this.form.reset();
@@ -94,25 +89,20 @@ export class SignInComponent implements OnInit {
             )
           }
         })
-      }));
+      });
+    })
   }
   loginInWithFB(): void {
-    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x =>
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => {
       this.socialAuthService.authState.subscribe((user) => {
         this.socialUser = user;
         this.isLoggedin = (user != null);
         console.log(this.socialUser);
         const json = {};
-        // json['first_name'] = this.socialUser.firstName;
-        // json['last_name'] = this.socialUser.lastName;
         json['email'] = this.socialUser.email;
-        // json['phone'] = this.form.controls.phone.value;
-        // json['specialization'] = this.form.controls.specialization.value;
-        // json['password'] = this.form.controls.password.value;
         this._authService.candidateLogin(json).subscribe(response => {
           if (response.result !== 'fail') {
             this.submitted = false;
-            // sessionStorage.setItem('_ud', JSON.stringify(response.data))
             sessionStorage.setItem('_ud', JSON.stringify([response.data]))
             this._router.navigate(['/auth/welcome'])
             this.form.reset();
@@ -126,7 +116,8 @@ export class SignInComponent implements OnInit {
             )
           }
         })
-      }));
+      })
+    });
   }
   loginWithLinkedIn(): void {
     const linkedInCredentials = {
