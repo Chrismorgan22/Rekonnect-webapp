@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { SocialAuthService, GoogleLoginProvider, SocialUser, FacebookLoginProvider } from 'angularx-social-login';
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public socialAuthService:SocialAuthService) { }
   userData: any;
   ngOnInit(): void {
     const welcomDetails = sessionStorage.getItem('_ud');
@@ -17,5 +17,6 @@ export class WelcomeComponent implements OnInit {
   }
   signOut(){
     sessionStorage.clear();
+    this.socialAuthService.signOut();
   }
 }
