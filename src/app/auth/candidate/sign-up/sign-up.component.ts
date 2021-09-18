@@ -60,6 +60,7 @@ export class SignUpComponent implements OnInit {
     this.submitted = true;
     console.log(this.form)
     if (this.form.valid) {
+      this.SpinnerService.show();
       const json = {};
       json['first_name'] = this.form.controls.firstName.value;
       json['last_name'] = this.form.controls.lastName.value;
@@ -68,6 +69,7 @@ export class SignUpComponent implements OnInit {
       // json['specialization'] = this.form.controls.specialization.value;
       json['password'] = this.form.controls.password.value;
       this._authService.candidateRegister(json).subscribe(response => {
+        this.SpinnerService.hide();
         if (response.result !== 'fail') {
           this.submitted = false;
           sessionStorage.setItem('_ud', JSON.stringify([response.data]))
@@ -89,13 +91,14 @@ export class SignUpComponent implements OnInit {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => {
       this.socialAuthService.authState.subscribe((user) => {
         this.socialUser = user;
-        this.isLoggedin = (user != null);
         console.log(this.socialUser);
         const json = {};
         json['first_name'] = this.socialUser.firstName;
         json['last_name'] = this.socialUser.lastName;
         json['email'] = this.socialUser.email;
+        this.SpinnerService.show()
         this._authService.candidateRegister(json).subscribe(response => {
+          this.SpinnerService.hide();
           if (response.result !== 'fail') {
             this.submitted = false;
             sessionStorage.setItem('_ud', JSON.stringify([response.data]))
@@ -115,16 +118,18 @@ export class SignUpComponent implements OnInit {
     })
   }
   loginInWithFB(): void {
+
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => {
       this.socialAuthService.authState.subscribe((user) => {
         this.socialUser = user;
-        this.isLoggedin = (user != null);
         console.log(this.socialUser);
         const json = {};
         json['first_name'] = this.socialUser.firstName;
         json['last_name'] = this.socialUser.lastName;
         json['email'] = this.socialUser.email;
+        this.SpinnerService.show();
         this._authService.candidateRegister(json).subscribe(response => {
+          this.SpinnerService.hide();
           if (response.result !== 'fail') {
             this.submitted = false;
             sessionStorage.setItem('_ud', JSON.stringify([response.data]))
@@ -164,6 +169,7 @@ export class SignUpComponent implements OnInit {
     }, 1500)
   }
   callAuthAPI(sourceid, newWindow) {
+    this.SpinnerService.show();
     const json = {
       grant_type: "authorization_code",  // value of this field should always be: 'authorization_code'
       code: sourceid,
@@ -172,6 +178,7 @@ export class SignUpComponent implements OnInit {
       client_secret: 'vM8eY6XNqyO0rX5I'   // Follow step 1.2
     }
     this._authService.linkedInLogin(json).subscribe(res => {
+    this.SpinnerService.hide()
       console.log(res)
       const json = {};
       json['first_name'] = res.data.first_name;

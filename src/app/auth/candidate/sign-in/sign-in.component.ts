@@ -43,10 +43,12 @@ export class SignInComponent implements OnInit {
     this.submitted = true;
     console.log(this.form)
     if (this.form.valid) {
+      this.SpinnerService.show()
       const json = {};
       json['email'] = this.form.controls.email.value;
       json['password'] = this.form.controls.password.value;
       this._authService.candidateLogin(json).subscribe(response => {
+        this.SpinnerService.hide()
         if (response.result !== 'fail') {
           this.submitted = false;
           sessionStorage.setItem('_ud', JSON.stringify(response.data))
@@ -68,12 +70,13 @@ export class SignInComponent implements OnInit {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => {
       console.log(x)
       this.socialAuthService.authState.subscribe((user) => {
+        this.SpinnerService.show();
         this.socialUser = user;
-        this.isLoggedin = (user != null);
         console.log(this.socialUser);
         const json = {};
         json['email'] = this.socialUser.email;
         this._authService.candidateLogin(json).subscribe(response => {
+          this.SpinnerService.hide();
           if (response.result !== 'fail') {
             this.submitted = false;
             sessionStorage.setItem('_ud', JSON.stringify([response.data]))
@@ -83,6 +86,7 @@ export class SignInComponent implements OnInit {
               'User LoggedIn successfully', response.result,
               { toastClass: 'toast ngx-toastr', closeButton: true }
             );
+            // this.socialAuthService.signOut(true); 
           } else {
             this._toastrService.error(
               response.message, response.result
@@ -95,12 +99,13 @@ export class SignInComponent implements OnInit {
   loginInWithFB(): void {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => {
       this.socialAuthService.authState.subscribe((user) => {
+        this.SpinnerService.show();
         this.socialUser = user;
-        this.isLoggedin = (user != null);
         console.log(this.socialUser);
         const json = {};
         json['email'] = this.socialUser.email;
         this._authService.candidateLogin(json).subscribe(response => {
+          this.SpinnerService.hide();
           if (response.result !== 'fail') {
             this.submitted = false;
             sessionStorage.setItem('_ud', JSON.stringify([response.data]))
@@ -110,6 +115,7 @@ export class SignInComponent implements OnInit {
               'User LoggedIn successfully', response.result,
               { toastClass: 'toast ngx-toastr', closeButton: true }
             );
+            // this.socialAuthService.signOut(true);
           } else {
             this._toastrService.error(
               response.message, response.result
@@ -140,6 +146,7 @@ export class SignInComponent implements OnInit {
     }, 1500)
   }
   callAuthAPI(sourceid, newWindow) {
+    this.SpinnerService.show();
     const json = {
       grant_type: "authorization_code",  // value of this field should always be: 'authorization_code'
       code: sourceid,
@@ -148,6 +155,7 @@ export class SignInComponent implements OnInit {
       client_secret: 'vM8eY6XNqyO0rX5I'   // Follow step 1.2
     }
     this._authService.linkedInLogin(json).subscribe(res => {
+      this.SpinnerService.hide();
       console.log(res)
       if (res !== null && res !== {}) {
         const json = {};

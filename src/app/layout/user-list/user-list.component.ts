@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { LayoutService } from 'src/app/services/layout.service';
 
@@ -9,13 +10,15 @@ import { LayoutService } from 'src/app/services/layout.service';
 })
 export class UserListComponent implements OnInit {
   userData: any;
-  constructor(public _layoutService: LayoutService, public _toastrService: ToastrService) { }
+  constructor(public _layoutService: LayoutService, public _toastrService: ToastrService, public SpinnerService: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.getUserListData();
   }
   getUserListData() {
+    this.SpinnerService.show();
     this._layoutService.getUserList().subscribe(response => {
+      this.SpinnerService.hide();
       if (response.result !== 'fail') {
         this.userData = response.data;
       } else {

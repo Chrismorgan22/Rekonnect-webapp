@@ -1,18 +1,21 @@
 <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Mobile</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let candidate of userData">
-        <td>{{candidate.first_name}}</td>
-        <td>{{candidate.last_name}}</td>
-        <td>{{candidate.email}}</td>
-        <td>{{candidate.phone}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Mobile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let candidate of userData">
+      <td>{{candidate.first_name}}</td>
+      <td>{{candidate.last_name}}</td>
+      <td>{{candidate.email}}</td>
+      <td>{{candidate.phone}}</td>
+    </tr>
+  </tbody>
+</table>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Please Wait. </p>
+</ngx-spinner>
