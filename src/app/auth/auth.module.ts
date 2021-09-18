@@ -30,12 +30,12 @@ import { LinkedinResponseComponent } from './linkedin-response/linkedin-response
               '221831887863-smioflkrsmtc8fmveqm0mn99iuivois9.apps.googleusercontent.com'
             )
           },
-          // {
-          //   id: FacebookLoginProvider.PROVIDER_ID,
-          //   provider: new FacebookLoginProvider(
-          //     '221831887863-9u9p27n9kq7eupp9a6l2rvicd33can2s.apps.googleusercontent.com'
-          //   )
-          // }
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider(
+              '1025684304911505'
+            )
+          }
         ]
       } as SocialAuthServiceConfig,
     }

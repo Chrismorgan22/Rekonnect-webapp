@@ -116,6 +116,9 @@ export class SignUpComponent implements OnInit {
   loginWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
+  loginInWithFB(): void {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
   loginWithLinkedIn(): void {
     const linkedInCredentials = {
       clientId: "78q6vjqcmmldlg",
