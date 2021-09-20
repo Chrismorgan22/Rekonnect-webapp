@@ -70,23 +70,7 @@ export class SignUpComponent implements OnInit {
       json['company_name'] = this.form.controls.company_name.value;
       // json['specialization'] = this.form.controls.specialization.value;
       json['password'] = this.form.controls.password.value;
-      this._authService.userRegister(json).subscribe(response => {
-        this.SpinnerService.hide();
-        if (response.result !== 'fail') {
-          this.submitted = false;
-          sessionStorage.setItem('_ud', JSON.stringify([response.data]))
-          this._router.navigate(['/auth/welcome'])
-          this.form.reset();
-          this._toastrService.success(
-            'User Registered successfully', response.result,
-            { toastClass: 'toast ngx-toastr', closeButton: true }
-          );
-        } else {
-          this._toastrService.error(
-            response.message, response.result
-          )
-        }
-      })
+      this.registerAPICall(json);
     }
   }
   loginWithGoogle(): void {
@@ -100,24 +84,7 @@ export class SignUpComponent implements OnInit {
           json['last_name'] = this.socialUser.lastName;
           json['email'] = this.socialUser.email;
           this.SpinnerService.show()
-          this._authService.userRegister(json).subscribe(response => {
-            this.SpinnerService.hide();
-            if (response.result !== 'fail') {
-              this.submitted = false;
-              sessionStorage.setItem('_ud', JSON.stringify([response.data]))
-              this._router.navigate(['/auth/welcome'])
-              this.form.reset();
-              this._toastrService.success(
-                'User Registered successfully', response.result,
-                { toastClass: 'toast ngx-toastr', closeButton: true }
-              );
-            } else {
-              this.socialAuthService.signOut();
-              this._toastrService.error(
-                response.message, response.result
-              )
-            }
-          })
+          this.registerAPICall(json);
         } else {
           this.SpinnerService.hide();
         }
@@ -135,24 +102,7 @@ export class SignUpComponent implements OnInit {
           json['last_name'] = this.socialUser.lastName;
           json['email'] = this.socialUser.email;
           this.SpinnerService.show();
-          this._authService.userRegister(json).subscribe(response => {
-            this.SpinnerService.hide();
-            if (response.result !== 'fail') {
-              this.submitted = false;
-              sessionStorage.setItem('_ud', JSON.stringify([response.data]))
-              this._router.navigate(['/auth/welcome'])
-              this.form.reset();
-              this._toastrService.success(
-                'User Registered successfully', response.result,
-                { toastClass: 'toast ngx-toastr', closeButton: true }
-              );
-            } else {
-              this.socialAuthService.signOut();
-              this._toastrService.error(
-                response.message, response.result
-              )
-            }
-          })
+          this.registerAPICall(json);
         } else {
           this.SpinnerService.hide();
         }
@@ -162,7 +112,7 @@ export class SignUpComponent implements OnInit {
   loginWithLinkedIn(): void {
     const linkedInCredentials = {
       clientId: "78q6vjqcmmldlg",
-      redirectUrl: "https://rekonnect-web.herokuapp.com/auth/linkedinLoginResponse",
+      redirectUrl: "https://rekonnect.in/auth/linkedinLoginResponse",
       scope: "r_liteprofile%20r_emailaddress" // To read basic user profile data and email
     };
     const newWindow = window.open(`https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=${linkedInCredentials.clientId}&redirect_uri=${linkedInCredentials.redirectUrl}&scope=${linkedInCredentials.scope}`, 'popup', 'width=600,height=600')
@@ -184,7 +134,7 @@ export class SignUpComponent implements OnInit {
     const json = {
       grant_type: "authorization_code",  // value of this field should always be: 'authorization_code'
       code: sourceid,
-      redirect_uri: "https://rekonnect-web.herokuapp.com/auth/linkedinLoginResponse",  // The same redirect_url used in step 2.1 (in login.component.ts)
+      redirect_uri: "https://rekonnect.in/auth/linkedinLoginResponse",  // The same redirect_url used in step 2.1 (in login.component.ts)
       client_id: '78q6vjqcmmldlg', // Follow step 1.2
       client_secret: 'vM8eY6XNqyO0rX5I'   // Follow step 1.2
     }
@@ -195,24 +145,26 @@ export class SignUpComponent implements OnInit {
       json['first_name'] = res.data.first_name;
       json['last_name'] = res.data.last_name;
       json['email'] = res.data.email;
-      this._authService.userRegister(json).subscribe(response => {
-        if (response.result !== 'fail') {
-          this.submitted = false;
-          sessionStorage.setItem('_ud', JSON.stringify([response.data]))
-          this._router.navigate(['/auth/welcome'])
-          this.form.reset();
-          newWindow.close();
-          this._toastrService.success(
-            'User Registered successfully', response.result,
-            { toastClass: 'toast ngx-toastr', closeButton: true }
-          );
-        } else {
-          newWindow.close();
-          this._toastrService.error(
-            response.message, response.result
-          )
-        }
-      })
+      this.registerAPICall(json);
+    })
+  }
+  registerAPICall(json) {
+    this._authService.userRegister(json).subscribe(response => {
+      if (response.result !== 'fail') {
+        this.submitted = false;
+        sessionStorage.setItem('_ud', JSON.stringify([response.data]))
+        this._router.navigate(['/auth/welcome'])
+        this.form.reset();
+        this._toastrService.success(
+          'User Registered successfully', response.result,
+          { toastClass: 'toast ngx-toastr', closeButton: true }
+        );
+      } else {
+        this.SpinnerService.hide();
+        this._toastrService.error(
+          response.message, response.result
+        )
+      }
     })
   }
 }
