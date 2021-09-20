@@ -123,7 +123,6 @@ export class SignUpComponent implements OnInit {
     })
   }
   loginInWithFB(): void {
-
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => {
       this.socialAuthService.authState.subscribe((user) => {
         this.socialUser = user;

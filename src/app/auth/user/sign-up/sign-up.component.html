@@ -1,4 +1,4 @@
-<div class="card">
+<!-- <div class="card">
     <h4 class="card-header">Register</h4>
     <div class="card-body">
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -28,11 +28,11 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="username">Company Name</label>
-                <input type="text" formControlName="company_name" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f.company_name.errors }" />
-                <div *ngIf="submitted && f.company_name.errors" class="invalid-feedback">
-                    <div *ngIf="f.company_name.errors.required">Company name is required</div>
+                <label for="username">Speacialization</label>
+                <input type="text" formControlName="speacialization" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.speacialization.errors }" />
+                <div *ngIf="submitted && f.speacialization.errors" class="invalid-feedback">
+                    <div *ngIf="f.speacialization.errors.required">Speacialization is required</div>
                 </div>
             </div>
             <div class="form-group">
@@ -49,10 +49,120 @@
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     Register
                 </button>
-                <a routerLink="/auth/user/signin" class="btn btn-link">Cancel</a>
+                <a routerLink="../login" class="btn btn-link">Cancel</a>
             </div>
         </form>
     </div>
     <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
         <p style="color: white">Please Wait. </p>
-    </ngx-spinner>
+    </ngx-spinner> -->
+
+<section>
+    <div class="row w-100">
+        <div class="col-sm col-lg-5 col-sm-12">
+            <img class="login-image img-fluid" src="../../../assets/images/user-signup-2.jpg" />
+        </div>
+        <div class="col-sm col-lg-6 col-sm-12">
+            <div class="section start-section">
+                <div class="section-heading">
+                    <h1 class="font-bold">Welcome to ReKonnect</h1>
+                    <h5 class="text-color-light font-normal">We help you kickstart/restart your career</h5>
+                </div>
+                <form class="section-form-content" [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="form-row form-group">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="First name" formControlName="firstName"
+                                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <input type="text" placeholder="Last name" formControlName="lastName" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter email" formControlName="email" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">Email is required</div>
+                            <div *ngIf="f.email.errors.email">Enter valid email address</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Phone"
+                            formControlName="phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+                        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                            <div *ngIf="f.phone.errors.required">Phone is required</div>
+                            <div *ngIf="f.phone.errors.pattern">Enter Valid phone number</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Company Name"
+                            formControlName="company_name"
+                            [ngClass]="{ 'is-invalid': submitted && f.company_name.errors }">
+                        <div *ngIf="submitted && f.company_name.errors" class="invalid-feedback">
+                            <div *ngIf="f.company_name.errors.required">Company name is required</div>
+                            <div *ngIf="f.company_name.errors.pattern">Enter Valid Company Name</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="exampleInputPassword1" placeholder="Password"
+                            formControlName="password" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="colFormLabelLg" placeholder="Confirm Password"
+                            formControlName="confirmPassword" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                        <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                            <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                            <div *ngIf="f.confirmPassword.errors.minlength">Confirm Password must be at least 6
+                                characters</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg mt-24 w-100">Submit</button>
+                </form>
+                <div class="section-footer">
+                    <div class="title text-center">
+                        <span>OR</span>
+                    </div>
+                    <div class="row mt-16" style="justify-content: space-evenly;">
+                        <div class="col-sm col-md-4 col-sm-12">
+                            <div class="border-outline-box" (click)="loginWithGoogle()">
+                                <img class="img-fluid" src="../../../assets/images/google.png" />
+                            </div>
+                        </div>
+                        <div class="col-sm col-md-4 col-sm-12">
+                            <div class="border-outline-box" (click)="loginInWithFB()">
+                                <img class="img-fluid" src="../../../assets/images/facebook.png" />
+                            </div>
+                        </div>
+                        <div class="col-sm col-md-4 col-sm-12" (click)="loginWithLinkedIn()">
+                            <div class="border-outline-box">
+                                <img class="img-fluid" src="../../../assets/images/linkedin.png" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-30 w-100 text-center mt-16">
+                        <h6 class="text-color-light">Already Registered? <a class="text-primary"
+                                routerLink="/auth/user/signin">Sign In</a> </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+    <p style="color: white">Please Wait. </p>
+</ngx-spinner>

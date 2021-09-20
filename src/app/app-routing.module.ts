@@ -17,24 +17,15 @@ const routes: Routes = [
     //canActivate: [AuthGuard]
     // component:BaseComponent
   },
-  // {
-  //   path: '',
-  //   redirectTo: '/',
-  //   pathMatch: 'full'
-  // },
-  {
-    path: '**',
-    redirectTo: '/'
-  },
   {
     path: '',
     redirectTo: '/',
     pathMatch: 'full'
   },
-  // {
-  //   path: '**',
-  //   redirectTo: '/'
-  // }
+  {
+    path: '**',
+    redirectTo: '/'
+  },
 ];
 
 @NgModule({
