@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl:'https://rekonnect-api.herokuapp.com'
+  apiUrl: 'https://api.rekonnect.in'
 };
 
 /*
