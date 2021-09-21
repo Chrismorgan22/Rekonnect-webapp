@@ -694,7 +694,7 @@ body::-webkit-scrollbar-thumb {
 
 .services-section .flip-card .flip-card-front, .services-section .flip-card .flip-card-back {
   position: absolute;
-  width: 208px;
+  width: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }

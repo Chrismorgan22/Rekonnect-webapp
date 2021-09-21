@@ -303,8 +303,7 @@ body {
 
         .flip-card-front, .flip-card-back {
             position: absolute;
-            
-            width: 208px;
+            width: 100%;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
         }
