@@ -513,3 +513,14 @@ body {
         }
     }
 }
+
+//toast
+.toast-container {
+    .toast-error {
+        background-color: lighten($color-secondary, 5) !important;
+    }
+
+    .toast-success {
+        background-color: lighten($color-secondary-green, 5) !important;
+    }
+}
