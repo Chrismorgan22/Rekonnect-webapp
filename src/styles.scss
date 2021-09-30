@@ -187,8 +187,8 @@ body {
     .image-transform-section {
 
         & > img {
-            height: 500px;
-            width: 550px;
+            height: 100%;
+            width: 100%;
 
             @media (max-width: $information-mobile-xl) {
                width: 400px;
@@ -259,13 +259,14 @@ body {
        
        margin-bottom: 24px;
        margin-right: 24px;
-       width: 235px;
+       width: 208px;
        padding: 0;
        border-radius: 8px;
        
        & .service-image {
-        width: 235px;
-        height: 196px;
+        width: 100%;
+        height: 180px;
+        //height: 196px;
         object-fit: cover;
 
             @media (max-width: $information-mobile-xl) {
@@ -293,6 +294,7 @@ body {
         .flip-card-inner {
             width: 100%;
             height: 100%;
+            background: #fff;
             text-align: center;
             transition: transform 0.6s;
             transform-style: preserve-3d;
@@ -302,7 +304,6 @@ body {
         .flip-card-front, .flip-card-back {
             position: absolute;
             width: 100%;
-            height: 100%;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
         }
@@ -367,6 +368,7 @@ body {
 //testimonial section
 .testimonial-section {
     .testimonial-section-content {
+        max-height: 450px;
       .text-secondary {
           & * {
               color: $color-secondary;
@@ -391,7 +393,7 @@ body {
           margin-left: 22px;
 
           & > p {
-              font-size: 32px;
+              font-size: 24px;
               font-weight: $font-light;
 
               @media (max-width: $information-mobile-md) {
@@ -414,6 +416,7 @@ body {
 
     .testimonial-image-section {
         position: relative;
+        max-height: 450px;
         .curve-skew {
             position: absolute;
             left: 0;
@@ -508,5 +511,16 @@ body {
                 }
             }
         }
+    }
+}
+
+//toast
+.toast-container {
+    .toast-error {
+        background-color: lighten($color-secondary, 5) !important;
+    }
+
+    .toast-success {
+        background-color: lighten($color-secondary-green, 5) !important;
     }
 }
