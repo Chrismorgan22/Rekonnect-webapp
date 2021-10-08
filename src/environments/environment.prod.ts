@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://api.rekonnect.in'
+  apiUrl: 'http://localhost:8000'
 };
