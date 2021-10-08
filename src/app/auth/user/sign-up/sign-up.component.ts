@@ -37,26 +37,14 @@ export class SignUpComponent implements OnInit {
       phone: ['', [Validators.required, Validators.pattern('^[789]{1}[0-9]{9}$')]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
-      company_name: ['', Validators.required]
+      // company_name: ['', Validators.required]
     });
-    this.getSpecializationData();
 
   }
 
   // convenience getter for easy access to form fields
   get f() { return this.form.controls; }
 
-  getSpecializationData() {
-    this._layoutService.getSpecializationList().subscribe(response => {
-      if (response.result !== 'fail') {
-        this.specializationData = response.data;
-      } else {
-        this._toastrService.error(
-          response.message, response.result
-        )
-      }
-    })
-  }
   onSubmit() {
     this.submitted = true;
     console.log(this.form)
@@ -67,7 +55,7 @@ export class SignUpComponent implements OnInit {
       json['last_name'] = this.form.controls.lastName.value;
       json['email'] = this.form.controls.email.value;
       json['phone'] = this.form.controls.phone.value;
-      json['company_name'] = this.form.controls.company_name.value;
+      // json['company_name'] = this.form.controls.company_name.value;
       // json['specialization'] = this.form.controls.specialization.value;
       json['password'] = this.form.controls.password.value;
       this.registerAPICall(json);

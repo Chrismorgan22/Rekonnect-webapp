@@ -60,7 +60,7 @@
 <section>
     <div class="row w-100">
         <div class="col-sm col-lg-5 col-sm-12">
-            <img class="login-image img-fluid" src="../../../assets/images/user-signup-2.jpg" />
+            <img class="login-image img-fluid" src="../../../assets/images/login.png" />
         </div>
         <div class="col-sm col-lg-6 col-sm-12">
             <div class="section start-section">
@@ -102,7 +102,7 @@
                             <div *ngIf="f.phone.errors.pattern">Enter Valid phone number</div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Company Name"
                             formControlName="company_name"
                             [ngClass]="{ 'is-invalid': submitted && f.company_name.errors }">
@@ -110,7 +110,7 @@
                             <div *ngIf="f.company_name.errors.required">Company name is required</div>
                             <div *ngIf="f.company_name.errors.pattern">Enter Valid Company Name</div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <input type="password" id="exampleInputPassword1" placeholder="Password"
                             formControlName="password" class="form-control"
