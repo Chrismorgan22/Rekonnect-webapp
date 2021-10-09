@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from '../base/home/home.component';
+import { AboutComponent } from './about/about.component';
 import { LayoutComponent } from './layout.component';
 import { PostJobComponent } from './post-job/post-job.component';
 import { UserListComponent } from './user-list/user-list.component';
@@ -17,6 +18,10 @@ const routes: Routes = [
       {
         path: 'candidate-list',
         component: UserListComponent
+      },
+      {
+        path: 'about',
+        component: AboutComponent
       }
     ]
   }

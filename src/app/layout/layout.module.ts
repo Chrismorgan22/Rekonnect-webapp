@@ -7,9 +7,10 @@ import { PostJobComponent } from './post-job/post-job.component';
 import { LayoutComponent } from './layout.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
-  declarations: [LayoutComponent, PostJobComponent, UserListComponent],
+  declarations: [LayoutComponent, PostJobComponent, UserListComponent, AboutComponent],
   imports: [
     CommonModule,
     BaseModule,
