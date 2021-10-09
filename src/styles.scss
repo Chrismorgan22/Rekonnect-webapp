@@ -369,6 +369,11 @@ body {
 .testimonial-section {
     .testimonial-section-content {
         max-height: 450px;
+
+        @media (max-width: $information-mobile-md) {
+            max-height: 100%;
+        }
+
       .text-secondary {
           & * {
               color: $color-secondary;
