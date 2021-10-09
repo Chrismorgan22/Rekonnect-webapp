@@ -368,7 +368,7 @@ body {
 //testimonial section
 .testimonial-section {
     .testimonial-section-content {
-        max-height: 450px;
+        max-height: 100%;
 
         @media (max-width: $information-mobile-md) {
             max-height: 100%;
@@ -421,7 +421,7 @@ body {
 
     .testimonial-image-section {
         position: relative;
-        max-height: 450px;
+        max-height: 100%;
         .curve-skew {
             position: absolute;
             left: 0;

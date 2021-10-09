@@ -748,7 +748,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .testimonial-section .testimonial-section-content {
-  max-height: 450px;
+  max-height: 100%;
 }
 
 @media (max-width: 768px) {
@@ -806,7 +806,7 @@ body::-webkit-scrollbar-thumb {
 
 .testimonial-section .testimonial-image-section {
   position: relative;
-  max-height: 450px;
+  max-height: 100%;
 }
 
 .testimonial-section .testimonial-image-section .curve-skew {
