@@ -16,6 +16,7 @@ export class UserListComponent implements OnInit {
     this.getUserListData(1);
   }
   getUserListData(userRole) {
+    this.userData = [];
     this.SpinnerService.show();
     this._layoutService.getUserList(userRole).subscribe(response => {
       this.SpinnerService.hide();
@@ -23,16 +24,16 @@ export class UserListComponent implements OnInit {
         this.userData = response.data;
       } else {
         this._toastrService.error(
-          response.message, response.result
+          'User list is not available', 'No Data Found'
         )
       }
     })
-  } 
+  }
   changeUserRoleSwitch(event) {
     console.log(event, event.target.checked);
-    if(event.target.checked){
+    if (event.target.checked) {
       this.getUserListData(1);
-    }else{
+    } else {
       this.getUserListData(2);
     }
   }
