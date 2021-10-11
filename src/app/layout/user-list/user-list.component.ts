@@ -13,11 +13,11 @@ export class UserListComponent implements OnInit {
   constructor(public _layoutService: LayoutService, public _toastrService: ToastrService, public SpinnerService: NgxSpinnerService) { }
 
   ngOnInit(): void {
-    this.getUserListData();
+    this.getUserListData(1);
   }
-  getUserListData() {
+  getUserListData(userRole) {
     this.SpinnerService.show();
-    this._layoutService.getUserList().subscribe(response => {
+    this._layoutService.getUserList(userRole).subscribe(response => {
       this.SpinnerService.hide();
       if (response.result !== 'fail') {
         this.userData = response.data;
@@ -27,5 +27,13 @@ export class UserListComponent implements OnInit {
         )
       }
     })
+  } 
+  changeUserRoleSwitch(event) {
+    console.log(event, event.target.checked);
+    if(event.target.checked){
+      this.getUserListData(1);
+    }else{
+      this.getUserListData(2);
+    }
   }
 }

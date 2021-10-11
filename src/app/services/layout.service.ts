@@ -35,8 +35,8 @@ export class LayoutService {
       })
     );
   }
-  getUserList() {
-    return this._httpClient.get<any>(`${environment.apiUrl}/candidate`).pipe(
+  getUserList(userRole) {
+    return this._httpClient.get<any>(`${environment.apiUrl}/user/` + userRole).pipe(
       map(response => {
         return response;
       })

@@ -71,6 +71,28 @@
                 <form class="section-form-content" [formGroup]="form" (ngSubmit)="onSubmit()">
                     <div class="form-row form-group">
                         <div class="col">
+                            <label class="d-flex">
+                                <input type="radio" value="1" formControlName="user_role" name="user_role" style="height: 20px;
+                                width: 20px;">
+                                <span class="ml-2">Candidate</span>
+                            </label>
+                        </div>
+                        <div class="col">
+                            <label class="d-flex">
+                                <input type="radio" value="2" formControlName="user_role" name="user_role" style="height: 20px;
+                                width: 20px;">
+                                <span class="ml-2">Employer</span>
+                            </label>
+                        </div>
+                        <div *ngIf="submitted && f.user_role.errors && !userRoleValidation" class="invalid-feedback" style="display:block;">
+                            <div *ngIf="f.user_role.errors.required">User Role is required</div>
+                        </div>
+                        <div *ngIf="userRoleValidation" class="invalid-feedback" style="display:block;">
+                            <div>User Role is required</div>
+                        </div>
+                    </div>
+                    <div class="form-row form-group">
+                        <div class="col">
                             <input type="text" class="form-control" placeholder="First name" formControlName="firstName"
                                 [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
                             <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">

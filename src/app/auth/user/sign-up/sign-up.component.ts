@@ -20,6 +20,7 @@ export class SignUpComponent implements OnInit {
   specializationData: any;
   socialUser: SocialUser;
   isLoggedin: boolean;
+  userRoleValidation: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private _router: Router,
@@ -37,6 +38,7 @@ export class SignUpComponent implements OnInit {
       phone: ['', [Validators.required, Validators.pattern('^[789]{1}[0-9]{9}$')]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+      user_role: ['', Validators.required]
       // company_name: ['', Validators.required]
     });
 
@@ -58,64 +60,82 @@ export class SignUpComponent implements OnInit {
       // json['company_name'] = this.form.controls.company_name.value;
       // json['specialization'] = this.form.controls.specialization.value;
       json['password'] = this.form.controls.password.value;
+      json['role'] = Number(this.form.controls.user_role.value);
       this.registerAPICall(json);
     }
   }
   loginWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => {
-      this.socialAuthService.authState.subscribe((user) => {
-        this.socialUser = user;
-        console.log(this.socialUser);
-        if (this.socialUser !== null) {
-          const json = {};
-          json['first_name'] = this.socialUser.firstName;
-          json['last_name'] = this.socialUser.lastName;
-          json['email'] = this.socialUser.email;
-          this.SpinnerService.show()
-          this.registerAPICall(json);
-        } else {
-          this.SpinnerService.hide();
-        }
+    this.userRoleValidation = false;
+    if (this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== null && this.form.controls.user_role.value !== '') {
+      this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => {
+        this.socialAuthService.authState.subscribe((user) => {
+          this.socialUser = user;
+          console.log(this.socialUser);
+          if (this.socialUser !== null) {
+            const json = {};
+            json['first_name'] = this.socialUser.firstName;
+            json['last_name'] = this.socialUser.lastName;
+            json['email'] = this.socialUser.email;
+            this.SpinnerService.show()
+            this.registerAPICall(json);
+          } else {
+            this.SpinnerService.hide();
+          }
+        })
       })
-    })
+    } else {
+      this.userRoleValidation = true;
+    }
+
   }
   loginInWithFB(): void {
-    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => {
-      this.socialAuthService.authState.subscribe((user) => {
-        this.socialUser = user;
-        console.log(this.socialUser);
-        if (this.socialUser !== null) {
-          const json = {};
-          json['first_name'] = this.socialUser.firstName;
-          json['last_name'] = this.socialUser.lastName;
-          json['email'] = this.socialUser.email;
-          this.SpinnerService.show();
-          this.registerAPICall(json);
-        } else {
-          this.SpinnerService.hide();
-        }
+    this.userRoleValidation = false;
+    if (this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== null && this.form.controls.user_role.value !== '') {
+      this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => {
+        this.socialAuthService.authState.subscribe((user) => {
+          this.socialUser = user;
+          console.log(this.socialUser);
+          if (this.socialUser !== null) {
+            const json = {};
+            json['first_name'] = this.socialUser.firstName;
+            json['last_name'] = this.socialUser.lastName;
+            json['email'] = this.socialUser.email;
+            json['role'] = this.form.controls.user_role.value;
+            this.SpinnerService.show();
+            this.registerAPICall(json);
+          } else {
+            this.SpinnerService.hide();
+          }
+        })
       })
-    })
+    } else {
+      this.userRoleValidation = true;
+    }
   }
   loginWithLinkedIn(): void {
-    const linkedInCredentials = {
-      clientId: "78q6vjqcmmldlg",
-      redirectUrl: "https://rekonnect.in/auth/linkedinLoginResponse",
-      scope: "r_liteprofile%20r_emailaddress" // To read basic user profile data and email
-    };
-    const newWindow = window.open(`https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=${linkedInCredentials.clientId}&redirect_uri=${linkedInCredentials.redirectUrl}&scope=${linkedInCredentials.scope}`, 'popup', 'width=600,height=600')
-    const interval = setInterval(() => {
-      const url = newWindow.location.href;
-      console.log(newWindow.location.href);
-      if (url !== undefined) {
-        let url1 = new URL(url)
-        let params = new URLSearchParams(url1.search);
-        let sourceid = params.get('code');
-        this.callAuthAPI(sourceid, newWindow);
-        clearInterval(interval);
-        console.log(sourceid);
-      }
-    }, 1500)
+    this.userRoleValidation = false;
+    if (this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== null && this.form.controls.user_role.value !== '') {
+      const linkedInCredentials = {
+        clientId: "78q6vjqcmmldlg",
+        redirectUrl: "https://rekonnect.in/auth/linkedinLoginResponse",
+        scope: "r_liteprofile%20r_emailaddress" // To read basic user profile data and email
+      };
+      const newWindow = window.open(`https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=${linkedInCredentials.clientId}&redirect_uri=${linkedInCredentials.redirectUrl}&scope=${linkedInCredentials.scope}`, 'popup', 'width=600,height=600')
+      const interval = setInterval(() => {
+        const url = newWindow.location.href;
+        console.log(newWindow.location.href);
+        if (url !== undefined) {
+          let url1 = new URL(url)
+          let params = new URLSearchParams(url1.search);
+          let sourceid = params.get('code');
+          this.callAuthAPI(sourceid, newWindow);
+          clearInterval(interval);
+          console.log(sourceid);
+        }
+      }, 1500)
+    } else {
+      this.userRoleValidation = true;
+    }
   }
   callAuthAPI(sourceid, newWindow) {
     this.SpinnerService.show();
@@ -139,14 +159,15 @@ export class SignUpComponent implements OnInit {
   registerAPICall(json) {
     this._authService.userRegister(json).subscribe(response => {
       if (response.result !== 'fail') {
+        this.SpinnerService.hide();
         this.submitted = false;
         sessionStorage.setItem('_ud', JSON.stringify([response.data]))
         this._router.navigate(['/auth/welcome'])
         this.form.reset();
-        this._toastrService.success(
-          'User Registered successfully', response.result,
-          { toastClass: 'toast ngx-toastr', closeButton: true }
-        );
+        // this._toastrService.success(
+        //   'User Registered successfully', response.result,
+        //   { toastClass: 'toast ngx-toastr', closeButton: true }
+        // );
       } else {
         this.SpinnerService.hide();
         this._toastrService.error(

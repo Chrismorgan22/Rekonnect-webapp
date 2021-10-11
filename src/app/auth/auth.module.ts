@@ -8,9 +8,10 @@ import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } fro
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LinkedinResponseComponent } from './linkedin-response/linkedin-response.component';
+import { PersonalizationComponent } from './personalization/personalization.component';
 
 @NgModule({
-  declarations: [WelcomeComponent, LinkedinResponseComponent],
+  declarations: [WelcomeComponent, LinkedinResponseComponent, PersonalizationComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,

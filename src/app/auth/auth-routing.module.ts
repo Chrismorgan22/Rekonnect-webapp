@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LinkedinResponseComponent } from './linkedin-response/linkedin-response.component';
+import { PersonalizationComponent } from './personalization/personalization.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'expert',
     loadChildren: () => import('./expert/expert.module').then((m) => m.ExpertModule)
+  },
+  {
+    path: 'personalization',
+    component: PersonalizationComponent
   },
   {
     path: 'welcome',
