@@ -42,6 +42,25 @@
                     <h5 class="text-color-light font-normal">We help you kickstart/restart your career</h5>
                 </div>
                 <form class="section-form-content" [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="form-row form-group">
+                        <div class="col">
+                            <label class="d-flex">
+                                <input type="radio" value="1" formControlName="user_role" name="user_role" style="height: 20px;
+                                width: 20px;">
+                                <span class="ml-2">Candidate</span>
+                            </label>
+                        </div>
+                        <div class="col">
+                            <label class="d-flex">
+                                <input type="radio" value="2" formControlName="user_role" name="user_role" style="height: 20px;
+                                width: 20px;">
+                                <span class="ml-2">Employer</span>
+                            </label>
+                        </div>
+                        <div *ngIf="userRoleValidation" class="invalid-feedback" style="display:block;">
+                            <div>User Role is required</div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
                             aria-describedby="emailHelp" placeholder="Email"

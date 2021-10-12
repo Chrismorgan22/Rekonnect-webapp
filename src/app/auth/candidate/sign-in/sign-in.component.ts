@@ -129,6 +129,7 @@ export class SignInComponent implements OnInit {
   }
   loginAPICall(json) {
     this._authService.candidateLogin(json).subscribe(response => {
+      this.SpinnerService.hide();
       if (response.result !== 'fail') {
         this.submitted = false;
         sessionStorage.setItem('_ud', JSON.stringify([response.data]))
