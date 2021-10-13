@@ -654,6 +654,41 @@ body {
                     padding: 0 24px !important;
                 }
             }
+
+            .outlined-dotted-add-button {
+                border: 2px dashed $color-border;
+                width: 350px;
+                height: 450px;
+                border-radius: 8px;
+                background: white;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                flex-direction: column;
+
+                &:hover {
+                    border: 2px dashed $color-primary !important;
+                    background: lighten($color-primary, 60%);
+                }
+
+                & .icon-button {
+                    display: block;
+                    width: 40px;
+                    height: 40px;
+                    color: $text-white;
+                    border-radius: 50%;
+                    background: $color-primary;
+                    text-align: center;
+
+                    & > span {
+                        line-height: 40px;
+                    }
+                }
+
+                & .label {
+                    color: $color-primary;
+                }
+            }
         }
 
         & > .modal-footer {

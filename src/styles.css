@@ -1035,6 +1035,50 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
+.custom-modal .modal-content > .modal-body .outlined-dotted-add-button {
+  border: 2px dashed #EEEEEE;
+  width: 350px;
+  height: 450px;
+  border-radius: 8px;
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.custom-modal .modal-content > .modal-body .outlined-dotted-add-button:hover {
+  border: 2px dashed #15759A !important;
+  background: #e5f5fc;
+}
+
+.custom-modal .modal-content > .modal-body .outlined-dotted-add-button .icon-button {
+  display: block;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  border-radius: 50%;
+  background: #15759A;
+  text-align: center;
+}
+
+.custom-modal .modal-content > .modal-body .outlined-dotted-add-button .icon-button > span {
+  line-height: 40px;
+}
+
+.custom-modal .modal-content > .modal-body .outlined-dotted-add-button .label {
+  color: #15759A;
+}
+
 .custom-modal .modal-content > .modal-footer {
   border-top: none;
   padding-top: 1.5rem;
