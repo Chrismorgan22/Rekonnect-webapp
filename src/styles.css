@@ -408,6 +408,24 @@ body::-webkit-scrollbar-thumb {
   border-color: #15759A;
 }
 
+.start-section .section-form-content .custom-file .custom-file-input {
+  background-color: #15759A;
+  color: #fff;
+  border-color: #15759A;
+}
+
+.start-section .section-form-content .custom-file > label {
+  background-color: #15759A;
+  color: #fff;
+  border-color: #15759A;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.start-section .section-form-content .custom-file > label::after {
+  display: none;
+}
+
 .start-section .section-form-content .form-text > button {
   font-size: 12px;
   color: #0C1A27;
@@ -921,6 +939,18 @@ body::-webkit-scrollbar-thumb {
 
 .custom-modal .modal-content > .modal-header {
   border-bottom: none;
+  padding: 2rem 1rem 0rem;
+  position: relative;
+}
+
+.custom-modal .modal-content > .modal-header .header-background {
+  background: url("../src/assets/images/header-background.png") no-repeat top;
+  background-size: cover;
+  width: 100%;
+  height: 150px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .custom-modal .modal-content > .modal-header .section-main-title {
@@ -933,6 +963,12 @@ body::-webkit-scrollbar-thumb {
 
 .custom-modal .modal-content > .modal-body .modal-content-section {
   padding: 32px 60px;
+}
+
+@media (max-width: 576px) {
+  .custom-modal .modal-content > .modal-body .modal-content-section {
+    padding: 32px 0px;
+  }
 }
 
 .custom-modal .modal-content > .modal-body .modal-content-section .custom-radio {
@@ -966,16 +1002,37 @@ body::-webkit-scrollbar-thumb {
 .custom-modal .modal-content > .modal-body .modal-content-section .custom-radio .custom-control-radio-area {
   padding: 40px;
   margin-bottom: 24px;
+  border: 1px solid #EEEEEE !important;
+  border-radius: 16px;
+  text-align: center;
 }
 
 .custom-modal .modal-content > .modal-body .modal-content-section .custom-radio .custom-control-radio-area:hover {
   border: 1px solid #F05454 !important;
-  border-radius: 16px;
 }
 
 .custom-modal .modal-content > .modal-body .modal-content-section .custom-radio .custom-control-radio-area > img {
   width: 250px;
-  min-height: 180px;
+  min-height: 190px;
+}
+
+@media (max-width: 768px) {
+  .custom-modal .modal-content > .modal-body .modal-content-section .custom-radio .custom-control-radio-area > img {
+    width: 125px;
+    min-height: 95px;
+  }
+}
+
+.custom-modal .modal-content > .modal-body .modal-content-section .custom-radio .custom-control-radio-area label {
+  font-weight: 700;
+  margin: 32px 0 0;
+  width: 100%;
+}
+
+@media (max-width: 576px) {
+  .custom-modal .modal-content > .modal-body .start-section {
+    padding: 0 24px !important;
+  }
 }
 
 .custom-modal .modal-content > .modal-footer {

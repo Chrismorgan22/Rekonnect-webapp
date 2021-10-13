@@ -648,6 +648,12 @@ body {
                     }
                 }
             }
+            
+            .start-section {
+                @media (max-width: $information-mobile-sm) {
+                    padding: 0 24px !important;
+                }
+            }
         }
 
         & > .modal-footer {
