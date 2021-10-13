@@ -584,6 +584,7 @@ body {
         }
 
         & > .modal-body {
+                position: relative;
 
             .modal-content-section {
                 padding: 32px 60px;
@@ -653,6 +654,29 @@ body {
                 @media (max-width: $information-mobile-sm) {
                     padding: 0 24px !important;
                 }
+            }
+
+            .body-background-top,
+            .body-background-bottom {
+                background: url('../src/assets/images/oriented-hash-modal-background.png') no-repeat ;
+                background-size: cover;
+                width: 237px;
+                height: 229px;
+                position: absolute;
+            }
+
+            .body-background-top {
+                top: -160px;
+                left: 32px;
+            }
+
+            .body-background-bottom {
+               bottom: 40px;
+               right: 40px;
+            }
+
+            .section-form-content {
+                z-index: 1;
             }
 
             .outlined-dotted-add-button {

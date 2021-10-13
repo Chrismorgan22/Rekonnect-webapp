@@ -961,6 +961,10 @@ body::-webkit-scrollbar-thumb {
   line-height: normal;
 }
 
+.custom-modal .modal-content > .modal-body {
+  position: relative;
+}
+
 .custom-modal .modal-content > .modal-body .modal-content-section {
   padding: 32px 60px;
 }
@@ -1033,6 +1037,29 @@ body::-webkit-scrollbar-thumb {
   .custom-modal .modal-content > .modal-body .start-section {
     padding: 0 24px !important;
   }
+}
+
+.custom-modal .modal-content > .modal-body .body-background-top,
+.custom-modal .modal-content > .modal-body .body-background-bottom {
+  background: url("../src/assets/images/oriented-hash-modal-background.png") no-repeat;
+  background-size: cover;
+  width: 237px;
+  height: 229px;
+  position: absolute;
+}
+
+.custom-modal .modal-content > .modal-body .body-background-top {
+  top: -160px;
+  left: 32px;
+}
+
+.custom-modal .modal-content > .modal-body .body-background-bottom {
+  bottom: 40px;
+  right: 40px;
+}
+
+.custom-modal .modal-content > .modal-body .section-form-content {
+  z-index: 1;
 }
 
 .custom-modal .modal-content > .modal-body .outlined-dotted-add-button {

@@ -174,7 +174,8 @@
             <div class="modal-body d-flex justify-content-center">
                 <div class="row">
                     <div class="col-sm col-md-6 col-sm-12 mb-sm-5">
-                        <button class="btn outlined-dotted-add-button">
+                        <button class="btn outlined-dotted-add-button" data-toggle="modal"
+                        data-target="#candidateModalcentereducation">
                             <span class="icon-button"><span class="material-icons">add</span></span>
                             <div class="label">Add Experience</div>
                         </button>
@@ -189,8 +190,88 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                <button type="button" class="btn btn-primary"  >Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Basic Step 4 education-->
+<div class="modal fade" id="candidateModalcentereducation" tabindex="-2" role="dialog"
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="text-center pt-5">
+                    <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Lets get the basic set
+                    </h5>
+                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
+                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid start-section  w-100">
+                    <div class="body-background-top">
+                    </div>
+                    <div class="section-form-content">
+                        <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Designation" formControlName="Designation" />
+                            </div>
+                            <div class="col">
+                                <input type="text" placeholder="Company" formControlName="company"
+                                    class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="location" formControlName="location" />
+                            </div>
+                            <div class="col">
+                                <input type="text" placeholder="Country" formControlName="country"
+                                    class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-row form-group mt-3">
+                            <div class="col">
+                                <label for="exampleFormControlSelect2">Start Date</label>
+                                <input type="date" placeholder="Country" formControlName="country"
+                                        class="form-control" />
+                            </div>
+                            <div class="col">
+                                <label for="exampleFormControlSelect2">End Date</label>
+                                <input type="date" placeholder="Country" formControlName="country"
+                                    class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group my-3">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="gridCheck">
+                          <label class="form-check-label" for="gridCheck">
+                            I am currently working here in this role
+                          </label>
+                        </div>
+                      </div>
+                    <div class="form-group mt-3">
+                        <label for="exampleFormControlSelect2">Job Description</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                   
+                    <div class="body-background-bottom">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
                 <button type="button" class="btn btn-primary" data-toggle="modal"
-                    data-target="#candidateModalCenter">Save & Continue</button>
+                    data-target="#candidateModalEducation">Save & Continue</button>
             </div>
         </div>
     </div>
