@@ -671,6 +671,10 @@ body {
                     background: lighten($color-primary, 60%);
                 }
 
+                @media (max-width: $information-mobile-sm) {
+                    margin-bottom: 24px;
+                }
+
                 & .icon-button {
                     display: block;
                     width: 40px;

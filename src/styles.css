@@ -1061,6 +1061,12 @@ body::-webkit-scrollbar-thumb {
   background: #e5f5fc;
 }
 
+@media (max-width: 576px) {
+  .custom-modal .modal-content > .modal-body .outlined-dotted-add-button {
+    margin-bottom: 24px;
+  }
+}
+
 .custom-modal .modal-content > .modal-body .outlined-dotted-add-button .icon-button {
   display: block;
   width: 40px;
