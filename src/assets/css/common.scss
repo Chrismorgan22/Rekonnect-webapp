@@ -362,4 +362,10 @@ h6 {
         color: $text-white;
         border-color: $color-primary;
     }
+
+    &.btn-secondary {
+        border-color: $color-primary;
+        background-color: transparent !important;
+        color: $color-primary;
+    }
 }

@@ -332,4 +332,10 @@
   color: #fff;
   border-color: #15759A;
 }
+
+.btn.btn-secondary {
+  border-color: #15759A;
+  background-color: transparent !important;
+  color: #15759A;
+}
 /*# sourceMappingURL=common.css.map */
