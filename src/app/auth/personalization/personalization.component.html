@@ -1,12 +1,12 @@
 <p>personalization works!</p>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Launch demo modal
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#candidateModalCenter">
+    personalization candidate
 </button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<!-- Modal Basic Step 1-->
+<div class="modal fade" id="candidateModalCenter" tabindex="-1" role="dialog" aria-labelledby="candidateModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -66,8 +66,69 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#candidateModalCenterupload">Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Basic Step 2-->
+<div class="modal fade" id="candidateModalCenterupload" tabindex="-2" role="dialog" aria-labelledby="candidateModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="header-background">
+                    <!-- <img class="" src="../../../assets/images/header-background.png" /> -->
+                </div>
+                <div class="text-center pt-5">
+                    <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Lets get the basic set</h5>
+                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>  
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid start-section  w-100">
+                    <form class="section-form-content" [formGroup]="form">
+                        <div class="input-group mb-3">
+                            <div class="form-row form-group py-4">
+                                <div class="col">
+                                   <!-- Added image will come here -->
+                                </div>
+                                <div class="col">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Upload Image</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" aria-describedby="streetaddress"
+                                placeholder="Street Address" size="lg" formControlName="address" class="form-control"/>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="State" formControlName="State" />
+                            </div>
+                            <div class="col">
+                                <input type="text" placeholder="Zip Code" formControlName="zipcode" class="form-control"  />
+                            </div>
+                        </div>
+                      
+                        <div class="form-group">
+                            <input type="text" class="form-control" size="lg" placeholder="Landmark"
+                                formControlName="landmark">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                <button type="button" class="btn btn-primary">Save & Continue</button>
             </div>
         </div>
     </div>
