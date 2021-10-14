@@ -1,1 +1,603 @@
-<p>personalization works!</p>
+<h5> this is  a test</h5>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#candidateModalCenter">
+    personalization candidate
+</button>
+
+<!-- Modal Basic Step 1-->
+<div class="modal fade" id="candidateModalCenter" tabindex="-1" role="dialog"
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="text-center">
+                    <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Where do you find
+                        yourself?</h5>
+                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
+                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid d-flex justify-content-center">
+                    <div class="row modal-content-section">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="custom-control custom-radio custom--radio">
+                                <input class="custom-control-input custom-radio-button" value="candidate" type="radio"
+                                    name="onboard-category" id="candidate">
+                                <!-- <span class="check"></span> -->
+                                <div class="custom-control-radio-area border-0" for="candidate">
+                                    <img src="../../../assets/images/Connect_as_Candidate.png" />
+                                    <label class="text-center">Connect as Candidate</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="custom-control custom-radio custom--radio">
+                                <input class="custom-control-input custom-radio-button" value="employer" type="radio"
+                                    name="onboard-category" id="employer">
+                                <!-- <span class="check"></span> -->
+                                <div class="custom-control-radio-area border-0" for="employer">
+                                    <img src="../../../assets/images/Connect_as_an_Employer.png" />
+                                    <label class="text-center">Connect as Employer</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="custom-control custom-radio custom--radio">
+                                <input class="custom-control-input custom-radio-button" value="expert" type="radio"
+                                    name="onboard-category" id="expert">
+                                <!-- <span class="check"></span> -->
+                                <div class="custom-control-radio-area border-0" for="expert">
+                                    <img src="../../../assets/images/Connect_as_an_Expert.png" />
+                                    <label class="text-center">Connect as Expert</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="custom-control custom-radio custom--radio">
+                                <input class="custom-control-input custom-radio-button" value="institution" type="radio"
+                                    name="onboard-category" id="institution">
+                                <!-- <span class="check"></span> -->
+                                <div class="custom-control-radio-area border-0" for="institution">
+                                    <img src="../../../assets/images/Connect_as_an_Institution.png" />
+                                    <label class="text-center">Connect as Institution</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#candidateModalCenterupload">Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Basic Step 2-->
+<div class="modal fade" id="candidateModalCenterupload" tabindex="-2" role="dialog"
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="header-background">
+                    <!-- <img class="" src="../../../assets/images/header-background.png" /> -->
+                </div>
+                <div class="text-center pt-5">
+                    <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Lets get the basic set
+                    </h5>
+                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
+                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid start-section  w-100">
+                    <div class="section-form-content">
+                        <div class="input-group mb-3">
+                            <div class="form-row form-group py-4">
+                                <div class="col">
+                                </div>
+                                <div class="col">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Upload Image</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
+                        <div class="form-group">
+                            <input type="text" aria-describedby="streetaddress" placeholder="Street Address" size="lg"
+                                 class="form-control" />
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="State"  />
+                            </div>
+                            <div class="col">
+                                <input type="text" placeholder="Zip Code" 
+                                    class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" size="lg" placeholder="Landmark">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" size="lg" placeholder="Organisational Strength">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#candidateModalEducation">Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Eduction/Organisational basis 3 -->
+<div class="modal fade" id="candidateModalEducation" tabindex="-2" role="dialog"
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="header-background">
+                    <!-- <img class="" src="../../../assets/images/header-background.png" /> -->
+                </div>
+                <div class="text-center pt-5">
+                    <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Tune it Up</h5>
+                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
+                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex justify-content-center">
+                <div class="row">
+                    <div class="col-sm col-md-6 col-sm-12 mb-sm-5">
+                        <button class="btn outlined-dotted-add-button" data-toggle="modal"
+                        data-target="#candidateModalcentereducation">
+                            <span class="icon-button"><span class="material-icons">add</span></span>
+                            <div class="label">Add Experience</div>
+                        </button>
+                    </div>
+                    <div class="col-sm col-md-6 col-sm-12">
+                        <button class="btn outlined-dotted-add-button">
+                            <span class="icon-button"><span class="material-icons">done</span></span>
+                            <div class="label">I am a fresher</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                <button type="button" class="btn btn-primary"  >Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Basic Step 4 education-->
+<div class="modal fade" id="candidateModalcentereducation" tabindex="-2" role="dialog"
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="text-center pt-5">
+                    <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Tune it up
+                    </h5>
+                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
+                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid start-section  w-100">
+                    <div class="body-background-top">
+                    </div>
+                    <div class="section-form-content">
+                        <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Designation" formControlName="Designation" />
+                            </div>
+                            <div class="col">
+                                <input type="text" placeholder="Company" formControlName="company"
+                                    class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="location" formControlName="location" />
+                            </div>
+                            <div class="col">
+                                <input type="text" placeholder="Country" formControlName="country"
+                                    class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-row form-group mt-3">
+                            <div class="col">
+                                <label for="exampleFormControlSelect2">Start Date</label>
+                                <input type="date" placeholder="Country" formControlName="country"
+                                        class="form-control" />
+                            </div>
+                            <div class="col">
+                                <label for="exampleFormControlSelect2">End Date</label>
+                                <input type="date" placeholder="Country" formControlName="country"
+                                    class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group my-3">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="gridCheck">
+                          <label class="form-check-label" for="gridCheck">
+                            I am currently working here in this role
+                          </label>
+                        </div>
+                      </div>
+                    <div class="form-group mt-3">
+                        <label for="exampleFormControlSelect2">Job Description</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    
+                   
+                    <div class="body-background-bottom">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#candidateModalcenterexperience">Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Basic Step 4 education-->
+<div class="modal fade" id="candidateModalcenterexperience" tabindex="-2" role="dialog"
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              
+                <div class="text-center pt-5">
+                    <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Tune it up
+                    </h5>
+                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
+                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid start-section  w-100">
+                    <div class="body-background-top">
+                    </div>
+
+                    <div class="experience-added-section d-flex align-items-center">
+                        <div class="company-content">
+                            <img class="company-image" src="../../../assets/images/google.png"/>
+                        </div>
+                        <div>
+                            <h6 class="bold">Google Inc</h6>
+                            <small>2years 5months</small>
+                        </div>
+                    </div>
+                   
+                    <div class="body-background-bottom">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#candidateModallastbits">Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal last few bits step-->
+<div class="modal fade" id="candidateModallastbits" tabindex="-2" role="dialog"
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="header-background">
+                </div>
+                <div class="text-center pt-5">
+                    <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Last Few Bits
+                    </h5>
+                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
+                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid start-section  w-100">
+                    <div class="section-form-content">
+                            <div class="form-group">
+                                <input type="text" aria-describedby="softskills" placeholder="Soft Skills/ Behavioural Skills" size="lg"
+                                    formControlName="softskills" class="form-control" />
+                                    <div class="selected-pill my-3">
+                                        <button class="btn btn-selected-pill mr-3">Leadership</button>
+                                        <button class="btn btn-selected-pill mr-3">Management</button>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" aria-describedby="techskills" placeholder="IT Skills/ Technical Skills" size="lg"
+                                    formControlName="techskills" class="form-control" />
+                                     <div class="selected-pill my-3">
+                                        <button class="btn btn-selected-pill mr-3">CSS</button>
+                                        <button class="btn btn-selected-pill mr-3">HTML</button>
+                                        <button class="btn btn-selected-pill mr-3">Javascript</button>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="btn-group custom-dropdown w-100">
+                                    <button class="btn w-100 btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      Your current career
+                                    </button>
+                                    <div class="dropdown-menu">
+                                      ...
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="form-group mt-3 d-flex">
+                                <div class="form-row form-group mt-3 w-100 align-items-center">
+                                    <div class="col">
+                                        <label for="exampleFormControlSelect2">Would you like to change your career?</label>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group">
+                                            <div class="input-group-text custom-radio-group">
+                                                <input type="radio" aria-label="Radio button for following text input" value="yes" type="radio"
+                                                name="changecareer" id="yes">
+                                                <label>Yes</label>
+                                              </div>
+                                              <div class="input-group-text custom-radio-group">
+                                                <input type="radio" aria-label="Radio button for following text input" value="no" type="radio"
+                                                name="changecareer" id="no">
+                                                <label>No </label>
+                                              </div>
+                                          </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="btn-group custom-dropdown w-100">
+                                    <button class="btn w-100 btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      Your change of career
+                                    </button> 
+                                    <div class="dropdown-menu">
+                                      ...
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <textarea class="form-control" placeholder="Describe your passion better" id="exampleFormControlTextarea1" rows="4"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <div class="btn-group custom-dropdown w-100">
+                                    <button class="btn w-100 btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                     Language
+                                    </button>
+                                    <div class="dropdown-menu">
+                                      ...
+                                    </div>
+                                  </div>
+                            </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#candidateModalcenterexperience">Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal last few bits final step-->
+<div class="modal fade" id="candidateModallastbitsfinal" tabindex="-2" role="dialog"
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="header-background">
+                </div>
+                <div class="text-center pt-5">
+                    <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Last Few Bits
+                    </h5>
+                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
+                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid start-section  w-100">
+                    <div class="section-form-content">
+                        <label>range selector will come here</label>
+                            <div class="form-group mt-3 ">
+                                <div class="form-group mt-3 w-100 d-flex align-items-center">
+                                        <div class="col p-0">
+                                            <label for="exampleFormControlSelect2">Are you available to join immediately?</label>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <div class="input-group-text custom-radio-group">
+                                                    <input type="radio" aria-label="Radio button for following text input" value="yes" type="radio"
+                                                    name="changecareer" id="yes">
+                                                    <label>Yes</label>
+                                                  </div>
+                                                  <div class="input-group-text custom-radio-group">
+                                                    <input type="radio" aria-label="Radio button for following text input" value="no" type="radio"
+                                                    name="changecareer" id="no">
+                                                    <label>No </label>
+                                                  </div>
+                                              </div>
+                                        </div>
+                                        
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label for="exampleFormControlSelect2">How early are you available to join?</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                          <button class="btn btn-secondary border-radius-0" type="button">7 Days</button>
+                                          <button class="btn btn-secondary" type="button">15 Days</button>
+                                          <button class="btn btn-secondary" type="button">30 Days</button>
+                                          <button class="btn btn-secondary" type="button">> 30 Days</button>
+                                        </div>
+                                       
+                                      </div>
+
+                                </div>
+                                <div class="form-group py-4">
+                                    <h5 class="bold">Upload Resume</h5>
+                                        <label>How early are you available to join?</label>
+                                        <div class="custom-file w-max-300 d-block">
+                                            <input type="file" class=" custom-file-input" id="inputGroupFile01 ">
+                                            <label class="custom-file-label" for="inputGroupFile01">Upload Resume</label>
+                                        </div>
+                                </div>
+                                <div class="form-group py-4">
+                                    <h5 class="bold">Upload Visume</h5>
+                                    <label>How early are you available to join?</label>
+                                        <div class="custom-file w-max-300 d-block">
+                                            <input type="file" class=" custom-file-input" id="inputGroupFile01">
+                                            <label class="custom-file-label" for="inputGroupFile01">Upload Visume</label>
+                                        </div>
+                                </div>
+                            </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#candidateModalcenterexperience">Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Gain more visibility-->
+<div class="modal fade" id="gainmorevisibilitymodal" tabindex="-1" role="dialog"
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="text-center">
+                    <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Gain More Visibility</h5>
+                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
+                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid d-flex justify-content-center">
+                    <div class="modal-content-section">
+                        <div class="image-section">
+                                <img class="" src="../../../assets/images/gain-more-ability.png"/>
+                        </div>
+                        <div class="form-group my-3 text-center">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="gridCheck">
+                              <label class="form-check-label text-center" for="gridCheck">
+                               I am onboard
+                              </label>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#candidateModalCenterupload">Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Almost done-->
+<div class="modal fade" id="almostdonemodal" tabindex="-1" role="dialog"
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid d-flex justify-content-center align-items-center">
+                    <div class="modal-content-section">
+                        <div class="d-flex align-items-center justify-content-center w-100">
+                                <div class="image-section text-center">
+                                    <img class="" src="../../../assets/images/almost-done.png"/>
+                                </div>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="modal-title section-main-title bold p-2" id="exampleModalLongTitle">You are almost done!</h3>
+                            <div class="progress mb-3">
+                                <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
+                            </div>
+                            <h6 class="font-bold my-3">A minimum completion rate of 75% is required to continue</h6>
+                            <p class="section-content font-16 line-height-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
+                                sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
+                                consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                        </div>
+                        <div class="section-content-block">
+                            <h6 class="font-bold my-3">Please complete the following steps:</h6>
+                            <ul>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#candidateModalCenterupload">Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</div>

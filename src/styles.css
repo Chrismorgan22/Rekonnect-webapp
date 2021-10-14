@@ -334,10 +334,16 @@
   border-color: #15759A;
 }
 
+.btn.btn-secondary {
+  border-color: #15759A;
+  background-color: transparent !important;
+  color: #15759A;
+}
+
 body {
   padding: 0;
   margin: 0;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-serif !important;
   color: #0C1A27;
 }
 
@@ -400,6 +406,64 @@ body::-webkit-scrollbar-thumb {
   -webkit-box-shadow: none;
           box-shadow: none;
   border-color: #15759A;
+}
+
+.start-section .section-form-content .custom-dropdown .dropdown-toggle {
+  height: calc(3rem + 2px);
+  border: 1px solid #EEEEEE;
+  color: #727374 !important;
+  border-radius: 4px !important;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.start-section .section-form-content .custom-radio-group {
+  padding: 8px 16px;
+  border: 1px solid #15759A;
+  border-radius: 4px;
+  background: white;
+}
+
+.start-section .section-form-content .custom-radio-group:not(:last-child) {
+  margin-right: 8px;
+}
+
+.start-section .section-form-content .custom-radio-group > input {
+  width: 20px;
+  height: 20px;
+}
+
+.start-section .section-form-content .custom-radio-group > input:checked + .custom-radio-group {
+  background: white;
+}
+
+.start-section .section-form-content .custom-radio-group .selected-pill .btn-selected-pill {
+  background: white;
+  border: none;
+  color: #0C1A27;
+}
+
+.start-section .section-form-content .custom-radio-group > label {
+  padding-left: 8px;
+  padding-top: 6px;
+}
+
+.start-section .section-form-content .custom-file .custom-file-input {
+  background-color: #15759A;
+  color: #fff;
+  border-color: #15759A;
+}
+
+.start-section .section-form-content .custom-file > label {
+  background-color: #15759A;
+  color: #fff;
+  border-color: #15759A;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.start-section .section-form-content .custom-file > label::after {
+  display: none;
 }
 
 .start-section .section-form-content .form-text > button {
@@ -811,7 +875,7 @@ body::-webkit-scrollbar-thumb {
 
 .testimonial-section .testimonial-image-section .curve-skew {
   position: absolute;
-  left: 0;
+  left: -1;
   height: 100%;
   top: 0;
 }
@@ -905,5 +969,191 @@ body::-webkit-scrollbar-thumb {
 
 .toast-container .toast-success {
   background-color: #7dc255 !important;
+}
+
+@media (min-width: 576px) {
+  .custom-modal {
+    max-width: 1000px;
+  }
+}
+
+.custom-modal .modal-content > .modal-header {
+  border-bottom: none;
+  padding: 2rem 1rem 0rem;
+  position: relative;
+}
+
+.custom-modal .modal-content > .modal-header .header-background {
+  background: url("../src/assets/images/header-background.png") no-repeat top;
+  background-size: cover;
+  width: 100%;
+  height: 150px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.custom-modal .modal-content > .modal-header .section-main-title {
+  padding: 0;
+}
+
+.custom-modal .modal-content > .modal-header .section-content {
+  line-height: normal;
+}
+
+.custom-modal .modal-content > .modal-body {
+  position: relative;
+}
+
+.custom-modal .modal-content > .modal-body .modal-content-section {
+  padding: 32px 60px;
+}
+
+@media (max-width: 576px) {
+  .custom-modal .modal-content > .modal-body .modal-content-section {
+    padding: 32px 0px;
+  }
+}
+
+.custom-modal .modal-content > .modal-body .modal-content-section .custom-radio {
+  display: inline-block !important;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.custom-modal .modal-content > .modal-body .modal-content-section .custom-radio:not(:last-child) {
+  margin: 0 12px 0 0;
+}
+
+.custom-modal .modal-content > .modal-body .modal-content-section .custom-radio .custom-radio-button {
+  left: 0;
+  top: 12px;
+  z-index: 1;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.custom-modal .modal-content > .modal-body .modal-content-section .custom-radio .custom-radio-button:checked + .custom-control-radio-area,
+.custom-modal .modal-content > .modal-body .modal-content-section .custom-radio .custom-radio-button:hover + .custom-control-radio-area {
+  border: 1px solid #F05454 !important;
+  border-radius: 16px;
+}
+
+.custom-modal .modal-content > .modal-body .modal-content-section .custom-radio .custom-control-radio-area {
+  padding: 40px;
+  margin-bottom: 24px;
+  border: 1px solid #EEEEEE !important;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.custom-modal .modal-content > .modal-body .modal-content-section .custom-radio .custom-control-radio-area:hover {
+  border: 1px solid #F05454 !important;
+}
+
+.custom-modal .modal-content > .modal-body .modal-content-section .custom-radio .custom-control-radio-area > img {
+  width: 250px;
+  min-height: 190px;
+}
+
+@media (max-width: 768px) {
+  .custom-modal .modal-content > .modal-body .modal-content-section .custom-radio .custom-control-radio-area > img {
+    width: 125px;
+    min-height: 95px;
+  }
+}
+
+.custom-modal .modal-content > .modal-body .modal-content-section .custom-radio .custom-control-radio-area label {
+  font-weight: 700;
+  margin: 32px 0 0;
+  width: 100%;
+}
+
+@media (max-width: 576px) {
+  .custom-modal .modal-content > .modal-body .start-section {
+    padding: 0 24px !important;
+  }
+}
+
+.custom-modal .modal-content > .modal-body .body-background-top,
+.custom-modal .modal-content > .modal-body .body-background-bottom {
+  background: url("../src/assets/images/oriented-hash-modal-background.png") no-repeat;
+  background-size: cover;
+  width: 237px;
+  height: 229px;
+  position: absolute;
+}
+
+.custom-modal .modal-content > .modal-body .body-background-top {
+  top: -160px;
+  left: 32px;
+}
+
+.custom-modal .modal-content > .modal-body .body-background-bottom {
+  bottom: 40px;
+  right: 40px;
+}
+
+.custom-modal .modal-content > .modal-body .section-form-content {
+  z-index: 1;
+}
+
+.custom-modal .modal-content > .modal-body .outlined-dotted-add-button {
+  border: 2px dashed #EEEEEE;
+  width: 350px;
+  height: 450px;
+  border-radius: 8px;
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.custom-modal .modal-content > .modal-body .outlined-dotted-add-button:hover {
+  border: 2px dashed #15759A !important;
+  background: #e5f5fc;
+}
+
+@media (max-width: 576px) {
+  .custom-modal .modal-content > .modal-body .outlined-dotted-add-button {
+    margin-bottom: 24px;
+  }
+}
+
+.custom-modal .modal-content > .modal-body .outlined-dotted-add-button .icon-button {
+  display: block;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  border-radius: 50%;
+  background: #15759A;
+  text-align: center;
+}
+
+.custom-modal .modal-content > .modal-body .outlined-dotted-add-button .icon-button > span {
+  line-height: 40px;
+}
+
+.custom-modal .modal-content > .modal-body .outlined-dotted-add-button .label {
+  color: #15759A;
+}
+
+.custom-modal .modal-content .modal-footer {
+  border-top: none;
+  padding-top: 1.5rem;
 }
 /*# sourceMappingURL=styles.css.map */

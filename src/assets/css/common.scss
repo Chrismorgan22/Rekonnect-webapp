@@ -29,6 +29,7 @@ $text-color: #0C1A27;
 $text-white: #fff;
 $text-color-light: #949597;
 $text-input-color: #8A92A6;
+$text-grey: #727374;
 
 //font-weight
 $body-font-size: 1rem;
@@ -119,6 +120,12 @@ h6 {
     }
 }
 
+
+//border
+.border-radius-0 {
+    border-radius: 0px !important;
+}
+
 //color background
 .background-light-green {
     background: $background-light-green;
@@ -151,6 +158,8 @@ h6 {
 .text-color-light {
     color: $text-color-light !important;
 }
+
+
 
 //spacing
 .mt-8 {
@@ -226,6 +235,10 @@ h6 {
 //width
 .w-100 {
     width:100%;    
+}
+
+.w-max-300 {
+    max-width: 300px !important;
 }
 
 //overflow helper class
@@ -361,5 +374,11 @@ h6 {
         background-color: $color-primary;
         color: $text-white;
         border-color: $color-primary;
+    }
+
+    &.btn-secondary {
+        border-color: $color-primary;
+        background-color: transparent !important;
+        color: $color-primary;
     }
 }
