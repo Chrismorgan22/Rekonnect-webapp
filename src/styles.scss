@@ -637,6 +637,23 @@ body {
                     padding: 32px 0px;
 
                 }
+
+                .image-section {
+                    width: 250px;
+                    height: 250px;
+
+                    & > img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .section-content-block {
+                    background: lighten($color-primary, 60%);
+                    padding: 16px;
+                    border-radius: 8px;
+                    margin-top: 24px;
+                }
                 
                 .custom-radio {
                     display: inline-block!important;
