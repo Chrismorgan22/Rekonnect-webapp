@@ -1,9 +1,19 @@
-<p>personalization works!</p>
+<!-- <p>personalization works!</p> -->
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#candidateModalCenter">
+<!-- TEMPORARY -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#candidateModallastbitsfinal">
     personalization candidate
 </button>
+
+
+
+
+<h5> this is  a test</h5>
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#candidateModalCenter">
+    personalization candidate
+</button> -->
 
 <!-- Modal Basic Step 1-->
 <div class="modal fade" id="candidateModalCenter" tabindex="-1" role="dialog"
@@ -119,26 +129,24 @@
                         <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
                         <div class="form-group">
                             <input type="text" aria-describedby="streetaddress" placeholder="Street Address" size="lg"
-                                formControlName="address" class="form-control" />
+                                 class="form-control" />
                         </div>
                         <div class="form-row form-group">
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="State" formControlName="State" />
+                                <input type="text" class="form-control" placeholder="State"  />
                             </div>
                             <div class="col">
-                                <input type="text" placeholder="Zip Code" formControlName="zipcode"
+                                <input type="text" placeholder="Zip Code" 
                                     class="form-control" />
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control" size="lg" placeholder="Landmark"
-                                formControlName="landmark">
+                            <input type="text" class="form-control" size="lg" placeholder="Landmark">
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control" size="lg" placeholder="Organisational Strength"
-                                formControlName="organationalstrength">
+                            <input type="text" class="form-control" size="lg" placeholder="Organisational Strength">
                         </div>
                     </div>
                 </div>
@@ -263,6 +271,7 @@
                         <label for="exampleFormControlSelect2">Job Description</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
+                    
                    
                     <div class="body-background-bottom">
                     </div>
@@ -283,6 +292,7 @@
     <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
+              
                 <div class="text-center pt-5">
                     <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Tune it up
                     </h5>
@@ -316,7 +326,197 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
                 <button type="button" class="btn btn-primary" data-toggle="modal"
-                    data-target="#candidateModalEducation">Save & Continue</button>
+                    data-target="#candidateModallastbits">Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal last few bits step-->
+<div class="modal fade" id="candidateModallastbits" tabindex="-2" role="dialog"
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="header-background">
+                </div>
+                <div class="text-center pt-5">
+                    <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Last Few Bits
+                    </h5>
+                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
+                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid start-section  w-100">
+                    <div class="section-form-content">
+                            <div class="form-group">
+                                <input type="text" aria-describedby="softskills" placeholder="Soft Skills/ Behavioural Skills" size="lg"
+                                    formControlName="softskills" class="form-control" />
+                                    <div class="selected-pill my-3">
+                                        <button class="btn btn-selected-pill mr-3">Leadership</button>
+                                        <button class="btn btn-selected-pill mr-3">Management</button>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" aria-describedby="techskills" placeholder="IT Skills/ Technical Skills" size="lg"
+                                    formControlName="techskills" class="form-control" />
+                                     <div class="selected-pill my-3">
+                                        <button class="btn btn-selected-pill mr-3">CSS</button>
+                                        <button class="btn btn-selected-pill mr-3">HTML</button>
+                                        <button class="btn btn-selected-pill mr-3">Javascript</button>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="btn-group custom-dropdown w-100">
+                                    <button class="btn w-100 btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      Your current career
+                                    </button>
+                                    <div class="dropdown-menu">
+                                      ...
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="form-group mt-3 d-flex">
+                                <div class="form-row form-group mt-3 w-100 align-items-center">
+                                    <div class="col">
+                                        <label for="exampleFormControlSelect2">Would you like to change your career?</label>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group">
+                                            <div class="input-group-text custom-radio-group">
+                                                <input type="radio" aria-label="Radio button for following text input" value="yes" type="radio"
+                                                name="changecareer" id="yes">
+                                                <label>Yes</label>
+                                              </div>
+                                              <div class="input-group-text custom-radio-group">
+                                                <input type="radio" aria-label="Radio button for following text input" value="no" type="radio"
+                                                name="changecareer" id="no">
+                                                <label>No </label>
+                                              </div>
+                                          </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="btn-group custom-dropdown w-100">
+                                    <button class="btn w-100 btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      Your change of career
+                                    </button> 
+                                    <div class="dropdown-menu">
+                                      ...
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <textarea class="form-control" placeholder="Describe your passion better" id="exampleFormControlTextarea1" rows="4"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <div class="btn-group custom-dropdown w-100">
+                                    <button class="btn w-100 btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                     Language
+                                    </button>
+                                    <div class="dropdown-menu">
+                                      ...
+                                    </div>
+                                  </div>
+                            </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#candidateModalcenterexperience">Save & Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal last few bits final step-->
+<div class="modal fade" id="candidateModallastbitsfinal" tabindex="-2" role="dialog"
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="header-background">
+                </div>
+                <div class="text-center pt-5">
+                    <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Last Few Bits
+                    </h5>
+                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
+                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid start-section  w-100">
+                    <div class="section-form-content">
+                        <label>range selector will come here</label>
+                            <div class="form-group mt-3 ">
+                                <div class="form-group mt-3 w-100 d-flex align-items-center">
+                                        <div class="col p-0">
+                                            <label for="exampleFormControlSelect2">Are you available to join immediately?</label>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <div class="input-group-text custom-radio-group">
+                                                    <input type="radio" aria-label="Radio button for following text input" value="yes" type="radio"
+                                                    name="changecareer" id="yes">
+                                                    <label>Yes</label>
+                                                  </div>
+                                                  <div class="input-group-text custom-radio-group">
+                                                    <input type="radio" aria-label="Radio button for following text input" value="no" type="radio"
+                                                    name="changecareer" id="no">
+                                                    <label>No </label>
+                                                  </div>
+                                              </div>
+                                        </div>
+                                        
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label for="exampleFormControlSelect2">How early are you available to join?</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                          <button class="btn btn-secondary border-radius-0" type="button">7 Days</button>
+                                          <button class="btn btn-secondary" type="button">15 Days</button>
+                                          <button class="btn btn-secondary" type="button">30 Days</button>
+                                          <button class="btn btn-secondary" type="button">> 30 Days</button>
+                                        </div>
+                                       
+                                      </div>
+
+                                </div>
+                                <div class="form-group py-4">
+                                    <h5 class="bold">Upload Resume</h5>
+                                        <label>How early are you available to join?</label>
+                                        <div class="custom-file w-max-300 d-block">
+                                            <input type="file" class=" custom-file-input" id="inputGroupFile01 ">
+                                            <label class="custom-file-label" for="inputGroupFile01">Upload Resume</label>
+                                        </div>
+                                </div>
+                                <div class="form-group py-4">
+                                    <h5 class="bold">Upload Visume</h5>
+                                    <label>How early are you available to join?</label>
+                                        <div class="custom-file w-max-300 d-block">
+                                            <input type="file" class=" custom-file-input" id="inputGroupFile01">
+                                            <label class="custom-file-label" for="inputGroupFile01">Upload Visume</label>
+                                        </div>
+                                </div>
+                            </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#candidateModalcenterexperience">Save & Continue</button>
             </div>
         </div>
     </div>

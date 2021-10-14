@@ -62,8 +62,52 @@ body {
             }
         }
 
-        .custom-file {
+        .custom-dropdown {
+            .dropdown-toggle {
+                height: calc(3rem + 2px);
+                border: 1px solid $color-border;
+                color: $text-grey !important;
+                border-radius: 4px !important;
+                text-align: left;
+                font-size: 1rem;
+            }
+        }
+
+        .custom-radio-group {
+            padding: 8px 16px;
+            border: 1px solid $color-primary;
+            border-radius: 4px;
+            background: white;
+
+            &:not(:last-child) {
+                margin-right: 8px;
+            }
             
+            & > input {
+                width: 20px;
+                height: 20px;
+
+                &:checked + .custom-radio-group {
+                    background: lighten( $color-primary, 70%);
+                }
+            }
+
+            .selected-pill {
+                .btn-selected-pill {
+                    background: lighten($color-primary, 70%);
+                    border: none;
+                    color: $text-color;
+                }
+            }
+
+            & > label {
+                padding-left: 8px;
+                padding-top: 6px;
+            }
+
+        }            
+
+        .custom-file {
             .custom-file-input {
                 background-color: $color-primary;
                 color: $text-white;
@@ -719,7 +763,7 @@ body {
             }
         }
 
-        & > .modal-footer {
+        &  .modal-footer {
             border-top: none;
             padding-top: 1.5rem;
         }

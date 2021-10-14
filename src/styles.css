@@ -408,6 +408,46 @@ body::-webkit-scrollbar-thumb {
   border-color: #15759A;
 }
 
+.start-section .section-form-content .custom-dropdown .dropdown-toggle {
+  height: calc(3rem + 2px);
+  border: 1px solid #EEEEEE;
+  color: #727374 !important;
+  border-radius: 4px !important;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.start-section .section-form-content .custom-radio-group {
+  padding: 8px 16px;
+  border: 1px solid #15759A;
+  border-radius: 4px;
+  background: white;
+}
+
+.start-section .section-form-content .custom-radio-group:not(:last-child) {
+  margin-right: 8px;
+}
+
+.start-section .section-form-content .custom-radio-group > input {
+  width: 20px;
+  height: 20px;
+}
+
+.start-section .section-form-content .custom-radio-group > input:checked + .custom-radio-group {
+  background: white;
+}
+
+.start-section .section-form-content .custom-radio-group .selected-pill .btn-selected-pill {
+  background: white;
+  border: none;
+  color: #0C1A27;
+}
+
+.start-section .section-form-content .custom-radio-group > label {
+  padding-left: 8px;
+  padding-top: 6px;
+}
+
 .start-section .section-form-content .custom-file .custom-file-input {
   background-color: #15759A;
   color: #fff;
@@ -1112,7 +1152,7 @@ body::-webkit-scrollbar-thumb {
   color: #15759A;
 }
 
-.custom-modal .modal-content > .modal-footer {
+.custom-modal .modal-content .modal-footer {
   border-top: none;
   padding-top: 1.5rem;
 }
