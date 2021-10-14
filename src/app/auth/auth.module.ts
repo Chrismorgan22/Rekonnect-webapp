@@ -9,7 +9,7 @@ import { GoogleLoginProvider } from 'angularx-social-login';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LinkedinResponseComponent } from './linkedin-response/linkedin-response.component';
 import { PersonalizationComponent } from './personalization/personalization.component';
-
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [WelcomeComponent, LinkedinResponseComponent, PersonalizationComponent],
   imports: [
@@ -17,7 +17,8 @@ import { PersonalizationComponent } from './personalization/personalization.comp
     AuthRoutingModule,
     ReactiveFormsModule,
     NgxSpinnerModule,
-    SocialLoginModule
+    SocialLoginModule,
+    // NgbModule
   ],
   providers: [
     {
@@ -41,5 +42,6 @@ import { PersonalizationComponent } from './personalization/personalization.comp
       } as SocialAuthServiceConfig,
     }
   ],
+  entryComponents:[PersonalizationComponent]
 })
 export class AuthModule { }

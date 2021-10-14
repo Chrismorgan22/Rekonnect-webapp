@@ -1,0 +1,7 @@
+:host ::ng-deep .modal-dialog,
+.modal-content {
+    height: fit-content !important;
+}
+:host ::ng-deep .modal-content{
+    width: 800px !important;
+}
