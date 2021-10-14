@@ -165,6 +165,7 @@ export class SignInComponent implements OnInit {
           json['first_name'] = this.socialUser.firstName;
           json['last_name'] = this.socialUser.lastName;
           json['email'] = this.socialUser.email;
+          json['role'] = Number(this.form.controls.user_role.value);
           this.registerAPICall(json);
         } else {
           this._toastrService.error(
