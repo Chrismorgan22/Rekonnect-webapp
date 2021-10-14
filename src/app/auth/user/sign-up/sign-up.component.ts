@@ -76,6 +76,7 @@ export class SignUpComponent implements OnInit {
             json['first_name'] = this.socialUser.firstName;
             json['last_name'] = this.socialUser.lastName;
             json['email'] = this.socialUser.email;
+            json['role'] = Number(this.form.controls.user_role.value);
             this.SpinnerService.show()
             this.registerAPICall(json);
           } else {
@@ -100,7 +101,7 @@ export class SignUpComponent implements OnInit {
             json['first_name'] = this.socialUser.firstName;
             json['last_name'] = this.socialUser.lastName;
             json['email'] = this.socialUser.email;
-            json['role'] = this.form.controls.user_role.value;
+            json['role'] = Number(this.form.controls.user_role.value);
             this.SpinnerService.show();
             this.registerAPICall(json);
           } else {
@@ -153,6 +154,7 @@ export class SignUpComponent implements OnInit {
       json['first_name'] = res.data.first_name;
       json['last_name'] = res.data.last_name;
       json['email'] = res.data.email;
+      json['role'] = Number(this.form.controls.user_role.value);
       this.registerAPICall(json);
     })
   }
