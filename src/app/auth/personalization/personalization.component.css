@@ -1,1 +1,11 @@
-/* No CSS *//*# sourceMappingURL=personalization.component.css.map */
+:host ::ng-deep .modal-dialog,
+.modal-content {
+  height: -webkit-fit-content !important;
+  height: -moz-fit-content !important;
+  height: fit-content !important;
+}
+
+:host ::ng-deep .modal-content {
+  width: 800px !important;
+}
+/*# sourceMappingURL=personalization.component.css.map */

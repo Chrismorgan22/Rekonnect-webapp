@@ -22,6 +22,7 @@ $color-footer: #3E3E3E;
 $color-border: #EEEEEE;
 $background-light-green: lighten(#6FBA43, 45%);
 $dark-blue-background: #141327;
+$background-blue: #FDFEFF;
 
 
 //text color
@@ -139,6 +140,10 @@ h6 {
 .background-dark-blue {
     background: $dark-blue-background;
     color: #fff;
+}
+
+.background-blue {
+    background: $background-blue;
 }
 
 //text styling
@@ -265,6 +270,10 @@ h6 {
 
 .justify-content-center {
     justify-content: center;
+}
+
+.justify-content-space-between {
+    justify-content: space-between;
 }
 
 //section

@@ -76,6 +76,10 @@
   }
 }
 
+.border-radius-0 {
+  border-radius: 0px !important;
+}
+
 .background-light-green {
   background: #f0f8eb;
 }
@@ -88,6 +92,10 @@
 .background-dark-blue {
   background: #141327;
   color: #fff;
+}
+
+.background-blue {
+  background: #FDFEFF;
 }
 
 .text-decoration-underline {
@@ -180,6 +188,10 @@
   width: 100%;
 }
 
+.w-max-300 {
+  max-width: 300px !important;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -208,6 +220,12 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.justify-content-space-between {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .section {
@@ -500,10 +518,10 @@ body::-webkit-scrollbar-thumb {
 }
 
 .start-section .section-footer .title::after, .start-section .section-footer .title::before {
-  content: '';
+  content: "";
   width: 45%;
   height: 1px;
-  background: #C1D4D9;
+  background: #c1d4d9;
   display: block;
 }
 
@@ -756,7 +774,8 @@ body::-webkit-scrollbar-thumb {
           box-shadow: 0 4px 8px 0 rgba(121, 93, 93, 0.1);
 }
 
-.services-section .flip-card .flip-card-front, .services-section .flip-card .flip-card-back {
+.services-section .flip-card .flip-card-front,
+.services-section .flip-card .flip-card-back {
   position: absolute;
   width: 100%;
   -webkit-backface-visibility: hidden;
@@ -840,7 +859,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .testimonial-section .testimonial-section-content .testimonial-text {
-  border-left: 4px solid #15759A;
+  border-left: 4px solid #15759a;
   padding-left: 32px;
   margin-left: 22px;
 }
@@ -1005,14 +1024,27 @@ body::-webkit-scrollbar-thumb {
   position: relative;
 }
 
-.custom-modal .modal-content > .modal-body .modal-content-section {
-  padding: 32px 60px;
-}
-
 @media (max-width: 576px) {
   .custom-modal .modal-content > .modal-body .modal-content-section {
     padding: 32px 0px;
   }
+}
+
+.custom-modal .modal-content > .modal-body .modal-content-section .image-section {
+  width: 250px;
+  height: 250px;
+}
+
+.custom-modal .modal-content > .modal-body .modal-content-section .image-section > img {
+  width: 100%;
+  height: 100%;
+}
+
+.custom-modal .modal-content > .modal-body .modal-content-section .section-content-block {
+  background: #e5f5fc;
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 24px;
 }
 
 .custom-modal .modal-content > .modal-body .modal-content-section .custom-radio {
@@ -1155,5 +1187,55 @@ body::-webkit-scrollbar-thumb {
 .custom-modal .modal-content .modal-footer {
   border-top: none;
   padding-top: 1.5rem;
+}
+
+.modal-dialog {
+  max-width: -webkit-fit-content !important;
+  max-width: -moz-fit-content !important;
+  max-width: fit-content !important;
+}
+
+.dashboard-section {
+  position: relative;
+}
+
+.dashboard-section .negative-top-offset {
+  position: absolute;
+  top: 145px;
+  width: 100%;
+}
+
+.dashboard-section .banner {
+  width: 100%;
+  height: 200px;
+}
+
+.dashboard-section .banner > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.dashboard-section .card {
+  -webkit-box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
+          box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
+  background: white;
+  border-radius: 16px;
+}
+
+.dashboard-section .card > .card-header {
+  background: none;
+}
+
+.dashboard-section .card > .card-header > h6 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.dashboard-section .card > .card-header a {
+  color: inherit !important;
+  font-size: 20px;
 }
 /*# sourceMappingURL=styles.css.map */
