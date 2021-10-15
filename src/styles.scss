@@ -1019,4 +1019,29 @@ body {
             }
         }
     }
+
+    .course-card {
+        border: 1px solid $color-border !important;
+        border-radius: 16px;
+        box-shadow: none;
+        background: transparent;
+
+        .card-img-top {
+            width: 100%;
+            height: 120px;
+        }
+
+        .card-body {
+            .card-title {
+                font-size: 14px;
+                font-family: $font-semibold;
+            }
+
+            .card-text {
+                text-transform: uppercase;
+                color: $text-input-color;
+                font-size: 12px;
+            }
+        }
+    }
 }

@@ -1438,4 +1438,28 @@ body::-webkit-scrollbar-thumb {
   font-size: 12px;
   margin-top: 75px;
 }
+
+.dashboard-section .course-card {
+  border: 1px solid #EEEEEE !important;
+  border-radius: 16px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background: transparent;
+}
+
+.dashboard-section .course-card .card-img-top {
+  width: 100%;
+  height: 120px;
+}
+
+.dashboard-section .course-card .card-body .card-title {
+  font-size: 14px;
+  font-family: 600;
+}
+
+.dashboard-section .course-card .card-body .card-text {
+  text-transform: uppercase;
+  color: #8A92A6;
+  font-size: 12px;
+}
 /*# sourceMappingURL=styles.css.map */
