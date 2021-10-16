@@ -2,6 +2,17 @@
 .modal-content {
     height: fit-content !important;
 }
-:host ::ng-deep .modal-content{
+:host ::ng-deep .modal-content {
     width: 800px !important;
+}
+.modal {
+    overflow: auto !important;
+}
+.experience-type-radio {
+    width: 345px;
+    height: 440px;
+    z-index: 0;
+}
+:host ::ng-deep .outlined-dotted-add-button{
+    border-style: dotted !important;
 }

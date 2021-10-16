@@ -6,8 +6,10 @@
 </button> -->
 
 <!-- Modal Basic Step 1-->
-<div class="d-block" id="candidateModalCenter" aria-labelledby="candidateModalCenterTitle" aria-hidden="true"
-    role="dialog">
+<!-- <div class="modal" id="candidateModalCenter" tabindex="-1" role="dialog"> -->
+
+<div class="modal fade" id="candidateModalCenter" tabindex="-1" aria-labelledby="candidateModalCenterTitle"
+    aria-hidden="true" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -22,69 +24,83 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <!-- <form class="section-form-content" [formGroup]="userRoleForm"
+                (ngSubmit)="userRoleFormSubmit('candidateModalCenter','candidateModalCenterupload')" novalidate> -->
             <div class="modal-body">
-                <div class="container-fluid d-flex justify-content-center">
-                    <div class="row modal-content-section">
-                        <div class="col-md-6 col-sm-12">
-                            <div class="custom-control custom-radio custom--radio">
-                                <input class="custom-control-input custom-radio-button" value="candidate" type="radio"
-                                    name="onboard-category" id="candidate">
-                                <!-- <span class="check"></span> -->
-                                <div class="custom-control-radio-area border-0" for="candidate">
-                                    <img src="../../../assets/images/Connect_as_Candidate.png" />
-                                    <label class="text-center">Connect as Candidate</label>
+                <form class="section-form-content" [formGroup]="userRoleForm"
+                    (ngSubmit)="userRoleFormSubmit('candidateModalCenter','candidateModalCenterupload')" noValidate>
+                    <div class="container-fluid d-flex justify-content-center">
+                        <div class="row modal-content-section">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="custom-control custom-radio custom--radio">
+                                    <input class="custom-control-input custom-radio-button" value=1 type="radio"
+                                        name="user_role" formControlName="user_role" id="candidate">
+                                    <!-- <span class="check"></span> -->
+                                    <div class="custom-control-radio-area border-0" for="candidate">
+                                        <img src="../../../assets/images/Connect_as_Candidate.png" />
+                                        <label class="text-center">Connect as Candidate</label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <div class="custom-control custom-radio custom--radio">
-                                <input class="custom-control-input custom-radio-button" value="employer" type="radio"
-                                    name="onboard-category" id="employer">
-                                <!-- <span class="check"></span> -->
-                                <div class="custom-control-radio-area border-0" for="employer">
-                                    <img src="../../../assets/images/Connect_as_an_Employer.png" />
-                                    <label class="text-center">Connect as Employer</label>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="custom-control custom-radio custom--radio">
+                                    <input class="custom-control-input custom-radio-button" value=2 type="radio"
+                                        name="user_role" formControlName="user_role" id="employer">
+                                    <!-- <span class="check"></span> -->
+                                    <div class="custom-control-radio-area border-0" for="employer">
+                                        <img src="../../../assets/images/Connect_as_an_Employer.png" />
+                                        <label class="text-center">Connect as Employer</label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <div class="custom-control custom-radio custom--radio">
-                                <input class="custom-control-input custom-radio-button" value="expert" type="radio"
-                                    name="onboard-category" id="expert">
-                                <!-- <span class="check"></span> -->
-                                <div class="custom-control-radio-area border-0" for="expert">
-                                    <img src="../../../assets/images/Connect_as_an_Expert.png" />
-                                    <label class="text-center">Connect as Expert</label>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="custom-control custom-radio custom--radio">
+                                    <input class="custom-control-input custom-radio-button" value=3 type="radio"
+                                        name="user_role" formControlName="user_role" id="expert">
+                                    <!-- <span class="check"></span> -->
+                                    <div class="custom-control-radio-area border-0" for="expert">
+                                        <img src="../../../assets/images/Connect_as_an_Expert.png" />
+                                        <label class="text-center">Connect as Expert</label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <div class="custom-control custom-radio custom--radio">
-                                <input class="custom-control-input custom-radio-button" value="institution" type="radio"
-                                    name="onboard-category" id="institution">
-                                <!-- <span class="check"></span> -->
-                                <div class="custom-control-radio-area border-0" for="institution">
-                                    <img src="../../../assets/images/Connect_as_an_Institution.png" />
-                                    <label class="text-center">Connect as Institution</label>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="custom-control custom-radio custom--radio">
+                                    <input class="custom-control-input custom-radio-button" value=4 type="radio"
+                                        name="user_role" formControlName="user_role" id="institution">
+                                    <!-- <span class="check"></span> -->
+                                    <div class="custom-control-radio-area border-0" for="institution">
+                                        <img src="../../../assets/images/Connect_as_an_Institution.png" />
+                                        <label class="text-center">Connect as Institution</label>
+                                    </div>
                                 </div>
+                            </div>
+                            <div *ngIf="userRoleSubmit && userRole.user_role.errors" class="invalid-feedback"
+                                style="display:block;">
+                                <div *ngIf="userRole.user_role.errors.required">User Role is required</div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                        <button type="submit" class="btn btn-primary">Save &
+                            Continue</button>
+                    </div>
+                </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
-                <button type="button" class="btn btn-primary"
-                    (click)="moveToNextModal('candidateModalCenter','candidateModalCenterupload')">Save &
-                    Continue</button>
-            </div>
+            <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                    <button type="submit" class="btn btn-primary">Save &
+                        Continue</button>
+                </div> -->
+            <!-- </form> -->
         </div>
     </div>
 </div>
 
 <!-- Modal Basic Step 2-->
 <div class="modal fade" id="candidateModalCenterupload" tabindex="-2" role="dialog"
-    aria-labelledby="candidateModalCenterTitle" aria-hidden="true">
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -103,58 +119,85 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="container-fluid start-section  w-100">
-                    <div class="section-form-content">
-                        <div class="input-group mb-3">
-                            <div class="form-row form-group py-4">
-                                <div class="col">
-                                </div>
-                                <div class="col">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Upload Image</label>
+                <form class="section-form-content" [formGroup]="addressForm"
+                    (ngSubmit)="addressFormSubmit('candidateModalCenterupload','candidateModalExperience')" noValidate>
+                    <div class="container-fluid start-section  w-100">
+                        <div class="section-form-content">
+                            <div class="input-group mb-3">
+                                <div class="form-row form-group py-4">
+                                    <div class="col">
+                                    </div>
+                                    <div class="col">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                            <label class="custom-file-label" for="inputGroupFile01">Upload Image</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
-                        <div class="form-group">
-                            <input type="text" aria-describedby="streetaddress" placeholder="Street Address" size="lg"
-                                class="form-control" />
-                        </div>
-                        <div class="form-row form-group">
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="State" />
+                            <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
+                            <div class="form-group">
+                                <input type="text" aria-describedby="streetaddress" placeholder="Street Address"
+                                    size="lg" class="form-control" formControlName="street" />
+                                <div *ngIf="addressSubmit && userAddress.street.errors" class="invalid-feedback"
+                                    style="display:block;">
+                                    <div *ngIf="userAddress.street.errors.required">Street is required</div>
+                                </div>
                             </div>
-                            <div class="col">
-                                <input type="text" placeholder="Zip Code" class="form-control" />
+                            <div class="form-row form-group">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="State"
+                                        formControlName="state" />
+                                    <div *ngIf="addressSubmit && userAddress.state.errors" class="invalid-feedback"
+                                        style="display:block;">
+                                        <div *ngIf="userAddress.state.errors.required">State is required</div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <input type="text" placeholder="Zip Code" class="form-control"
+                                        formControlName="zip_code" />
+                                    <div *ngIf="addressSubmit && userAddress.zip_code.errors" class="invalid-feedback"
+                                        style="display:block;">
+                                        <div *ngIf="userAddress.zip_code.errors.required">Zip Code is required</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <input type="text" class="form-control" size="lg" placeholder="Landmark">
-                        </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" size="lg" placeholder="Landmark"
+                                    formControlName="landmark">
+                                <div *ngIf="addressSubmit && userAddress.landmark.errors" class="invalid-feedback"
+                                    style="display:block;">
+                                    <div *ngIf="userAddress.landmark.errors.required">Landmark is required</div>
+                                </div>
+                            </div>
 
-                        <div class="form-group">
-                            <input type="text" class="form-control" size="lg" placeholder="Organisational Strength">
+                            <div class="form-group">
+                                <input type="text" class="form-control" size="lg" placeholder="Organisational Strength"
+                                    formControlName="organization_strength">
+                                <div *ngIf="addressSubmit && userAddress.organization_strength.errors"
+                                    class="invalid-feedback" style="display:block;">
+                                    <div *ngIf="userAddress.organization_strength.errors.required">Organization Strength
+                                        is required</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"
-                    (click)="moveToPreviousModal('candidateModalCenterupload','candidateModalCenter')">Back</button>
-                <button type="button" class="btn btn-primary"
-                    (click)="moveToNextModal('candidateModalCenterupload','candidateModalEducation')">Save &
-                    Continue</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            (click)="moveToPreviousModal('candidateModalCenterupload','candidateModalCenter')">Back</button>
+                        <button type="submit" class="btn btn-primary">Save &
+                            Continue</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Modal Eduction/Organisational basis 3 -->
-<div class="modal fade" id="candidateModalEducation" tabindex="-2" role="dialog"
-    aria-labelledby="candidateModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="candidateModalExperience" tabindex="-2" role="dialog"
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -163,8 +206,10 @@
                 </div>
                 <div class="text-center pt-5">
                     <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Tune it Up</h5>
-                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
-                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
+                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                        eget
+                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit
+                        amet,
                         consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -172,44 +217,62 @@
                 </button>
             </div>
             <div class="modal-body d-flex justify-content-center">
-                <div class="row">
-                    <div class="col-sm col-md-6 col-sm-12 mb-sm-5">
-                        <button class="btn outlined-dotted-add-button" data-toggle="modal"
-                            data-target="#candidateModalcentereducation">
-                            <span class="icon-button"><span class="material-icons">add</span></span>
-                            <div class="label">Add Experience</div>
-                        </button>
+                <form class="section-form-content" [formGroup]="experienceTypeForm"
+                    (ngSubmit)="experienceTypeFormSubmit('candidateModalExperience','candidateModalcenterexperience')"
+                    noValidate>
+                    <div class="row modal-content-section">
+                        <div class="custom-control custom-radio custom--radio">
+                            <input class="custom-control-input experience-type-radio custom-radio-button"
+                                formControlName="experience_type" value="Experienced" type="radio"
+                                name="experience_type" id="candidate">
+                            <!-- <span class="check"></span> -->
+                            <div class="btn outlined-dotted-add-button custom-control-radio-area" for="candidate">
+                                <span class="icon-button"><span class="material-icons">add</span></span>
+                                <div class="label">Add Experience</div>
+                            </div>
+                        </div>
+                        <div class="custom-control custom-radio custom--radio">
+                            <input class="custom-control-input experience-type-radio custom-radio-button"
+                                formControlName="experience_type" value='Fresher' type="radio" name="experience_type"
+                                id="candidate">
+                            <!-- <span class="check"></span> -->
+                            <div class="btn outlined-dotted-add-button custom-control-radio-area" for="candidate">
+                                <span class="icon-button"><span class="material-icons">done</span></span>
+                                <div class="label">I am a fresher</div>
+                            </div>
+                        </div>
+                        <div *ngIf="experienceTypeSubmit && userExperienceType.experience_type.errors"
+                            class="invalid-feedback" style="display:block;">
+                            <div *ngIf="userExperienceType.experience_type.errors.required">Experience Type
+                                is required</div>
+                        </div>
                     </div>
-                    <div class="col-sm col-md-6 col-sm-12">
-                        <button class="btn outlined-dotted-add-button">
-                            <span class="icon-button"><span class="material-icons">done</span></span>
-                            <div class="label">I am a fresher</div>
-                        </button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            (click)="moveToPreviousModal('candidateModalExperience','candidateModalCenterupload')">Back</button>
+                        <button type="submit" class="btn btn-primary">Save &
+                            Continue</button>
                     </div>
-                </div>
+                </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"
-                    (click)="moveToPreviousModal('candidateModalEducation','candidateModalCenterupload')">Back</button>
-                <button type="button" class="btn btn-primary"
-                    (click)="moveToNextModal('candidateModalEducation','candidateModalcentereducation')">Save &
-                    Continue</button>
-            </div>
+
         </div>
     </div>
 </div>
 
 <!-- Modal Basic Step 4 education-->
-<div class="modal fade" id="candidateModalcentereducation" tabindex="-2" role="dialog"
-    aria-labelledby="candidateModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="candidateModalcenterexperience" tabindex="-2" role="dialog"
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="text-center pt-5">
                     <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Tune it up
                     </h5>
-                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
-                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
+                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                        eget
+                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit
+                        amet,
                         consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -217,71 +280,120 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="container-fluid start-section  w-100">
-                    <div class="body-background-top">
-                    </div>
-                    <div class="section-form-content">
-                        <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
-                        <div class="form-row form-group">
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="Designation" />
+                <form class="section-form-content" [formGroup]="experienceDetailForm"
+                    (ngSubmit)="experienceDetailsFormSubmit('candidateModalcenterexperience','candidateModalcenterexperiencetimeline')"
+                    noValidate>
+                    <div class="container-fluid start-section  w-100">
+                        <div class="body-background-top">
+                        </div>
+                        <div class="section-form-content">
+                            <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
+                            <div class="form-row form-group">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Designation"
+                                        formControlName="designation" />
+                                    <div *ngIf="experienceDetailSubmit && userExpDetails.designation.errors"
+                                        class="invalid-feedback" style="display:block;">
+                                        <div *ngIf="userExpDetails.designation.errors.required">Designation
+                                            is required</div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <input type="text" placeholder="Company" class="form-control"
+                                        formControlName="company" />
+                                    <div *ngIf="experienceDetailSubmit && userExpDetails.company.errors"
+                                        class="invalid-feedback" style="display:block;">
+                                        <div *ngIf="userExpDetails.company.errors.required">Company
+                                            is required</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col">
-                                <input type="text" placeholder="Company" class="form-control" />
+                            <div class="form-row form-group">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="location"
+                                        formControlName="location" />
+                                    <div *ngIf="experienceDetailSubmit && userExpDetails.location.errors"
+                                        class="invalid-feedback" style="display:block;">
+                                        <div *ngIf="userExpDetails.location.errors.required">Location
+                                            is required</div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <input type="text" placeholder="Country" class="form-control"
+                                        formControlName="country" />
+                                    <div *ngIf="experienceDetailSubmit && userExpDetails.country.errors"
+                                        class="invalid-feedback" style="display:block;">
+                                        <div *ngIf="userExpDetails.country.errors.required">Country
+                                            is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row form-group mt-3">
+                                <div class="col">
+                                    <label for="exampleFormControlSelect2">Start Date</label>
+                                    <input type="date" placeholder="Country" class="form-control"
+                                        formControlName="start_date" />
+                                    <div *ngIf="experienceDetailSubmit && userExpDetails.start_date.errors"
+                                        class="invalid-feedback" style="display:block;">
+                                        <div *ngIf="userExpDetails.start_date.errors.required">Start Date
+                                            is required</div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label for="exampleFormControlSelect2">End Date</label>
+                                    <input type="date" placeholder="Country" class="form-control"
+                                        formControlName="end_date" />
+                                    <div *ngIf="experienceDetailSubmit && userExpDetails.end_date.errors"
+                                        class="invalid-feedback" style="display:block;">
+                                        <div *ngIf="userExpDetails.end_date.errors.required">End Date
+                                            is required</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-row form-group">
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="location" />
+                        <div class="form-group my-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gridCheck"
+                                    formControlName="currently_working">
+                                <label class="form-check-label" for="gridCheck">
+                                    I am currently working here in this role
+                                </label>
                             </div>
-                            <div class="col">
-                                <input type="text" placeholder="Country" class="form-control" />
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="exampleFormControlSelect2">Job Description</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                formControlName="job_description"></textarea>
+                            <div *ngIf="experienceDetailSubmit && userExpDetails.job_description.errors"
+                                class="invalid-feedback" style="display:block;">
+                                <div *ngIf="userExpDetails.job_description.errors.required">Job description
+                                    is required</div>
                             </div>
                         </div>
 
-                        <div class="form-row form-group mt-3">
-                            <div class="col">
-                                <label for="exampleFormControlSelect2">Start Date</label>
-                                <input type="date" placeholder="Country" class="form-control" />
-                            </div>
-                            <div class="col">
-                                <label for="exampleFormControlSelect2">End Date</label>
-                                <input type="date" placeholder="Country" class="form-control" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group my-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck">
-                            <label class="form-check-label" for="gridCheck">
-                                I am currently working here in this role
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="exampleFormControlSelect2">Job Description</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
 
+                        <!-- <div class="body-background-bottom">
+                        </div> -->
 
-                    <div class="body-background-bottom">
                     </div>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            (click)="moveToPreviousModal('candidateModalcenterexperience','candidateModalExperience')">Back</button>
+                        <button type="submit" class="btn btn-primary">Save
+                            &
+                            Continue</button>
+                    </div>
+                </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"
-                    (click)="moveToPreviousModal('candidateModalcentereducation','candidateModalEducation')">Back</button>
-                <button type="button" class="btn btn-primary"
-                    (click)="moveToNextModal('candidateModalcentereducation','candidateModalcenterexperience')">Save &
-                    Continue</button>
-            </div>
+
         </div>
     </div>
 </div>
 
 <!-- Modal Basic Step 4 education-->
-<div class="modal fade" id="candidateModalcenterexperience" tabindex="-2" role="dialog"
-    aria-labelledby="candidateModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="candidateModalcenterexperiencetimeline" tabindex="-2" role="dialog"
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -289,8 +401,10 @@
                 <div class="text-center pt-5">
                     <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Tune it up
                     </h5>
-                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
-                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
+                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                        eget
+                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit
+                        amet,
                         consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -318,19 +432,240 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary"
-                    (click)="moveToPreviousModal('candidateModalcenterexperience','candidateModalcentereducation')">Back</button>
+                    (click)="moveToPreviousModal('candidateModalcenterexperiencetimeline','candidateModalcentereducation')">Back</button>
                 <button type="button" class="btn btn-primary"
-                    (click)="moveToNextModal('candidateModalcenterexperience','candidateModallastbits')">Save &
+                    (click)="moveToNextModal('candidateModalcenterexperiencetimeline','candidateModalEducation')">Save &
                     Continue</button>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Modal Eduction/Organisational basis 3 -->
+<div class="modal fade" id="candidateModalEducation" tabindex="-2" role="dialog"
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="header-background">
+                    <!-- <img class="" src="../../../assets/images/header-background.png" /> -->
+                </div>
+                <div class="text-center pt-5">
+                    <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Tune it Up</h5>
+                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                        eget
+                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit
+                        amet,
+                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex justify-content-center">
+                <form class="section-form-content" [formGroup]="educationTypeForm"
+                    (ngSubmit)="educationTypeFormSubmit('candidateModalEducation','candidateModalcentereducation')"
+                    noValidate>
+                    <div class="row modal-content-section">
+                        <div class="custom-control custom-radio custom--radio">
+                            <input class="custom-control-input experience-type-radio custom-radio-button"
+                                formControlName="education_type" value="Educated" type="radio" name="education_type"
+                                id="candidate">
+                            <!-- <span class="check"></span> -->
+                            <div class="btn outlined-dotted-add-button custom-control-radio-area" for="candidate">
+                                <span class="icon-button"><span class="material-icons">add</span></span>
+                                <div class="label">Add Education</div>
+                            </div>
+                        </div>
+                        <div class="custom-control custom-radio custom--radio">
+                            <input class="custom-control-input experience-type-radio custom-radio-button"
+                                formControlName="education_type" value='Non-Educated' type="radio" name="education_type"
+                                id="candidate">
+                            <!-- <span class="check"></span> -->
+                            <div class="btn outlined-dotted-add-button custom-control-radio-area" for="candidate">
+                                <span class="icon-button"><span class="material-icons">done</span></span>
+                                <div class="label">Nothing to add? <br />Check this and proceed</div>
+                            </div>
+                        </div>
+                        <div *ngIf="educationTypeSubmit && userEducationType.education_type.errors"
+                            class="invalid-feedback" style="display:block;">
+                            <div *ngIf="userEducationType.education_type.errors.required">Education Type
+                                is required</div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            (click)="moveToPreviousModal('candidateModalEducation','candidateModalcenterexperiencetimeline')">Back</button>
+                        <button type="submit" class="btn btn-primary">Save &
+                            Continue</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal Basic Step 4 education-->
+<div class="modal fade" id="candidateModalcentereducation" tabindex="-2" role="dialog"
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="text-center pt-5">
+                    <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Tune it up
+                    </h5>
+                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                        eget
+                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit
+                        amet,
+                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="section-form-content" [formGroup]="educationDetailForm"
+                    (ngSubmit)="educationDetailsFormSubmit('candidateModalcentereducation','candidateModallastbits')"
+                    noValidate>
+                    <div class="container-fluid start-section  w-100">
+                        <div class="body-background-top">
+                        </div>
+                        <div class="section-form-content">
+                            <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
+                            <div class="form-row form-group">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="School Name"
+                                        formControlName="school_name" />
+                                    <div *ngIf="educationDetailSubmit && userEduDetails.school_name.errors"
+                                        class="invalid-feedback" style="display:block;">
+                                        <div *ngIf="userEduDetails.school_name.errors.required">School Name
+                                            is required</div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <input type="text" placeholder="Degree" class="form-control"
+                                        formControlName="degree" />
+                                    <div *ngIf="educationDetailSubmit && userEduDetails.degree.errors"
+                                        class="invalid-feedback" style="display:block;">
+                                        <div *ngIf="userEduDetails.degree.errors.required">Degree
+                                            is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Field of study"
+                                        formControlName="field_of_study" />
+                                    <div *ngIf="educationDetailSubmit && userEduDetails.field_of_study.errors"
+                                        class="invalid-feedback" style="display:block;">
+                                        <div *ngIf="userEduDetails.field_of_study.errors.required">Field of study
+                                            is required</div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <input type="text" placeholder="Country" class="form-control"
+                                        formControlName="country" />
+                                    <div *ngIf="educationDetailSubmit && userEduDetails.country.errors"
+                                        class="invalid-feedback" style="display:block;">
+                                        <div *ngIf="userEduDetails.country.errors.required">Country
+                                            is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row form-group mt-3">
+                                <div class="col">
+                                    <label for="exampleFormControlSelect2">Start Date</label>
+                                    <div class="form-row form-group">
+                                        <div class="mr-2">
+                                            <input type="date" placeholder="Country" class="form-control pl-0 pr-0"
+                                                formControlName="start_date" />
+                                            <div *ngIf="educationDetailSubmit && userEduDetails.start_date.errors"
+                                                class="invalid-feedback" style="display:block;">
+                                                <div *ngIf="userEduDetails.start_date.errors.required">Start Date
+                                                    is required</div>
+                                            </div>
+                                        </div>
+                                        <div class="">
+                                            <input type="date" placeholder="Country" class="form-control pl-0 pr-0"
+                                                formControlName="start_date" />
+                                            <div *ngIf="educationDetailSubmit && userEduDetails.start_date.errors"
+                                                class="invalid-feedback" style="display:block;">
+                                                <div *ngIf="userEduDetails.start_date.errors.required">Start Date
+                                                    is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label for="exampleFormControlSelect2">End Date</label>
+                                    <div class="form-row form-group no-wrap">
+                                        <div class="mr-2">
+                                            <input type="date" placeholder="Country" class="form-control pl-0 pr-0"
+                                                formControlName="start_date" />
+                                            <div *ngIf="educationDetailSubmit && userEduDetails.start_date.errors"
+                                                class="invalid-feedback" style="display:block;">
+                                                <div *ngIf="userEduDetails.start_date.errors.required">Start Date
+                                                    is required</div>
+                                            </div>
+                                        </div>
+                                        <div class="">
+                                            <input type="date" placeholder="Country" class="form-control pl-0 pr-0"
+                                                formControlName="start_date" />
+                                            <div *ngIf="educationDetailSubmit && userEduDetails.start_date.errors"
+                                                class="invalid-feedback" style="display:block;">
+                                                <div *ngIf="userEduDetails.start_date.errors.required">Start Date
+                                                    is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group my-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gridCheck"
+                                    formControlName="currently_working">
+                                <label class="form-check-label" for="gridCheck">
+                                    I am currently working here in this role
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="exampleFormControlSelect2">Job Description</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                formControlName="job_description"></textarea>
+                            <div *ngIf="educationDetailSubmit && userEduDetails.job_description.errors"
+                                class="invalid-feedback" style="display:block;">
+                                <div *ngIf="userEduDetails.job_description.errors.required">Job description
+                                    is required</div>
+                            </div>
+                        </div>
+
+
+                        <!-- <div class="body-background-bottom">
+                        </div> -->
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            (click)="moveToPreviousModal('candidateModalcentereducation','candidateModalEducation')">Back</button>
+                        <button type="submit" class="btn btn-primary">Save
+                            &
+                            Continue</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <!-- Modal last few bits step-->
 <div class="modal fade" id="candidateModallastbits" tabindex="-2" role="dialog"
-    aria-labelledby="candidateModalCenterTitle" aria-hidden="true">
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -339,8 +674,10 @@
                 <div class="text-center pt-5">
                     <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Last Few Bits
                     </h5>
-                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
-                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
+                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                        eget
+                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit
+                        amet,
                         consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -381,7 +718,8 @@
                         <div class="form-group mt-3 d-flex">
                             <div class="form-row form-group mt-3 w-100 align-items-center">
                                 <div class="col">
-                                    <label for="exampleFormControlSelect2">Would you like to change your career?</label>
+                                    <label for="exampleFormControlSelect2">Would you like to change your
+                                        career?</label>
                                 </div>
                                 <div class="col">
                                     <div class="input-group">
@@ -441,7 +779,7 @@
 </div>
 <!-- Modal last few bits final step-->
 <div class="modal fade" id="candidateModallastbitsfinal" tabindex="-2" role="dialog"
-    aria-labelledby="candidateModalCenterTitle" aria-hidden="true">
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -519,7 +857,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary"
@@ -533,7 +871,7 @@
 </div>
 <!-- Modal Gain more visibility-->
 <div class="modal fade" id="gainmorevisibilitymodal" tabindex="-1" role="dialog"
-    aria-labelledby="candidateModalCenterTitle" aria-hidden="true">
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -580,7 +918,7 @@
 
 <!-- Modal Almost done-->
 <div class="modal fade" id="almostdonemodal" tabindex="-1" role="dialog" aria-labelledby="candidateModalCenterTitle"
-    aria-hidden="true">
+    aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">

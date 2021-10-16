@@ -59,4 +59,18 @@ export class AuthService {
       })
     );
   }
+  getTempUser(body) {
+    return this._httpClient.post<any>(`${environment.apiUrl}/user/temp/data`, body).pipe(
+      map(response => {
+        return response;
+      })
+    );
+  }
+  saveTempUser(body) {
+    return this._httpClient.post<any>(`${environment.apiUrl}/user/temp/register`, body).pipe(
+      map(response => {
+        return response;
+      })
+    );
+  }
 }

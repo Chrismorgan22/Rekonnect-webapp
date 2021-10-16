@@ -17,17 +17,17 @@ export class WelcomeComponent implements OnInit {
     if (welcomDetails !== null && welcomDetails !== undefined && welcomDetails !== '') {
       this.userData = JSON.parse(welcomDetails)[0];
     }
-    const modalRef = this.modalService.open(PersonalizationComponent, {
-      size: 'xl',
-      backdrop: 'static', // disable modal from closing on click outside
-      keyboard: false, // disable modal closing by keyboard esc
-    });
-    // modalRef.componentInstance.id = 10;
-    modalRef.result.then((result) => {
-      console.log(result);
-    }).catch((error) => {
-      console.log(error);
-    });
+    // const modalRef = this.modalService.open(PersonalizationComponent, {
+    //   size: 'xl',
+    //   backdrop: 'static', // disable modal from closing on click outside
+    //   keyboard: false, // disable modal closing by keyboard esc
+    // });
+    // // modalRef.componentInstance.id = 10;
+    // modalRef.result.then((result) => {
+    //   console.log(result);
+    // }).catch((error) => {
+    //   console.log(error);
+    // });
   }
   signOut() {
     sessionStorage.clear();
