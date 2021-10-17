@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
@@ -14,8 +14,8 @@ import { PersonalizationComponent } from './personalization/personalization.comp
   declarations: [WelcomeComponent, LinkedinResponseComponent, PersonalizationComponent],
   imports: [
     CommonModule,
-    AuthRoutingModule,
     ReactiveFormsModule,
+    AuthRoutingModule,
     NgxSpinnerModule,
     SocialLoginModule,
     // NgbModule
@@ -42,6 +42,7 @@ import { PersonalizationComponent } from './personalization/personalization.comp
       } as SocialAuthServiceConfig,
     }
   ],
-  entryComponents:[PersonalizationComponent]
+  exports: [FormsModule, ReactiveFormsModule],
+  entryComponents: [PersonalizationComponent]
 })
 export class AuthModule { }

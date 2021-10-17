@@ -731,7 +731,7 @@ body {
             }
 
             .outlined-dotted-add-button {
-                border: 2px dashed $color-border;
+                border: 2px dashed $color-border !important;
                 width: 350px;
                 height: 450px;
                 border-radius: 8px;
