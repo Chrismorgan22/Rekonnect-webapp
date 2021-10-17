@@ -1321,6 +1321,7 @@ body::-webkit-scrollbar-thumb {
 
 .dashboard-section .job-post-card .job-card {
   padding: 24px;
+  margin: 0;
 }
 
 .dashboard-section .job-post-card .job-card:not(:last-of-type) {
@@ -1333,7 +1334,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dashboard-section .job-post-card .job-card:hover .user-action-content {
-  display: block;
+  display: block !important;
 }
 
 .dashboard-section .job-post-card .job-card .job-header {
@@ -1395,11 +1396,19 @@ body::-webkit-scrollbar-thumb {
   margin-right: 8px;
 }
 
+.dashboard-section .job-post-card .job-card .job-header .user-action-content a > span {
+  color: #15759A;
+}
+
 .dashboard-section .job-post-card .job-card .job-content > p {
   font-size: 14px;
   color: #727374;
   padding: 0 24px;
   margin-top: 16px;
+}
+
+.dashboard-section .job-post-card .card-body {
+  padding: 0;
 }
 
 .dashboard-section .expert-card {
@@ -1461,5 +1470,54 @@ body::-webkit-scrollbar-thumb {
   text-transform: uppercase;
   color: #8A92A6;
   font-size: 12px;
+}
+
+.dashboard-section .filter-card .filter-block > .form-control {
+  border-radius: 50px;
+  background: #eee;
+  padding: 24px;
+  border: 1px solid #EEEEEE;
+  margin-bottom: 24px;
+}
+
+.dashboard-section .filter-card .filter-accordian .card {
+  background: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
+}
+
+.dashboard-section .filter-card .filter-accordian .card > .card-header {
+  border: none;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dashboard-section .filter-card .filter-accordian .card > .card-header .btn-link {
+  color: #0C1A27;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.dashboard-section .filter-card .filter-accordian .card .card-body {
+  padding-bottom: 0;
+  border-bottom: 1px solid #EEEEEE;
+  margin-bottom: 8px;
+}
+
+.dashboard-section .filter-card .filter-accordian .card .card-body ul {
+  padding: 0;
+}
+
+.dashboard-section .filter-card .filter-accordian .card .card-body ul li {
+  list-style-type: none;
 }
 /*# sourceMappingURL=styles.css.map */
