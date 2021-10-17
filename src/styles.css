@@ -1135,7 +1135,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .custom-modal .modal-content > .modal-body .outlined-dotted-add-button {
-  border: 2px dashed #EEEEEE;
+  border: 2px dashed #EEEEEE !important;
   width: 350px;
   height: 450px;
   border-radius: 8px;
@@ -1197,6 +1197,17 @@ body::-webkit-scrollbar-thumb {
 
 .dashboard-section {
   position: relative;
+}
+
+.dashboard-section .profile-completion {
+  background: #F05454;
+  border: none;
+  color: #fff !important;
+}
+
+.dashboard-section .profile-completion .btn {
+  border-color: #fff !important;
+  color: #fff !important;
 }
 
 .dashboard-section .negative-top-offset {

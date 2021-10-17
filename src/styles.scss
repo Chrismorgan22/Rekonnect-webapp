@@ -789,6 +789,16 @@ body {
 .dashboard-section {
     position:relative;
 
+    .profile-completion {
+        background: $emphasis-color;
+        border: none;
+        color: $text-white !important;
+        .btn {
+            border-color: $text-white !important;
+            color: $text-white !important;
+        }
+    }
+
     .negative-top-offset {
         position: absolute;
         top: 145px;
