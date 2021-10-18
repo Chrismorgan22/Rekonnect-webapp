@@ -942,10 +942,6 @@ body::-webkit-scrollbar-thumb {
   font-weight: 500;
 }
 
-.footer .footer-parent-branding {
-  margin-top: 40px;
-}
-
 .footer .footer-parent-branding > img {
   width: 70px;
   height: 70px;
