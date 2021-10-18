@@ -1262,6 +1262,13 @@ body::-webkit-scrollbar-thumb {
   border-radius: 50%;
 }
 
+@media (max-width: 768px) {
+  .dashboard-section .profile-card .user-profile > .user-image {
+    width: 60px;
+    height: 60px;
+  }
+}
+
 .dashboard-section .profile-card .user-profile > .user-image > img {
   width: 100%;
   height: 100%;
@@ -1299,6 +1306,12 @@ body::-webkit-scrollbar-thumb {
   height: 160px;
 }
 
+@media (max-width: 768px) {
+  .dashboard-section .profile-card .card-box .card-image {
+    display: none;
+  }
+}
+
 .dashboard-section .profile-card .card-box .card-image img {
   width: 100%;
   height: 100%;
@@ -1309,6 +1322,13 @@ body::-webkit-scrollbar-thumb {
   background: #f0fcf5;
   color: #1AA053;
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .dashboard-section .profile-card .upload-customised {
+    height: 100%;
+    margin-top: 24px;
+  }
 }
 
 .dashboard-section .profile-card .upload-customised input {
@@ -1324,6 +1344,14 @@ body::-webkit-scrollbar-thumb {
   left: 64px;
   text-align: center;
   z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .dashboard-section .profile-card .upload-customised div {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
 }
 
 .dashboard-section .job-post-card .job-card {
@@ -1348,6 +1376,15 @@ body::-webkit-scrollbar-thumb {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .dashboard-section .job-post-card .job-card .job-header {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
 }
 
 .dashboard-section .job-post-card .job-card .job-header .user-profile {
@@ -1423,10 +1460,22 @@ body::-webkit-scrollbar-thumb {
   border-radius: 16px;
 }
 
+@media (max-width: 768px) {
+  .dashboard-section .expert-card {
+    margin-bottom: 24px;
+  }
+}
+
 .dashboard-section .expert-card .image-card {
   height: 320px;
   width: 250px;
   padding: 0;
+}
+
+@media (max-width: 768px) {
+  .dashboard-section .expert-card .image-card {
+    height: 100%;
+  }
 }
 
 .dashboard-section .expert-card .image-card img {
@@ -1512,6 +1561,15 @@ body::-webkit-scrollbar-thumb {
   color: #0C1A27;
   font-weight: 600;
   font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .dashboard-section .filter-card .filter-accordian .card > .card-header .btn-link {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 134px;
+  }
 }
 
 .dashboard-section .filter-card .filter-accordian .card .card-body {
