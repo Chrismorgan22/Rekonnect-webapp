@@ -358,6 +358,622 @@
   color: #15759A;
 }
 
+.dashboard-section {
+  position: relative;
+}
+
+.dashboard-section .profile-completion {
+  background: #F05454;
+  border: none;
+  color: #fff !important;
+}
+
+.dashboard-section .profile-completion .btn {
+  border-color: #fff !important;
+  color: #fff !important;
+}
+
+.dashboard-section .negative-top-offset {
+  position: absolute;
+  top: 205px;
+  width: 100%;
+}
+
+.dashboard-section .banner {
+  width: 100%;
+  height: 200px;
+}
+
+.dashboard-section .banner > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.dashboard-section .card {
+  -webkit-box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
+          box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
+  background: white;
+  border-radius: 16px;
+}
+
+.dashboard-section .card > .card-header {
+  background: none;
+}
+
+.dashboard-section .card > .card-header > h6 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.dashboard-section .card > .card-header a {
+  color: inherit !important;
+  font-size: 20px;
+}
+
+.dashboard-section .profile-card .user-profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 24px;
+}
+
+.dashboard-section .profile-card .user-profile > .user-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .dashboard-section .profile-card .user-profile > .user-image {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.dashboard-section .profile-card .user-profile > .user-image > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.dashboard-section .profile-card .user-profile .user-content {
+  margin-left: 16px;
+}
+
+.dashboard-section .profile-card .user-profile .user-content label {
+  font-size: 14px;
+  color: #8A92A6;
+}
+
+.dashboard-section .profile-card .card-box {
+  padding: 24px 0 0;
+  -webkit-box-shadow: 0px 10px 13px rgba(17, 38, 146, 0.05);
+          box-shadow: 0px 10px 13px rgba(17, 38, 146, 0.05);
+  border-radius: 8px;
+  margin-right: 24px;
+}
+
+.dashboard-section .profile-card .card-box .card-content label {
+  color: #8A92A6;
+}
+
+.dashboard-section .profile-card .card-box .card-content span {
+  color: #1AA053;
+}
+
+.dashboard-section .profile-card .card-box .card-image {
+  width: 325px;
+  height: 160px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-section .profile-card .card-box .card-image {
+    display: none;
+  }
+}
+
+.dashboard-section .profile-card .card-box .card-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard-section .profile-card .upload-customised {
+  border: 1px dashed #1AA053;
+  background: #f0fcf5;
+  color: #1AA053;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .dashboard-section .profile-card .upload-customised {
+    height: 100%;
+    margin-top: 24px;
+  }
+}
+
+.dashboard-section .profile-card .upload-customised input {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 2;
+}
+
+.dashboard-section .profile-card .upload-customised div {
+  position: absolute;
+  top: 134px;
+  left: 64px;
+  text-align: center;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .dashboard-section .profile-card .upload-customised div {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+}
+
+.dashboard-section .profile-card .employer-card-box {
+  padding: 24px 0 0;
+  -webkit-box-shadow: 0px 10px 13px rgba(17, 38, 146, 0.05);
+          box-shadow: 0px 10px 13px rgba(17, 38, 146, 0.05);
+  border-radius: 8px;
+  margin-right: 24px;
+}
+
+.dashboard-section .profile-card .employer-card-box .card-content label {
+  color: #8A92A6;
+}
+
+.dashboard-section .profile-card .employer-card-box .card-content span {
+  color: #1AA053;
+}
+
+.dashboard-section .profile-card .employer-card-box .card-content .dropdown .btn.btn-secondary {
+  border: none;
+  color: #0C1A27;
+  padding: 0;
+}
+
+.dashboard-section .profile-card .employer-card-box .card-content .dropdown .btn.btn-secondary:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.dashboard-section .profile-card .employer-card-box .card-text .d-flex {
+  color: #949597;
+}
+
+.dashboard-section .profile-card .employer-card-box .card-text .d-flex h5 {
+  color: #0C1A27;
+  margin-bottom: 0;
+}
+
+.dashboard-section .profile-card .employer-card-box .card-text .d-flex span {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.dashboard-section .profile-card .employer-card-box .card-text .d-flex .light-blue {
+  background: #85F4FA;
+}
+
+.dashboard-section .profile-card .employer-card-box .card-text .d-flex .dark-blue {
+  background: #3A57E8;
+}
+
+.dashboard-section .profile-card .employer-card-box .card-image {
+  width: 150px;
+  height: 200px;
+  display: block;
+  margin: 0 auto;
+}
+
+.dashboard-section .profile-card .employer-card-box .card-image.height-150 {
+  height: 150px !important;
+}
+
+@media (max-width: 768px) {
+  .dashboard-section .profile-card .employer-card-box .card-image {
+    display: none;
+  }
+}
+
+.dashboard-section .profile-card .employer-card-box .card-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard-section .profile-card .employer-card-box .level-one-job-reach {
+  padding: 0 32px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.dashboard-section .profile-card .employer-card-box .level-one-job-reach + span {
+  height: 70px;
+  width: 2px;
+  background: #EEEEEE;
+}
+
+.dashboard-section .job-post-card .job-card {
+  padding: 24px;
+  margin: 0;
+}
+
+.dashboard-section .job-post-card .job-card:not(:last-of-type) {
+  border-bottom: 1px solid #EEEEEE;
+  margin: 16px 0;
+}
+
+.dashboard-section .job-post-card .job-card:hover {
+  background: #e5f5fc;
+}
+
+.dashboard-section .job-post-card .job-card:hover .user-action-content {
+  display: block !important;
+}
+
+.dashboard-section .job-post-card .job-card .job-header {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .dashboard-section .job-post-card .job-card .job-header {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+}
+
+.dashboard-section .job-post-card .job-card .job-header .user-profile {
+  width: 60px;
+  height: 60px;
+}
+
+.dashboard-section .job-post-card .job-card .job-header .user-profile > img {
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard-section .job-post-card .job-card .job-header .user-main-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 16px;
+}
+
+.dashboard-section .job-post-card .job-card .job-header .user-main-content label {
+  font-size: 1rem;
+}
+
+@media (max-width: 576px) {
+  .dashboard-section .job-post-card .job-card .job-header .user-main-content label {
+    font-size: 0.8rem;
+  }
+}
+
+.dashboard-section .job-post-card .job-card .job-header .user-main-content label > span {
+  color: #8A92A6;
+  font-weight: normal !important;
+}
+
+.dashboard-section .job-post-card .job-card .job-header .user-main-content label .material-icons {
+  font-size: 14px;
+  color: #0C1A27;
+}
+
+.dashboard-section .job-post-card .job-card .job-header .user-main-content .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 0 8px;
+  background: black;
+  color: black;
+  display: block;
+}
+
+.dashboard-section .job-post-card .job-card .job-header .user-action-content {
+  display: none;
+}
+
+.dashboard-section .job-post-card .job-card .job-header .user-action-content a, .dashboard-section .job-post-card .job-card .job-header .user-action-content .btn {
+  margin-right: 8px;
+}
+
+.dashboard-section .job-post-card .job-card .job-header .user-action-content a > span {
+  color: #15759A;
+}
+
+.dashboard-section .job-post-card .job-card .job-content > p {
+  font-size: 14px;
+  color: #727374;
+  padding: 0 24px;
+  margin-top: 16px;
+}
+
+.dashboard-section .job-post-card .card-body {
+  padding: 0;
+}
+
+.dashboard-section .expert-card {
+  border: 1px solid #EEEEEE;
+  border-radius: 16px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-section .expert-card {
+    margin-bottom: 24px;
+  }
+}
+
+.dashboard-section .expert-card .image-card {
+  height: 320px;
+  width: 250px;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .dashboard-section .expert-card .image-card {
+    height: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .dashboard-section .expert-card .image-card {
+    height: 200px;
+    width: 100%;
+  }
+}
+
+.dashboard-section .expert-card .image-card img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media (max-width: 576px) {
+  .dashboard-section .expert-card .image-card img {
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+}
+
+.dashboard-section .expert-card .content-card {
+  padding: 16px;
+}
+
+.dashboard-section .expert-card .content-card h6 {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.dashboard-section .expert-card .content-card label {
+  color: #8A92A6;
+  font-size: 14px;
+}
+
+.dashboard-section .expert-card .content-card p {
+  font-size: 12px;
+  margin-top: 75px;
+}
+
+@media (max-width: 576px) {
+  .dashboard-section .expert-card .content-card p {
+    margin-top: 24px;
+  }
+}
+
+.dashboard-section .course-card {
+  border: 1px solid #EEEEEE !important;
+  border-radius: 16px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background: transparent;
+}
+
+.dashboard-section .course-card .card-img-top {
+  width: 100%;
+  height: 120px;
+}
+
+.dashboard-section .course-card .card-body .card-title {
+  font-size: 14px;
+  font-family: 600;
+}
+
+.dashboard-section .course-card .card-body .card-text {
+  text-transform: uppercase;
+  color: #8A92A6;
+  font-size: 12px;
+}
+
+.dashboard-section .filter-card .filter-block > .form-control {
+  border-radius: 50px;
+  background: #eee;
+  padding: 24px;
+  border: 1px solid #EEEEEE;
+  margin-bottom: 24px;
+}
+
+.dashboard-section .filter-card .filter-accordian .card {
+  background: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
+}
+
+.dashboard-section .filter-card .filter-accordian .card > .card-header {
+  border: none;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dashboard-section .filter-card .filter-accordian .card > .card-header .btn-link {
+  color: #0C1A27;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .dashboard-section .filter-card .filter-accordian .card > .card-header .btn-link {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 134px;
+  }
+}
+
+.dashboard-section .filter-card .filter-accordian .card .card-body {
+  padding-bottom: 0;
+  border-bottom: 1px solid #EEEEEE;
+  margin-bottom: 8px;
+}
+
+.dashboard-section .filter-card .filter-accordian .card .card-body ul {
+  padding: 0;
+}
+
+.dashboard-section .filter-card .filter-accordian .card .card-body ul li {
+  list-style-type: none;
+}
+
+.dashboard-section .candidate-card {
+  border: 1px solid #EEEEEE;
+  border-radius: 16px;
+  position: relative;
+  padding-top: 50px;
+  margin: 16px 8px;
+}
+
+.dashboard-section .candidate-card .top-pick-label {
+  height: 40px;
+  background: #F05454;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  padding: 8px;
+  color: #fff;
+  position: absolute;
+  right: 0;
+  top: 16px;
+}
+
+.dashboard-section .candidate-card .user-avatar {
+  width: 140px;
+  height: 140px;
+  display: block;
+  margin: 0 auto;
+}
+
+.dashboard-section .candidate-card .user-avatar img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.dashboard-section .posted-job-card {
+  padding: 24px;
+  border: 1px solid #EEEEEE;
+}
+
+.dashboard-section .posted-job-card .header-card .header-image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.dashboard-section .posted-job-card .header-card .header-image img {
+  width: 60px;
+  height: 60px;
+}
+
+.dashboard-section .posted-job-card .header-card .user-profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 12px;
+}
+
+.dashboard-section .posted-job-card .header-card .user-profile .user-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid #EEEEEE;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 16px;
+}
+
+.dashboard-section .posted-job-card .header-card .user-profile .user-content h5 {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.dashboard-section .posted-job-card .header-card .user-profile .user-content label {
+  font-size: 0.6rem;
+}
+
+.dashboard-section .recommended-expert-card-content .expert-image {
+  width: 60px;
+  height: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.dashboard-section .recommended-expert-card-content .user-profile h6 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.dashboard-section .recommended-expert-card-content .user-profile .designation {
+  font-size: 0.8rem;
+  color: #727374;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -1189,426 +1805,5 @@ body::-webkit-scrollbar-thumb {
   max-width: -webkit-fit-content !important;
   max-width: -moz-fit-content !important;
   max-width: fit-content !important;
-}
-
-.dashboard-section {
-  position: relative;
-}
-
-.dashboard-section .profile-completion {
-  background: #F05454;
-  border: none;
-  color: #fff !important;
-}
-
-.dashboard-section .profile-completion .btn {
-  border-color: #fff !important;
-  color: #fff !important;
-}
-
-.dashboard-section .negative-top-offset {
-  position: absolute;
-  top: 145px;
-  width: 100%;
-}
-
-.dashboard-section .banner {
-  width: 100%;
-  height: 200px;
-}
-
-.dashboard-section .banner > img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.dashboard-section .card {
-  -webkit-box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
-          box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
-  background: white;
-  border-radius: 16px;
-}
-
-.dashboard-section .card > .card-header {
-  background: none;
-}
-
-.dashboard-section .card > .card-header > h6 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 0;
-}
-
-.dashboard-section .card > .card-header a {
-  color: inherit !important;
-  font-size: 20px;
-}
-
-.dashboard-section .profile-card .user-profile {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 24px;
-}
-
-.dashboard-section .profile-card .user-profile > .user-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-}
-
-@media (max-width: 768px) {
-  .dashboard-section .profile-card .user-profile > .user-image {
-    width: 60px;
-    height: 60px;
-  }
-}
-
-.dashboard-section .profile-card .user-profile > .user-image > img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.dashboard-section .profile-card .user-profile .user-content {
-  margin-left: 16px;
-}
-
-.dashboard-section .profile-card .user-profile .user-content label {
-  font-size: 14px;
-  color: #8A92A6;
-}
-
-.dashboard-section .profile-card .card-box {
-  padding: 24px 0 0;
-  -webkit-box-shadow: 0px 10px 13px rgba(17, 38, 146, 0.05);
-          box-shadow: 0px 10px 13px rgba(17, 38, 146, 0.05);
-  border-radius: 8px;
-  margin-right: 24px;
-}
-
-.dashboard-section .profile-card .card-box .card-content label {
-  color: #8A92A6;
-}
-
-.dashboard-section .profile-card .card-box .card-content span {
-  color: #1AA053;
-}
-
-.dashboard-section .profile-card .card-box .card-image {
-  width: 325px;
-  height: 160px;
-}
-
-@media (max-width: 768px) {
-  .dashboard-section .profile-card .card-box .card-image {
-    display: none;
-  }
-}
-
-.dashboard-section .profile-card .card-box .card-image img {
-  width: 100%;
-  height: 100%;
-}
-
-.dashboard-section .profile-card .upload-customised {
-  border: 1px dashed #1AA053;
-  background: #f0fcf5;
-  color: #1AA053;
-  position: relative;
-}
-
-@media (max-width: 768px) {
-  .dashboard-section .profile-card .upload-customised {
-    height: 100%;
-    margin-top: 24px;
-  }
-}
-
-.dashboard-section .profile-card .upload-customised input {
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  z-index: 2;
-}
-
-.dashboard-section .profile-card .upload-customised div {
-  position: absolute;
-  top: 134px;
-  left: 64px;
-  text-align: center;
-  z-index: 1;
-}
-
-@media (max-width: 768px) {
-  .dashboard-section .profile-card .upload-customised div {
-    position: relative;
-    top: 0;
-    left: 0;
-  }
-}
-
-.dashboard-section .job-post-card .job-card {
-  padding: 24px;
-  margin: 0;
-}
-
-.dashboard-section .job-post-card .job-card:not(:last-of-type) {
-  border-bottom: 1px solid #EEEEEE;
-  margin: 16px 0;
-}
-
-.dashboard-section .job-post-card .job-card:hover {
-  background: #e5f5fc;
-}
-
-.dashboard-section .job-post-card .job-card:hover .user-action-content {
-  display: block !important;
-}
-
-.dashboard-section .job-post-card .job-card .job-header {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-@media (max-width: 768px) {
-  .dashboard-section .job-post-card .job-card .job-header {
-    -webkit-box-orient: vertical !important;
-    -webkit-box-direction: normal !important;
-        -ms-flex-direction: column !important;
-            flex-direction: column !important;
-  }
-}
-
-.dashboard-section .job-post-card .job-card .job-header .user-profile {
-  width: 60px;
-  height: 60px;
-}
-
-.dashboard-section .job-post-card .job-card .job-header .user-profile > img {
-  width: 100%;
-  height: 100%;
-}
-
-.dashboard-section .job-post-card .job-card .job-header .user-main-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin-left: 16px;
-}
-
-.dashboard-section .job-post-card .job-card .job-header .user-main-content label {
-  font-size: 1rem;
-}
-
-@media (max-width: 576px) {
-  .dashboard-section .job-post-card .job-card .job-header .user-main-content label {
-    font-size: 0.8rem;
-  }
-}
-
-.dashboard-section .job-post-card .job-card .job-header .user-main-content label > span {
-  color: #8A92A6;
-  font-weight: normal !important;
-}
-
-.dashboard-section .job-post-card .job-card .job-header .user-main-content label .material-icons {
-  font-size: 14px;
-  color: #0C1A27;
-}
-
-.dashboard-section .job-post-card .job-card .job-header .user-main-content .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin: 0 8px;
-  background: black;
-  color: black;
-  display: block;
-}
-
-.dashboard-section .job-post-card .job-card .job-header .user-action-content {
-  display: none;
-}
-
-.dashboard-section .job-post-card .job-card .job-header .user-action-content a, .dashboard-section .job-post-card .job-card .job-header .user-action-content .btn {
-  margin-right: 8px;
-}
-
-.dashboard-section .job-post-card .job-card .job-header .user-action-content a > span {
-  color: #15759A;
-}
-
-.dashboard-section .job-post-card .job-card .job-content > p {
-  font-size: 14px;
-  color: #727374;
-  padding: 0 24px;
-  margin-top: 16px;
-}
-
-.dashboard-section .job-post-card .card-body {
-  padding: 0;
-}
-
-.dashboard-section .expert-card {
-  border: 1px solid #EEEEEE;
-  border-radius: 16px;
-}
-
-@media (max-width: 768px) {
-  .dashboard-section .expert-card {
-    margin-bottom: 24px;
-  }
-}
-
-.dashboard-section .expert-card .image-card {
-  height: 320px;
-  width: 250px;
-  padding: 0;
-}
-
-@media (max-width: 768px) {
-  .dashboard-section .expert-card .image-card {
-    height: 100%;
-  }
-}
-
-@media (max-width: 576px) {
-  .dashboard-section .expert-card .image-card {
-    height: 200px;
-    width: 100%;
-  }
-}
-
-.dashboard-section .expert-card .image-card img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-@media (max-width: 576px) {
-  .dashboard-section .expert-card .image-card img {
-    -o-object-fit: contain;
-       object-fit: contain;
-  }
-}
-
-.dashboard-section .expert-card .content-card {
-  padding: 16px;
-}
-
-.dashboard-section .expert-card .content-card h6 {
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.dashboard-section .expert-card .content-card label {
-  color: #8A92A6;
-  font-size: 14px;
-}
-
-.dashboard-section .expert-card .content-card p {
-  font-size: 12px;
-  margin-top: 75px;
-}
-
-@media (max-width: 576px) {
-  .dashboard-section .expert-card .content-card p {
-    margin-top: 24px;
-  }
-}
-
-.dashboard-section .course-card {
-  border: 1px solid #EEEEEE !important;
-  border-radius: 16px;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  background: transparent;
-}
-
-.dashboard-section .course-card .card-img-top {
-  width: 100%;
-  height: 120px;
-}
-
-.dashboard-section .course-card .card-body .card-title {
-  font-size: 14px;
-  font-family: 600;
-}
-
-.dashboard-section .course-card .card-body .card-text {
-  text-transform: uppercase;
-  color: #8A92A6;
-  font-size: 12px;
-}
-
-.dashboard-section .filter-card .filter-block > .form-control {
-  border-radius: 50px;
-  background: #eee;
-  padding: 24px;
-  border: 1px solid #EEEEEE;
-  margin-bottom: 24px;
-}
-
-.dashboard-section .filter-card .filter-accordian .card {
-  background: transparent;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  border: none;
-}
-
-.dashboard-section .filter-card .filter-accordian .card > .card-header {
-  border: none;
-  padding: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.dashboard-section .filter-card .filter-accordian .card > .card-header .btn-link {
-  color: #0C1A27;
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-@media (max-width: 768px) {
-  .dashboard-section .filter-card .filter-accordian .card > .card-header .btn-link {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 134px;
-  }
-}
-
-.dashboard-section .filter-card .filter-accordian .card .card-body {
-  padding-bottom: 0;
-  border-bottom: 1px solid #EEEEEE;
-  margin-bottom: 8px;
-}
-
-.dashboard-section .filter-card .filter-accordian .card .card-body ul {
-  padding: 0;
-}
-
-.dashboard-section .filter-card .filter-accordian .card .card-body ul li {
-  list-style-type: none;
 }
 /*# sourceMappingURL=styles.css.map */

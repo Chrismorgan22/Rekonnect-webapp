@@ -1,0 +1,583 @@
+//dashboard
+.dashboard-section {
+    position:relative;
+
+    .profile-completion {
+        background: $emphasis-color;
+        border: none;
+        color: $text-white !important;
+        .btn {
+            border-color: $text-white !important;
+            color: $text-white !important;
+        }
+    }
+
+    .negative-top-offset {
+        position: absolute;
+        top: 205px;
+        width: 100%;
+    }
+
+    //banner css
+    .banner {
+        width: 100%;
+        height: 200px;
+
+        & > img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    //common card view
+    .card {
+        box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
+        background: white;
+        border-radius: 16px;
+
+        & > .card-header {
+            background: none;
+
+            & > h6 {
+                font-size: 1.2rem;
+                font-weight: $font-bold;
+                margin-bottom: 0;
+            }
+
+            a {
+                color: inherit !important;
+                font-size: 20px;
+            }
+        }
+    }
+
+    .profile-card {
+        .user-profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+
+            & > .user-image {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+
+                @media (max-width: $information-mobile-md) {
+                    width: 60px;
+                    height: 60px;
+                }
+
+                & > img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .user-content {
+                margin-left: 16px;
+                & label {
+                    font-size: 14px;
+                    color: $text-input-color;
+                }
+            }
+        }
+
+        .card-box {
+            padding: 24px 0 0;
+            box-shadow: 0px 10px 13px rgba(17, 38, 146, 0.05);
+            border-radius: 8px;
+            margin-right: 24px;
+
+            .card-content {
+                & label {
+                    color: $text-input-color;
+                }
+
+                & span {
+                    color: #1AA053;
+                }
+            }
+
+            .card-image {
+                width: 325px;
+                height:160px;
+
+                @media (max-width: $information-mobile-md) {
+                    display: none;
+                }
+
+                & img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        .upload-customised {
+            border: 1px dashed #1AA053;
+            background: lighten(#1AA053, 60%);
+            color: #1AA053;
+            position: relative;
+
+            @media (max-width: $information-mobile-md) {
+                height: 100%;
+                margin-top: 24px;
+            }
+
+            & input {
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                z-index: 2;
+            }
+
+            & div {
+                position: absolute;
+                top: 134px;
+                left: 64px;
+                text-align: center;
+                z-index: 1;
+
+                @media (max-width: $information-mobile-md) {
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                }
+                
+            }
+        }
+
+        
+
+        .employer-card-box{
+            padding: 24px 0 0;
+            box-shadow: 0px 10px 13px rgba(17, 38, 146, 0.05);
+            border-radius: 8px;
+            margin-right: 24px;
+
+            .card-content {
+                & label {
+                    color: $text-input-color;
+                }
+
+                & span {
+                    color: #1AA053;
+                }
+
+                .dropdown {
+                    .btn.btn-secondary {
+                        border: none;
+                        color: $text-color;
+                        padding: 0;
+
+                        &:focus {
+                            box-shadow: none;
+                        }
+                    }
+                }
+            }
+
+            .card-text {
+                & .d-flex {
+                    color: $text-color-light;
+
+                    h5 {
+                        color: $text-color;
+                        margin-bottom: 0;
+                    }
+
+                    span {
+                        width: 15px;
+                        height: 15px;
+                        border-radius: 50%;
+                    }
+
+                    .light-blue {
+                        background: #85F4FA;
+                    }
+
+                    .dark-blue {
+                        background: #3A57E8;
+                    }
+                }
+            }
+
+            .card-image {
+                width: 150px;
+                height: 200px;
+                display: block;
+                margin: 0 auto;
+
+                &.height-150 {
+                    height: 150px !important;
+                }
+
+                @media (max-width: $information-mobile-md) {
+                    display: none;
+                }
+
+                & img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .level-one-job-reach {
+                padding: 0 32px;
+                text-align: center;
+                margin-bottom: 24px;
+
+                & + span {
+                    height: 70px;
+                    width: 2px;
+                    background: $color-border;
+                }
+            }
+        }
+    }
+
+    //Candidate Dashboard
+    .job-post-card {
+        .job-card {
+            padding: 24px;
+            margin: 0;
+        
+            &:not(:last-of-type) {
+                border-bottom: 1px solid $color-border;
+                margin: 16px 0;
+            }
+
+            &:hover {
+                background: lighten($color-primary, 60%);
+                .user-action-content {
+                    display: block !important;
+                }
+            }
+
+           
+            .job-header {
+                justify-content: space-between;
+
+                @media (max-width: $information-mobile-md) {
+                    flex-direction: column !important;
+                }
+
+                .user-profile {
+                    width: 60px;
+                    height: 60px;
+
+                    & > img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .user-main-content {
+                    display:  flex;
+                    flex-direction: column;
+                    margin-left: 16px;
+
+                    & label {
+                        font-size: 1rem;
+
+                        @media (max-width: $information-mobile-sm) {
+                            font-size: 0.8rem;
+                        }
+
+                        & > span:not(.dot, .material-icons) {
+                            color: $text-input-color;
+                            font-weight: normal !important;
+                        }
+
+                        .material-icons {
+                            font-size: 14px;
+                            color: $text-color;
+                        }
+                      
+                    }
+
+                    .dot {
+                        width: 8px;
+                        height: 8px;
+                        border-radius: 50%;
+                        margin: 0 8px;
+                        background: black;
+                        color: black;
+                        display: block;
+                    }
+                }
+
+                .user-action-content {
+                    display: none;
+                    a, .btn {
+                        margin-right: 8px;
+                    } 
+
+                    a {
+                        & > span {
+                            color: $color-primary;
+                        }
+                    }
+                }
+            }
+
+            .job-content {
+                & > p{
+                    font-size: 14px;
+                    color: $text-grey;
+                    padding: 0 24px;
+                    margin-top: 16px;
+                }
+            }
+        }
+
+        .card-body {
+            padding: 0;
+        }
+    }
+
+    .expert-card {
+        border: 1px solid $color-border;
+        border-radius: 16px;
+
+        @media (max-width: $information-mobile-md) {
+            margin-bottom: 24px;
+        }
+
+        .image-card {
+            height: 320px;
+            width: 250px;
+            padding: 0;
+
+            @media (max-width: $information-mobile-md) {
+                height: 100%;
+            }
+
+            @media (max-width: $information-mobile-sm) {
+                height: 200px;
+                width: 100%;
+            }
+
+            & img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+
+                @media (max-width: $information-mobile-sm) {
+                    object-fit: contain;
+                }
+            }
+        }
+
+        .content-card {
+            padding: 16px;
+
+            & h6 {
+                font-weight: $font-semibold;
+                margin-bottom: 8px;
+            }
+
+            & label {
+                color: $text-input-color;
+                font-size: 14px;
+            }
+
+            & p {
+                font-size: 12px;
+                margin-top: 75px;
+
+                @media (max-width: $information-mobile-sm) {
+                    margin-top: 24px;
+                }
+            }
+        }
+
+       
+    }
+
+    .course-card {
+        border: 1px solid $color-border !important;
+        border-radius: 16px;
+        box-shadow: none;
+        background: transparent;
+
+        .card-img-top {
+            width: 100%;
+            height: 120px;
+        }
+
+        .card-body {
+            .card-title {
+                font-size: 14px;
+                font-family: $font-semibold;
+            }
+
+            .card-text {
+                text-transform: uppercase;
+                color: $text-input-color;
+                font-size: 12px;
+            }
+        }
+    }
+
+    .filter-card {
+        .filter-block {
+             & > .form-control {
+                 border-radius: 50px;
+                 background: #eee;
+                 padding: 24px;
+                 border: 1px solid $color-border;
+                 margin-bottom: 24px;
+             }
+        }
+
+        .filter-accordian {
+            .card {
+                background: transparent;
+                box-shadow: none;
+                border: none;
+                & > .card-header {
+                    border: none;
+                    padding: 0;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    
+                    .btn-link {
+                        color: $text-color;
+                        font-weight: $font-semibold;
+                        font-size: 1rem;
+
+                        @media (max-width: $information-mobile-md) {
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            width: 134px;
+                        }
+                    }
+                }
+
+                &  .card-body {
+                    padding-bottom: 0;
+                    border-bottom: 1px solid $color-border;
+                    margin-bottom: 8px;
+
+
+
+                    ul {
+                        padding: 0;
+
+                        li {
+                            list-style-type: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //Employer Dashboard
+
+    .candidate-card {
+        border: 1px solid $color-border;
+        border-radius: 16px;
+        position: relative;
+        padding-top: 50px;
+        margin: 16px 8px;
+
+        .top-pick-label {
+            height: 40px;
+            background: $emphasis-color;
+            border-top-left-radius: 16px;
+            border-bottom-left-radius: 16px;
+            padding: 8px;
+            color: $text-white;
+            position: absolute;
+            right: 0;
+            top: 16px;
+        }
+
+        .user-avatar {
+            width: 140px;
+            height: 140px;
+            display: block;
+            margin: 0 auto;
+
+            & img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .posted-job-card {
+        padding: 24px;
+        border: 1px solid $color-border;
+
+        .header-card {
+            .header-image {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                & img {
+                    width: 60px;
+                    height: 60px;
+                }
+            }
+
+            .user-profile {
+                display: flex;
+                align-items: center;
+                margin-bottom: 12px;
+
+                .user-image {
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+                    border: 1px solid $color-border;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 16px;
+                }
+
+                .user-content {
+                    h5 {
+                        font-size: 1rem;
+                        margin-bottom: 0;
+                    }
+
+                    label {
+                        font-size: 0.6rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .recommended-expert-card-content {
+        .expert-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 16px;
+        }
+
+        .user-profile {
+            h6 {
+                font-size: 1rem;
+                margin: 0;
+            }
+
+            .designation {
+                font-size: 0.8rem;
+                color: $text-grey;
+            }
+        }
+    }
+}
