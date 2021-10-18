@@ -863,6 +863,26 @@
   list-style-type: none;
 }
 
+@media (max-width: 576px) {
+  .dashboard-section .employer-header-band {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .dashboard-section .employer-header-band .user-content-action {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .dashboard-section .employer-header-band .user-content-action .btn.btn-lg {
+    padding: 0.8rem;
+    font-size: .875rem;
+    line-height: 1;
+    margin-top: 16px;
+  }
+}
+
 .dashboard-section .candidate-card {
   border: 1px solid #EEEEEE;
   border-radius: 16px;
@@ -972,6 +992,21 @@
 .dashboard-section .recommended-expert-card-content .user-profile .designation {
   font-size: 0.8rem;
   color: #727374;
+}
+
+.dashboard-section .job-posted-table-card .card-body {
+  padding: 0;
+}
+
+.dashboard-section .job-posted-table-card .card-body .table thead {
+  border: none;
+}
+
+.dashboard-section .job-posted-table-card .card-body .table thead th {
+  border: none;
+  color: #727374;
+  text-transform: uppercase;
+  font-weight: normal !important;
 }
 
 body {

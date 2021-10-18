@@ -479,6 +479,22 @@
     }
 
     //Employer Dashboard
+    .employer-header-band {
+        @media (max-width: $information-mobile-sm) {
+           flex-direction: column;
+
+           .user-content-action {
+               display: flex;
+
+               .btn.btn-lg {
+                    padding: 0.8rem;
+                    font-size: .875rem;
+                    line-height: 1;
+                    margin-top: 16px;
+               }
+           }
+        }
+    }
 
     .candidate-card {
         border: 1px solid $color-border;
@@ -577,6 +593,23 @@
             .designation {
                 font-size: 0.8rem;
                 color: $text-grey;
+            }
+        }
+    }
+
+    .job-posted-table-card {
+        .card-body {
+            padding: 0;
+            .table {
+                thead {
+                    th {
+                        border: none;
+                        color: $text-grey;
+                        text-transform: uppercase;
+                        font-weight: normal !important;
+                    }
+                    border: none;
+                }
             }
         }
     }
