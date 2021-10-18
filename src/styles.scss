@@ -980,6 +980,10 @@ body {
                     & label {
                         font-size: 1rem;
 
+                        @media (max-width: $information-mobile-sm) {
+                            font-size: 0.8rem;
+                        }
+
                         & > span:not(.dot, .material-icons) {
                             color: $text-input-color;
                             font-weight: normal !important;
@@ -1049,10 +1053,19 @@ body {
                 height: 100%;
             }
 
+            @media (max-width: $information-mobile-sm) {
+                height: 200px;
+                width: 100%;
+            }
+
             & img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+
+                @media (max-width: $information-mobile-sm) {
+                    object-fit: contain;
+                }
             }
         }
 
@@ -1072,6 +1085,10 @@ body {
             & p {
                 font-size: 12px;
                 margin-top: 75px;
+
+                @media (max-width: $information-mobile-sm) {
+                    margin-top: 24px;
+                }
             }
         }
     }

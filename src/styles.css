@@ -1412,6 +1412,12 @@ body::-webkit-scrollbar-thumb {
   font-size: 1rem;
 }
 
+@media (max-width: 576px) {
+  .dashboard-section .job-post-card .job-card .job-header .user-main-content label {
+    font-size: 0.8rem;
+  }
+}
+
 .dashboard-section .job-post-card .job-card .job-header .user-main-content label > span {
   color: #8A92A6;
   font-weight: normal !important;
@@ -1478,11 +1484,25 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
+@media (max-width: 576px) {
+  .dashboard-section .expert-card .image-card {
+    height: 200px;
+    width: 100%;
+  }
+}
+
 .dashboard-section .expert-card .image-card img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+@media (max-width: 576px) {
+  .dashboard-section .expert-card .image-card img {
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
 }
 
 .dashboard-section .expert-card .content-card {
@@ -1502,6 +1522,12 @@ body::-webkit-scrollbar-thumb {
 .dashboard-section .expert-card .content-card p {
   font-size: 12px;
   margin-top: 75px;
+}
+
+@media (max-width: 576px) {
+  .dashboard-section .expert-card .content-card p {
+    margin-top: 24px;
+  }
 }
 
 .dashboard-section .course-card {
