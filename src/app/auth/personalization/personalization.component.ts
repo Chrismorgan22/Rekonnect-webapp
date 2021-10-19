@@ -597,76 +597,77 @@ export class PersonalizationComponent implements OnInit {
   }
   saveFinalData() {
     const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
-    if (this.userRoleForm.controls.user_role.value === '1') {
-      const json = {
-        "user_id": localData._id,
-        "profile_url": "wwww",
-        "address_details": {
-          "street": this.addressForm.controls.street.value,
-          "state": JSON.parse(this.addressForm.controls.state.value),
-          "zip_code": this.addressForm.controls.zip_code.value,
-          "landmark": this.addressForm.controls.landmark.value,
-          "organization_strength": this.addressForm.controls.organization_strength.value
-        },
-        "education_data": {
-          "education_type": this.educationTypeForm.controls.education_type.value,
-          "education_details": {
-            "school_name": this.educationDetailForm.controls.school_name.value,
-            "degree": this.educationDetailForm.controls.degree.value,
-            "field_of_study": this.educationDetailForm.controls.field_of_study.value,
-            "start_date": {
-              "month": this.educationDetailForm.controls.start_month.value,
-              "year": this.educationDetailForm.controls.start_year.value,
-            },
-            "end_date": {
-              "month": this.educationDetailForm.controls.end_month.value,
-              "year": this.educationDetailForm.controls.end_year.value,
-            },
-            "grade": this.educationDetailForm.controls.grade.value,
-            "currently_studying": this.educationDetailForm.controls.currently_studying.value,
-            "description": this.educationDetailForm.controls.description.value,
-          }
-        },
-        "experience_data": {
-          "experience_type": this.experienceTypeForm.controls.experience_type.value,
-          "experience_details": {
-            "designation": this.experienceDetailForm.controls.designation.value,
-            "company": this.experienceDetailForm.controls.company.value,
-            "location": JSON.parse(this.experienceDetailForm.controls.location.value),
-            "country": JSON.parse(this.experienceDetailForm.controls.country.value),
-            "start_date": this.experienceDetailForm.controls.start_date.value,
-            "end_date": this.experienceDetailForm.controls.end_date.value,
-            "currently_working": this.experienceDetailForm.controls.currently_working.value,
-            "job_description": this.experienceDetailForm.controls.job_description.value,
-          }
-        },
-        "soft_skills": this.lastFewBitsDetailForm.controls.soft_skills.value,
-        "technical_skills": this.lastFewBitsDetailForm.controls.technical_skills.value,
-        "current_career": JSON.parse(this.lastFewBitsDetailForm.controls.current_career.value),
-        "changecareer": this.lastFewBitsDetailForm.controls.changecareer.value,
-        "change_career": this.lastFewBitsDetailForm.controls.change_career.value !== undefined && this.lastFewBitsDetailForm.controls.change_career.value !== null && this.lastFewBitsDetailForm.controls.change_career.value !== '' ? JSON.parse(this.lastFewBitsDetailForm.controls.change_career.value) : '',
-        "passion": this.lastFewBitsDetailForm.controls.passion.value,
-        "languages": this.lastFewBitsDetailForm.controls.language.value,
-        "joining_status": this.lastFewBitsJoinDetailForm.controls.joining_status.value,
-        "join_within": this.lastFewBitsJoinDetailForm.controls.joining_within.value,
-        "on_board": this.onBoardDetailForm.controls.onboard.value
-      }
-      console.log(json)
-      this.SpinnerService.show()
-      this.authService.saveCandidateRegistration(json).subscribe(res => {
-        if (res.result === 'success') {
-          const body = {
-            user_id: localData._id
-          }
-          this.authService.updateCandidateStatus(body).subscribe(res => {
-            this.SpinnerService.hide();
-            this._toastrService.error(
-              'Registration successfully', 'Success'
-            )
-          })
+    // if (this.userRoleForm.controls.user_role.value === '1') {
+    const json = {
+      "user_id": localData._id,
+      "profile_url": "wwww",
+      "address_details": {
+        "street": this.addressForm.controls.street.value,
+        "state": JSON.parse(this.addressForm.controls.state.value),
+        "zip_code": this.addressForm.controls.zip_code.value,
+        "landmark": this.addressForm.controls.landmark.value,
+        "organization_strength": this.addressForm.controls.organization_strength.value
+      },
+      "education_data": {
+        "education_type": this.educationTypeForm.controls.education_type.value,
+        "education_details": {
+          "school_name": this.educationDetailForm.controls.school_name.value,
+          "degree": this.educationDetailForm.controls.degree.value,
+          "field_of_study": this.educationDetailForm.controls.field_of_study.value,
+          "start_date": {
+            "month": this.educationDetailForm.controls.start_month.value,
+            "year": this.educationDetailForm.controls.start_year.value,
+          },
+          "end_date": {
+            "month": this.educationDetailForm.controls.end_month.value,
+            "year": this.educationDetailForm.controls.end_year.value,
+          },
+          "grade": this.educationDetailForm.controls.grade.value,
+          "currently_studying": this.educationDetailForm.controls.currently_studying.value,
+          "description": this.educationDetailForm.controls.description.value,
         }
-        $('#almostdonemodal').modal('hide')
-      })
+      },
+      "experience_data": {
+        "experience_type": this.experienceTypeForm.controls.experience_type.value,
+        "experience_details": {
+          "designation": this.experienceDetailForm.controls.designation.value,
+          "company": this.experienceDetailForm.controls.company.value,
+          "location": JSON.parse(this.experienceDetailForm.controls.location.value),
+          "country": JSON.parse(this.experienceDetailForm.controls.country.value),
+          "start_date": this.experienceDetailForm.controls.start_date.value,
+          "end_date": this.experienceDetailForm.controls.end_date.value,
+          "currently_working": this.experienceDetailForm.controls.currently_working.value,
+          "job_description": this.experienceDetailForm.controls.job_description.value,
+        }
+      },
+      "soft_skills": this.lastFewBitsDetailForm.controls.soft_skills.value,
+      "technical_skills": this.lastFewBitsDetailForm.controls.technical_skills.value,
+      "current_career": JSON.parse(this.lastFewBitsDetailForm.controls.current_career.value),
+      "changecareer": this.lastFewBitsDetailForm.controls.changecareer.value,
+      "change_career": this.lastFewBitsDetailForm.controls.change_career.value !== undefined && this.lastFewBitsDetailForm.controls.change_career.value !== null && this.lastFewBitsDetailForm.controls.change_career.value !== '' ? JSON.parse(this.lastFewBitsDetailForm.controls.change_career.value) : '',
+      "passion": this.lastFewBitsDetailForm.controls.passion.value,
+      "languages": this.lastFewBitsDetailForm.controls.language.value,
+      "joining_status": this.lastFewBitsJoinDetailForm.controls.joining_status.value,
+      "join_within": this.lastFewBitsJoinDetailForm.controls.joining_within.value,
+      "on_board": this.onBoardDetailForm.controls.onboard.value
     }
+    console.log(json)
+    this.SpinnerService.show()
+    this.authService.saveCandidateRegistration(json).subscribe(res => {
+      if (res.result === 'success') {
+        const body = {
+          user_id: localData._id
+        }
+        this.authService.updateCandidateStatus(body).subscribe(res => {
+          this.SpinnerService.hide();
+          this._toastrService.error(
+            'Registration successfully', 'Success'
+          )
+        })
+      }
+      $('#almostdonemodal').modal('hide');
+      this.getUserTempData();
+    })
+    // }
   }
 }
