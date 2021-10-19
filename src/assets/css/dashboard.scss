@@ -613,4 +613,173 @@
             }
         }
     }
+
+    //expert Dashboard
+    .expert-card-box{
+        padding: 24px 0 0;
+        box-shadow: 0px 10px 13px rgba(17, 38, 146, 0.05);
+        border-radius: 8px;
+        margin-right: 24px;
+
+        .card-text {
+            &.text-green {
+                color: #1AA053;
+            }
+
+            &.text-orange {
+                color: $emphasis-color;
+            }
+        }
+
+        .card-action {
+            display: flex;
+            align-items: center;
+
+            button {
+                width: 30px;
+                height: 30px;
+                background: lighten($color-primary, 60%);
+                border-radius: 4px;
+                margin-right: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+
+    .job-tab-card {
+        .card-body {
+            .nav-tabs {
+                height: 60px;
+
+                li {
+                    min-width: 180px;
+                    text-align: center;
+                }
+
+                .nav-link {
+                    display: flex;
+                    align-items: center;
+                    height: 100%;
+                    font-size: 1rem;
+                    font-weight: $font-medium;
+                    color: $text-color;
+
+                    &.active ,
+                    &:focus,
+                    &:hover {
+                        border-top: none;
+                        border-left: none;
+                        border-right: none;
+                        border-bottom: 3px solid $emphasis-color;
+                    }
+                }
+            }
+
+            .tab-content {
+                padding: 0 24px 24px;
+
+                .session-card {
+                    border-radius: 0;
+                    .card-body {
+                        border-radius: 0;
+                        border-top: 4px solid #3A57E8;
+
+                        .breadcrumb-label {
+                            font-size: 0.8rem;
+                            color: $text-grey;
+                        }
+
+                        .card-text {
+                            color: $text-grey;
+                        }
+
+                        .card-link-text {
+                            color: $text-color-light;
+                            font-size: 14px;
+                        }
+
+                        .participants-content {
+                            label {
+                                font-size: 0.7rem;
+                                color: $text-color-light;
+                            }
+                        }
+
+                        .card-footer {
+                            background: none;
+                        }
+                    }
+                }
+            }
+
+         
+        }
+    }
+
+    .feedback-job-card {
+        .card-text {
+            & .d-flex {
+                color: $text-color-light;
+
+                h5 {
+                    color: $text-color;
+                    margin-bottom: 0;
+                    font-size: 0.8rem;
+                }
+
+                span {
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                }
+
+                .light-blue {
+                    background: #85F4FA;
+                }
+
+                .dark-blue {
+                    background: #3A57E8;
+                }
+            }
+        }
+
+        .card-image {
+            width: 150px;
+            height: 200px;
+            display: block;
+            margin: 0 auto;
+
+            &.height-150 {
+                height: 150px !important;
+            }
+
+            @media (max-width: $information-mobile-md) {
+                display: none;
+            }
+
+            & img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    .video-card-section {
+        .video-card {
+            video {
+                border-radius: 16px;
+                margin-bottom: 24px;
+            }
+        }
+
+        .action-btns {
+            .btn {
+                background: none;
+                border: 1px solid $color-border;
+                color: $text-grey;
+            }
+        }
+    }
 }

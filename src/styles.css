@@ -222,6 +222,12 @@
           justify-content: center;
 }
 
+.justify-content-flex-end {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
 .justify-content-space-between {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -1007,6 +1013,170 @@
   color: #727374;
   text-transform: uppercase;
   font-weight: normal !important;
+}
+
+.dashboard-section .expert-card-box {
+  padding: 24px 0 0;
+  -webkit-box-shadow: 0px 10px 13px rgba(17, 38, 146, 0.05);
+          box-shadow: 0px 10px 13px rgba(17, 38, 146, 0.05);
+  border-radius: 8px;
+  margin-right: 24px;
+}
+
+.dashboard-section .expert-card-box .card-text.text-green {
+  color: #1AA053;
+}
+
+.dashboard-section .expert-card-box .card-text.text-orange {
+  color: #F05454;
+}
+
+.dashboard-section .expert-card-box .card-action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dashboard-section .expert-card-box .card-action button {
+  width: 30px;
+  height: 30px;
+  background: #e5f5fc;
+  border-radius: 4px;
+  margin-right: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.dashboard-section .job-tab-card .card-body .nav-tabs {
+  height: 60px;
+}
+
+.dashboard-section .job-tab-card .card-body .nav-tabs li {
+  min-width: 180px;
+  text-align: center;
+}
+
+.dashboard-section .job-tab-card .card-body .nav-tabs .nav-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #0C1A27;
+}
+
+.dashboard-section .job-tab-card .card-body .nav-tabs .nav-link.active, .dashboard-section .job-tab-card .card-body .nav-tabs .nav-link:focus, .dashboard-section .job-tab-card .card-body .nav-tabs .nav-link:hover {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 3px solid #F05454;
+}
+
+.dashboard-section .job-tab-card .card-body .tab-content {
+  padding: 0 24px 24px;
+}
+
+.dashboard-section .job-tab-card .card-body .tab-content .session-card {
+  border-radius: 0;
+}
+
+.dashboard-section .job-tab-card .card-body .tab-content .session-card .card-body {
+  border-radius: 0;
+  border-top: 4px solid #3A57E8;
+}
+
+.dashboard-section .job-tab-card .card-body .tab-content .session-card .card-body .breadcrumb-label {
+  font-size: 0.8rem;
+  color: #727374;
+}
+
+.dashboard-section .job-tab-card .card-body .tab-content .session-card .card-body .card-text {
+  color: #727374;
+}
+
+.dashboard-section .job-tab-card .card-body .tab-content .session-card .card-body .card-link-text {
+  color: #949597;
+  font-size: 14px;
+}
+
+.dashboard-section .job-tab-card .card-body .tab-content .session-card .card-body .participants-content label {
+  font-size: 0.7rem;
+  color: #949597;
+}
+
+.dashboard-section .job-tab-card .card-body .tab-content .session-card .card-body .card-footer {
+  background: none;
+}
+
+.dashboard-section .feedback-job-card .card-text .d-flex {
+  color: #949597;
+}
+
+.dashboard-section .feedback-job-card .card-text .d-flex h5 {
+  color: #0C1A27;
+  margin-bottom: 0;
+  font-size: 0.8rem;
+}
+
+.dashboard-section .feedback-job-card .card-text .d-flex span {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.dashboard-section .feedback-job-card .card-text .d-flex .light-blue {
+  background: #85F4FA;
+}
+
+.dashboard-section .feedback-job-card .card-text .d-flex .dark-blue {
+  background: #3A57E8;
+}
+
+.dashboard-section .feedback-job-card .card-image {
+  width: 150px;
+  height: 200px;
+  display: block;
+  margin: 0 auto;
+}
+
+.dashboard-section .feedback-job-card .card-image.height-150 {
+  height: 150px !important;
+}
+
+@media (max-width: 768px) {
+  .dashboard-section .feedback-job-card .card-image {
+    display: none;
+  }
+}
+
+.dashboard-section .feedback-job-card .card-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard-section .video-card-section .video-card video {
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+
+.dashboard-section .video-card-section .action-btns .btn {
+  background: none;
+  border: 1px solid #EEEEEE;
+  color: #727374;
 }
 
 body {
