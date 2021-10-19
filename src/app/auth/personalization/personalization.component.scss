@@ -13,6 +13,66 @@
     height: 440px;
     z-index: 0;
 }
-:host ::ng-deep .outlined-dotted-add-button{
+:host ::ng-deep .outlined-dotted-add-button {
     border-style: dotted !important;
+}
+$white: #fff;
+$green: #007e90;
+
+.middle {
+    width: 100%;
+    text-align: center;
+    h1 {
+        color: $white;
+    }
+    input[type="radio"] {
+        display: none;
+        
+        &:checked {
+            + .box {
+                background-color: $green;
+                span {
+                    color: white;
+                    &:before {
+                        transform: translateY(0px);
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+    .box {
+        width: 130px;
+        height: 40px;
+        padding-top: 5px;
+        background-color: #fff;
+        transition: all 250ms ease;
+        border: 1px solid #15759A;
+        span {
+            &:before {
+                display: block;
+                transform: translateY(-80px);
+                opacity: 0;
+                transition: all 300ms ease-in-out;
+                font-weight: normal;
+                color: white;
+            }
+        }
+    }
+
+    /* Made by */
+    p {
+        color: $white;
+        a {
+            text-decoration: underline;
+            color: #fff;
+        }
+        span {
+            &:after {
+                content: "\f0e7";
+                font-family: FontAwesome;
+                color: yellow;
+            }
+        }
+    }
 }
