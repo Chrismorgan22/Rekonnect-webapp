@@ -3,7 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { LinkedinResponseComponent } from './linkedin-response/linkedin-response.component';
 import { PersonalizationComponent } from './personalization/personalization.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-
+import {
+  AuthGuardService as AuthGuard
+} from '../services/auth-guard.service'
 const routes: Routes = [
   {
     path: 'user',
@@ -19,11 +21,13 @@ const routes: Routes = [
   },
   {
     path: 'personalization',
-    component: PersonalizationComponent
+    component: PersonalizationComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'welcome',
-    component: WelcomeComponent
+    component: WelcomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'linkedinLoginResponse',

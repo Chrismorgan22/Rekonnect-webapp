@@ -5,7 +5,9 @@ import { AboutComponent } from './about/about.component';
 import { LayoutComponent } from './layout.component';
 import { PostJobComponent } from './post-job/post-job.component';
 import { UserListComponent } from './user-list/user-list.component';
-
+import {
+  AuthGuardService as AuthGuard
+} from '../services/auth-guard.service'
 const routes: Routes = [
   {
     path: '',
@@ -25,7 +27,8 @@ const routes: Routes = [
       },
       {
         path: 'dashboard',
-        loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule)
+        loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+        canActivate: [AuthGuard]
       }
     ]
   }

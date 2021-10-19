@@ -17,41 +17,5 @@ export class PostJobComponent implements OnInit {
   constructor(private _layoutService: LayoutService, private _toastrService: ToastrService) { }
 
   ngOnInit(): void {
-    this.getLocationData();
-    this.getGraduationData();
-    this.getSpecializationData();
-  }
-  getLocationData() {
-    this._layoutService.getLocationList().subscribe(response => {
-      if (response.result !== 'fail') {
-        this.locationData = response.data;
-      } else {
-        this._toastrService.error(
-          response.message, response.result
-        )
-      }
-    })
-  }
-  getSpecializationData() {
-    this._layoutService.getSpecializationList().subscribe(response => {
-      if (response.result !== 'fail') {
-        this.specializationData = response.data;
-      } else {
-        this._toastrService.error(
-          response.message, response.result
-        )
-      }
-    })
-  }
-  getGraduationData() {
-    this._layoutService.getGraduationList().subscribe(response => {
-      if (response.result !== 'fail') {
-        this.graduationData = response.data;
-      } else {
-        this._toastrService.error(
-          response.message, response.result
-        )
-      }
-    })
   }
 }

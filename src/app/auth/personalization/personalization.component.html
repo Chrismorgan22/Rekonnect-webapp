@@ -20,9 +20,6 @@
                         sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
                         consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
                 </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <!-- <form class="section-form-content" [formGroup]="userRoleForm"
                 (ngSubmit)="userRoleFormSubmit('candidateModalCenter','candidateModalCenterupload')" novalidate> -->
@@ -114,9 +111,6 @@
                         sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
                         consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
                 </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
                 <form class="section-form-content" [formGroup]="addressForm"
@@ -217,9 +211,6 @@
                         amet,
                         consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
                 </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body d-flex justify-content-center">
                 <form class="section-form-content" [formGroup]="experienceTypeForm"
@@ -280,9 +271,6 @@
                         amet,
                         consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
                 </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
                 <form class="section-form-content" [formGroup]="experienceDetailForm"
@@ -424,9 +412,6 @@
                         amet,
                         consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
                 </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
                 <div class="container-fluid start-section  w-100">
@@ -475,9 +460,6 @@
                         amet,
                         consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
                 </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body d-flex justify-content-center">
                 <form class="section-form-content" [formGroup]="educationTypeForm"
@@ -538,9 +520,6 @@
                         amet,
                         consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
                 </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
                 <form class="section-form-content" [formGroup]="educationDetailForm"
@@ -717,100 +696,149 @@
                         amet,
                         consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
                 </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
-                <div class="container-fluid start-section  w-100">
-                    <div class="section-form-content">
-                        <div class="form-group">
-                            <input type="text" aria-describedby="softskills"
-                                placeholder="Soft Skills/ Behavioural Skills" size="lg" class="form-control" />
-                            <div class="selected-pill my-3">
-                                <span class="btn btn-selected-pill mr-3">Leadership</span>
-                                <span class="btn btn-selected-pill mr-3">Management</span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" aria-describedby="techskills" placeholder="IT Skills/ Technical Skills"
-                                size="lg" class="form-control" />
-                            <div class="selected-pill my-3">
-                                <span class="btn btn-selected-pill mr-3">CSS</span>
-                                <span class="btn btn-selected-pill mr-3">HTML</span>
-                                <span class="btn btn-selected-pill mr-3">Javascript</span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="btn-group custom-dropdown w-100">
-                                <button class="btn w-100 btn-secondary btn-lg dropdown-toggle" type="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Your current career
-                                </button>
-                                <div class="dropdown-menu">
-                                    ...
+                <form class="section-form-content" [formGroup]="lastFewBitsDetailForm"
+                    (ngSubmit)="lastFewBitsDetailsFormSubmit('candidateModallastbits','candidateModallastbitsfinal')"
+                    noValidate>
+                    <div class="container-fluid start-section  w-100">
+                        <div class="section-form-content">
+                            <div class="form-group">
+                                <ng-multiselect-dropdown [placeholder]="'Soft Skills/ Behavioural Skills'"
+                                    [settings]="dropdownSettings" [data]="dropdownList" formControlName="soft_skills"
+                                    (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                                </ng-multiselect-dropdown>
+                                <div *ngIf="lastFewBitsDetailSubmit && userSoftSkillDetails.soft_skills.errors"
+                                    class="invalid-feedback" style="display:block;">
+                                    <div *ngIf="userSoftSkillDetails.soft_skills.errors.required">Soft Skills/
+                                        Behavioural Skills
+                                        is required</div>
                                 </div>
+                                <!-- <input type="text" aria-describedby="softskills"
+                                    placeholder="Soft Skills/ Behavioural Skills" size="lg" class="form-control" /> -->
+                                <!-- <div class="selected-pill my-3">
+                                    <span class="btn btn-selected-pill mr-3">Leadership</span>
+                                    <span class="btn btn-selected-pill mr-3">Management</span>
+                                </div> -->
                             </div>
-                        </div>
-                        <div class="form-group mt-3 d-flex">
-                            <div class="form-row form-group mt-3 w-100 align-items-center">
-                                <div class="col">
-                                    <label for="exampleFormControlSelect2">Would you like to change your
-                                        career?</label>
+                            <div class="form-group">
+                                <ng-multiselect-dropdown [placeholder]="'IT Skills/ Technical Skills'"
+                                    [settings]="dropdownSettings" [data]="technicaldropdownList"
+                                    formControlName="technical_skills" (onSelect)="onItemSelect($event)"
+                                    (onSelectAll)="onSelectAll($event)">
+                                </ng-multiselect-dropdown>
+                                <div *ngIf="lastFewBitsDetailSubmit && userSoftSkillDetails.technical_skills.errors"
+                                    class="invalid-feedback" style="display:block;">
+                                    <div *ngIf="userSoftSkillDetails.technical_skills.errors.required">IT Skills/
+                                        Technical Skills
+                                        is required</div>
                                 </div>
-                                <div class="col">
-                                    <div class="input-group">
-                                        <div class="input-group-text custom-radio-group">
-                                            <input type="radio" aria-label="Radio button for following text input"
-                                                value="yes" type="radio" name="changecareer" id="yes">
-                                            <label>Yes</label>
-                                        </div>
-                                        <div class="input-group-text custom-radio-group">
-                                            <input type="radio" aria-label="Radio button for following text input"
-                                                value="no" type="radio" name="changecareer" id="no">
-                                            <label>No </label>
+                                <!-- <input type="text" aria-describedby="techskills"
+                                    placeholder="IT Skills/ Technical Skills" size="lg" class="form-control" />
+                                <div class="selected-pill my-3">
+                                    <span class="btn btn-selected-pill mr-3">CSS</span>
+                                    <span class="btn btn-selected-pill mr-3">HTML</span>
+                                    <span class="btn btn-selected-pill mr-3">Javascript</span>
+                                </div> -->
+                            </div>
+                            <div class="form-group">
+                                <select formControlName="current_career" class="form-control">
+                                    <option value="" selected disabled>Current Career</option>
+                                    <option *ngFor="let career of currentCareerDrp" value="{{career | json}}">
+                                        {{career.name}}</option>
+                                </select>
+                                <div *ngIf="lastFewBitsDetailSubmit && userSoftSkillDetails.current_career.errors"
+                                    class="invalid-feedback" style="display:block;">
+                                    <div *ngIf="userSoftSkillDetails.current_career.errors.required">Current career
+                                        is required</div>
+                                </div>
+                                <!-- <div class="btn-group custom-dropdown w-100">
+                                    <button class="btn w-100 btn-secondary btn-lg dropdown-toggle" type="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Your current career
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        ...
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="form-group mt-3 d-flex">
+                                <div class="form-row form-group mt-3 w-100 align-items-center">
+                                    <div class="col">
+                                        <label for="exampleFormControlSelect2">Would you like to change your
+                                            career?</label>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group">
+                                            <div class="input-group-text custom-radio-group">
+                                                <input type="radio" aria-label="Radio button for following text input"
+                                                    value="yes" type="radio" formControlName="changecareer"
+                                                    (change)="radioCheck($event)" name="changecareer" id="yes">
+                                                <label>Yes</label>
+                                            </div>
+                                            <div class="input-group-text custom-radio-group">
+                                                <input type="radio" aria-label="Radio button for following text input"
+                                                    value="no" type="radio" formControlName="changecareer"
+                                                    (change)="radioCheck($event)" name="changecareer" id="no">
+                                                <label>No </label>
+                                            </div>
+                                            <div *ngIf="lastFewBitsDetailSubmit && userSoftSkillDetails.changecareer.errors"
+                                                class="invalid-feedback" style="display:block;">
+                                                <div *ngIf="userSoftSkillDetails.changecareer.errors.required">Select
+                                                    career change option
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="btn-group custom-dropdown w-100">
-                                <button class="btn w-100 btn-secondary btn-lg dropdown-toggle" type="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Your change of career
-                                </button>
-                                <div class="dropdown-menu">
-                                    ...
+                            <div class="form-group">
+                                <!-- <div class="btn-group custom-dropdown w-100"> -->
+                                <select formControlName="change_career" class="form-control">
+                                    <option value="" selected disabled>Change Career</option>
+                                    <option *ngFor="let career of currentCareerDrp" value="{{career | json}}">
+                                        {{career.name}}</option>
+                                </select>
+                                <div *ngIf="lastFewBitsDetailSubmit && userSoftSkillDetails.change_career.errors"
+                                    class="invalid-feedback" style="display:block;">
+                                    <div *ngIf="userSoftSkillDetails.change_career.errors.required">Change career
+                                        is required</div>
+                                </div>
+                                <!-- </div> -->
+                            </div>
+                            <div class="form-group mt-3">
+                                <textarea class="form-control" placeholder="Describe your passion better"
+                                    formControlName="passion" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                <div *ngIf="lastFewBitsDetailSubmit && userSoftSkillDetails.passion.errors"
+                                    class="invalid-feedback" style="display:block;">
+                                    <div *ngIf="userSoftSkillDetails.passion.errors.required">Passion
+                                        is required</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group mt-3">
-                            <textarea class="form-control" placeholder="Describe your passion better"
-                                id="exampleFormControlTextarea1" rows="4"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <div class="btn-group custom-dropdown w-100">
-                                <button class="btn w-100 btn-secondary btn-lg dropdown-toggle" type="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Language
-                                </button>
-                                <div class="dropdown-menu">
-                                    ...
+                            <div class="form-group">
+                                <!-- <div class="btn-group custom-dropdown w-100"> -->
+                                <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings"
+                                    [data]="languageDrp" formControlName="language" (onSelect)="onItemSelect($event)"
+                                    (onSelectAll)="onSelectAll($event)">
+                                </ng-multiselect-dropdown>
+                                <div *ngIf="lastFewBitsDetailSubmit && userSoftSkillDetails.language.errors"
+                                    class="invalid-feedback" style="display:block;">
+                                    <div *ngIf="userSoftSkillDetails.language.errors.required">Language
+                                        is required</div>
                                 </div>
+                                <!-- </div> -->
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            (click)="moveToPreviousModal('candidateModallastbits','candidateModalEducation')">Back</button>
+                        <button type="submit" class="btn btn-primary">Save &
+                            Continue</button>
+                    </div>
+                </form>
+            </div>
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"
-                    (click)="moveToPreviousModal('candidateModallastbits','candidateModalEducation')">Back</button>
-                <button type="button" class="btn btn-primary"
-                    (click)="moveToNextModal('candidateModallastbits','candidateModallastbitsfinal')">Save &
-                    Continue</button>
-            </div>
         </div>
     </div>
 </div>
@@ -831,78 +859,155 @@
                         amet,
                         consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
                 </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
-                <div class="container-fluid start-section  w-100">
-                    <div class="section-form-content">
-                        <label>range selector will come here</label>
-                        <div class="form-group mt-3 ">
-                            <div class="form-group mt-3 w-100 d-flex align-items-center">
-                                <div class="col p-0">
-                                    <label for="exampleFormControlSelect2">Are you available to join
-                                        immediately?</label>
-                                </div>
-                                <div class="col">
-                                    <div class="input-group">
-                                        <div class="input-group-text custom-radio-group">
-                                            <input type="radio" aria-label="Radio button for following text input"
-                                                value="yes" type="radio" name="changecareer" id="yes">
-                                            <label>Yes</label>
-                                        </div>
-                                        <div class="input-group-text custom-radio-group">
-                                            <input type="radio" aria-label="Radio button for following text input"
-                                                value="no" type="radio" name="changecareer" id="no">
-                                            <label>No </label>
+                <form class="section-form-content" [formGroup]="lastFewBitsJoinDetailForm"
+                    (ngSubmit)="lastFewBitsJoinDetailsFormSubmit('candidateModallastbitsfinal','gainmorevisibilitymodal')"
+                    noValidate>
+                    <div class="container-fluid start-section  w-100">
+                        <div class="section-form-content">
+                            <label>range selector will come here</label>
+                            <div class="form-group mt-3 ">
+                                <div class="form-group mt-3 w-100 d-flex align-items-center">
+                                    <div class="col p-0">
+                                        <label for="exampleFormControlSelect2">Are you available to join
+                                            immediately?</label>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group">
+                                            <div class="input-group-text custom-radio-group">
+                                                <input type="radio" aria-label="Radio button for following text input"
+                                                    value="yes" type="radio" formControlName="joining_status"
+                                                    name="joining_status" id="yes"
+                                                    (change)="joiningStatus($event.target.value)">
+                                                <label>Yes</label>
+                                            </div>
+                                            <div class="input-group-text custom-radio-group">
+                                                <input type="radio" aria-label="Radio button for following text input"
+                                                    value="no" type="radio" formControlName="joining_status"
+                                                    name="joining_status" id="no"
+                                                    (change)="joiningStatus($event.target.value)">
+                                                <label>No </label>
+                                            </div>
+                                            <div *ngIf="lastFewBitsJoinDetailsSubmit && userjoiningDetails.joining_status.errors"
+                                                class="invalid-feedback" style="display:block;">
+                                                <div *ngIf="userjoiningDetails.joining_status.errors.required">Joining
+                                                    status
+                                                    is required</div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </div>
-                            <div class="form-group mt-3">
-                                <label for="exampleFormControlSelect2">How early are you available to join?</label>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-secondary border-radius-0" type="button">7
-                                            Days</button>
-                                        <button class="btn btn-secondary" type="button">15 Days</button>
-                                        <button class="btn btn-secondary" type="button">30 Days</button>
-                                        <button class="btn btn-secondary" type="button">> 30 Days</button>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label for="exampleFormControlSelect2">How early are you available to join?</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <!-- <input
+                                                class="custom-control-input experience-type-radio custom-radio-button"
+                                                formControlName="joining_within" value='7days' type="radio"
+                                                name="joining_within" id="7">
+                                                
+                                            <div class="btn outlined-dotted-add-button custom-control-radio-area" for="candidate">
+                                                <div class="label">7 Days</div>
+                                            </div> -->
+                                            <div class="middle">
+                                                <label>
+                                                    <input type="radio" formControlName="joining_within" value='7days'
+                                                        type="radio" name="joining_within" id="7" />
+                                                    <div class="front-end box">
+                                                        <span>7 Days</span>
+                                                    </div>
+                                                </label>
+                                                <label>
+                                                    <input type="radio" formControlName="joining_within" value='15days'
+                                                        type="radio" name="joining_within" id="15" />
+                                                    <div class="front-end box">
+                                                        <span>15 Days</span>
+                                                    </div>
+                                                </label>
+                                                <label>
+                                                    <input type="radio" formControlName="joining_within" value='30days'
+                                                        type="radio" name="joining_within" id="30" />
+                                                    <div class="front-end box">
+                                                        <span>30 Days</span>
+                                                    </div>
+                                                </label>
+                                                <label>
+                                                    <input type="radio" formControlName="joining_within" value='>30days'
+                                                        type="radio" name="joining_within" id=">30" />
+                                                    <div class="front-end box">
+                                                        <span>>30 Days</span>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <!-- <input
+                                                class="custom-control-input experience-type-radio custom-radio-button"
+                                                formControlName="joining_within" value='15days' type="radio"
+                                                name="joining_within" id="15">
+                                            <div class="btn outlined-dotted-add-button custom-control-radio-area"
+                                                for="candidate">
+                                                <div class="label">15 Days</div>
+                                            </div>
+                                            <input
+                                                class="custom-control-input experience-type-radio custom-radio-button"
+                                                formControlName="joining_within" value='30days' type="radio"
+                                                name="joining_within" id="30">
+                                            <div class="btn outlined-dotted-add-button custom-control-radio-area"
+                                                for="candidate">
+                                                <div class="label">30 Days</div>
+                                            </div>
+                                            <input
+                                                class="custom-control-input experience-type-radio custom-radio-button"
+                                                formControlName="joining_within" value='morethan30days' type="radio"
+                                                name="joining_within" id=">30">
+                                            <div class="btn outlined-dotted-add-button custom-control-radio-area"
+                                                for="candidate">
+                                                <div class="label">>30 Days</div>
+                                            </div> -->
+                                            <!-- <button class="btn btn-secondary border-radius-0" type="button">7
+                                                Days</button>
+                                            <button class="btn btn-secondary" type="button">15 Days</button>
+                                            <button class="btn btn-secondary" type="button">30 Days</button>
+                                            <button class="btn btn-secondary" type="button">> 30 Days</button> -->
+                                        </div>
+                                        <div *ngIf="lastFewBitsJoinDetailsSubmit && userjoiningDetails.joining_within.errors"
+                                            class="invalid-feedback" style="display:block;">
+                                            <div *ngIf="userjoiningDetails.joining_within.errors.required">Joining
+                                                Days
+                                                is required</div>
+                                        </div>
                                     </div>
 
                                 </div>
-
-                            </div>
-                            <div class="form-group py-4">
-                                <h5 class="bold">Upload Resume</h5>
-                                <label>How early are you available to join?</label>
-                                <div class="custom-file w-max-300 d-block">
-                                    <input type="file" class=" custom-file-input" id="inputGroupFile01 ">
-                                    <label class="custom-file-label" for="inputGroupFile01">Upload Resume</label>
+                                <div class="form-group py-4">
+                                    <h5 class="bold">Upload Resume</h5>
+                                    <label>How early are you available to join?</label>
+                                    <div class="custom-file w-max-300 d-block">
+                                        <input type="file" class=" custom-file-input" id="inputGroupFile01 ">
+                                        <label class="custom-file-label" for="inputGroupFile01">Upload Resume</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group py-4">
-                                <h5 class="bold">Upload Visume</h5>
-                                <label>How early are you available to join?</label>
-                                <div class="custom-file w-max-300 d-block">
-                                    <input type="file" class=" custom-file-input" id="inputGroupFile01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Upload Visume</label>
+                                <div class="form-group py-4">
+                                    <h5 class="bold">Upload Visume</h5>
+                                    <label>How early are you available to join?</label>
+                                    <div class="custom-file w-max-300 d-block">
+                                        <input type="file" class=" custom-file-input" id="inputGroupFile01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Upload Visume</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            (click)="moveToPreviousModal('candidateModallastbitsfinal','candidateModallastbits')">Back</button>
+                        <button type="submit" class="btn btn-primary">Save &
+                            Continue</button>
+                    </div>
+                </form>
+            </div>
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"
-                    (click)="moveToPreviousModal('candidateModallastbitsfinal','candidateModallastbits')">Back</button>
-                <button type="button" class="btn btn-primary"
-                    (click)="moveToNextModal('candidateModallastbitsfinal','gainmorevisibilitymodal')">Save &
-                    Continue</button>
-            </div>
         </div>
     </div>
 </div>
@@ -922,33 +1027,35 @@
                         consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.
                     </p>
                 </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
-                <div class="container-fluid d-flex justify-content-center">
-                    <div class="modal-content-section">
-                        <div class="image-section">
-                            <img class="" src="../../../assets/images/gain-more-ability.png" />
-                        </div>
-                        <div class="form-group my-3 text-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                <label class="form-check-label text-center" for="gridCheck">
-                                    I am onboard
-                                </label>
+                <form class="section-form-content" [formGroup]="onBoardDetailForm"
+                    (ngSubmit)="onBoardDetailsFormSubmit('gainmorevisibilitymodal','almostdonemodal')" noValidate>
+                    <div class="container-fluid d-flex justify-content-center">
+                        <div class="modal-content-section">
+                            <div class="image-section">
+                                <img class="" src="../../../assets/images/gain-more-ability.png" />
+                            </div>
+                            <div class="form-group my-3 text-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck"
+                                        formControlName="onboard">
+                                    <label class="form-check-label text-center" for="gridCheck">
+                                        I am onboard
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            (click)="moveToPreviousModal('gainmorevisibilitymodal','candidateModallastbitsfinal')">Back</button>
+                        <button type="submit" class="btn btn-primary">Save &
+                            Continue</button>
+                    </div>
+                </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"
-                    (click)="moveToPreviousModal('gainmorevisibilitymodal','candidateModallastbitsfinal')">Back</button>
-                <button type="button" class="btn btn-primary"
-                    (click)="moveToNextModal('gainmorevisibilitymodal','almostdonemodal')">Save & Continue</button>
-            </div>
+
         </div>
     </div>
 </div>
@@ -959,9 +1066,6 @@
     <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
                 <div class="container-fluid d-flex justify-content-center align-items-center">
@@ -975,8 +1079,8 @@
                             <h3 class="modal-title section-main-title bold p-2" id="exampleModalLongTitle">You
                                 are almost done!</h3>
                             <div class="progress mb-3">
-                                <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45"
-                                    aria-valuemin="0" aria-valuemax="100">45%</div>
+                                <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75"
+                                    aria-valuemin="0" aria-valuemax="100">75%</div>
                             </div>
                             <h6 class="font-bold my-3">A minimum completion rate of 75% is required to continue
                             </h6>
@@ -1001,7 +1105,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary"
                     (click)="moveToPreviousModal('almostdonemodal','gainmorevisibilitymodal')">Back</button>
-                <button type="button" class="btn btn-primary">Save & Continue</button>
+                <button type="submit" class="btn btn-primary" (click)="saveFinalData()">Save</button>
             </div>
         </div>
     </div>

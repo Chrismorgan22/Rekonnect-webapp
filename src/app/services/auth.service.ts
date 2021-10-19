@@ -73,4 +73,18 @@ export class AuthService {
       })
     );
   }
+  saveCandidateRegistration(body) {
+    return this._httpClient.post<any>(`${environment.apiUrl}/candidate/registration`, body).pipe(
+      map(response => {
+        return response;
+      })
+    )
+  }
+  updateCandidateStatus(body) {
+    return this._httpClient.post<any>(`${environment.apiUrl}/user/update/status`, body).pipe(
+      map(response => {
+        return response;
+      })
+    )
+  }
 }

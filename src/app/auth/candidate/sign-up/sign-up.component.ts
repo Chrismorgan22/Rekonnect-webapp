@@ -38,24 +38,12 @@ export class SignUpComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
     });
-    this.getSpecializationData();
 
   }
 
   // convenience getter for easy access to form fields
   get f() { return this.form.controls; }
 
-  getSpecializationData() {
-    this._layoutService.getSpecializationList().subscribe(response => {
-      if (response.result !== 'fail') {
-        this.specializationData = response.data;
-      } else {
-        this._toastrService.error(
-          response.message, response.result
-        )
-      }
-    })
-  }
   onSubmit() {
     this.submitted = true;
     console.log(this.form)

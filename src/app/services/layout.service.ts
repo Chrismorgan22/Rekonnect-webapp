@@ -7,33 +7,11 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class LayoutService {
-
+  userToken: any = '';
   constructor(private _httpClient: HttpClient) {
     if (sessionStorage.getItem('_ud') !== undefined && sessionStorage.getItem('_ud') !== null && sessionStorage.getItem('_ud') !== '') {
-      // userToken = JSON.parse(sessionStorage.getItem('_ud'))[0].token
+      this.userToken = JSON.parse(sessionStorage.getItem('_ud'))[0].token
     }
-  }
-
-  getSpecializationList() {
-    return this._httpClient.get<any>(`${environment.apiUrl}/specialization`).pipe(
-      map(response => {
-        return response;
-      })
-    );
-  }
-  getLocationList() {
-    return this._httpClient.get<any>(`${environment.apiUrl}/location`).pipe(
-      map(response => {
-        return response;
-      })
-    );
-  }
-  getGraduationList() {
-    return this._httpClient.get<any>(`${environment.apiUrl}/graduation`).pipe(
-      map(response => {
-        return response;
-      })
-    );
   }
   getUserList(userRole) {
     return this._httpClient.get<any>(`${environment.apiUrl}/user/` + userRole).pipe(
@@ -43,11 +21,21 @@ export class LayoutService {
     );
   }
   getLookupList(body) {
-    return this._httpClient.post<any>(`${environment.apiUrl}/lookup`,body).pipe(
+    return this._httpClient.post<any>(`${environment.apiUrl}/lookup`, body).pipe(
       map(response => {
         return response;
       })
     );
   }
-
+  getUserProfile(userId) {
+    const httpOptions = {
+      headers: new HttpHeaders()
+        .set('token', `${this.userToken}`),
+    };
+    return this._httpClient.get<any>(`${environment.apiUrl}/user/profile/` + userId, httpOptions).pipe(
+      map(response => {
+        return response;
+      })
+    );
+  }
 }
