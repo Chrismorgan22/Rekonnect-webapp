@@ -42,5 +42,12 @@ export class LayoutService {
       })
     );
   }
-  
+  getLookupList(body) {
+    return this._httpClient.post<any>(`${environment.apiUrl}/lookup`,body).pipe(
+      map(response => {
+        return response;
+      })
+    );
+  }
+
 }

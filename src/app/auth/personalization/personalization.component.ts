@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import * as moment from 'moment';
+import { LayoutService } from 'src/app/services/layout.service';
 declare var $: any;
 @Component({
   selector: 'app-personalization',
@@ -20,14 +22,24 @@ export class PersonalizationComponent implements OnInit {
   experienceDetailSubmit: boolean = false;
   educationTypeSubmit: boolean = false;
   educationDetailSubmit: boolean = false;
-  formIdArray = ['candidateModalCenter', 'candidateModalCenterupload', 'candidateModalExperience', 'candidateModalcenterexperiencetimeline', 'candidateModalEducation', 'candidateModallastbits', 'candidateModallastbitsfinal', 'gainmorevisibilitymodal', 'almostdonemodal', '']
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
+  monthDrp: any = [];
+  yearDrp: any = [];
+  stateDrp: any = [];
+  locationDrp: any = [];
+  countryDrp: any = [];
+  formIdArray = ['candidateModalCenter', 'candidateModalCenterupload', 'candidateModalExperience', 'candidateModalEducation', 'candidateModallastbits', 'candidateModallastbitsfinal', 'gainmorevisibilitymodal', 'almostdonemodal']
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private layoutService: LayoutService) {
     // $('#candidateModalCenter').modal('show')
     this.getUserTempData();
 
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.monthDrp = moment.months();
+    const year = moment().get('year');
+    for (let i = 1999; i <= year; i++) {
+      this.yearDrp.push(i);
+    }
     this.userRoleForm = this.formBuilder.group({
       user_role: ['', Validators.required]
     })
@@ -57,8 +69,16 @@ export class PersonalizationComponent implements OnInit {
     this.educationDetailForm = this.formBuilder.group({
       school_name: ['', Validators.required],
       degree: ['', Validators.required],
-      field_of_study: ['', Validators.required]
+      field_of_study: ['', Validators.required],
+      start_month: ['', Validators.required],
+      start_year: ['', Validators.required],
+      end_month: ['', Validators.required],
+      end_year: ['', Validators.required],
+      currently_studying: [''],
+      grade: ['', Validators.required],
+      description: ['', Validators.required]
     })
+    await Promise.all([this.getStateList('State'), this.getLocationList('Location'), this.getCountryList('Country')])
   }
   get userRole() { return this.userRoleForm.controls }
   get userAddress() { return this.addressForm.controls }
@@ -136,7 +156,7 @@ export class PersonalizationComponent implements OnInit {
       tempData[currentModal] = {
         "address_details": {
           "street": this.addressForm.controls.street.value,
-          "state": this.addressForm.controls.state.value,
+          "state": JSON.parse(this.addressForm.controls.state.value),
           "zip_code": this.addressForm.controls.zip_code.value,
           "landmark": this.addressForm.controls.landmark.value,
           "organization_strength": this.addressForm.controls.organization_strength.value
@@ -192,14 +212,14 @@ export class PersonalizationComponent implements OnInit {
       const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
       console.log(localData);
       const tempData = {};
-      tempData[currentModal] = {
+      tempData['candidateModalExperience'] = {
         "experience_data": {
           "experience_type": this.experienceTypeForm.controls.experience_type.value,
           "experience_details": {
             "designation": this.experienceDetailForm.controls.designation.value,
             "company": this.experienceDetailForm.controls.company.value,
-            "location": this.experienceDetailForm.controls.location.value,
-            "country": this.experienceDetailForm.controls.country.value,
+            "location": JSON.parse(this.experienceDetailForm.controls.location.value),
+            "country": JSON.parse(this.experienceDetailForm.controls.country.value),
             "start_date": this.experienceDetailForm.controls.start_date.value,
             "end_date": this.experienceDetailForm.controls.end_date.value,
             "currently_working": this.experienceDetailForm.controls.currently_working.value,
@@ -255,5 +275,94 @@ export class PersonalizationComponent implements OnInit {
   }
   educationDetailsFormSubmit(currentModal, nextModal) {
     this.educationDetailSubmit = true;
+    if (this.educationDetailForm.valid) {
+      console.log(this.educationDetailForm)
+      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
+      console.log(localData);
+      const tempData = {};
+      tempData['candidateModalEducation'] = {
+        "education_data": {
+          "education_type": this.educationTypeForm.controls.education_type.value,
+          "education_details": {
+            "school_name": this.educationDetailForm.controls.school_name.value,
+            "degree": this.educationDetailForm.controls.degree.value,
+            "field_of_study": this.educationDetailForm.controls.field_of_study.value,
+            "start_date": {
+              "month": this.educationDetailForm.controls.start_month.value,
+              "year": this.educationDetailForm.controls.start_year.value,
+            },
+            "end_date": {
+              "month": this.educationDetailForm.controls.end_month.value,
+              "year": this.educationDetailForm.controls.end_year.value,
+            },
+            "grade": this.educationDetailForm.controls.grade.value,
+            "currently_studying": this.educationDetailForm.controls.currently_studying.value,
+            "description": this.educationDetailForm.controls.description.value,
+          }
+        }
+      }
+      const body = {
+        "user_id": localData._id,
+        "user_token": localData.user_token,
+        "temp_data": tempData
+      }
+      console.log(body)
+      this.authService.saveTempUser(body).subscribe((res) => {
+        // if (this.experienceTypeForm.controls.experience_type.value !== 'Experienced') {
+        //   nextModal = 'candidateModallastbits';
+        // }
+        this.moveToNextModal(currentModal, nextModal)
+      })
+    } else {
+      return false;
+    }
+  }
+  async getStateList(type) {
+    const body = {
+      lookup_type: type
+    }
+    const drpJson = [];
+    this.layoutService.getLookupList(body).subscribe(res => {
+      res.data.map(ele => {
+        const json = {
+          id: ele._id,
+          name: ele.name
+        }
+        drpJson.push(json);
+      })
+      this.stateDrp = drpJson;
+    })
+  }
+  async getLocationList(type) {
+    const body = {
+      lookup_type: type
+    }
+    const drpJson = [];
+    this.layoutService.getLookupList(body).subscribe(res => {
+      res.data.map(ele => {
+        const json = {
+          id: ele._id,
+          name: ele.name
+        }
+        drpJson.push(json);
+      })
+      this.locationDrp = drpJson;
+    })
+  }
+  async getCountryList(type) {
+    const body = {
+      lookup_type: type
+    }
+    const drpJson = [];
+    this.layoutService.getLookupList(body).subscribe(res => {
+      res.data.map(ele => {
+        const json = {
+          id: ele._id,
+          name: ele.name
+        }
+        drpJson.push(json);
+      })
+      this.countryDrp = drpJson;
+    })
   }
 }

@@ -82,7 +82,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button> -->
                         <button type="submit" class="btn btn-primary">Save &
                             Continue</button>
                     </div>
@@ -146,8 +146,13 @@
                             </div>
                             <div class="form-row form-group">
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="State"
-                                        formControlName="state" />
+                                    <select formControlName="state" class="form-control">
+                                        <option value="" selected disabled>State</option>
+                                        <option *ngFor="let state of stateDrp" value="{{state | json}}">{{state.name}}
+                                        </option>
+                                    </select>
+                                    <!-- <input type="text" class="form-control" placeholder="State"
+                                        formControlName="state" /> -->
                                     <div *ngIf="addressSubmit && userAddress.state.errors" class="invalid-feedback"
                                         style="display:block;">
                                         <div *ngIf="userAddress.state.errors.required">State is required</div>
@@ -310,8 +315,14 @@
                             </div>
                             <div class="form-row form-group">
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="location"
-                                        formControlName="location" />
+                                    <select formControlName="location" class="form-control">
+                                        <option value="" selected disabled>Location</option>
+                                        <option *ngFor="let location of locationDrp" value="{{location | json}}">
+                                            {{location.name}}
+                                        </option>
+                                    </select>
+                                    <!-- <input type="text" class="form-control" placeholder="location"
+                                        formControlName="location" /> -->
                                     <div *ngIf="experienceDetailSubmit && userExpDetails.location.errors"
                                         class="invalid-feedback" style="display:block;">
                                         <div *ngIf="userExpDetails.location.errors.required">Location
@@ -319,8 +330,14 @@
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Country" class="form-control"
-                                        formControlName="country" />
+                                    <select formControlName="country" class="form-control">
+                                        <option value="" selected disabled>Country</option>
+                                        <option *ngFor="let country of countryDrp" value="{{country | json}}">
+                                            {{country.name}}
+                                        </option>
+                                    </select>
+                                    <!-- <input type="text" placeholder="Country" class="form-control"
+                                        formControlName="country" /> -->
                                     <div *ngIf="experienceDetailSubmit && userExpDetails.country.errors"
                                         class="invalid-feedback" style="display:block;">
                                         <div *ngIf="userExpDetails.country.errors.required">Country
@@ -432,7 +449,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary"
-                    (click)="moveToPreviousModal('candidateModalcenterexperiencetimeline','candidateModalcentereducation')">Back</button>
+                    (click)="moveToPreviousModal('candidateModalcenterexperiencetimeline','candidateModalcenterexperience')">Back</button>
                 <button type="button" class="btn btn-primary"
                     (click)="moveToNextModal('candidateModalcenterexperiencetimeline','candidateModalEducation')">Save &
                     Continue</button>
@@ -495,7 +512,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
-                            (click)="moveToPreviousModal('candidateModalEducation','candidateModalcenterexperiencetimeline')">Back</button>
+                            (click)="moveToPreviousModal('candidateModalEducation','candidateModalExperience')">Back</button>
                         <button type="submit" class="btn btn-primary">Save &
                             Continue</button>
                     </div>
@@ -544,6 +561,9 @@
                                             is required</div>
                                     </div>
                                 </div>
+
+                            </div>
+                            <div class="form-row form-group">
                                 <div class="col">
                                     <input type="text" placeholder="Degree" class="form-control"
                                         formControlName="degree" />
@@ -553,8 +573,6 @@
                                             is required</div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-row form-group">
                                 <div class="col">
                                     <input type="text" class="form-control" placeholder="Field of study"
                                         formControlName="field_of_study" />
@@ -564,36 +582,35 @@
                                             is required</div>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <input type="text" placeholder="Country" class="form-control"
-                                        formControlName="country" />
-                                    <div *ngIf="educationDetailSubmit && userEduDetails.country.errors"
-                                        class="invalid-feedback" style="display:block;">
-                                        <div *ngIf="userEduDetails.country.errors.required">Country
-                                            is required</div>
-                                    </div>
-                                </div>
                             </div>
 
                             <div class="form-row form-group mt-3">
                                 <div class="col">
                                     <label for="exampleFormControlSelect2">Start Date</label>
                                     <div class="form-row form-group">
-                                        <div class="mr-2">
-                                            <input type="date" placeholder="Country" class="form-control pl-0 pr-0"
-                                                formControlName="start_date" />
-                                            <div *ngIf="educationDetailSubmit && userEduDetails.start_date.errors"
+                                        <div class="col">
+                                            <select formControlName="start_month" class="form-control">
+                                                <option value="" selected disabled>Month</option>
+                                                <option *ngFor="let month of monthDrp" value="month">{{month}}</option>
+                                            </select>
+                                            <!-- <input type="date" placeholder="Month" class="form-control pl-0 pr-0"
+                                                formControlName="start_month" /> -->
+                                            <div *ngIf="educationDetailSubmit && userEduDetails.start_month.errors"
                                                 class="invalid-feedback" style="display:block;">
-                                                <div *ngIf="userEduDetails.start_date.errors.required">Start Date
+                                                <div *ngIf="userEduDetails.start_month.errors.required">Month
                                                     is required</div>
                                             </div>
                                         </div>
-                                        <div class="">
-                                            <input type="date" placeholder="Country" class="form-control pl-0 pr-0"
-                                                formControlName="start_date" />
-                                            <div *ngIf="educationDetailSubmit && userEduDetails.start_date.errors"
+                                        <div class="col">
+                                            <select formControlName="start_year" class="form-control">
+                                                <option value="" selected disabled>Year</option>
+                                                <option *ngFor="let year of yearDrp" value="year">{{year}}</option>
+                                            </select>
+                                            <!-- <input type="date" placeholder="Country" class="form-control pl-0 pr-0"
+                                                formControlName="start_year" /> -->
+                                            <div *ngIf="educationDetailSubmit && userEduDetails.start_year.errors"
                                                 class="invalid-feedback" style="display:block;">
-                                                <div *ngIf="userEduDetails.start_date.errors.required">Start Date
+                                                <div *ngIf="userEduDetails.start_year.errors.required">Year
                                                     is required</div>
                                             </div>
                                         </div>
@@ -602,21 +619,29 @@
                                 <div class="col">
                                     <label for="exampleFormControlSelect2">End Date</label>
                                     <div class="form-row form-group no-wrap">
-                                        <div class="mr-2">
-                                            <input type="date" placeholder="Country" class="form-control pl-0 pr-0"
-                                                formControlName="start_date" />
-                                            <div *ngIf="educationDetailSubmit && userEduDetails.start_date.errors"
+                                        <div class="col">
+                                            <select formControlName="end_month" class="form-control">
+                                                <option value="" selected disabled>Month</option>
+                                                <option *ngFor="let month of monthDrp" value="month">{{month}}</option>
+                                            </select>
+                                            <!-- <input type="date" placeholder="Country" class="form-control pl-0 pr-0"
+                                                formControlName="end_month" /> -->
+                                            <div *ngIf="educationDetailSubmit && userEduDetails.end_month.errors"
                                                 class="invalid-feedback" style="display:block;">
-                                                <div *ngIf="userEduDetails.start_date.errors.required">Start Date
+                                                <div *ngIf="userEduDetails.end_month.errors.required">Month
                                                     is required</div>
                                             </div>
                                         </div>
-                                        <div class="">
-                                            <input type="date" placeholder="Country" class="form-control pl-0 pr-0"
-                                                formControlName="start_date" />
-                                            <div *ngIf="educationDetailSubmit && userEduDetails.start_date.errors"
+                                        <div class="col">
+                                            <select formControlName="end_year" class="form-control">
+                                                <option value="" selected disabled>Year</option>
+                                                <option *ngFor="let year of yearDrp" value="year">{{year}}</option>
+                                            </select>
+                                            <!-- <input type="date" placeholder="Country" class="form-control pl-0 pr-0"
+                                                formControlName="end_year" /> -->
+                                            <div *ngIf="educationDetailSubmit && userEduDetails.end_year.errors"
                                                 class="invalid-feedback" style="display:block;">
-                                                <div *ngIf="userEduDetails.start_date.errors.required">Start Date
+                                                <div *ngIf="userEduDetails.end_year.errors.required">Year
                                                     is required</div>
                                             </div>
                                         </div>
@@ -627,19 +652,31 @@
                         <div class="form-group my-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="gridCheck"
-                                    formControlName="currently_working">
+                                    formControlName="currently_studying">
                                 <label class="form-check-label" for="gridCheck">
-                                    I am currently working here in this role
+                                    I am currently studying here in this role
                                 </label>
                             </div>
                         </div>
+                        <div class="form-row form-group mt-3">
+                            <div class="col">
+                                <label for="exampleFormControlSelect2">Grade</label>
+                                <input type="text" placeholder="Grade" class="form-control" formControlName="grade" />
+                                <div *ngIf="educationDetailSubmit && userEduDetails.grade.errors"
+                                    class="invalid-feedback" style="display:block;">
+                                    <div *ngIf="userEduDetails.grade.errors.required">Grade
+                                        is required</div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-group mt-3">
-                            <label for="exampleFormControlSelect2">Job Description</label>
+                            <label for="exampleFormControlSelect2">Description</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                formControlName="job_description"></textarea>
-                            <div *ngIf="educationDetailSubmit && userEduDetails.job_description.errors"
+                                formControlName="description"></textarea>
+                            <div *ngIf="educationDetailSubmit && userEduDetails.description.errors"
                                 class="invalid-feedback" style="display:block;">
-                                <div *ngIf="userEduDetails.job_description.errors.required">Job description
+                                <div *ngIf="userEduDetails.description.errors.required">Description
                                     is required</div>
                             </div>
                         </div>
@@ -769,7 +806,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary"
-                    (click)="moveToPreviousModal('candidateModallastbits','candidateModalcenterexperience')">Back</button>
+                    (click)="moveToPreviousModal('candidateModallastbits','candidateModalEducation')">Back</button>
                 <button type="button" class="btn btn-primary"
                     (click)="moveToNextModal('candidateModallastbits','candidateModallastbitsfinal')">Save &
                     Continue</button>
