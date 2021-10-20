@@ -1241,8 +1241,20 @@
   width: 900px;
 }
 
+@media (max-width: 768px) {
+  .candidate-apply-job-modal .start-section {
+    width: 100%;
+  }
+}
+
 .candidate-apply-job-modal .start-section .section-form-content {
   padding: 32px 60px;
+}
+
+@media (max-width: 768px) {
+  .candidate-apply-job-modal .start-section .section-form-content {
+    padding: 16px;
+  }
 }
 
 .candidate-apply-job-modal .modal-image {

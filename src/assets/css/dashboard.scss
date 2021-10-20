@@ -844,8 +844,16 @@
     .start-section {
         width: 900px;
 
+          @media (max-width: $information-mobile-md) {
+                width: 100%;
+            }
+
         .section-form-content {
             padding: 32px 60px;
+
+            @media (max-width: $information-mobile-md) {
+               padding: 16px;
+            }
         }
     }
 
