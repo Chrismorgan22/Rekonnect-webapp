@@ -6,13 +6,14 @@ import { BaseComponent } from './base.component';
 import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from '../auth/welcome/welcome.component';
 import { FooterComponent } from './footer/footer.component';
-
+import {SliderModule} from 'primeng/slider';
 
 @NgModule({
   declarations: [BaseComponent, HeaderComponent, HomeComponent, FooterComponent],
   imports: [
     CommonModule,
-    BaseRoutingModule
+    BaseRoutingModule,
+    SliderModule
   ],
   exports: [BaseComponent, HeaderComponent, HomeComponent, FooterComponent]
 })
