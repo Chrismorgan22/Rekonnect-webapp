@@ -369,6 +369,7 @@ body {
             width: 100%;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
+            height: 100%;
         }
 
         .flip-card-front {
@@ -382,6 +383,7 @@ body {
             padding: 8px;
             border-radius: 8px;
             font-size: 16px;
+            height: 100%;
         }
     }
 }
