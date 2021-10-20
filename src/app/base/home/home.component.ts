@@ -6,7 +6,7 @@ import * as AOS from 'aos';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+  values1: string[];
   constructor() { }
 
   ngOnInit(): void {

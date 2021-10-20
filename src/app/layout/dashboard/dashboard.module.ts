@@ -7,12 +7,13 @@ import { DashboardComponent } from './dashboard.component';
 import { ExpertComponent } from './expert/expert.component';
 import { EmployerComponent } from './employer/employer.component';
 import { InstituteComponent } from './institute/institute.component';
-
+import { NgApexchartsModule } from 'ng-apexcharts';
 @NgModule({
   declarations: [DashboardComponent, CandidateComponent, ExpertComponent, EmployerComponent, InstituteComponent],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    NgApexchartsModule
   ]
 })
 export class DashboardModule { }
