@@ -19,7 +19,8 @@
                     <div class="card profile-card">
                         <div class="card-header d-none">
                         </div>
-                        <div class="card-body employer-header-band d-flex align-items-center justify-content-space-between">
+                        <div
+                            class="card-body employer-header-band d-flex align-items-center justify-content-space-between">
                             <div class="user-profile mb-0">
                                 <div class="user-image">
                                     <img src="../../../assets/images/user-profile-placeholder.png" />
@@ -30,7 +31,8 @@
                                 </div>
                             </div>
                             <div class="user-content-action">
-                                <button class="btn btn-primary mr-3 btn-lg">Post new job listing</button>
+                                <button class="btn btn-primary mr-3 btn-lg" data-toggle="modal"
+                                    data-target="#postjobModal">Post new job listing</button>
                                 <button class="btn btn-secondary btn-lg">Recommend Expert</button>
                             </div>
                         </div>
@@ -406,4 +408,72 @@
             </div>
         </section>
     </main>
+</div>
+
+<!-- Job Listing Modal -->
+<div class="modal fade" id="postjobModal" tabindex="-1" role="dialog" aria-labelledby="postjobModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog candidate-apply-job-modal" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create Job Listing</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="row start-section">
+                    <div class="col-sm col-sm-12 col-md-12 col-lg-8 section-form-content">
+                        <div class="form-row form-group">
+                            <div class="col mb-2">
+                                <input type="text" class="form-control" placeholder="Job Title" />
+                            </div>
+                            <div class="col mb-2">
+                                <input type="text" placeholder="Company" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <textarea type="text" class="form-control mb-2" placeholder="Job Description"
+                                id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
+                        </div>
+                        <div class="form-row form-group ">
+                            <div class="col mb-2">
+                                <input type="text" class="form-control" placeholder="Pin Code" />
+                            </div>
+                            <div class="col mb-2">
+                                <input type="text" placeholder="Location" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group mb-2">
+                            <input type="text" aria-describedby="experience"
+                                placeholder="Minimum Work Experience Required" size="lg" class="form-control mb-2" />
+                        </div>
+                        <label class="my-4">range selector will come here</label>
+                        <div class="form-group mt-3">
+                            <label for="exampleFormControlSelect2">How early are you available to join?</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-secondary border-radius-0" type="button">Full Time</button>
+                                    <button class="btn btn-secondary" type="button">Part Time</button>
+                                    <button class="btn btn-secondary" type="button">Remote Friendly</button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-sm col-sm-12 col-md-12 col-lg-4 p-0">
+                        <div class="modal-image">
+                            <img src="../../../../assets/images/side-modal-image.jpg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary w-min-250">Create job listing</button>
+            </div>
+        </div>
+    </div>
 </div>

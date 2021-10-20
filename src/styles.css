@@ -1234,7 +1234,6 @@
 
 .candidate-apply-job-modal {
   position: relative;
-  background: red;
 }
 
 .candidate-apply-job-modal .start-section {
@@ -1255,6 +1254,34 @@
   .candidate-apply-job-modal .start-section .section-form-content {
     padding: 16px;
   }
+}
+
+.candidate-apply-job-modal .start-section .section-form-content .custom-radio {
+  display: inline-block !important;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.candidate-apply-job-modal .start-section .section-form-content .custom-radio:not(:last-child) {
+  margin: 0 12px 0 0;
+}
+
+.candidate-apply-job-modal .start-section .section-form-content .custom-radio .custom-radio-button {
+  left: 0;
+  top: 12px;
+  z-index: 1;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.candidate-apply-job-modal .start-section .section-form-content .custom-radio .custom-radio-button:checked + .custom-control-radio-area,
+.candidate-apply-job-modal .start-section .section-form-content .custom-radio .custom-radio-button:hover + .custom-control-radio-area {
+  border: 1px solid #F05454 !important;
+  border-radius: 16px;
 }
 
 .candidate-apply-job-modal .modal-image {
