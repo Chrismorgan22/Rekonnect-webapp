@@ -478,6 +478,9 @@
         }
     }
 
+
+   
+
     //Employer Dashboard
     .employer-header-band {
         @media (max-width: $information-mobile-sm) {
@@ -829,6 +832,35 @@
                     background: #3A57E8;
                 }
             }
+        }
+    }
+}
+
+//candidate modal
+.candidate-apply-job-modal {
+    position: relative;
+    background: red;
+
+    .start-section {
+        width: 900px;
+
+        .section-form-content {
+            padding: 32px 60px;
+        }
+    }
+
+    .modal-image {
+        width: 285px;
+        height: 490px;
+
+        @media (max-width: $information-mobile-md) {
+          display: none;
+        }
+
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
 }

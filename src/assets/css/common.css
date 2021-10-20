@@ -187,6 +187,10 @@
   width: 100%;
 }
 
+.w-min-250 {
+  min-width: 250px;
+}
+
 .w-max-300 {
   max-width: 300px !important;
 }
