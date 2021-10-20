@@ -360,7 +360,7 @@
                         <div class="form-group my-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="gridCheck"
-                                    formControlName="currently_working">
+                                    formControlName="currently_working" (change)="checkWorkingStatus($event)">
                                 <label class="form-check-label" for="gridCheck">
                                     I am currently working here in this role
                                 </label>
@@ -418,13 +418,14 @@
                     <div class="body-background-top">
                     </div>
 
-                    <div class="experience-added-section d-flex align-items-center">
+                    <div class="experience-added-section d-flex align-items-center"
+                        *ngFor="let companytimeline of companyTimeLineData">
                         <div class="company-content">
                             <img class="company-image" src="../../../assets/images/google.png" />
                         </div>
                         <div>
-                            <h6 class="bold">Google Inc</h6>
-                            <small>2years 5months</small>
+                            <h6 class="bold">{{companytimeline.company_name}}</h6>
+                            <small>{{companytimeline.total_experience}}</small>
                         </div>
                     </div>
 
@@ -570,7 +571,8 @@
                                         <div class="col">
                                             <select formControlName="start_month" class="form-control">
                                                 <option value="" selected disabled>Month</option>
-                                                <option *ngFor="let month of monthDrp" value="month">{{month}}</option>
+                                                <option *ngFor="let month of monthDrp" value="{{month}}">{{month}}
+                                                </option>
                                             </select>
                                             <!-- <input type="date" placeholder="Month" class="form-control pl-0 pr-0"
                                                 formControlName="start_month" /> -->
@@ -583,7 +585,7 @@
                                         <div class="col">
                                             <select formControlName="start_year" class="form-control">
                                                 <option value="" selected disabled>Year</option>
-                                                <option *ngFor="let year of yearDrp" value="year">{{year}}</option>
+                                                <option *ngFor="let year of yearDrp" value="{{year}}">{{year}}</option>
                                             </select>
                                             <!-- <input type="date" placeholder="Country" class="form-control pl-0 pr-0"
                                                 formControlName="start_year" /> -->
@@ -601,7 +603,8 @@
                                         <div class="col">
                                             <select formControlName="end_month" class="form-control">
                                                 <option value="" selected disabled>Month</option>
-                                                <option *ngFor="let month of monthDrp" value="month">{{month}}</option>
+                                                <option *ngFor="let month of monthDrp" value="{{month}}">{{month}}
+                                                </option>
                                             </select>
                                             <!-- <input type="date" placeholder="Country" class="form-control pl-0 pr-0"
                                                 formControlName="end_month" /> -->
@@ -614,7 +617,7 @@
                                         <div class="col">
                                             <select formControlName="end_year" class="form-control">
                                                 <option value="" selected disabled>Year</option>
-                                                <option *ngFor="let year of yearDrp" value="year">{{year}}</option>
+                                                <option *ngFor="let year of yearDrp" value="{{year}}">{{year}}</option>
                                             </select>
                                             <!-- <input type="date" placeholder="Country" class="form-control pl-0 pr-0"
                                                 formControlName="end_year" /> -->
@@ -631,7 +634,7 @@
                         <div class="form-group my-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="gridCheck"
-                                    formControlName="currently_studying">
+                                    formControlName="currently_studying" (change)="checkEducationStatus($event)">
                                 <label class="form-check-label" for="gridCheck">
                                     I am currently studying here in this role
                                 </label>

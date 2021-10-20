@@ -8,6 +8,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import {
   AuthGuardService as AuthGuard
 } from '../services/auth-guard.service'
+import { ProfileComponent } from './profile/profile.component';
 const routes: Routes = [
   {
     path: '',
@@ -24,6 +25,10 @@ const routes: Routes = [
       {
         path: 'about',
         component: AboutComponent
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent
       },
       {
         path: 'dashboard',
