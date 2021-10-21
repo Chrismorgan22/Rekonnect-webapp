@@ -1,1 +1,319 @@
-<p>profile works!</p>
+<div class="dashboard-section">
+    <div class="container alert alert-warning profile-completion m-0 d-flex justify-content-space-between align-items-center"
+        role="alert">
+        <span><strong>Profile 75% completed</strong>Complete your profiile for better reach. </span>
+
+        <button class="btn btn-secondary">Edit Profile</button>
+    </div>
+    <header>
+        <div class="banner">
+            <img class="banner-img" src="../../../assets/images/profile-banner.jpg" />
+        </div>
+    </header>
+
+    <main class="negative-top-offset">
+        <section class="container">
+            <div class="row parent-section-body profile-page">
+                <!-- row one -->
+                <div class="col-sm col-sm-12 mb-sm-3 col-md-12 col-lg-3">
+                    <div class="card profile-basic-card">
+                        <div class="card-header d-flex align-items-center border-none justify-content-space-between">
+                            <h6></h6>
+                            <a href=""><span class="material-icons">edit</span></a>
+                        </div>
+                        <div class="card-body">
+                            <div class="profile-user-block text-center">
+                                <div class="user-profile">
+                                    <div class="user-image">
+                                        <img src="../../../assets/images/user-profile-placeholder.png" />
+                                    </div>
+                                    <div class="user-content my-3">
+                                        <h5>Jayesh Kumar</h5>
+                                        <label>UX Designer</label>
+                                        <label class="d-block"><i>Haryana India</i></label>
+                                        <h2><span class="badge badge-secondary">Candidate</span></h2>
+                                    </div>
+                                    <div class="user-socials">
+                                        <div class="col-sm col-md-4 col-sm-12">
+                                            <div class="border-outline-box">
+                                                <img class="img-fluid" src="../../../assets/images/google.png" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm col-md-4 col-sm-12">
+                                            <div class="border-outline-box">
+                                                <img class="img-fluid" src="../../../assets/images/facebook.png" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm col-md-4 col-sm-12">
+                                            <div class="border-outline-box">
+                                                <img class="img-fluid" src="../../../assets/images/linkedin.png" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm col-sm-12 col-md-12 col-lg-9">
+                    <div class="card profile-content-card">
+                        <div class="card-body">
+                            <div class="accordion filter-accordian" id="accordionExample">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left" type="button"
+                                                data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                                aria-controls="collapseOne">
+                                                <span class="material-icons">add</span> Basic Information
+                                            </button>
+                                        </h2>
+                                       
+                                    </div>
+
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                        data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <div class="section start-section">
+
+                                                <form class="section-form-content">
+                                                    <div class="form-group">
+                                                        <div class="form-group">
+                                                            <input type="email" class="form-control"
+                                                                id="exampleInputEmail1" aria-describedby="emailHelp"
+                                                                placeholder="Enter email">
+                                                        </div>
+                                                        <div class="form-row form-group">
+                                                            <div class="col">
+                                                                <input type="tel" class="form-control"
+                                                                    placeholder="Phone" />
+                                                            </div>
+                                                            <div class="col">
+                                                                <input type="text" placeholder="Location"
+                                                                    class="form-control" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group ">
+                                                            <textarea type="text" class="form-control mb-2"
+                                                                placeholder="address" id="addressTextarea1" rows="3"
+                                                                formControlName="address"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                                data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                                aria-controls="collapseTwo">
+                                                <span class="material-icons">add</span> Experience
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                        data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <div class="section start-section">
+
+                                                <form class="section-form-content">
+                                                    <div class="form-row form-group">
+                                                        <div class="col">
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Designation"
+                                                                formControlName="Designation" />
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type="text" placeholder="Company"
+                                                                formControlName="company" class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row form-group">
+                                                        <div class="col">
+                                                            <input type="text" class="form-control"
+                                                                placeholder="location" formControlName="location" />
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type="text" placeholder="Country"
+                                                                formControlName="country" class="form-control" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-row form-group mt-3">
+                                                        <div class="col">
+                                                            <label for="exampleFormControlSelect2">Start Date</label>
+                                                            <input type="date" placeholder="Country"
+                                                                formControlName="country" class="form-control" />
+                                                        </div>
+                                                        <div class="col">
+                                                            <label for="exampleFormControlSelect2">End Date</label>
+                                                            <input type="date" placeholder="Country"
+                                                                formControlName="country" class="form-control" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group my-3">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="gridCheck">
+                                                            <label class="form-check-label" for="gridCheck">
+                                                                I am currently working here in this role
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group mt-3">
+                                                        <label for="exampleFormControlSelect2">Job Description</label>
+                                                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                            rows="3"></textarea>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingThree">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                                data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                                aria-controls="collapseThree">
+                                                <span class="material-icons">add</span> Education
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                        data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <div class="section start-section">
+
+                                                <form class="section-form-content">
+                                                    <div class="form-row form-group">
+                                                        <div class="col">
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Designation"
+                                                                formControlName="Designation" />
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type="text" placeholder="Company"
+                                                                formControlName="company" class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row form-group">
+                                                        <div class="col">
+                                                            <input type="text" class="form-control"
+                                                                placeholder="location" formControlName="location" />
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type="text" placeholder="Country"
+                                                                formControlName="country" class="form-control" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-row form-group mt-3">
+                                                        <div class="col">
+                                                            <label class="text-grey" for="exampleFormControlSelect2">Start Date</label>
+                                                            <input type="date" placeholder="Country"
+                                                                formControlName="country" class="form-control" />
+                                                        </div>
+                                                        <div class="col">
+                                                            <label class="text-grey" for="exampleFormControlSelect2">End Date</label>
+                                                            <input type="date" placeholder="Country"
+                                                                formControlName="country" class="form-control" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group my-3">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="gridCheck">
+                                                            <label class="form-check-label text-grey" for="gridCheck">
+                                                                I am currently working here in this role
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group mt-3">
+                                                        <label class="text-grey" for="exampleFormControlSelect2">Job Description</label>
+                                                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                            rows="3"></textarea>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingFour">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                                data-toggle="collapse" data-target="#collapseFour" aria-expanded="false"
+                                                aria-controls="collapseFour">
+                                                <span class="material-icons">add</span> Certification
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                        data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <div class="section start-section">
+
+                                                <form class="section-form-content">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Name"
+                                                            formControlName="Name" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Issuing Organisation"
+                                                            formControlName="organisation" />
+                                                    </div>
+                                                    <div class="form-group my-3">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="gridCheck">
+                                                            <label class="form-check-label" for="gridCheck">
+                                                                This Certificate does not expire
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <p class="form-group-label text-grey">Issue Date</p>
+                                                    <div class="form-row form-group mt-3">
+                                                        <div class="col">
+                                                            <input type="date" placeholder="Country"
+                                                                formControlName="country" class="form-control" />
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type="date" placeholder="Country"
+                                                                formControlName="country" class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                    <p class="form-group-label text-grey">Expiration Date</p>
+                                                    <div class="form-row form-group mt-3">
+                                                        <div class="col">
+                                                            <input type="date" placeholder="Country"
+                                                                formControlName="country" class="form-control" />
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type="date" placeholder="Country"
+                                                                formControlName="country" class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+</div>

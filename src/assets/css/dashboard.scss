@@ -899,9 +899,80 @@
     }
 }
 
-//job posting
-.job-posting {
-    
+//profile page
+.profile-page {
+    .profile-basic-card {
+
+        & .profile-user-block {
+            .user-profile {
+                .user-image {
+                    width: 150px;
+                    height: 150px;
+                    display: block;
+                    margin: 0 auto;
+
+                    & img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+
+            .user-content {
+                .badge {
+                    background: lighten($color-primary, 60%);
+                    color: $text-color;
+                    font-size: 1rem;
+                    font-weight: normal;
+                    padding: 16px 32px;
+                    width: 100%;
+                    margin: 24px 0;
+                }
+               
+            }
+
+            .user-socials {
+                display: flex;
+
+                .border-outline-box {
+                    background: lighten($color-primary, 60%);
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 50px;
+                    height: 50px;
+
+                    & > img {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+            }
+        }
+    }
+
+    .profile-content-card {
+        &>  .card-body {
+            padding: 0;
+            box-shadow: none;
+            border:none;
+        }
+
+        .card-header {
+            button {
+                display: flex;
+                align-items: center;
+                color: $text-color;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+       
+    }
 }
 
 
