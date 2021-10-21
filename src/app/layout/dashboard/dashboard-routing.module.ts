@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ExpertComponent } from 'src/app/auth/expert/expert.component';
+import { ExpertComponent } from './expert/expert.component';
 import { CandidateComponent } from './candidate/candidate.component';
 import { DashboardComponent } from './dashboard.component';
 import { EmployerComponent } from './employer/employer.component';
@@ -23,7 +23,7 @@ const routes: Routes = [
         component: EmployerComponent,
       },
       {
-        path: 'institue',
+        path: 'institute',
         component: InstituteComponent,
       }
     ]

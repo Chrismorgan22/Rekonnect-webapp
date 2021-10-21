@@ -885,7 +885,7 @@
 
     .modal-image {
         width: 285px;
-        height: 490px;
+        height: 100%;
 
         @media (max-width: $information-mobile-md) {
           display: none;
