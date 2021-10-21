@@ -109,6 +109,10 @@
   color: #FF6400 !important;
 }
 
+.text-grey {
+  color: #727374;
+}
+
 .text-color-light {
   color: #949597 !important;
 }
@@ -307,6 +311,19 @@
 @media (max-width: 768px) {
   .section-title {
     font-size: 2.5rem;
+  }
+}
+
+.section-sub-small-title {
+  font-family: "Inter", sans-serif;
+  font-size: 1.4rem;
+  line-height: normal;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .section-sub-small-title {
+    font-size: 1rem;
   }
 }
 
