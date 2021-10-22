@@ -19,7 +19,7 @@ export class SignInComponent implements OnInit {
   socialUser: SocialUser;
   isLoggedin: boolean;
   userRoleValidation: boolean = false;
-  user_role: any;
+  // user_role: any;
   constructor(
     private formBuilder: FormBuilder,
     private _router: Router,
@@ -34,7 +34,7 @@ export class SignInComponent implements OnInit {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      user_role: ['']
+      // user_role: ['']
     });
 
   }
@@ -56,7 +56,7 @@ export class SignInComponent implements OnInit {
   }
   loginWithGoogle(): void {
     this.userRoleValidation = false;
-    if (this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== '') {
+    // if (this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== '') {
       this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => {
         console.log(x)
         this.socialAuthService.authState.subscribe((user) => {
@@ -72,13 +72,13 @@ export class SignInComponent implements OnInit {
           }
         });
       })
-    } else {
-      this.userRoleValidation = true;
-    }
+    // } else {
+    //   this.userRoleValidation = true;
+    // }
   }
   loginInWithFB(): void {
     this.userRoleValidation = false;
-    if (this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== '') {
+    // if (this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== '') {
       this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => {
         this.socialAuthService.authState.subscribe((user) => {
           this.SpinnerService.show();
@@ -94,13 +94,13 @@ export class SignInComponent implements OnInit {
           }
         })
       });
-    } else {
-      this.userRoleValidation = true;
-    }
+    // } else {
+    //   this.userRoleValidation = true;
+    // }
   }
   loginWithLinkedIn(): void {
     this.userRoleValidation = false;
-    if (this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== '') {
+    // if (this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== '') {
       const linkedInCredentials = {
         clientId: "78q6vjqcmmldlg",
         redirectUrl: "https://rekonnect.in/auth/linkedinLoginResponse",
@@ -119,9 +119,9 @@ export class SignInComponent implements OnInit {
           console.log(sourceid);
         }
       }, 1500)
-    } else {
-      this.userRoleValidation = true;
-    }
+    // } else {
+    //   this.userRoleValidation = true;
+    // }
   }
   callAuthAPI(sourceid, newWindow) {
     this.SpinnerService.show();
@@ -165,7 +165,7 @@ export class SignInComponent implements OnInit {
           json['first_name'] = this.socialUser.firstName;
           json['last_name'] = this.socialUser.lastName;
           json['email'] = this.socialUser.email;
-          json['role'] = Number(this.form.controls.user_role.value);
+          // json['role'] = Number(this.form.controls.user_role.value);
           this.registerAPICall(json);
         } else {
           this._toastrService.error(

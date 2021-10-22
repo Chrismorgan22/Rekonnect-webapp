@@ -16,9 +16,10 @@
                 <div class="text-center">
                     <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Where do you find
                         yourself?</h5>
-                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
-                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                    <p class="section-content font-16">We are super glad that you're here! We'd love for you to fill us
+                        in on who you are before you furnish your details :)
+                        You'd be a candidate if you're the job seeker/buyer of service however, if you're the job
+                        hirer/provider of service, you must select the other appropriate categories.</p>
                 </div>
             </div>
             <!-- <form class="section-form-content" [formGroup]="userRoleForm"
@@ -107,9 +108,10 @@
                 <div class="text-center pt-5">
                     <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Lets get the basic set
                     </h5>
-                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
-                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                    <p class="section-content font-16"> We're sure you'll agree that we will need more than just your
+                        address details, isn't it? You're a fresher if you're right out of college, but if you're
+                        someone with experience then we'd like for you to provide us with your past employment
+                        details...</p>
                 </div>
             </div>
             <div class="modal-body">
@@ -175,7 +177,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <input type="text" class="form-control" size="lg" placeholder="Organisational Strength"
                                     formControlName="organization_strength">
                                 <div *ngIf="addressSubmit && userAddress.organization_strength.errors"
@@ -183,7 +185,7 @@
                                     <div *ngIf="userAddress.organization_strength.errors.required">Organization Strength
                                         is required</div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -209,11 +211,10 @@
                 </div>
                 <div class="text-center pt-5">
                     <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Tune it Up</h5>
-                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                        eget
-                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit
-                        amet,
-                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                    <p class="section-content font-16">Please start with providing us with your recent most experience
+                        first and click on "Add more experience" to add your past employment experience. We'd request
+                        you to take some time to fill in the Job description and not leave that blank. Start with
+                        highlighting your achievements Brief, on point and precise should be the mantra here!</p>
                 </div>
             </div>
             <div class="modal-body d-flex justify-content-center">
@@ -269,11 +270,8 @@
                 <div class="text-center pt-5">
                     <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Tune it up
                     </h5>
-                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                        eget
-                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit
-                        amet,
-                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                    <p class="section-content font-16">Hey, thank you so much for being this patient thus far! You're
+                        only a very few steps away from creating that perfect profile.</p>
                 </div>
             </div>
             <div class="modal-body">
@@ -313,15 +311,15 @@
                                             {{location.name}}
                                         </option>
                                     </select> -->
-                                    <ng-multiselect-dropdown [placeholder]="'Location'" [settings]="dropdownSettings1"
-                                        [data]="locationDrp" formControlName="location"
+                                    <ng-multiselect-dropdown [placeholder]="'State'" [settings]="dropdownSettings1"
+                                        [data]="stateDrp" formControlName="state"
                                         (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
                                     </ng-multiselect-dropdown>
                                     <!-- <input type="text" class="form-control" placeholder="location"
                                         formControlName="location" /> -->
-                                    <div *ngIf="experienceDetailSubmit && userExpDetails.location.errors"
+                                    <div *ngIf="experienceDetailSubmit && userExpDetails.state.errors"
                                         class="invalid-feedback" style="display:block;">
-                                        <div *ngIf="userExpDetails.location.errors.required">Location
+                                        <div *ngIf="userExpDetails.state.errors.required">State
                                             is required</div>
                                     </div>
                                 </div>
@@ -705,11 +703,10 @@
                 <div class="text-center pt-5">
                     <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Last Few Bits
                     </h5>
-                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                        eget
-                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit
-                        amet,
-                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                    <p class="section-content font-16">his is the stage that will set you apart from the rest in terms
+                        of what skills you bring to the table and what kind of career you'd want to build from here!
+                        Please provide as much information and detailing as possible when it comes to describing your
+                        passion.</p>
                 </div>
             </div>
             <div class="modal-body">
@@ -876,11 +873,9 @@
                 <div class="text-center pt-5">
                     <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Last Few Bits
                     </h5>
-                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                        eget
-                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit
-                        amet,
-                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.</p>
+                    <p class="section-content font-16">Clearly you're here because you're immediately available to go
+                        back to work! We will help you get there ASAP and don't worry if you don't have a Resume at this
+                        stage, you can always come back to upload one :)</p>
                 </div>
             </div>
             <div class="modal-body">
@@ -892,8 +887,7 @@
                             <div class="form-group py-4">
                                 <label>Select Salary Range</label>
                                 <div class="custom-file  d-block">
-                                    <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
-                                        formControlName="rangeValues"></ngx-slider>
+
                                     <!-- <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert"
                                         [max]="100000000" [min]="0" [step]="step" [thumbLabel]="thumbLabel"
                                         formControlName="rangeValues" [vertical]="vertical"
@@ -949,30 +943,30 @@
                                             <div class="middle">
                                                 <label>
                                                     <input type="radio" formControlName="joining_within" value='7days'
-                                                        type="radio" name="joining_within" id="7" />
+                                                        type="radio" name="joining_within" id="7" (change)="checkJoiningDaya()"/>
                                                     <div class="front-end box">
                                                         <span>7 Days</span>
                                                     </div>
                                                 </label>
                                                 <label>
                                                     <input type="radio" formControlName="joining_within" value='15days'
-                                                        type="radio" name="joining_within" id="15" />
+                                                        type="radio" name="joining_within" id="15" (change)="checkJoiningDaya()"/>
                                                     <div class="front-end box">
                                                         <span>15 Days</span>
                                                     </div>
                                                 </label>
                                                 <label>
                                                     <input type="radio" formControlName="joining_within" value='30days'
-                                                        type="radio" name="joining_within" id="30" />
+                                                        type="radio" name="joining_within" id="30" (change)="checkJoiningDaya()"/>
                                                     <div class="front-end box">
                                                         <span>30 Days</span>
                                                     </div>
                                                 </label>
                                                 <label>
-                                                    <input type="radio" formControlName="joining_within" value='>30days'
-                                                        type="radio" name="joining_within" id=">30" />
+                                                    <input type="radio" formControlName="joining_within" value='later'
+                                                        type="radio" name="joining_within" id="later" (change)="checkJoiningDaya()"/>
                                                     <div class="front-end box">
-                                                        <span>>30 Days</span>
+                                                        <span>Later</span>
                                                     </div>
                                                 </label>
                                             </div>
@@ -1055,11 +1049,11 @@
                 <div class="text-center">
                     <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Gain More
                         Visibility</h5>
-                    <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Nam eget
-                        sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit
-                        amet,
-                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.
+                    <p class="section-content font-16">Here's where you can fast-track your path to getting (re)started.
+                        Check the box below, as consent to getting your reference check done before employers start
+                        looking for you. Your resume will hold greater significance to potential employers if they know
+                        it is validated by us. We will also showcase your profile as authentic under our premium
+                        profiles section.
                     </p>
                 </div>
             </div>
@@ -1119,12 +1113,9 @@
                             </div>
                             <h6 class="font-bold my-3">A minimum completion rate of 75% is required to continue
                             </h6>
-                            <p class="section-content font-16 line-height-normal">Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. Nam eget
-                                sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum
-                                dolor sit amet,
-                                consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel
-                                lorem.</p>
+                            <p class="section-content font-16 line-height-normal">You're extremely close to getting that
+                                perfect profile and that perfect job you've been dreaming about. Just take a few more
+                                mins and get to that 100% mark!</p>
                         </div>
                         <div class="section-content-block">
                             <h6 class="font-bold my-3">Please complete the following steps:</h6>

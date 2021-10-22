@@ -85,7 +85,7 @@ export class PersonalizationComponent implements OnInit {
       state: ['', Validators.required],
       zip_code: ['', Validators.required],
       landmark: ['', Validators.required],
-      organization_strength: ['', Validators.required]
+      // organization_strength: ['', Validators.required]
     })
     this.experienceTypeForm = this.formBuilder.group({
       experience_type: ['', Validators.required]
@@ -93,7 +93,7 @@ export class PersonalizationComponent implements OnInit {
     this.experienceDetailForm = this.formBuilder.group({
       designation: ['', Validators.required],
       company: ['', Validators.required],
-      location: ['', Validators.required],
+      state: ['', Validators.required],
       country: ['', Validators.required],
       start_date: ['', Validators.required],
       end_date: [''],
@@ -194,7 +194,7 @@ export class PersonalizationComponent implements OnInit {
         // $('#candidateModalCenter').modal('hide')
         const objectKeys = Object.keys(data.data[0].temp_data)
         console.log(objectKeys)
-        if (objectKeys.length !== 7 || localData.register_complete === false) {
+        if (objectKeys.length !== 7 && localData.register_complete === false) {
           const currentFormId = objectKeys[objectKeys.length - 1];
           const currentFormIndex = this.formIdArray.indexOf(objectKeys[objectKeys.length - 1])
           const openFormId = this.formIdArray[objectKeys.length];
@@ -243,7 +243,7 @@ export class PersonalizationComponent implements OnInit {
           "state": this.addressForm.controls.state.value[0],
           "zip_code": this.addressForm.controls.zip_code.value,
           "landmark": this.addressForm.controls.landmark.value,
-          "organization_strength": this.addressForm.controls.organization_strength.value
+          // "organization_strength": this.addressForm.controls.organization_strength.value
         }
       }
       const body = {
@@ -313,7 +313,7 @@ export class PersonalizationComponent implements OnInit {
           "experience_details": {
             "designation": this.experienceDetailForm.controls.designation.value,
             "company": this.experienceDetailForm.controls.company.value,
-            "location": this.experienceDetailForm.controls.location.value[0],
+            "state": this.experienceDetailForm.controls.state.value[0],
             "country": this.experienceDetailForm.controls.country.value[0],
             "start_date": this.experienceDetailForm.controls.start_date.value,
             "end_date": this.experienceDetailForm.controls.end_date.value,
@@ -518,8 +518,8 @@ export class PersonalizationComponent implements OnInit {
           "joining_status": this.lastFewBitsJoinDetailForm.controls.joining_status.value,
           "join_within": this.lastFewBitsJoinDetailForm.controls.joining_within.value,
           "salary_range": {
-            "min": this.lastFewBitsJoinDetailForm.controls.rangeValues.value[0],
-            "max": this.lastFewBitsJoinDetailForm.controls.rangeValues.value[1]
+            "min": this.value,
+            "max": this.highValue
           },
         }
       }
@@ -695,7 +695,7 @@ export class PersonalizationComponent implements OnInit {
         "state": this.addressForm.controls.state.value[0],
         "zip_code": this.addressForm.controls.zip_code.value,
         "landmark": this.addressForm.controls.landmark.value,
-        "organization_strength": this.addressForm.controls.organization_strength.value
+        // "organization_strength": this.addressForm.controls.organization_strength.value
       },
       "education_data": {
         "education_type": this.educationTypeForm.controls.education_type.value,
@@ -721,7 +721,7 @@ export class PersonalizationComponent implements OnInit {
         "experience_details": {
           "designation": this.experienceDetailForm.controls.designation.value,
           "company": this.experienceDetailForm.controls.company.value,
-          "location": this.experienceDetailForm.controls.location.value[0],
+          "state": this.experienceDetailForm.controls.state.value[0],
           "country": this.experienceDetailForm.controls.country.value[0],
           "start_date": this.experienceDetailForm.controls.start_date.value,
           "end_date": this.experienceDetailForm.controls.end_date.value,
@@ -740,8 +740,8 @@ export class PersonalizationComponent implements OnInit {
       "joining_status": this.lastFewBitsJoinDetailForm.controls.joining_status.value,
       "join_within": this.lastFewBitsJoinDetailForm.controls.joining_within.value,
       "salary_range": {
-        "min": this.lastFewBitsJoinDetailForm.controls.rangeValues[0],
-        "max": this.lastFewBitsJoinDetailForm.controls.rangeValues[1]
+        "min": this.value,
+        "max": this.highValue
       },
       "on_board": this.onBoardDetailForm.controls.onboard.value
     }
@@ -754,7 +754,7 @@ export class PersonalizationComponent implements OnInit {
         }
         this.authService.updateCandidateStatus(body).subscribe(res => {
           this.SpinnerService.hide();
-          this._toastrService.error(
+          this._toastrService.success(
             'Registration successfully', 'Success'
           )
         })
@@ -763,6 +763,14 @@ export class PersonalizationComponent implements OnInit {
       this.getUserTempData();
     })
     // }
+  }
+  checkJoiningDaya() {
+    console.log('checkJoiningDaya')
+    if (this.lastFewBitsJoinDetailForm.controls.joining_within.value === 'later') {
+      this._toastrService.warning(
+        'Only immediate candidates allow who join within 7 to 15 days', 'Warning'
+      )
+    }
   }
   setUpFormData() {
     console.log(this.tempFormData)
@@ -778,13 +786,13 @@ export class PersonalizationComponent implements OnInit {
           this.addressForm.controls.state.setValue([this.tempFormData['candidateModalCenterupload'].address_details.state]);
           this.addressForm.controls.zip_code.setValue(this.tempFormData['candidateModalCenterupload'].address_details.zip_code);
           this.addressForm.controls.landmark.setValue(this.tempFormData['candidateModalCenterupload'].address_details.landmark);
-          this.addressForm.controls.organization_strength.setValue(this.tempFormData['candidateModalCenterupload'].address_details.organization_strength);
+          // this.addressForm.controls.organization_strength.setValue(this.tempFormData['candidateModalCenterupload'].address_details.organization_strength);
           if (objectKeys.includes("candidateModalExperience")) {
             this.experienceTypeForm.controls.experience_type.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_type)
             if (this.tempFormData['candidateModalExperience'].experience_data.experience_type === "Experienced") {
               this.experienceDetailForm.controls.designation.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.designation)
               this.experienceDetailForm.controls.company.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.company)
-              this.experienceDetailForm.controls.location.setValue([this.tempFormData['candidateModalExperience'].experience_data.experience_details.location])
+              this.experienceDetailForm.controls.state.setValue([this.tempFormData['candidateModalExperience'].experience_data.experience_details.state])
               this.experienceDetailForm.controls.country.setValue([this.tempFormData['candidateModalExperience'].experience_data.experience_details.country])
               this.experienceDetailForm.controls.start_date.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.start_date)
               this.experienceDetailForm.controls.end_date.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.end_date)
