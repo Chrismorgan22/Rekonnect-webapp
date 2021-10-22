@@ -11,15 +11,21 @@ import { LinkedinResponseComponent } from './linkedin-response/linkedin-response
 import { PersonalizationComponent } from './personalization/personalization.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SliderModule } from 'primeng/slider';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+
 @NgModule({
   declarations: [WelcomeComponent, LinkedinResponseComponent, PersonalizationComponent],
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     AuthRoutingModule,
     NgxSpinnerModule,
     SocialLoginModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    SliderModule,
+    NgxSliderModule
     // NgbModule
   ],
   providers: [

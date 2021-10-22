@@ -7,6 +7,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
+// import { Options } from "@angular-slider/ngx-slider";
 declare var $: any;
 @Component({
   selector: 'app-personalization',
@@ -46,6 +47,22 @@ export class PersonalizationComponent implements OnInit {
   dropdownSettings = {};
   dropdownSettings1 = {}
   companyTimeLineData: any = [];
+  rangeValues: number[] = [0, 1000000];
+  autoTicks = false;
+  disabled = false;
+  invert = false;
+  showTicks = false;
+  step = 1;
+  thumbLabel = false;
+  // value = 0;
+  vertical = false;
+  tickInterval = 1;
+  value: number = 0;
+  highValue: number = 10000000;
+  options = {
+    floor: 0,
+    ceil: 10000000
+  };
   formIdArray = ['candidateModalCenter', 'candidateModalCenterupload', 'candidateModalExperience', 'candidateModalEducation', 'candidateModallastbits', 'candidateModallastbitsfinal', 'gainmorevisibilitymodal', 'almostdonemodal']
   constructor(private formBuilder: FormBuilder, private authService: AuthService,
     private layoutService: LayoutService, private _toastrService: ToastrService,
@@ -109,7 +126,8 @@ export class PersonalizationComponent implements OnInit {
     })
     this.lastFewBitsJoinDetailForm = this.formBuilder.group({
       joining_status: ['', Validators.required],
-      joining_within: ['']
+      joining_within: [''],
+      rangeValues: [[0, 10000000]],
     })
     this.onBoardDetailForm = this.formBuilder.group({
       onboard: [false]
@@ -488,6 +506,7 @@ export class PersonalizationComponent implements OnInit {
   }
   lastFewBitsJoinDetailsFormSubmit(currentModal, nextModal) {
     this.lastFewBitsJoinDetailsSubmit = true;
+    console.log(this.lastFewBitsJoinDetailForm.controls.rangeValues.value)
     console.log(this.lastFewBitsJoinDetailForm)
     if (this.lastFewBitsJoinDetailForm.valid) {
       console.log(this.lastFewBitsJoinDetailForm)
@@ -498,6 +517,10 @@ export class PersonalizationComponent implements OnInit {
         "last_few_join": {
           "joining_status": this.lastFewBitsJoinDetailForm.controls.joining_status.value,
           "join_within": this.lastFewBitsJoinDetailForm.controls.joining_within.value,
+          "salary_range": {
+            "min": this.lastFewBitsJoinDetailForm.controls.rangeValues.value[0],
+            "max": this.lastFewBitsJoinDetailForm.controls.rangeValues.value[1]
+          },
         }
       }
       const body = {
@@ -716,6 +739,10 @@ export class PersonalizationComponent implements OnInit {
       "languages": this.lastFewBitsDetailForm.controls.language.value,
       "joining_status": this.lastFewBitsJoinDetailForm.controls.joining_status.value,
       "join_within": this.lastFewBitsJoinDetailForm.controls.joining_within.value,
+      "salary_range": {
+        "min": this.lastFewBitsJoinDetailForm.controls.rangeValues[0],
+        "max": this.lastFewBitsJoinDetailForm.controls.rangeValues[1]
+      },
       "on_board": this.onBoardDetailForm.controls.onboard.value
     }
     console.log(json)
@@ -800,6 +827,8 @@ export class PersonalizationComponent implements OnInit {
                 if (objectKeys.includes("candidateModallastbitsfinal")) {
                   this.lastFewBitsJoinDetailForm.controls.joining_status.setValue(this.tempFormData['candidateModallastbitsfinal'].last_few_join.joining_status)
                   this.lastFewBitsJoinDetailForm.controls.joining_within.setValue(this.tempFormData['candidateModallastbitsfinal'].last_few_join.join_within)
+                  this.value = this.tempFormData['candidateModallastbitsfinal'].last_few_join.salary_range?.min !== undefined ? this.tempFormData['candidateModallastbitsfinal'].last_few_join.salary_range.min : 0;
+                  this.highValue = this.tempFormData['candidateModallastbitsfinal'].last_few_join.salary_range?.max;
                   if (objectKeys.includes("gainmorevisibilitymodal")) {
                     this.onBoardDetailForm.controls.onboard.setValue(this.tempFormData['gainmorevisibilitymodal'].on_board)
                   }

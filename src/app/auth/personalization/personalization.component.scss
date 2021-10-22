@@ -27,7 +27,7 @@ $green: #007e90;
     }
     input[type="radio"] {
         display: none;
-        
+
         &:checked {
             + .box {
                 background-color: $green;
@@ -47,7 +47,7 @@ $green: #007e90;
         padding-top: 5px;
         background-color: #fff;
         transition: all 250ms ease;
-        border: 1px solid #15759A;
+        border: 1px solid #15759a;
         span {
             &:before {
                 display: block;
@@ -75,4 +75,7 @@ $green: #007e90;
             }
         }
     }
+}
+.mat-slider-horizontal {
+    min-width: 100% !important;
 }

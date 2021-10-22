@@ -889,7 +889,19 @@
                     noValidate>
                     <div class="container-fluid start-section  w-100">
                         <div class="section-form-content">
-                            <label>range selector will come here</label>
+                            <div class="form-group py-4">
+                                <label>Select Salary Range</label>
+                                <div class="custom-file  d-block">
+                                    <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
+                                        formControlName="rangeValues"></ngx-slider>
+                                    <!-- <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert"
+                                        [max]="100000000" [min]="0" [step]="step" [thumbLabel]="thumbLabel"
+                                        formControlName="rangeValues" [vertical]="vertical"
+                                        aria-labelledby="example-name-label">
+                                    </mat-slider> -->
+                                </div>
+                            </div>
+                            <!-- <label>range selector will come here</label> -->
                             <div class="form-group mt-3 ">
                                 <div class="form-group mt-3 w-100 d-flex align-items-center">
                                     <div class="col p-0">
