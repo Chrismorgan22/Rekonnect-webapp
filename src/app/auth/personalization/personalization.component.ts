@@ -44,13 +44,13 @@ export class PersonalizationComponent implements OnInit {
   languageDrp: any = [];
   selectedItems = [];
   dropdownSettings = {};
+  dropdownSettings1 = {}
   companyTimeLineData: any = [];
   formIdArray = ['candidateModalCenter', 'candidateModalCenterupload', 'candidateModalExperience', 'candidateModalEducation', 'candidateModallastbits', 'candidateModallastbitsfinal', 'gainmorevisibilitymodal', 'almostdonemodal']
   constructor(private formBuilder: FormBuilder, private authService: AuthService,
     private layoutService: LayoutService, private _toastrService: ToastrService,
     private SpinnerService: NgxSpinnerService, private router: Router) {
     // $('#candidateModalCenter').modal('show')
-    this.getUserTempData();
 
   }
 
@@ -125,8 +125,17 @@ export class PersonalizationComponent implements OnInit {
       itemsShowLimit: 3,
       allowSearchFilter: true
     };
+    this.dropdownSettings1 = {
+      singleSelection: true,
+      idField: 'id',
+      textField: 'name',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      allowSearchFilter: true
+    }
     await Promise.all([this.getStateList('State'), this.getLocationList('Location'), this.getCountryList('Country'),
-    this.getSoftSkillsList('Soft_skills'), this.getTechnicalList('Technical_skills'), this.careerList('Career'), this.getLanguage('Language')])
+
+    this.getSoftSkillsList('Soft_skills'), this.getTechnicalList('Technical_skills'), this.careerList('Career'), this.getLanguage('Language'), this.getUserTempData()])
   }
   get userRole() { return this.userRoleForm.controls }
   get userAddress() { return this.addressForm.controls }
@@ -159,6 +168,7 @@ export class PersonalizationComponent implements OnInit {
       "user_id": localData._id,
       "user_token": localData.user_token
     }
+    console.log(localData);
     this.authService.getTempUser(body).subscribe((data) => {
       console.log(data);
       if (data.data[0].temp_data !== undefined) {
@@ -166,16 +176,16 @@ export class PersonalizationComponent implements OnInit {
         // $('#candidateModalCenter').modal('hide')
         const objectKeys = Object.keys(data.data[0].temp_data)
         console.log(objectKeys)
-        if (objectKeys.length !== 7) {
-        const currentFormId = objectKeys[objectKeys.length - 1];
-        const currentFormIndex = this.formIdArray.indexOf(objectKeys[objectKeys.length - 1])
-        const openFormId = this.formIdArray[objectKeys.length];
-        console.log(currentFormId, openFormId);
-        this.setUpFormData()
-        this.moveToNextModal(currentFormId, openFormId)
-      } else {
-        this.router.navigate(['/dashboard/candidate'])
-      }
+        if (objectKeys.length !== 7 || localData.register_complete === false) {
+          const currentFormId = objectKeys[objectKeys.length - 1];
+          const currentFormIndex = this.formIdArray.indexOf(objectKeys[objectKeys.length - 1])
+          const openFormId = this.formIdArray[objectKeys.length];
+          console.log(currentFormId, openFormId);
+          this.setUpFormData()
+          this.moveToNextModal(currentFormId, openFormId)
+        } else {
+          this.router.navigate(['/dashboard/candidate'])
+        }
       } else {
         $('#candidateModalCenter').modal('show')
       }
@@ -212,7 +222,7 @@ export class PersonalizationComponent implements OnInit {
       tempData[currentModal] = {
         "address_details": {
           "street": this.addressForm.controls.street.value,
-          "state": JSON.parse(this.addressForm.controls.state.value),
+          "state": this.addressForm.controls.state.value[0],
           "zip_code": this.addressForm.controls.zip_code.value,
           "landmark": this.addressForm.controls.landmark.value,
           "organization_strength": this.addressForm.controls.organization_strength.value
@@ -285,8 +295,8 @@ export class PersonalizationComponent implements OnInit {
           "experience_details": {
             "designation": this.experienceDetailForm.controls.designation.value,
             "company": this.experienceDetailForm.controls.company.value,
-            "location": JSON.parse(this.experienceDetailForm.controls.location.value),
-            "country": JSON.parse(this.experienceDetailForm.controls.country.value),
+            "location": this.experienceDetailForm.controls.location.value[0],
+            "country": this.experienceDetailForm.controls.country.value[0],
             "start_date": this.experienceDetailForm.controls.start_date.value,
             "end_date": this.experienceDetailForm.controls.end_date.value,
             "currently_working": this.experienceDetailForm.controls.currently_working.value,
@@ -445,9 +455,9 @@ export class PersonalizationComponent implements OnInit {
         "last_few_bits": {
           "soft_skills": this.lastFewBitsDetailForm.controls.soft_skills.value,
           "technical_skills": this.lastFewBitsDetailForm.controls.technical_skills.value,
-          "current_career": JSON.parse(this.lastFewBitsDetailForm.controls.current_career.value),
+          "current_career": this.lastFewBitsDetailForm.controls.current_career.value[0],
           "changecareer": this.lastFewBitsDetailForm.controls.changecareer.value,
-          "change_career": this.lastFewBitsDetailForm.controls.change_career.value !== undefined && this.lastFewBitsDetailForm.controls.change_career.value !== null && this.lastFewBitsDetailForm.controls.change_career.value !== '' ? JSON.parse(this.lastFewBitsDetailForm.controls.change_career.value) : '',
+          "change_career": this.lastFewBitsDetailForm.controls.change_career.value !== undefined && this.lastFewBitsDetailForm.controls.change_career.value !== null && this.lastFewBitsDetailForm.controls.change_career.value !== '' ? this.lastFewBitsDetailForm.controls.change_career.value[0] : '',
           "passion": this.lastFewBitsDetailForm.controls.passion.value,
           "language": this.lastFewBitsDetailForm.controls.language.value,
         }
@@ -652,13 +662,14 @@ export class PersonalizationComponent implements OnInit {
   }
   saveFinalData() {
     const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
+
     // if (this.userRoleForm.controls.user_role.value === '1') {
     const json = {
       "user_id": localData._id,
       "profile_url": "wwww",
       "address_details": {
         "street": this.addressForm.controls.street.value,
-        "state": JSON.parse(this.addressForm.controls.state.value),
+        "state": this.addressForm.controls.state.value[0],
         "zip_code": this.addressForm.controls.zip_code.value,
         "landmark": this.addressForm.controls.landmark.value,
         "organization_strength": this.addressForm.controls.organization_strength.value
@@ -687,8 +698,8 @@ export class PersonalizationComponent implements OnInit {
         "experience_details": {
           "designation": this.experienceDetailForm.controls.designation.value,
           "company": this.experienceDetailForm.controls.company.value,
-          "location": JSON.parse(this.experienceDetailForm.controls.location.value),
-          "country": JSON.parse(this.experienceDetailForm.controls.country.value),
+          "location": this.experienceDetailForm.controls.location.value[0],
+          "country": this.experienceDetailForm.controls.country.value[0],
           "start_date": this.experienceDetailForm.controls.start_date.value,
           "end_date": this.experienceDetailForm.controls.end_date.value,
           "currently_working": this.experienceDetailForm.controls.currently_working.value,
@@ -697,9 +708,10 @@ export class PersonalizationComponent implements OnInit {
       },
       "soft_skills": this.lastFewBitsDetailForm.controls.soft_skills.value,
       "technical_skills": this.lastFewBitsDetailForm.controls.technical_skills.value,
-      "current_career": JSON.parse(this.lastFewBitsDetailForm.controls.current_career.value),
+
+      "current_career": this.lastFewBitsDetailForm.controls.current_career.value[0],
       "changecareer": this.lastFewBitsDetailForm.controls.changecareer.value,
-      "change_career": this.lastFewBitsDetailForm.controls.change_career.value !== undefined && this.lastFewBitsDetailForm.controls.change_career.value !== null && this.lastFewBitsDetailForm.controls.change_career.value !== '' ? JSON.parse(this.lastFewBitsDetailForm.controls.change_career.value) : '',
+      "change_career": this.lastFewBitsDetailForm.controls.change_career.value !== undefined && this.lastFewBitsDetailForm.controls.change_career.value !== null && this.lastFewBitsDetailForm.controls.change_career.value !== '' ? this.lastFewBitsDetailForm.controls.change_career.value[0] : '',
       "passion": this.lastFewBitsDetailForm.controls.passion.value,
       "languages": this.lastFewBitsDetailForm.controls.language.value,
       "joining_status": this.lastFewBitsJoinDetailForm.controls.joining_status.value,
@@ -736,7 +748,7 @@ export class PersonalizationComponent implements OnInit {
         if (objectKeys.includes('candidateModalCenterupload')) {
           console.log(this.tempFormData['candidateModalCenterupload'].address_details.state.toString())
           this.addressForm.controls.street.setValue(this.tempFormData['candidateModalCenterupload'].address_details.street);
-          this.addressForm.controls.state.setValue(JSON.stringify(this.tempFormData['candidateModalCenterupload'].address_details.state));
+          this.addressForm.controls.state.setValue([this.tempFormData['candidateModalCenterupload'].address_details.state]);
           this.addressForm.controls.zip_code.setValue(this.tempFormData['candidateModalCenterupload'].address_details.zip_code);
           this.addressForm.controls.landmark.setValue(this.tempFormData['candidateModalCenterupload'].address_details.landmark);
           this.addressForm.controls.organization_strength.setValue(this.tempFormData['candidateModalCenterupload'].address_details.organization_strength);
@@ -745,8 +757,8 @@ export class PersonalizationComponent implements OnInit {
             if (this.tempFormData['candidateModalExperience'].experience_data.experience_type === "Experienced") {
               this.experienceDetailForm.controls.designation.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.designation)
               this.experienceDetailForm.controls.company.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.company)
-              this.experienceDetailForm.controls.location.setValue(JSON.stringify(this.tempFormData['candidateModalExperience'].experience_data.experience_details.location))
-              this.experienceDetailForm.controls.country.setValue(JSON.stringify(this.tempFormData['candidateModalExperience'].experience_data.experience_details.country))
+              this.experienceDetailForm.controls.location.setValue([this.tempFormData['candidateModalExperience'].experience_data.experience_details.location])
+              this.experienceDetailForm.controls.country.setValue([this.tempFormData['candidateModalExperience'].experience_data.experience_details.country])
               this.experienceDetailForm.controls.start_date.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.start_date)
               this.experienceDetailForm.controls.end_date.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.end_date)
               this.experienceDetailForm.controls.currently_working.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.currently_working)
@@ -778,11 +790,11 @@ export class PersonalizationComponent implements OnInit {
                 this.educationDetailForm.controls.description.setValue(this.tempFormData['candidateModalEducation'].education_data.education_details.description)
               }
               if (objectKeys.includes("candidateModallastbits")) {
+                this.lastFewBitsDetailForm.controls.current_career.setValue([this.tempFormData['candidateModallastbits'].last_few_bits.current_career]);
                 this.lastFewBitsDetailForm.controls.soft_skills.setValue(this.tempFormData['candidateModallastbits'].last_few_bits.soft_skills)
                 this.lastFewBitsDetailForm.controls.technical_skills.setValue(this.tempFormData['candidateModallastbits'].last_few_bits.technical_skills)
-                this.lastFewBitsDetailForm.controls.current_career.setValue(JSON.stringify(this.tempFormData['candidateModallastbits'].last_few_bits.current_career))
                 this.lastFewBitsDetailForm.controls.changecareer.setValue(this.tempFormData['candidateModallastbits'].last_few_bits.changecareer)
-                this.lastFewBitsDetailForm.controls.change_career.setValue(JSON.stringify(this.tempFormData['candidateModallastbits'].last_few_bits.change_career))
+                this.lastFewBitsDetailForm.controls.change_career.setValue([this.tempFormData['candidateModallastbits'].last_few_bits.change_career])
                 this.lastFewBitsDetailForm.controls.passion.setValue(this.tempFormData['candidateModallastbits'].last_few_bits.passion)
                 this.lastFewBitsDetailForm.controls.language.setValue(this.tempFormData['candidateModallastbits'].last_few_bits.language)
                 if (objectKeys.includes("candidateModallastbitsfinal")) {

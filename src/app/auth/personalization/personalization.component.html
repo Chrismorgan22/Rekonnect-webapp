@@ -140,11 +140,15 @@
                             </div>
                             <div class="form-row form-group">
                                 <div class="col">
-                                    <select formControlName="state" class="form-control">
+                                    <!-- <select formControlName="state" class="form-control">
                                         <option value="" selected disabled>State</option>
                                         <option *ngFor="let state of stateDrp" value="{{state | json}}">{{state.name}}
                                         </option>
-                                    </select>
+                                    </select> -->
+                                    <ng-multiselect-dropdown [placeholder]="'State'" [settings]="dropdownSettings1"
+                                        [data]="stateDrp" formControlName="state" (onSelect)="onItemSelect($event)"
+                                        (onSelectAll)="onSelectAll($event)">
+                                    </ng-multiselect-dropdown>
                                     <!-- <input type="text" class="form-control" placeholder="State"
                                         formControlName="state" /> -->
                                     <div *ngIf="addressSubmit && userAddress.state.errors" class="invalid-feedback"
@@ -303,12 +307,16 @@
                             </div>
                             <div class="form-row form-group">
                                 <div class="col">
-                                    <select formControlName="location" class="form-control">
+                                    <!-- <select formControlName="location" class="form-control">
                                         <option value="" selected disabled>Location</option>
                                         <option *ngFor="let location of locationDrp" value="{{location | json}}">
                                             {{location.name}}
                                         </option>
-                                    </select>
+                                    </select> -->
+                                    <ng-multiselect-dropdown [placeholder]="'Location'" [settings]="dropdownSettings1"
+                                        [data]="locationDrp" formControlName="location"
+                                        (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                                    </ng-multiselect-dropdown>
                                     <!-- <input type="text" class="form-control" placeholder="location"
                                         formControlName="location" /> -->
                                     <div *ngIf="experienceDetailSubmit && userExpDetails.location.errors"
@@ -318,12 +326,16 @@
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <select formControlName="country" class="form-control">
+                                    <ng-multiselect-dropdown [placeholder]="'Country'" [settings]="dropdownSettings1"
+                                        [data]="countryDrp" formControlName="country" (onSelect)="onItemSelect($event)"
+                                        (onSelectAll)="onSelectAll($event)">
+                                    </ng-multiselect-dropdown>
+                                    <!-- <select formControlName="country" class="form-control">
                                         <option value="" selected disabled>Country</option>
                                         <option *ngFor="let country of countryDrp" value="{{country | json}}">
                                             {{country.name}}
                                         </option>
-                                    </select>
+                                    </select> -->
                                     <!-- <input type="text" placeholder="Country" class="form-control"
                                         formControlName="country" /> -->
                                     <div *ngIf="experienceDetailSubmit && userExpDetails.country.errors"
@@ -677,7 +689,7 @@
                     </div>
                 </form>
             </div>
-ip
+            ip
         </div>
     </div>
 </div>
@@ -745,11 +757,15 @@ ip
                                 </div> -->
                             </div>
                             <div class="form-group">
-                                <select formControlName="current_career" class="form-control">
+                                <ng-multiselect-dropdown [placeholder]="'Current Career'" [settings]="dropdownSettings1"
+                                    [data]="currentCareerDrp" formControlName="current_career"
+                                    (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                                </ng-multiselect-dropdown>
+                                <!-- <select formControlName="current_career" class="form-control">
                                     <option value="" selected disabled>Current Career</option>
                                     <option *ngFor="let career of currentCareerDrp" value="{{career | json}}">
                                         {{career.name}}</option>
-                                </select>
+                                </select> -->
                                 <div *ngIf="lastFewBitsDetailSubmit && userSoftSkillDetails.current_career.errors"
                                     class="invalid-feedback" style="display:block;">
                                     <div *ngIf="userSoftSkillDetails.current_career.errors.required">Current career
@@ -797,11 +813,15 @@ ip
                             </div>
                             <div class="form-group">
                                 <!-- <div class="btn-group custom-dropdown w-100"> -->
-                                <select formControlName="change_career" class="form-control">
+                                <!-- <select formControlName="change_career" class="form-control">
                                     <option value="" selected disabled>Change Career</option>
                                     <option *ngFor="let career of currentCareerDrp" value="{{career | json}}">
                                         {{career.name}}</option>
-                                </select>
+                                </select> -->
+                                <ng-multiselect-dropdown [placeholder]="'Change Career'" [settings]="dropdownSettings1"
+                                    [data]="currentCareerDrp" formControlName="change_career"
+                                    (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                                </ng-multiselect-dropdown>
                                 <div *ngIf="lastFewBitsDetailSubmit && userSoftSkillDetails.change_career.errors"
                                     class="invalid-feedback" style="display:block;">
                                     <div *ngIf="userSoftSkillDetails.change_career.errors.required">Change career
