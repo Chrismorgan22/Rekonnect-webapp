@@ -40,6 +40,7 @@ export class PersonalizationComponent implements OnInit {
   locationDrp: any = [];
   countryDrp: any = [];
   dropdownList = [];
+  cityDrp: any = [];
   technicaldropdownList = [];
   currentCareerDrp: any = [];
   languageDrp: any = [];
@@ -94,7 +95,8 @@ export class PersonalizationComponent implements OnInit {
       designation: ['', Validators.required],
       company: ['', Validators.required],
       state: ['', Validators.required],
-      country: ['', Validators.required],
+      city: ['', Validators.required],
+      other_city: [''],
       start_date: ['', Validators.required],
       end_date: [''],
       job_description: ['', Validators.required],
@@ -153,7 +155,9 @@ export class PersonalizationComponent implements OnInit {
     }
     await Promise.all([this.getStateList('State'), this.getLocationList('Location'), this.getCountryList('Country'),
 
-    this.getSoftSkillsList('Soft_skills'), this.getTechnicalList('Technical_skills'), this.careerList('Career'), this.getLanguage('Language'), this.getUserTempData()])
+    this.getSoftSkillsList('Soft_skills'), this.getTechnicalList('Technical_skills'), this.careerList('Career'), this.getLanguage('Language'), this.getUserTempData(),
+    this.getCityList('City')
+    ])
   }
   get userRole() { return this.userRoleForm.controls }
   get userAddress() { return this.addressForm.controls }
@@ -194,16 +198,16 @@ export class PersonalizationComponent implements OnInit {
         // $('#candidateModalCenter').modal('hide')
         const objectKeys = Object.keys(data.data[0].temp_data)
         console.log(objectKeys)
-        if (objectKeys.length !== 7 && localData.register_complete === false) {
-          const currentFormId = objectKeys[objectKeys.length - 1];
-          const currentFormIndex = this.formIdArray.indexOf(objectKeys[objectKeys.length - 1])
-          const openFormId = this.formIdArray[objectKeys.length];
-          console.log(currentFormId, openFormId);
-          this.setUpFormData()
-          this.moveToNextModal(currentFormId, openFormId)
-        } else {
-          this.router.navigate(['/dashboard/candidate'])
-        }
+        // if (objectKeys.length !== 7 && localData.register_complete === false) {
+        const currentFormId = objectKeys[objectKeys.length - 1];
+        const currentFormIndex = this.formIdArray.indexOf(objectKeys[objectKeys.length - 1])
+        const openFormId = this.formIdArray[objectKeys.length];
+        console.log(currentFormId, openFormId);
+        this.setUpFormData()
+        this.moveToNextModal(currentFormId, openFormId)
+        // } else {
+        //   this.router.navigate(['/dashboard/candidate'])
+        // }
       } else {
         $('#candidateModalCenter').modal('show')
       }
@@ -314,7 +318,8 @@ export class PersonalizationComponent implements OnInit {
             "designation": this.experienceDetailForm.controls.designation.value,
             "company": this.experienceDetailForm.controls.company.value,
             "state": this.experienceDetailForm.controls.state.value[0],
-            "country": this.experienceDetailForm.controls.country.value[0],
+            "city": this.experienceDetailForm.controls.city.value[0],
+            "other_city": this.experienceDetailForm.controls.other_city.value,
             "start_date": this.experienceDetailForm.controls.start_date.value,
             "end_date": this.experienceDetailForm.controls.end_date.value,
             "currently_working": this.experienceDetailForm.controls.currently_working.value,
@@ -613,6 +618,22 @@ export class PersonalizationComponent implements OnInit {
       this.countryDrp = drpJson;
     })
   }
+  async getCityList(type) {
+    const body = {
+      lookup_type: type
+    }
+    const drpJson = [];
+    this.layoutService.getLookupList(body).subscribe(res => {
+      res.data.map(ele => {
+        const json = {
+          id: ele._id,
+          name: ele.name
+        }
+        drpJson.push(json);
+      })
+      this.cityDrp = drpJson;
+    })
+  }
   async getSoftSkillsList(type) {
     const body = {
       lookup_type: type
@@ -683,6 +704,19 @@ export class PersonalizationComponent implements OnInit {
   onSelectAll(items: any) {
     console.log(items);
   }
+  onCityItemSelect(item: any) {
+    if (item.name === 'Other') {
+      this.experienceDetailForm.get('other_city').setValidators(Validators.required);
+      this.experienceDetailForm.controls['other_city'].enable();
+    } else {
+      this.experienceDetailForm.controls['other_city'].disable();
+      this.experienceDetailForm.get('other_city').clearValidators();
+      this.experienceDetailForm.controls['other_city'].setValue('');
+    }
+    this.experienceDetailForm.get('other_city').updateValueAndValidity();
+    console.log(item);
+
+  }
   saveFinalData() {
     const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
 
@@ -722,7 +756,8 @@ export class PersonalizationComponent implements OnInit {
           "designation": this.experienceDetailForm.controls.designation.value,
           "company": this.experienceDetailForm.controls.company.value,
           "state": this.experienceDetailForm.controls.state.value[0],
-          "country": this.experienceDetailForm.controls.country.value[0],
+          "city": this.experienceDetailForm.controls.city.value[0],
+          "other_city": this.experienceDetailForm.controls.other_city.value,
           "start_date": this.experienceDetailForm.controls.start_date.value,
           "end_date": this.experienceDetailForm.controls.end_date.value,
           "currently_working": this.experienceDetailForm.controls.currently_working.value,
@@ -793,7 +828,8 @@ export class PersonalizationComponent implements OnInit {
               this.experienceDetailForm.controls.designation.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.designation)
               this.experienceDetailForm.controls.company.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.company)
               this.experienceDetailForm.controls.state.setValue([this.tempFormData['candidateModalExperience'].experience_data.experience_details.state])
-              this.experienceDetailForm.controls.country.setValue([this.tempFormData['candidateModalExperience'].experience_data.experience_details.country])
+              this.experienceDetailForm.controls.city.setValue([this.tempFormData['candidateModalExperience'].experience_data.experience_details.city])
+              this.experienceDetailForm.controls.other_city.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.other_city)
               this.experienceDetailForm.controls.start_date.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.start_date)
               this.experienceDetailForm.controls.end_date.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.end_date)
               this.experienceDetailForm.controls.currently_working.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.currently_working)
