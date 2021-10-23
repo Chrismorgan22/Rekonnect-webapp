@@ -58,7 +58,7 @@
   background-color: #fff;
   -webkit-transition: all 250ms ease;
   transition: all 250ms ease;
-  border: 1px solid #15759A;
+  border: 1px solid #15759a;
 }
 
 .middle .box span:before {
@@ -85,5 +85,9 @@
   content: "\f0e7";
   font-family: FontAwesome;
   color: yellow;
+}
+
+.mat-slider-horizontal {
+  min-width: 100% !important;
 }
 /*# sourceMappingURL=personalization.component.css.map */

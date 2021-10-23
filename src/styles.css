@@ -1303,7 +1303,7 @@
 
 .candidate-apply-job-modal .modal-image {
   width: 285px;
-  height: 490px;
+  height: 100%;
 }
 
 @media (max-width: 768px) {
@@ -1343,6 +1343,12 @@
   margin: 24px 0;
 }
 
+.profile-page .profile-basic-card .profile-user-block .user-socials {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .profile-page .profile-basic-card .profile-user-block .user-socials .border-outline-box {
   background: #e5f5fc;
   border-radius: 50%;
@@ -1369,6 +1375,20 @@
   -webkit-box-shadow: none;
           box-shadow: none;
   border: none;
+}
+
+.profile-page .profile-content-card .card-header button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #0C1A27;
+}
+
+.profile-page .profile-content-card .card-header button:hover {
+  text-decoration: none;
 }
 
 body {
@@ -2208,5 +2228,14 @@ body::-webkit-scrollbar-thumb {
   max-width: -webkit-fit-content !important;
   max-width: -moz-fit-content !important;
   max-width: fit-content !important;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 /*# sourceMappingURL=styles.css.map */
