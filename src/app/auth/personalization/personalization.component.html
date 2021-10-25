@@ -51,11 +51,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-12">
+                            <!-- <div class="col-md-6 col-sm-12">
                                 <div class="custom-control custom-radio custom--radio">
                                     <input class="custom-control-input custom-radio-button" value=3 type="radio"
                                         name="user_role" formControlName="user_role" id="expert">
-                                    <!-- <span class="check"></span> -->
                                     <div class="custom-control-radio-area border-0" for="expert">
                                         <img src="../../../assets/images/Connect_as_an_Expert.png" />
                                         <label class="text-center">Konnect as Expert</label>
@@ -66,13 +65,12 @@
                                 <div class="custom-control custom-radio custom--radio">
                                     <input class="custom-control-input custom-radio-button" value=4 type="radio"
                                         name="user_role" formControlName="user_role" id="institution">
-                                    <!-- <span class="check"></span> -->
                                     <div class="custom-control-radio-area border-0" for="institution">
                                         <img src="../../../assets/images/Connect_as_an_Institution.png" />
                                         <label class="text-center">Konnect as Institution</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div *ngIf="userRoleSubmit && userRole.user_role.errors" class="invalid-feedback"
                                 style="display:block;">
                                 <div *ngIf="userRole.user_role.errors.required">User Role is required</div>
@@ -288,7 +286,15 @@
 
                         <div [formGroupName]="i">
                             <div class="section-form-content">
-                                <label class="font-12 my-3">Job Details for job {{i+1}}</label>
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <label class="font-12 my-3">Job Details for job {{i+1}}</label>
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        <label class="font-bold text-right font-12 my-3"
+                                            style="color:red;text-align:right" (click)="removeExperience(i)">X</label>
+                                    </div>
+                                </div>
                                 <div class="form-row form-group">
                                     <div class="col">
                                         <input type="text" class="form-control" placeholder="Designation"
@@ -400,7 +406,7 @@
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-4">
                             <button type="button" class="btn btn-primary" (click)="addButtonClick()">
-                                Add Other Details
+                                Add More Experience
                             </button>
                         </div>
                     </div>
@@ -900,7 +906,7 @@
                                 <label>Select Salary Range</label>
                                 <div class="custom-file  d-block">
                                     <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
-                                    formControlName="rangeValues"></ngx-slider>
+                                        formControlName="rangeValues"></ngx-slider>
                                     <!-- <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert"
                                         [max]="100000000" [min]="0" [step]="step" [thumbLabel]="thumbLabel"
                                         formControlName="rangeValues" [vertical]="vertical"

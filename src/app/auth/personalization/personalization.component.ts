@@ -155,13 +155,16 @@ export class PersonalizationComponent implements OnInit {
     ])
   }
   addButtonClick(): void {
-    if (this.experienceDetailForm.controls.experienceDetails['controls'].length > 10) {
+    if (this.experienceDetailForm.controls.experienceDetails['controls'].length < 10) {
       (<FormArray>this.experienceDetailForm.get('experienceDetails')).push(this.addExperienceDetails());
     } else {
       this._toastrService.warning('Warning', 'Maximum upto 10 numbers of experience can be added');
     }
 
     console.log('this.', this.experienceDetailForm.controls.experienceDetails)
+  }
+  removeExperience(i) {
+    this.experienceDetailForm.controls.experienceDetails['controls'].splice(i, 1)
   }
   addExperienceDetails(): FormGroup {
     return this.formBuilder.group({
