@@ -278,130 +278,131 @@
                 <form class="section-form-content" [formGroup]="experienceDetailForm"
                     (ngSubmit)="experienceDetailsFormSubmit('candidateModalcenterexperience','candidateModalcenterexperiencetimeline')"
                     noValidate>
-                    <div class="container-fluid start-section  w-100">
+                    <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit.</label>
+                    <div formArrayName="experienceDetails"
+                        *ngFor="let experienceDetails of userExpDetails.experienceDetails['controls']; let i = index"
+                        class="container-fluid start-section  w-100">
                         <div class="body-background-top">
                         </div>
-                        <div class="section-form-content">
-                            <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
-                            <div class="form-row form-group">
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="Designation"
-                                        formControlName="designation" />
-                                    <div *ngIf="experienceDetailSubmit && userExpDetails.designation.errors"
-                                        class="invalid-feedback" style="display:block;">
-                                        <div *ngIf="userExpDetails.designation.errors.required">Designation
-                                            is required</div>
+
+                        <div [formGroupName]="i">
+                            <div class="section-form-content">
+                                <label class="font-12 my-3">Job Details for job {{i+1}}</label>
+                                <div class="form-row form-group">
+                                    <div class="col">
+                                        <input type="text" class="form-control" placeholder="Designation"
+                                            formControlName="designation" />
+                                        <div *ngIf="experienceDetailSubmit && experienceDetails.controls.designation.errors"
+                                            class="invalid-feedback" style="display:block;">
+                                            <div *ngIf="experienceDetails.controls.designation.errors.required">
+                                                Designation
+                                                is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" placeholder="Company" class="form-control"
+                                            formControlName="company" />
+                                        <div *ngIf="experienceDetailSubmit && experienceDetails.controls.company.errors"
+                                            class="invalid-feedback" style="display:block;">
+                                            <div *ngIf="experienceDetails.controls.company.errors.required">Company
+                                                is required</div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <input type="text" placeholder="Company" class="form-control"
-                                        formControlName="company" />
-                                    <div *ngIf="experienceDetailSubmit && userExpDetails.company.errors"
-                                        class="invalid-feedback" style="display:block;">
-                                        <div *ngIf="userExpDetails.company.errors.required">Company
-                                            is required</div>
+                                <div class="form-row form-group">
+                                    <div class="col">
+                                        <ng-multiselect-dropdown [placeholder]="'State'" [settings]="dropdownSettings1"
+                                            [data]="stateDrp" formControlName="state" (onSelect)="onItemSelect($event)"
+                                            (onSelectAll)="onSelectAll($event)">
+                                        </ng-multiselect-dropdown>
+                                        <div *ngIf="experienceDetailSubmit && experienceDetails.controls.state.errors"
+                                            class="invalid-feedback" style="display:block;">
+                                            <div *ngIf="experienceDetails.controls.state.errors.required">State
+                                                is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <ng-multiselect-dropdown [placeholder]="'City'" [settings]="dropdownSettings1"
+                                            [data]="cityDrp" formControlName="city"
+                                            (onSelect)="onCityItemSelect($event,experienceDetails)"
+                                            (onSelectAll)="onSelectAll($event)">
+                                        </ng-multiselect-dropdown>
+                                        <div *ngIf="experienceDetailSubmit && experienceDetails.controls.city.errors"
+                                            class="invalid-feedback" style="display:block;">
+                                            <div *ngIf="experienceDetails.controls.city.errors.required">City
+                                                is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row form-group mt-3"
+                                    *ngIf="experienceDetails.controls.city.value[0]?.name === 'Other'">
+                                    <div class="col">
+                                        <label for="exampleFormControlSelect2">Other City</label>
+                                        <input type="text" placeholder="Other City" class="form-control"
+                                            formControlName="other_city" />
+                                        <div *ngIf="experienceDetailSubmit && experienceDetails.controls.other_city.errors"
+                                            class="invalid-feedback" style="display:block;">
+                                            <div *ngIf="experienceDetails.controls.other_city.errors.required">Other
+                                                City
+                                                is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row form-group mt-3">
+                                    <div class="col">
+                                        <label for="exampleFormControlSelect2">Start Date</label>
+                                        <input type="date" placeholder="Country" class="form-control"
+                                            formControlName="start_date" />
+                                        <div *ngIf="experienceDetailSubmit && experienceDetails.controls.start_date.errors"
+                                            class="invalid-feedback" style="display:block;">
+                                            <div *ngIf="experienceDetails.controls.start_date.errors.required">Start
+                                                Date
+                                                is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <label for="exampleFormControlSelect2">End Date</label>
+                                        <input type="date" placeholder="Country" class="form-control"
+                                            formControlName="end_date" />
+                                        <div *ngIf="experienceDetailSubmit && experienceDetails.controls.end_date.errors"
+                                            class="invalid-feedback" style="display:block;">
+                                            <div *ngIf="experienceDetails.controls.end_date.errors.required">End Date
+                                                is required</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-row form-group">
-                                <div class="col">
-                                    <!-- <select formControlName="location" class="form-control">
-                                        <option value="" selected disabled>Location</option>
-                                        <option *ngFor="let location of locationDrp" value="{{location | json}}">
-                                            {{location.name}}
-                                        </option>
-                                    </select> -->
-                                    <ng-multiselect-dropdown [placeholder]="'State'" [settings]="dropdownSettings1"
-                                        [data]="stateDrp" formControlName="state" (onSelect)="onItemSelect($event)"
-                                        (onSelectAll)="onSelectAll($event)">
-                                    </ng-multiselect-dropdown>
-                                    <!-- <input type="text" class="form-control" placeholder="location"
-                                        formControlName="location" /> -->
-                                    <div *ngIf="experienceDetailSubmit && userExpDetails.state.errors"
-                                        class="invalid-feedback" style="display:block;">
-                                        <div *ngIf="userExpDetails.state.errors.required">State
-                                            is required</div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <ng-multiselect-dropdown [placeholder]="'City'" [settings]="dropdownSettings1"
-                                        [data]="cityDrp" formControlName="city" (onSelect)="onCityItemSelect($event)"
-                                        (onSelectAll)="onSelectAll($event)">
-                                    </ng-multiselect-dropdown>
-                                    <!-- <select formControlName="country" class="form-control">
-                                        <option value="" selected disabled>Country</option>
-                                        <option *ngFor="let country of countryDrp" value="{{country | json}}">
-                                            {{country.name}}
-                                        </option>
-                                    </select> -->
-                                    <!-- <input type="text" placeholder="Country" class="form-control"
-                                        formControlName="country" /> -->
-                                    <div *ngIf="experienceDetailSubmit && userExpDetails.city.errors"
-                                        class="invalid-feedback" style="display:block;">
-                                        <div *ngIf="userExpDetails.city.errors.required">City
-                                            is required</div>
-                                    </div>
+                            <div class="form-group my-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck"
+                                        formControlName="currently_working"
+                                        (change)="checkWorkingStatus($event,experienceDetails)">
+                                    <label class="form-check-label" for="gridCheck">
+                                        I am currently working here in this role
+                                    </label>
                                 </div>
                             </div>
-                            <div class="form-row form-group mt-3" *ngIf="userExpDetails.city.value[0]?.name === 'Other'">
-                                <div class="col">
-                                    <label for="exampleFormControlSelect2">Other City</label>
-                                    <input type="text" placeholder="Other City" class="form-control"
-                                        formControlName="other_city" />
-                                    <div *ngIf="experienceDetailSubmit && userExpDetails.other_city.errors"
-                                        class="invalid-feedback" style="display:block;">
-                                        <div *ngIf="userExpDetails.other_city.errors.required">Other City
-                                            is required</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row form-group mt-3">
-                                <div class="col">
-                                    <label for="exampleFormControlSelect2">Start Date</label>
-                                    <input type="date" placeholder="Country" class="form-control"
-                                        formControlName="start_date" />
-                                    <div *ngIf="experienceDetailSubmit && userExpDetails.start_date.errors"
-                                        class="invalid-feedback" style="display:block;">
-                                        <div *ngIf="userExpDetails.start_date.errors.required">Start Date
-                                            is required</div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <label for="exampleFormControlSelect2">End Date</label>
-                                    <input type="date" placeholder="Country" class="form-control"
-                                        formControlName="end_date" />
-                                    <div *ngIf="experienceDetailSubmit && userExpDetails.end_date.errors"
-                                        class="invalid-feedback" style="display:block;">
-                                        <div *ngIf="userExpDetails.end_date.errors.required">End Date
-                                            is required</div>
-                                    </div>
+                            <div class="form-group mt-3">
+                                <label for="exampleFormControlSelect2">Job Description</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                    formControlName="job_description"></textarea>
+                                <div *ngIf="experienceDetailSubmit && experienceDetails.controls.job_description.errors"
+                                    class="invalid-feedback" style="display:block;">
+                                    <div *ngIf="experienceDetails.controls.job_description.errors.required">Job
+                                        description
+                                        is required</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group my-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck"
-                                    formControlName="currently_working" (change)="checkWorkingStatus($event)">
-                                <label class="form-check-label" for="gridCheck">
-                                    I am currently working here in this role
-                                </label>
-                            </div>
+                        <hr />
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-4">
+                            <button type="button" class="btn btn-primary" (click)="addButtonClick()">
+                                Add Other Details
+                            </button>
                         </div>
-                        <div class="form-group mt-3">
-                            <label for="exampleFormControlSelect2">Job Description</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                formControlName="job_description"></textarea>
-                            <div *ngIf="experienceDetailSubmit && userExpDetails.job_description.errors"
-                                class="invalid-feedback" style="display:block;">
-                                <div *ngIf="userExpDetails.job_description.errors.required">Job description
-                                    is required</div>
-                            </div>
-                        </div>
-
-
-                        <!-- <div class="body-background-bottom">
-                        </div> -->
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
@@ -898,7 +899,8 @@
                             <div class="form-group py-4">
                                 <label>Select Salary Range</label>
                                 <div class="custom-file  d-block">
-
+                                    <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
+                                    formControlName="rangeValues"></ngx-slider>
                                     <!-- <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert"
                                         [max]="100000000" [min]="0" [step]="step" [thumbLabel]="thumbLabel"
                                         formControlName="rangeValues" [vertical]="vertical"

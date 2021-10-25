@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import * as moment from 'moment';
 import { LayoutService } from 'src/app/services/layout.service';
@@ -59,10 +59,10 @@ export class PersonalizationComponent implements OnInit {
   vertical = false;
   tickInterval = 1;
   value: number = 0;
-  highValue: number = 10000000;
+  highValue: number = 200000;
   options = {
     floor: 0,
-    ceil: 10000000
+    ceil: 200000
   };
   formIdArray = ['candidateModalCenter', 'candidateModalCenterupload', 'candidateModalExperience', 'candidateModalEducation', 'candidateModallastbits', 'candidateModallastbitsfinal', 'gainmorevisibilitymodal', 'almostdonemodal']
   constructor(private formBuilder: FormBuilder, private authService: AuthService,
@@ -78,6 +78,7 @@ export class PersonalizationComponent implements OnInit {
     for (let i = 1999; i <= year; i++) {
       this.yearDrp.push(i);
     }
+    // (<FormArray>this.experienceDetailForm.get('experienceDetails')).clear();
     this.userRoleForm = this.formBuilder.group({
       user_role: ['', Validators.required]
     })
@@ -92,16 +93,10 @@ export class PersonalizationComponent implements OnInit {
       experience_type: ['', Validators.required]
     })
     this.experienceDetailForm = this.formBuilder.group({
-      designation: ['', Validators.required],
-      company: ['', Validators.required],
-      state: ['', Validators.required],
-      city: ['', Validators.required],
-      other_city: [''],
-      start_date: ['', Validators.required],
-      end_date: [''],
-      job_description: ['', Validators.required],
-      currently_working: [false]
+      experienceDetails: this.formBuilder.array([this.addExperienceDetails()])
+
     })
+    console.log(this.experienceDetailForm)
     this.educationTypeForm = this.formBuilder.group({
       education_type: ['', Validators.required]
     })
@@ -159,6 +154,23 @@ export class PersonalizationComponent implements OnInit {
     this.getCityList('City')
     ])
   }
+  addButtonClick(): void {
+    (<FormArray>this.experienceDetailForm.get('experienceDetails')).push(this.addExperienceDetails());
+    console.log('this.', this.experienceDetailForm.controls.experienceDetails)
+  }
+  addExperienceDetails(): FormGroup {
+    return this.formBuilder.group({
+      designation: ['', Validators.required],
+      company: ['', Validators.required],
+      state: ['', Validators.required],
+      city: ['', Validators.required],
+      other_city: [''],
+      start_date: ['', Validators.required],
+      end_date: [''],
+      job_description: ['', Validators.required],
+      currently_working: [false]
+    });
+  }
   get userRole() { return this.userRoleForm.controls }
   get userAddress() { return this.addressForm.controls }
   get userExperienceType() { return this.experienceTypeForm.controls }
@@ -198,16 +210,16 @@ export class PersonalizationComponent implements OnInit {
         // $('#candidateModalCenter').modal('hide')
         const objectKeys = Object.keys(data.data[0].temp_data)
         console.log(objectKeys)
-        // if (objectKeys.length !== 7 && localData.register_complete === false) {
-        const currentFormId = objectKeys[objectKeys.length - 1];
-        const currentFormIndex = this.formIdArray.indexOf(objectKeys[objectKeys.length - 1])
-        const openFormId = this.formIdArray[objectKeys.length];
-        console.log(currentFormId, openFormId);
-        this.setUpFormData()
-        this.moveToNextModal(currentFormId, openFormId)
-        // } else {
-        //   this.router.navigate(['/dashboard/candidate'])
-        // }
+        if (objectKeys.length !== 7 && localData.register_complete === false) {
+          const currentFormId = objectKeys[objectKeys.length - 1];
+          const currentFormIndex = this.formIdArray.indexOf(objectKeys[objectKeys.length - 1])
+          const openFormId = this.formIdArray[objectKeys.length];
+          console.log(currentFormId, openFormId);
+          this.setUpFormData()
+          this.moveToNextModal(currentFormId, openFormId)
+        } else {
+          this.router.navigate(['/dashboard/candidate'])
+        }
       } else {
         $('#candidateModalCenter').modal('show')
       }
@@ -293,16 +305,16 @@ export class PersonalizationComponent implements OnInit {
       return false;
     }
   }
-  checkWorkingStatus(event) {
+  checkWorkingStatus(event, experienceControl) {
     if (!event.target.checked) {
-      this.experienceDetailForm.get('end_date').setValidators(Validators.required);
-      this.experienceDetailForm.controls['end_date'].enable();
+      experienceControl.get('end_date').setValidators(Validators.required);
+      experienceControl.controls['end_date'].enable();
     } else {
-      this.experienceDetailForm.controls['end_date'].disable();
-      this.experienceDetailForm.get('end_date').clearValidators();
-      this.experienceDetailForm.controls['end_date'].setValue('');
+      experienceControl.controls['end_date'].disable();
+      experienceControl.get('end_date').clearValidators();
+      experienceControl.controls['end_date'].setValue('');
     }
-    this.experienceDetailForm.get('end_date').updateValueAndValidity();
+    experienceControl.get('end_date').updateValueAndValidity();
   }
   experienceDetailsFormSubmit(currentModal, nextModal) {
     this.experienceDetailSubmit = true;
@@ -310,27 +322,33 @@ export class PersonalizationComponent implements OnInit {
       console.log(this.experienceDetailForm)
       const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
       console.log(localData);
+      const experienceArray = [];
+      const timelineArray = [];
+      this.experienceDetailForm.controls.experienceDetails['controls'].map(ele => {
+        const json = {
+          "designation": ele.controls.designation.value,
+          "company": ele.controls.company.value,
+          "state": ele.controls.state.value[0],
+          "city": ele.controls.city.value[0],
+          "other_city": ele.controls.other_city.value,
+          "start_date": ele.controls.start_date.value,
+          "end_date": ele.controls.end_date.value,
+          "currently_working": ele.controls.currently_working.value,
+          "job_description": ele.controls.job_description.value,
+        }
+        experienceArray.push(json);
+        const timelineJson = {
+          "company_name": ele.controls.company.value,
+          "total_experience": this.calculateExperience(ele.controls.start_date.value, ele.controls.end_date.value, ele.controls.currently_working.value),
+        }
+        timelineArray.push(timelineJson);
+      })
       const tempData = {};
       tempData['candidateModalExperience'] = {
         "experience_data": {
           "experience_type": this.experienceTypeForm.controls.experience_type.value,
-          "experience_details": {
-            "designation": this.experienceDetailForm.controls.designation.value,
-            "company": this.experienceDetailForm.controls.company.value,
-            "state": this.experienceDetailForm.controls.state.value[0],
-            "city": this.experienceDetailForm.controls.city.value[0],
-            "other_city": this.experienceDetailForm.controls.other_city.value,
-            "start_date": this.experienceDetailForm.controls.start_date.value,
-            "end_date": this.experienceDetailForm.controls.end_date.value,
-            "currently_working": this.experienceDetailForm.controls.currently_working.value,
-            "job_description": this.experienceDetailForm.controls.job_description.value,
-          },
-          "timeline_details": [
-            {
-              "company_name": this.experienceDetailForm.controls.company.value,
-              "total_experience": this.calculateExperience(this.experienceDetailForm.controls.start_date.value, this.experienceDetailForm.controls.end_date.value, this.experienceDetailForm.controls.currently_working.value),
-            }
-          ]
+          "experience_details": experienceArray,
+          "timeline_details": timelineArray
         }
       }
       const body = {
@@ -352,7 +370,7 @@ export class PersonalizationComponent implements OnInit {
   }
   calculateExperience(startDate, endDate, currentlyWorking) {
     if (currentlyWorking) {
-
+      return 'Currently Working'
     } else {
       var endDates = moment(endDate);
       var startDates = moment(startDate);
@@ -704,22 +722,37 @@ export class PersonalizationComponent implements OnInit {
   onSelectAll(items: any) {
     console.log(items);
   }
-  onCityItemSelect(item: any) {
+  onCityItemSelect(item: any, experienceControl) {
     if (item.name === 'Other') {
-      this.experienceDetailForm.get('other_city').setValidators(Validators.required);
-      this.experienceDetailForm.controls['other_city'].enable();
+      experienceControl.get('other_city').setValidators(Validators.required);
+      experienceControl.controls['other_city'].enable();
     } else {
-      this.experienceDetailForm.controls['other_city'].disable();
-      this.experienceDetailForm.get('other_city').clearValidators();
-      this.experienceDetailForm.controls['other_city'].setValue('');
+      experienceControl.controls['other_city'].disable();
+      experienceControl.get('other_city').clearValidators();
+      experienceControl.controls['other_city'].setValue('');
     }
-    this.experienceDetailForm.get('other_city').updateValueAndValidity();
+    experienceControl.get('other_city').updateValueAndValidity();
     console.log(item);
 
   }
   saveFinalData() {
     const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
-
+    const experienceArray = [];
+    const timelineArray = [];
+    this.experienceDetailForm.controls.experienceDetails['controls'].map(ele => {
+      const json = {
+        "designation": ele.controls.designation.value,
+        "company": ele.controls.company.value,
+        "state": ele.controls.state.value[0],
+        "city": ele.controls.city.value[0],
+        "other_city": ele.controls.other_city.value,
+        "start_date": ele.controls.start_date.value,
+        "end_date": ele.controls.end_date.value,
+        "currently_working": ele.controls.currently_working.value,
+        "job_description": ele.controls.job_description.value,
+      }
+      experienceArray.push(json);
+    })
     // if (this.userRoleForm.controls.user_role.value === '1') {
     const json = {
       "user_id": localData._id,
@@ -752,17 +785,7 @@ export class PersonalizationComponent implements OnInit {
       },
       "experience_data": {
         "experience_type": this.experienceTypeForm.controls.experience_type.value,
-        "experience_details": {
-          "designation": this.experienceDetailForm.controls.designation.value,
-          "company": this.experienceDetailForm.controls.company.value,
-          "state": this.experienceDetailForm.controls.state.value[0],
-          "city": this.experienceDetailForm.controls.city.value[0],
-          "other_city": this.experienceDetailForm.controls.other_city.value,
-          "start_date": this.experienceDetailForm.controls.start_date.value,
-          "end_date": this.experienceDetailForm.controls.end_date.value,
-          "currently_working": this.experienceDetailForm.controls.currently_working.value,
-          "job_description": this.experienceDetailForm.controls.job_description.value,
-        }
+        "experience_details": experienceArray
       },
       "soft_skills": this.lastFewBitsDetailForm.controls.soft_skills.value,
       "technical_skills": this.lastFewBitsDetailForm.controls.technical_skills.value,
@@ -825,19 +848,38 @@ export class PersonalizationComponent implements OnInit {
           if (objectKeys.includes("candidateModalExperience")) {
             this.experienceTypeForm.controls.experience_type.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_type)
             if (this.tempFormData['candidateModalExperience'].experience_data.experience_type === "Experienced") {
-              this.experienceDetailForm.controls.designation.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.designation)
-              this.experienceDetailForm.controls.company.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.company)
-              this.experienceDetailForm.controls.state.setValue([this.tempFormData['candidateModalExperience'].experience_data.experience_details.state])
-              this.experienceDetailForm.controls.city.setValue([this.tempFormData['candidateModalExperience'].experience_data.experience_details.city])
-              this.experienceDetailForm.controls.other_city.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.other_city)
-              this.experienceDetailForm.controls.start_date.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.start_date)
-              this.experienceDetailForm.controls.end_date.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.end_date)
-              this.experienceDetailForm.controls.currently_working.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.currently_working)
-              if (this.tempFormData['candidateModalExperience'].experience_data.experience_details.currently_working) {
-                this.experienceDetailForm.controls['end_date'].disable();
-                this.experienceDetailForm.controls.end_date.setValue('')
-              }
-              this.experienceDetailForm.controls.job_description.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.job_description)
+              (<FormArray>this.experienceDetailForm.get('experienceDetails')).clear();
+              this.tempFormData['candidateModalExperience'].experience_data.experience_details.forEach((x, i) => {
+                (<FormArray>this.experienceDetailForm.get('experienceDetails')).push(this.formBuilder.group({
+                  designation: [x.designation, Validators.required],
+                  company: [x.company, Validators.required],
+                  state: [[x.state], Validators.required],
+                  city: [[x.city], Validators.required],
+                  other_city: [x.other_city],
+                  start_date: [x.start_date, Validators.required],
+                  end_date: [x.end_date, Validators.required],
+                  job_description: [x.job_description, Validators.required],
+                  currently_working: [x.currently_working]
+                }))
+                if (x.currently_working) {
+                  console.log(this.experienceDetailForm.controls)
+                  this.experienceDetailForm.controls.experienceDetails['controls'][i]['controls']['end_date'].disable();
+                  // this.experienceDetailForm.controls.experienceDetails['controls'][i]['end_date'].setValue('')
+                }
+              });
+              // this.experienceDetailForm.controls.designation.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.designation)
+              // this.experienceDetailForm.controls.company.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.company)
+              // this.experienceDetailForm.controls.state.setValue([this.tempFormData['candidateModalExperience'].experience_data.experience_details.state])
+              // this.experienceDetailForm.controls.city.setValue([this.tempFormData['candidateModalExperience'].experience_data.experience_details.city])
+              // this.experienceDetailForm.controls.other_city.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.other_city)
+              // this.experienceDetailForm.controls.start_date.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.start_date)
+              // this.experienceDetailForm.controls.end_date.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.end_date)
+              // this.experienceDetailForm.controls.currently_working.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.currently_working)
+              // if (this.tempFormData['candidateModalExperience'].experience_data.experience_details.currently_working) {
+              //   this.experienceDetailForm.controls['end_date'].disable();
+              //   this.experienceDetailForm.controls.end_date.setValue('')
+              // }
+              // this.experienceDetailForm.controls.job_description.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.job_description)
               this.companyTimeLineData = this.tempFormData['candidateModalExperience'].experience_data.timeline_details
             }
             if (objectKeys.includes("candidateModalEducation")) {
