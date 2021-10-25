@@ -38,6 +38,13 @@ export class AuthService {
       })
     );
   }
+  employerRegister(body) {
+    return this._httpClient.post<any>(`${environment.apiUrl}/employer/registration`, body).pipe(
+      map(response => {
+        return response;
+      })
+    );
+  }
   expertLogin(body) {
     return this._httpClient.post<any>(`${environment.apiUrl}/expert/login`, body).pipe(
       map(response => {

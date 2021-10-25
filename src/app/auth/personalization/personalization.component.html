@@ -993,35 +993,6 @@
                                                     </div>
                                                 </label>
                                             </div>
-                                            <!-- <input
-                                                class="custom-control-input experience-type-radio custom-radio-button"
-                                                formControlName="joining_within" value='15days' type="radio"
-                                                name="joining_within" id="15">
-                                            <div class="btn outlined-dotted-add-button custom-control-radio-area"
-                                                for="candidate">
-                                                <div class="label">15 Days</div>
-                                            </div>
-                                            <input
-                                                class="custom-control-input experience-type-radio custom-radio-button"
-                                                formControlName="joining_within" value='30days' type="radio"
-                                                name="joining_within" id="30">
-                                            <div class="btn outlined-dotted-add-button custom-control-radio-area"
-                                                for="candidate">
-                                                <div class="label">30 Days</div>
-                                            </div>
-                                            <input
-                                                class="custom-control-input experience-type-radio custom-radio-button"
-                                                formControlName="joining_within" value='morethan30days' type="radio"
-                                                name="joining_within" id=">30">
-                                            <div class="btn outlined-dotted-add-button custom-control-radio-area"
-                                                for="candidate">
-                                                <div class="label">>30 Days</div>
-                                            </div> -->
-                                            <!-- <button class="btn btn-secondary border-radius-0" type="button">7
-                                                Days</button>
-                                            <button class="btn btn-secondary" type="button">15 Days</button>
-                                            <button class="btn btn-secondary" type="button">30 Days</button>
-                                            <button class="btn btn-secondary" type="button">> 30 Days</button> -->
                                         </div>
                                         <div *ngIf="lastFewBitsJoinDetailsSubmit && userjoiningDetails.joining_within.errors"
                                             class="invalid-feedback" style="display:block;">
@@ -1156,6 +1127,103 @@
                     (click)="moveToPreviousModal('almostdonemodal','gainmorevisibilitymodal')">Back</button>
                 <button type="submit" class="btn btn-primary" (click)="saveFinalData()">Save</button>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="companyDetailsModal" tabindex="-2" role="dialog" aria-labelledby="candidateModalCenterTitle"
+    aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="header-background">
+                </div>
+                <div class="text-center pt-5">
+                    <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Company Details
+                    </h5>
+                    <p class="section-content font-16">Clearly you're here because you're immediately available to go
+                        back to work! We will help you get there ASAP and don't worry if you don't have a Resume at this
+                        stage, you can always come back to upload one :)</p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form class="section-form-content" [formGroup]="companydetailsForm"
+                    (ngSubmit)="compantDetailsFormSubmit()" noValidate>
+                    <div class="container-fluid start-section  w-100">
+                        <div class="section-form-content">
+                            <!-- <div class="input-group mb-3"> -->
+                                <div class="form-group">
+                                    <input type="text" aria-describedby="streetaddress" placeholder="Company Name"
+                                        size="lg" class="form-control" formControlName="company_name" />
+                                    <div *ngIf="companySubmit && companyDetails.company_name.errors" class="invalid-feedback"
+                                        style="display:block;">
+                                        <div *ngIf="companyDetails.company_name.errors.required">Company name is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-row form-group">
+                                    <div class="col">
+                                        <!-- <ng-multiselect-dropdown [placeholder]="'State'" [settings]="dropdownSettings1"
+                                            [data]="stateDrp" formControlName="state" (onSelect)="onItemSelect($event)"
+                                            (onSelectAll)="onSelectAll($event)">
+                                        </ng-multiselect-dropdown> -->
+                                        <input type="text" class="form-control" placeholder="Designation"
+                                            formControlName="designation" />
+                                        <div *ngIf="companySubmit && companyDetails.designation.errors"
+                                            class="invalid-feedback" style="display:block;">
+                                            <div *ngIf="companyDetails.designation.errors.required">Designation is
+                                                required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" placeholder="Number Of Employees" class="form-control"
+                                            formControlName="no_of_employees" />
+                                        <div *ngIf="companySubmit && companyDetails.no_of_employees.errors"
+                                            class="invalid-feedback" style="display:block;">
+                                            <div *ngIf="companyDetails.no_of_employees.errors.required">Number Of
+                                                Employees is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" size="lg" placeholder="Company Website"
+                                        formControlName="company_website">
+                                    <div *ngIf="companySubmit && companyDetails.company_website.errors"
+                                        class="invalid-feedback" style="display:block;">
+                                        <div *ngIf="companyDetails.company_website.errors.required">Company Website is
+                                            required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" size="lg" placeholder="LinkedIn URL"
+                                        formControlName="linkedin_url">
+                                    <div *ngIf="companySubmit && companyDetails.linkedin_url.errors"
+                                        class="invalid-feedback" style="display:block;">
+                                        <div *ngIf="companyDetails.linkedin_url.errors.required">LinkedIn URL is
+                                            required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" size="lg"
+                                        placeholder="Official Mail Address" formControlName="official_mail_address">
+                                    <div *ngIf="companySubmit && companyDetails.official_mail_address.errors"
+                                        class="invalid-feedback" style="display:block;">
+                                        <div *ngIf="companyDetails.official_mail_address.errors.required">Official Mail
+                                            Address
+                                            is
+                                            required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                (click)="moveToPreviousModal('companyDetailsModal','candidateModalCenterupload')">Back</button>
+                            <button type="submit" class="btn btn-primary">Save </button>
+                        </div>
+                </form>
+            </div>
+
         </div>
     </div>
 </div>

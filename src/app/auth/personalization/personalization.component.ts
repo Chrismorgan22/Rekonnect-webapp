@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Form, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import * as moment from 'moment';
 import { LayoutService } from 'src/app/services/layout.service';
@@ -24,6 +24,7 @@ export class PersonalizationComponent implements OnInit {
   lastFewBitsDetailForm: FormGroup;
   lastFewBitsJoinDetailForm: FormGroup;
   onBoardDetailForm: FormGroup;
+  companydetailsForm: FormGroup;
   userRoleSubmit: boolean = false;
   addressSubmit: boolean = false;
   experienceTypeSubmit: boolean = false;
@@ -33,6 +34,7 @@ export class PersonalizationComponent implements OnInit {
   lastFewBitsDetailSubmit: boolean = false;
   lastFewBitsJoinDetailsSubmit: boolean = false;
   onBoardDetailSubmit: boolean = false;
+  companySubmit: boolean = false;
   tempFormData: any = []
   monthDrp: any = [];
   yearDrp: any = [];
@@ -64,6 +66,7 @@ export class PersonalizationComponent implements OnInit {
     floor: 0,
     ceil: 200000
   };
+  employerIdArray = ['candidateModalCenter', 'candidateModalCenterupload', 'companyDetailsModal'];
   formIdArray = ['candidateModalCenter', 'candidateModalCenterupload', 'candidateModalExperience', 'candidateModalEducation', 'candidateModallastbits', 'candidateModallastbitsfinal', 'gainmorevisibilitymodal', 'almostdonemodal']
   constructor(private formBuilder: FormBuilder, private authService: AuthService,
     private layoutService: LayoutService, private _toastrService: ToastrService,
@@ -129,6 +132,14 @@ export class PersonalizationComponent implements OnInit {
     this.onBoardDetailForm = this.formBuilder.group({
       onboard: [false]
     })
+    this.companydetailsForm = this.formBuilder.group({
+      company_name: ['', Validators.required],
+      designation: ['', Validators.required],
+      no_of_employees: ['', Validators.required],
+      company_website: ['', Validators.required],
+      linkedin_url: ['', Validators.required],
+      official_mail_address: ['', Validators.required],
+    })
     this.dropdownList = [];
     this.selectedItems = [];
     this.dropdownSettings = {
@@ -187,6 +198,7 @@ export class PersonalizationComponent implements OnInit {
   get userEduDetails() { return this.educationDetailForm.controls }
   get userSoftSkillDetails() { return this.lastFewBitsDetailForm.controls }
   get userjoiningDetails() { return this.lastFewBitsJoinDetailForm.controls }
+  get companyDetails() { return this.companydetailsForm.controls }
   moveToNextModal(currentModal, nextModal) {
     $('#' + currentModal).addClass('fade');
     $('#' + nextModal).removeClass('fade');
@@ -218,15 +230,27 @@ export class PersonalizationComponent implements OnInit {
         // $('#candidateModalCenter').modal('hide')
         const objectKeys = Object.keys(data.data[0].temp_data)
         console.log(objectKeys)
-        if (objectKeys.length !== 7 && localData.register_complete === false) {
-          const currentFormId = objectKeys[objectKeys.length - 1];
-          const currentFormIndex = this.formIdArray.indexOf(objectKeys[objectKeys.length - 1])
-          const openFormId = this.formIdArray[objectKeys.length];
-          console.log(currentFormId, openFormId);
-          this.setUpFormData()
-          this.moveToNextModal(currentFormId, openFormId)
+        let currentFormId;
+        let openFormId;
+        currentFormId = objectKeys[objectKeys.length - 1];
+        console.log(this.userRoleForm.controls.user_role.value)
+        if (this.tempFormData.candidateModalCenter.user_role === '1' || this.tempFormData.candidateModalCenter.user_role === 1) {
+          if (objectKeys.length !== 7 && localData.register_complete === false) {
+            openFormId = this.formIdArray[objectKeys.length];
+            this.setUpFormData()
+            this.moveToNextModal(currentFormId, openFormId)
+          }
+          else {
+            this.router.navigate(['/dashboard/candidate'])
+          }
         } else {
-          this.router.navigate(['/dashboard/candidate'])
+          if (objectKeys.length !== 2 && localData.register_complete === false) {
+            openFormId = this.employerIdArray[objectKeys.length];
+            this.setUpEmployerFormData()
+            this.moveToNextModal(currentFormId, openFormId)
+          } else {
+            this.router.navigate(['/dashboard/employer'])
+          }
         }
       } else {
         $('#candidateModalCenter').modal('show')
@@ -277,7 +301,11 @@ export class PersonalizationComponent implements OnInit {
       }
       console.log(body)
       this.authService.saveTempUser(body).subscribe((res) => {
-        this.moveToNextModal(currentModal, nextModal)
+        if (this.tempFormData.candidateModalCenter.user_role === '1' || this.tempFormData.candidateModalCenter.user_role === 1 || this.userRoleForm.controls.user_role.value === '1' || this.userRoleForm.controls.user_role.value === 1) {
+          this.moveToNextModal(currentModal, nextModal)
+        } else {
+          this.moveToNextModal(currentModal, 'companyDetailsModal')
+        }
       })
     } else {
       return false;
@@ -875,19 +903,7 @@ export class PersonalizationComponent implements OnInit {
                   // this.experienceDetailForm.controls.experienceDetails['controls'][i]['end_date'].setValue('')
                 }
               });
-              // this.experienceDetailForm.controls.designation.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.designation)
-              // this.experienceDetailForm.controls.company.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.company)
-              // this.experienceDetailForm.controls.state.setValue([this.tempFormData['candidateModalExperience'].experience_data.experience_details.state])
-              // this.experienceDetailForm.controls.city.setValue([this.tempFormData['candidateModalExperience'].experience_data.experience_details.city])
-              // this.experienceDetailForm.controls.other_city.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.other_city)
-              // this.experienceDetailForm.controls.start_date.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.start_date)
-              // this.experienceDetailForm.controls.end_date.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.end_date)
-              // this.experienceDetailForm.controls.currently_working.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.currently_working)
-              // if (this.tempFormData['candidateModalExperience'].experience_data.experience_details.currently_working) {
-              //   this.experienceDetailForm.controls['end_date'].disable();
-              //   this.experienceDetailForm.controls.end_date.setValue('')
-              // }
-              // this.experienceDetailForm.controls.job_description.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_details.job_description)
+
               this.companyTimeLineData = this.tempFormData['candidateModalExperience'].experience_data.timeline_details
             }
             if (objectKeys.includes("candidateModalEducation")) {
@@ -933,6 +949,65 @@ export class PersonalizationComponent implements OnInit {
         }
       }
 
+    }
+  }
+  setUpEmployerFormData() {
+    console.log(this.tempFormData)
+    const objectKeys = Object.keys(this.tempFormData)
+    console.log(objectKeys)
+    if (objectKeys.length > 0) {
+      if (objectKeys.includes('candidateModalCenter')) {
+        console.log(this.tempFormData['candidateModalCenter'].user_role)
+        this.userRoleForm.controls.user_role.setValue(this.tempFormData['candidateModalCenter'].user_role.toString());
+        if (objectKeys.includes('candidateModalCenterupload')) {
+          console.log(this.tempFormData['candidateModalCenterupload'].address_details.state.toString())
+          this.addressForm.controls.street.setValue(this.tempFormData['candidateModalCenterupload'].address_details.street);
+          this.addressForm.controls.state.setValue([this.tempFormData['candidateModalCenterupload'].address_details.state]);
+          this.addressForm.controls.zip_code.setValue(this.tempFormData['candidateModalCenterupload'].address_details.zip_code);
+          this.addressForm.controls.landmark.setValue(this.tempFormData['candidateModalCenterupload'].address_details.landmark);
+          // if(objectKeys.includes(''))
+        }
+      }
+    }
+  }
+  compantDetailsFormSubmit() {
+    this.companySubmit = true;
+    if (this.companydetailsForm.valid) {
+      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
+      const json = {
+        "user_id": localData._id,
+        "company_logo": "wwww",
+        "address_details": {
+          "street": this.addressForm.controls.street.value,
+          "state": this.addressForm.controls.state.value[0],
+          "zip_code": this.addressForm.controls.zip_code.value,
+          "landmark": this.addressForm.controls.landmark.value,
+          // "organization_strength": this.addressForm.controls.organization_strength.value
+        },
+        "designation": this.companydetailsForm.controls.designation.value,
+        "company_name": this.companydetailsForm.controls.company_name.value,
+        "no_of_employees": this.companydetailsForm.controls.no_of_employees.value,
+        "website": this.companydetailsForm.controls.company_website.value,
+        "linkedin_url": this.companydetailsForm.controls.linkedin_url.value,
+        "official_mail_id": this.companydetailsForm.controls.official_mail_address.value,
+      }
+      console.log(json)
+      this.SpinnerService.show()
+      this.authService.employerRegister(json).subscribe(res => {
+        if (res.result === 'success') {
+          const body = {
+            user_id: localData._id
+          }
+          this.authService.updateCandidateStatus(body).subscribe(res => {
+            this.SpinnerService.hide();
+            this._toastrService.success(
+              'Registration successfully', 'Success'
+            )
+          })
+        }
+        $('#companyDetailsModal').modal('hide');
+        this.getUserTempData();
+      })
     }
   }
 }
