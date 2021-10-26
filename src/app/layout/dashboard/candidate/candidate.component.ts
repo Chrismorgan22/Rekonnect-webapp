@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LayoutService } from 'src/app/services/layout.service';
+import *  as _ from 'lodash';
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -30,6 +31,7 @@ export class CandidateComponent implements OnInit {
   public chartOptions: Partial<ChartOptions>;
   userProfileData: any = '';
   events1: any[];
+  designation: any = '';
   constructor(private layoutService: LayoutService) {
     // this.events1 = [
     //   { status: 'Ordered', date: '15/10/2020 10:30', icon: PrimeIcons.SHOPPING_CART, color: '#9C27B0', image: 'game-controller.jpg' },
@@ -86,18 +88,22 @@ export class CandidateComponent implements OnInit {
         this.getTimelineData()
       } else {
         this.events1 = []
+        this.designation = 'Fresher';
       }
     })
   }
   getTimelineData() {
     const timelineArray = [];
+    const designationArr:any = [];
     this.userProfileData.candidate_details[0].experience_data.experience_details.map(ele => {
       const json = {};
+      designationArr.push(ele.designation)
       json['designation'] = ele.designation
       json['company_name'] = ele.company
       json['year'] = moment(ele.start_date).format('MMM YYYY');
       timelineArray.push(json);
     })
     this.events1 = timelineArray;
+    this.designation = (_.uniq(designationArr)).join(", ")
   }
 }

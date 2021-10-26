@@ -235,7 +235,7 @@ export class PersonalizationComponent implements OnInit {
         let openFormId;
         currentFormId = objectKeys[objectKeys.length - 1];
         console.log(this.userRoleForm.controls.user_role.value)
-        if (this.userRoleForm.controls.user_role.value === '1' || this.userRoleForm.controls.user_role.value === 1) {
+        if (this.tempFormData['candidateModalCenter']?.user_role === '1' || this.tempFormData['candidateModalCenter']?.user_role === 1 || this.userRoleForm.controls.user_role.value === '1' || this.userRoleForm.controls.user_role.value === 1) {
           if (objectKeys.length !== 7 && localData.register_complete === false) {
             openFormId = this.formIdArray[objectKeys.length];
             this.setUpFormData()
