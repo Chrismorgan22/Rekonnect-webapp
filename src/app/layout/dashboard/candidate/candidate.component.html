@@ -23,7 +23,7 @@
                         </div>
                         <div class="card-body">
                             <div class="timeline-block">
-                                <div style="width: 210px; height: 300px">
+                                <div *ngIf="events1?.length !== 0" style="width: 210px; height: 300px">
                                     <p-timeline [value]="events1">
                                         <ng-template pTemplate="content" let-event>
                                             <p class="timeline-year">{{event.year}}</p>
@@ -32,7 +32,7 @@
                                         </ng-template>
                                     </p-timeline>
                                 </div>
-
+                                <div *ngIf="events1?.length === 0">No Experience Available</div>
                             </div>
                         </div>
                     </div>
@@ -49,8 +49,8 @@
                                     <img src="../../../assets/images/user-profile-placeholder.png" />
                                 </div>
                                 <div class="user-content">
-                                    <h5>{{userProfileData?.first_name}} {{userProfileData?.last_name}}</h5>
-                                    <label>- UX Designer</label>
+                                    <h5>{{userProfileData?.first_name | titlecase}} {{userProfileData?.last_name | titlecase}}</h5>
+                                    <label>- {{designation | titlecase}}</label>
                                 </div>
                             </div>
                             <div class="row mt-2">

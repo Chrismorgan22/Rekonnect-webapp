@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from '../auth/welcome/welcome.component';
 import { FooterComponent } from './footer/footer.component';
 import {SliderModule} from 'primeng/slider';
+import{EventService} from '../services/event.service';
 
 @NgModule({
   declarations: [BaseComponent, HeaderComponent, HomeComponent, FooterComponent],
@@ -15,6 +16,7 @@ import {SliderModule} from 'primeng/slider';
     BaseRoutingModule,
     SliderModule
   ],
-  exports: [BaseComponent, HeaderComponent, HomeComponent, FooterComponent]
+  exports: [BaseComponent, HeaderComponent, HomeComponent, FooterComponent],
+  providers:[EventService]
 })
 export class BaseModule { }

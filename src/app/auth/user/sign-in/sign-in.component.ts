@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SocialAuthService, GoogleLoginProvider, SocialUser, FacebookLoginProvider } from 'angularx-social-login';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { EventService } from 'src/app/services/event.service';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -26,6 +27,7 @@ export class SignInComponent implements OnInit {
     private _authService: AuthService,
     private _route: ActivatedRoute,
     public http: HttpClient,
+    private eventService: EventService,
     private _toastrService: ToastrService, private SpinnerService: NgxSpinnerService, private socialAuthService: SocialAuthService
   ) { }
 
@@ -57,21 +59,21 @@ export class SignInComponent implements OnInit {
   loginWithGoogle(): void {
     this.userRoleValidation = false;
     // if (this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== '') {
-      this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => {
-        console.log(x)
-        this.socialAuthService.authState.subscribe((user) => {
-          this.SpinnerService.show();
-          this.socialUser = user;
-          console.log(this.socialUser);
-          if (this.socialUser !== null) {
-            const json = {};
-            json['email'] = this.socialUser.email;
-            this.loginAPICall(json, true);
-          } else {
-            this.SpinnerService.hide();
-          }
-        });
-      })
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => {
+      console.log(x)
+      this.socialAuthService.authState.subscribe((user) => {
+        this.SpinnerService.show();
+        this.socialUser = user;
+        console.log(this.socialUser);
+        if (this.socialUser !== null) {
+          const json = {};
+          json['email'] = this.socialUser.email;
+          this.loginAPICall(json, true);
+        } else {
+          this.SpinnerService.hide();
+        }
+      });
+    })
     // } else {
     //   this.userRoleValidation = true;
     // }
@@ -79,21 +81,21 @@ export class SignInComponent implements OnInit {
   loginInWithFB(): void {
     this.userRoleValidation = false;
     // if (this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== '') {
-      this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => {
-        this.socialAuthService.authState.subscribe((user) => {
-          this.SpinnerService.show();
-          this.socialUser = user;
-          console.log(this.socialUser);
-          if (this.socialUser !== null) {
-            const json = {};
-            json['email'] = this.socialUser.email;
-            this.loginAPICall(json, true);
-          }
-          else {
-            this.SpinnerService.hide();
-          }
-        })
-      });
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => {
+      this.socialAuthService.authState.subscribe((user) => {
+        this.SpinnerService.show();
+        this.socialUser = user;
+        console.log(this.socialUser);
+        if (this.socialUser !== null) {
+          const json = {};
+          json['email'] = this.socialUser.email;
+          this.loginAPICall(json, true);
+        }
+        else {
+          this.SpinnerService.hide();
+        }
+      })
+    });
     // } else {
     //   this.userRoleValidation = true;
     // }
@@ -101,24 +103,24 @@ export class SignInComponent implements OnInit {
   loginWithLinkedIn(): void {
     this.userRoleValidation = false;
     // if (this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== undefined && this.form.controls.user_role.value !== '') {
-      const linkedInCredentials = {
-        clientId: "78q6vjqcmmldlg",
-        redirectUrl: "https://rekonnect.in/auth/linkedinLoginResponse",
-        scope: "r_liteprofile%20r_emailaddress" // To read basic user profile data and email
-      };
-      const newWindow = window.open(`https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=${linkedInCredentials.clientId}&redirect_uri=${linkedInCredentials.redirectUrl}&scope=${linkedInCredentials.scope}`, 'popup', 'width=600,height=600')
-      const interval = setInterval(() => {
-        const url = newWindow.location.href;
-        console.log(newWindow.location.href);
-        if (url !== undefined) {
-          let url1 = new URL(url)
-          let params = new URLSearchParams(url1.search);
-          let sourceid = params.get('code');
-          this.callAuthAPI(sourceid, newWindow);
-          clearInterval(interval);
-          console.log(sourceid);
-        }
-      }, 1500)
+    const linkedInCredentials = {
+      clientId: "78q6vjqcmmldlg",
+      redirectUrl: "https://rekonnect.in/auth/linkedinLoginResponse",
+      scope: "r_liteprofile%20r_emailaddress" // To read basic user profile data and email
+    };
+    const newWindow = window.open(`https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=${linkedInCredentials.clientId}&redirect_uri=${linkedInCredentials.redirectUrl}&scope=${linkedInCredentials.scope}`, 'popup', 'width=600,height=600')
+    const interval = setInterval(() => {
+      const url = newWindow.location.href;
+      console.log(newWindow.location.href);
+      if (url !== undefined) {
+        let url1 = new URL(url)
+        let params = new URLSearchParams(url1.search);
+        let sourceid = params.get('code');
+        this.callAuthAPI(sourceid, newWindow);
+        clearInterval(interval);
+        console.log(sourceid);
+      }
+    }, 1500)
     // } else {
     //   this.userRoleValidation = true;
     // }
@@ -147,6 +149,8 @@ export class SignInComponent implements OnInit {
   }
   loginAPICall(json, isSocialLogin) {
     this._authService.userLogin(json).subscribe(response => {
+      console.log('***************************')
+      this.eventService.updateHeader(true)
       this.SpinnerService.hide();
       if (response.result !== 'fail') {
         this.submitted = false;
