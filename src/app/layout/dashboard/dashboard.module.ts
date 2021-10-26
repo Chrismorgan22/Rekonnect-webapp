@@ -8,12 +8,14 @@ import { ExpertComponent } from './expert/expert.component';
 import { EmployerComponent } from './employer/employer.component';
 import { InstituteComponent } from './institute/institute.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import {TimelineModule} from 'primeng/timeline';
 @NgModule({
   declarations: [DashboardComponent, CandidateComponent, ExpertComponent, EmployerComponent, InstituteComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    TimelineModule
   ]
 })
 export class DashboardModule { }

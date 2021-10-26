@@ -10,7 +10,8 @@ import {
   ApexStroke
 } from "ng-apexcharts";
 import { ViewChild } from '@angular/core';
-
+import { PrimeIcons } from 'primeng/api';
+import * as moment from 'moment';
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -28,7 +29,14 @@ export class CandidateComponent implements OnInit {
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
   userProfileData: any = '';
+  events1: any[];
   constructor(private layoutService: LayoutService) {
+    // this.events1 = [
+    //   { status: 'Ordered', date: '15/10/2020 10:30', icon: PrimeIcons.SHOPPING_CART, color: '#9C27B0', image: 'game-controller.jpg' },
+    //   { status: 'Processing', date: '15/10/2020 14:00', icon: PrimeIcons.COG, color: '#673AB7' },
+    //   { status: 'Shipped', date: '15/10/2020 16:15', icon: PrimeIcons.ENVELOPE, color: '#FF9800' },
+    //   { status: 'Delivered', date: '16/10/2020 10:00', icon: PrimeIcons.CHECK, color: '#607D8B' }
+    // ];
     this.chartOptions = {
       series: [
         {
@@ -74,6 +82,22 @@ export class CandidateComponent implements OnInit {
     this.layoutService.getUserProfile(localData._id).subscribe(res => {
       console.log(res)
       this.userProfileData = res.data[0];
+      if (this.userProfileData.candidate_details[0].experience_data.experience_type === "Experienced") {
+        this.getTimelineData()
+      } else {
+        this.events1 = []
+      }
     })
+  }
+  getTimelineData() {
+    const timelineArray = [];
+    this.userProfileData.candidate_details[0].experience_data.experience_details.map(ele => {
+      const json = {};
+      json['designation'] = ele.designation
+      json['company_name'] = ele.company
+      json['year'] = moment(ele.start_date).format('MMM YYYY');
+      timelineArray.push(json);
+    })
+    this.events1 = timelineArray;
   }
 }

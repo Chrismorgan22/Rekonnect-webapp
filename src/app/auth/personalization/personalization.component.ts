@@ -225,8 +225,9 @@ export class PersonalizationComponent implements OnInit {
     console.log(localData);
     this.authService.getTempUser(body).subscribe((data) => {
       console.log(data);
-      if (data.data[0].temp_data !== undefined) {
+      if (data?.data[0].temp_data !== undefined) {
         this.tempFormData = data.data[0].temp_data
+        console.log(this.tempFormData)
         // $('#candidateModalCenter').modal('hide')
         const objectKeys = Object.keys(data.data[0].temp_data)
         console.log(objectKeys)
@@ -234,7 +235,7 @@ export class PersonalizationComponent implements OnInit {
         let openFormId;
         currentFormId = objectKeys[objectKeys.length - 1];
         console.log(this.userRoleForm.controls.user_role.value)
-        if (this.tempFormData.candidateModalCenter.user_role === '1' || this.tempFormData.candidateModalCenter.user_role === 1) {
+        if (this.userRoleForm.controls.user_role.value === '1' || this.userRoleForm.controls.user_role.value === 1) {
           if (objectKeys.length !== 7 && localData.register_complete === false) {
             openFormId = this.formIdArray[objectKeys.length];
             this.setUpFormData()
@@ -301,7 +302,7 @@ export class PersonalizationComponent implements OnInit {
       }
       console.log(body)
       this.authService.saveTempUser(body).subscribe((res) => {
-        if (this.tempFormData.candidateModalCenter.user_role === '1' || this.tempFormData.candidateModalCenter.user_role === 1 || this.userRoleForm.controls.user_role.value === '1' || this.userRoleForm.controls.user_role.value === 1) {
+        if (this.tempFormData['candidateModalCenter']?.user_role === '1' || this.tempFormData['candidateModalCenter']?.user_role === 1 || this.userRoleForm.controls.user_role.value === '1' || this.userRoleForm.controls.user_role.value === 1) {
           this.moveToNextModal(currentModal, nextModal)
         } else {
           this.moveToNextModal(currentModal, 'companyDetailsModal')
@@ -775,20 +776,22 @@ export class PersonalizationComponent implements OnInit {
     const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
     const experienceArray = [];
     const timelineArray = [];
-    this.experienceDetailForm.controls.experienceDetails['controls'].map(ele => {
-      const json = {
-        "designation": ele.controls.designation.value,
-        "company": ele.controls.company.value,
-        "state": ele.controls.state.value[0],
-        "city": ele.controls.city.value[0],
-        "other_city": ele.controls.other_city.value,
-        "start_date": ele.controls.start_date.value,
-        "end_date": ele.controls.end_date.value,
-        "currently_working": ele.controls.currently_working.value,
-        "job_description": ele.controls.job_description.value,
-      }
-      experienceArray.push(json);
-    })
+    if (this.experienceTypeForm.controls.experience_type.value !== 'Fresher') {
+      this.experienceDetailForm.controls.experienceDetails['controls'].map(ele => {
+        const json = {
+          "designation": ele.controls.designation.value,
+          "company": ele.controls.company.value,
+          "state": ele.controls.state.value[0],
+          "city": ele.controls.city.value[0],
+          "other_city": ele.controls.other_city.value,
+          "start_date": ele.controls.start_date.value,
+          "end_date": ele.controls.end_date.value,
+          "currently_working": ele.controls.currently_working.value,
+          "job_description": ele.controls.job_description.value,
+        }
+        experienceArray.push(json);
+      })
+    }
     // if (this.userRoleForm.controls.user_role.value === '1') {
     const json = {
       "user_id": localData._id,
