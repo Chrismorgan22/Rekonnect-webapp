@@ -61,10 +61,11 @@ export class PersonalizationComponent implements OnInit {
   vertical = false;
   tickInterval = 1;
   value: number = 0;
-  highValue: number = 200000;
+  todayDate: any;
+  highValue: number = 10000000;
   options = {
     floor: 0,
-    ceil: 200000
+    ceil: 10000000
   };
   employerIdArray = ['candidateModalCenter', 'candidateModalCenterupload', 'companyDetailsModal'];
   formIdArray = ['candidateModalCenter', 'candidateModalCenterupload', 'candidateModalExperience', 'candidateModalEducation', 'candidateModallastbits', 'candidateModallastbitsfinal', 'gainmorevisibilitymodal', 'almostdonemodal']
@@ -77,6 +78,7 @@ export class PersonalizationComponent implements OnInit {
 
   async ngOnInit() {
     this.monthDrp = moment.months();
+    this.todayDate = moment(new Date).format('yyyy-MM-DD');
     const year = moment().get('year');
     for (let i = 1999; i <= year; i++) {
       this.yearDrp.push(i);
@@ -125,7 +127,7 @@ export class PersonalizationComponent implements OnInit {
       language: ['', Validators.required]
     })
     this.lastFewBitsJoinDetailForm = this.formBuilder.group({
-      joining_status: ['', Validators.required],
+      joining_status: ['yes', Validators.required],
       joining_within: [''],
       rangeValues: [[0, 10000000]],
     })

@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.eventService.tokenSubObservable$.subscribe((muted: boolean) => {
-      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
+      const localData = JSON.parse(sessionStorage.getItem('_ud'))
       if(localData){
         this.loginFlag= true
       }else{
