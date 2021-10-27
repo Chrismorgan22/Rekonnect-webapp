@@ -27,9 +27,16 @@
                         </div>
                         <div class="card-body">
                             <div class="timeline-block">
-                                <label>Note that this is an placeholder image</label>
+                                <p-timeline [value]="events1">
+                                    <ng-template pTemplate="content" let-event>
+                                        <p class="timeline-year">{{event.year}}</p>
+                                        <p class="timeline-designation">{{event.company_name}}</p>
+                                        <p class="timeline-company">{{event.designation}}</p>
+                                    </ng-template>
+                                </p-timeline>
+                                <!-- <label>Note that this is an placeholder image</label>
                                 <img style="width: 210px; height: 300px"
-                                    src="../../../assets/images/temporary-images/timeline-png.png" />
+                                    src="../../../assets/images/temporary-images/timeline-png.png" /> -->
                             </div>
                         </div>
                     </div>

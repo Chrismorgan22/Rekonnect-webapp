@@ -40,6 +40,7 @@ export class CandidateComponent implements OnInit {
     //   { status: 'Delivered', date: '16/10/2020 10:00', icon: PrimeIcons.CHECK, color: '#607D8B' }
     // ];
     this.chartOptions = {
+    
       series: [
         {
           name: "series1",
@@ -47,6 +48,9 @@ export class CandidateComponent implements OnInit {
         },
       ],
       chart: {
+        toolbar: {
+          show: false,
+        },
         height: 200,
         type: "area"
       },
@@ -94,7 +98,7 @@ export class CandidateComponent implements OnInit {
   }
   getTimelineData() {
     const timelineArray = [];
-    const designationArr:any = [];
+    const designationArr: any = [];
     this.userProfileData.candidate_details[0].experience_data.experience_details.map(ele => {
       const json = {};
       designationArr.push(ele.designation)

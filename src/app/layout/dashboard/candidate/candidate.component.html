@@ -49,7 +49,8 @@
                                     <img src="../../../assets/images/user-profile-placeholder.png" />
                                 </div>
                                 <div class="user-content">
-                                    <h5>{{userProfileData?.first_name | titlecase}} {{userProfileData?.last_name | titlecase}}</h5>
+                                    <h5>{{userProfileData?.first_name | titlecase}} {{userProfileData?.last_name |
+                                        titlecase}}</h5>
                                     <label>- {{designation | titlecase}}</label>
                                 </div>
                             </div>
@@ -62,13 +63,13 @@
                                         </p>
                                     </div>
                                     <div class="card-image">
-                                        <!-- <div id="chart">
+                                        <div id="chart">
                                             <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
                                                 [xaxis]="chartOptions.xaxis" [stroke]="chartOptions.stroke"
                                                 [tooltip]="chartOptions.tooltip" [dataLabels]="chartOptions.dataLabels">
                                             </apx-chart>
-                                        </div> -->
-                                        <img src="../../../assets/images/orange-card-wave.png" />
+                                        </div>
+                                        <!-- <img src="../../../assets/images/orange-card-wave.png" /> -->
                                     </div>
                                 </div>
                                 <div class="col-sm col-md-5 col-lg-4 card-box">
@@ -79,7 +80,13 @@
                                         </p>
                                     </div>
                                     <div class="card-image">
-                                        <img src="../../../assets/images/green-card-wave.png" />
+                                        <div id="chart">
+                                            <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
+                                                [xaxis]="chartOptions.xaxis" [stroke]="chartOptions.stroke"
+                                                [tooltip]="chartOptions.tooltip" [dataLabels]="chartOptions.dataLabels">
+                                            </apx-chart>
+                                        </div>
+                                        <!-- <img src="../../../assets/images/green-card-wave.png" /> -->
                                     </div>
                                 </div>
                                 <div class="col-sm col-md-11 col-lg-3 card-box upload-customised">

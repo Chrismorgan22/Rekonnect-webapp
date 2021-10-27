@@ -46,9 +46,13 @@
                         </div>
                         <div class="card-body">
                             <div class="timeline-block">
-                                <label>Note that this is an placeholder image</label>
-                                <img style="width: 210px; height: 300px"
-                                    src="../../../assets/images/temporary-images/timeline-png.png" />
+                                <p-timeline [value]="events1">
+                                    <ng-template pTemplate="content" let-event>
+                                        <p class="timeline-year">{{event.year}}</p>
+                                        <p class="timeline-designation">{{event.company_name}}</p>
+                                        <p class="timeline-company">{{event.designation}}</p>
+                                    </ng-template>
+                                </p-timeline>
                             </div>
                         </div>
                     </div>
@@ -246,10 +250,13 @@
                                                 <h5>3</h5> New Application <span class="dark-blue"></span>
                                             </div>
                                         </div>
-                                        <div class="card-image mb-3 height-150">
-                                            <img
-                                                src="../../../../assets/images/temporary-images/conversion-graph.png" />
-                                        </div>
+                                        <!-- <div class="card-image mb-3 height-150"> -->
+                                            <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
+                                            [plotOptions]="chartOptions.plotOptions" [labels]="chartOptions.labels">
+                                        </apx-chart>
+                                            <!-- <img
+                                                src="../../../../assets/images/temporary-images/conversion-graph.png" /> -->
+                                        <!-- </div> -->
                                         <div class="py-3 mt-2">
                                             <button class="btn btn-primary w-100">Complete Feedback</button>
                                         </div>

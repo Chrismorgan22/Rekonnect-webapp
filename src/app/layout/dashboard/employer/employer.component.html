@@ -47,13 +47,26 @@
                         </div>
                         <div class="card-body">
                             <div class="timeline-block">
-                                <label>Note that this is an placeholder image</label>
+                                <p-timeline [value]="events1">
+                                    <ng-template pTemplate="content" let-event>
+                                        <p class="timeline-year">{{event.year}}</p>
+                                        <p class="timeline-designation">{{event.company_name}}</p>
+                                        <p class="timeline-company">{{event.designation}}</p>
+                                    </ng-template>
+                                </p-timeline>
+                                <!-- <label>Note that this is an placeholder image</label>
                                 <img style="width: 210px; height: 300px"
-                                    src="../../../assets/images/temporary-images/timeline-png.png" />
+                                    src="../../../assets/images/temporary-images/timeline-png.png" /> -->
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- <apx-chart [series]="chartOptions1.series" [chart]="chartOptions1.chart"
+                [dataLabels]="chartOptions1.dataLabels"
+                [plotOptions]="chartOptions1.plotOptions"
+                [responsive]="chartOptions1.responsive" [xaxis]="chartOptions1.xaxis"
+                [legend]="chartOptions1.legend" [fill]="chartOptions1.fill"></apx-chart> -->
+
                 <div class="col-sm col-sm-12 col-md-6 col-lg-9">
                     <div class="card profile-card">
                         <div class="card-header d-flex align-items-center justify-content-space-between">
@@ -91,9 +104,16 @@
                                         </div>
                                         <h5>Views</h5>
                                     </div>
-                                    <div class="card-image">
-                                        <img src="../../../../assets/images/temporary-images/bargraph-views.png" />
-                                    </div>
+                                    <!-- <div class="card-image"> -->
+                                    <!-- <div id="chart1"> -->
+                                    <apx-chart [series]="chartOptions1.series" [chart]="chartOptions1.chart"
+                                        [dataLabels]="chartOptions1.dataLabels"
+                                        [plotOptions]="chartOptions1.plotOptions"
+                                        [responsive]="chartOptions1.responsive" [xaxis]="chartOptions1.xaxis"
+                                        [legend]="chartOptions1.legend" [fill]="chartOptions1.fill"></apx-chart>
+                                    <!-- </div> -->
+                                    <!-- <img src="../../../../assets/images/temporary-images/bargraph-views.png" /> -->
+                                    <!-- </div> -->
                                 </div>
                                 <div class="col-sm col-md-12 col-lg-4 employer-card-box">
                                     <div
@@ -119,9 +139,14 @@
                                             <h5>176K</h5> New Application <span class="dark-blue"></span>
                                         </div>
                                     </div>
-                                    <div class="card-image mb-3 height-150">
-                                        <img src="../../../../assets/images/temporary-images/conversion-graph.png" />
-                                    </div>
+                                    <!-- <div class="card-image mb-3 height-150"> -->
+                                    <!-- <div id="chart"> -->
+                                    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
+                                        [plotOptions]="chartOptions.plotOptions" [labels]="chartOptions.labels">
+                                    </apx-chart>
+                                    <!-- </div> -->
+                                    <!-- <img src="../../../../assets/images/temporary-images/conversion-graph.png" /> -->
+                                    <!-- </div> -->
                                 </div>
                                 <div class="col-sm col-md-11 col-lg-3 card-box upload-customised">
                                     <input type="file" id="myFile" name="filename">
@@ -341,7 +366,21 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <label class="mt-2"> AVATAR GROUP COMPONENT</label>
+                                                <label class="mt-2">
+                                                    <p-avatarGroup styleClass="p-mb-3">
+                                                        <p-avatar image="assets/images/team-member-meenakshi.jpg"
+                                                            size="large" shape="circle"></p-avatar>
+                                                        <p-avatar image="assets/images/team-member-rima.jpg"
+                                                            size="large" shape="circle"></p-avatar>
+                                                        <p-avatar image="assets/images/team-member-riti.jpg"
+                                                            size="large" shape="circle"></p-avatar>
+                                                        <p-avatar image="assets/images/expert-placeholder-image-1.jpg"
+                                                            size="large" shape="circle"></p-avatar>
+                                                        <p-avatar label="+2" shape="circle" size="large"
+                                                            [style]="{'background-color':'#9c27b0', 'color': '#ffffff'}">
+                                                        </p-avatar>
+                                                    </p-avatarGroup>
+                                                </label>
                                             </td>
                                             <td>
                                                 <div class="progress mt-2">
@@ -362,7 +401,21 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <label class="mt-2"> AVATAR GROUP COMPONENT</label>
+                                                <label class="mt-2">
+                                                    <p-avatarGroup styleClass="p-mb-3">
+                                                        <p-avatar image="assets/images/team-member-meenakshi.jpg"
+                                                            size="large" shape="circle"></p-avatar>
+                                                        <p-avatar image="assets/images/team-member-rima.jpg"
+                                                            size="large" shape="circle"></p-avatar>
+                                                        <p-avatar image="assets/images/team-member-riti.jpg"
+                                                            size="large" shape="circle"></p-avatar>
+                                                        <p-avatar image="assets/images/expert-placeholder-image-1.jpg"
+                                                            size="large" shape="circle"></p-avatar>
+                                                        <p-avatar label="+2" shape="circle" size="large"
+                                                            [style]="{'background-color':'#9c27b0', 'color': '#ffffff'}">
+                                                        </p-avatar>
+                                                    </p-avatarGroup>
+                                                </label>
                                             </td>
                                             <td>
                                                 <div class="progress mt-2">
