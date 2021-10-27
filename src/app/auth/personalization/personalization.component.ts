@@ -7,7 +7,12 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
+import { FileUploadService } from 'src/app/services/file-upload.service';
+import * as S3 from 'aws-sdk/clients/s3';
+import { environment } from '../../../environments/environment';
 // import { Options } from "@angular-slider/ngx-slider";
+
+
 declare var $: any;
 @Component({
   selector: 'app-personalization',
@@ -67,11 +72,20 @@ export class PersonalizationComponent implements OnInit {
     floor: 0,
     ceil: 10000000
   };
+
+  bucket = new S3(
+    {
+      accessKeyId: environment.accessKeyId,
+      secretAccessKey: environment.secretAccessKey,
+      region: environment.region
+    }
+  );
+  profileImagUrl: any = '';
   employerIdArray = ['candidateModalCenter', 'candidateModalCenterupload', 'companyDetailsModal'];
   formIdArray = ['candidateModalCenter', 'candidateModalCenterupload', 'candidateModalExperience', 'candidateModalEducation', 'candidateModallastbits', 'candidateModallastbitsfinal', 'gainmorevisibilitymodal', 'almostdonemodal']
   constructor(private formBuilder: FormBuilder, private authService: AuthService,
     private layoutService: LayoutService, private _toastrService: ToastrService,
-    private SpinnerService: NgxSpinnerService, private router: Router) {
+    private SpinnerService: NgxSpinnerService, private router: Router, private fileUploadService: FileUploadService) {
     // $('#candidateModalCenter').modal('show')
 
   }
@@ -288,8 +302,10 @@ export class PersonalizationComponent implements OnInit {
       const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
       console.log(localData);
       const tempData = {};
+      console.log(this.profileImagUrl)
       tempData[currentModal] = {
         "address_details": {
+          "profile_url": this.profileImagUrl,
           "street": this.addressForm.controls.street.value,
           "state": this.addressForm.controls.state.value[0],
           "zip_code": this.addressForm.controls.zip_code.value,
@@ -797,7 +813,7 @@ export class PersonalizationComponent implements OnInit {
     // if (this.userRoleForm.controls.user_role.value === '1') {
     const json = {
       "user_id": localData._id,
-      "profile_url": "wwww",
+      "profile_url": this.profileImagUrl,
       "address_details": {
         "street": this.addressForm.controls.street.value,
         "state": this.addressForm.controls.state.value[0],
@@ -881,6 +897,7 @@ export class PersonalizationComponent implements OnInit {
         this.userRoleForm.controls.user_role.setValue(this.tempFormData['candidateModalCenter'].user_role.toString());
         if (objectKeys.includes('candidateModalCenterupload')) {
           console.log(this.tempFormData['candidateModalCenterupload'].address_details.state.toString())
+          this.profileImagUrl = this.tempFormData['candidateModalCenterupload'].address_details.profile_url;
           this.addressForm.controls.street.setValue(this.tempFormData['candidateModalCenterupload'].address_details.street);
           this.addressForm.controls.state.setValue([this.tempFormData['candidateModalCenterupload'].address_details.state]);
           this.addressForm.controls.zip_code.setValue(this.tempFormData['candidateModalCenterupload'].address_details.zip_code);
@@ -966,6 +983,7 @@ export class PersonalizationComponent implements OnInit {
         this.userRoleForm.controls.user_role.setValue(this.tempFormData['candidateModalCenter'].user_role.toString());
         if (objectKeys.includes('candidateModalCenterupload')) {
           console.log(this.tempFormData['candidateModalCenterupload'].address_details.state.toString())
+          this.profileImagUrl = this.tempFormData['candidateModalCenterupload'].address_details.profile_url;
           this.addressForm.controls.street.setValue(this.tempFormData['candidateModalCenterupload'].address_details.street);
           this.addressForm.controls.state.setValue([this.tempFormData['candidateModalCenterupload'].address_details.state]);
           this.addressForm.controls.zip_code.setValue(this.tempFormData['candidateModalCenterupload'].address_details.zip_code);
@@ -981,7 +999,7 @@ export class PersonalizationComponent implements OnInit {
       const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
       const json = {
         "user_id": localData._id,
-        "company_logo": "wwww",
+        "company_logo": this.profileImagUrl,
         "address_details": {
           "street": this.addressForm.controls.street.value,
           "state": this.addressForm.controls.state.value[0],
@@ -1014,5 +1032,27 @@ export class PersonalizationComponent implements OnInit {
         this.getUserTempData();
       })
     }
+  }
+  uploadFile(file, type) {
+    const contentType = file[0].type;
+
+    const params = {
+      Bucket: environment.Bucket,
+      Key: 'Rekonnect' + file[0].name,
+      Body: file[0],
+      ACL: 'public-read',
+      ContentType: contentType
+    };
+    const self = this;
+    this.bucket.upload(params, function (err, data) {
+      if (err) {
+        console.log('There was an error uploading your file: ', err);
+        return false;
+      }
+      console.log('Successfully uploaded file.', data);
+      if (type === 'profile_url') {
+        self.profileImagUrl = data.Location;
+      }
+    });
   }
 }
