@@ -29,7 +29,7 @@ export type ChartOptions = {
 export class CandidateComponent implements OnInit {
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
-  userProfileData: any = '';
+  userProfileData: any;
   events1: any[];
   designation: any = '';
   constructor(private layoutService: LayoutService) {
@@ -40,7 +40,7 @@ export class CandidateComponent implements OnInit {
     //   { status: 'Delivered', date: '16/10/2020 10:00', icon: PrimeIcons.CHECK, color: '#607D8B' }
     // ];
     this.chartOptions = {
-    
+
       series: [
         {
           name: "series1",

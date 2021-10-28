@@ -46,7 +46,8 @@
                         <div class="card-body">
                             <div class="user-profile">
                                 <div class="user-image">
-                                    <img src="../../../assets/images/user-profile-placeholder.png" />
+                                    <img src="{{userProfileData?.candidate_details[0]?.profile_url}}"
+                                        onerror="this.onerror=null;this.src='../../../assets/images/no-image.png'" />
                                 </div>
                                 <div class="user-content">
                                     <h5>{{userProfileData?.first_name | titlecase}} {{userProfileData?.last_name |

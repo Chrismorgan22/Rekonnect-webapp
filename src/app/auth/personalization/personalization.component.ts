@@ -81,6 +81,8 @@ export class PersonalizationComponent implements OnInit {
     }
   );
   profileImagUrl: any = '';
+  resumeFileUrl: any = '';
+  visumeFileUrl: any = '';
   employerIdArray = ['candidateModalCenter', 'candidateModalCenterupload', 'companyDetailsModal'];
   formIdArray = ['candidateModalCenter', 'candidateModalCenterupload', 'candidateModalExperience', 'candidateModalEducation', 'candidateModallastbits', 'candidateModallastbitsfinal', 'gainmorevisibilitymodal', 'almostdonemodal']
   constructor(private formBuilder: FormBuilder, private authService: AuthService,
@@ -599,6 +601,8 @@ export class PersonalizationComponent implements OnInit {
             "min": this.value,
             "max": this.highValue
           },
+          "resume_url": this.resumeFileUrl,
+          "visume_url": this.visumeFileUrl,
         }
       }
       const body = {
@@ -846,7 +850,8 @@ export class PersonalizationComponent implements OnInit {
       },
       "soft_skills": this.lastFewBitsDetailForm.controls.soft_skills.value,
       "technical_skills": this.lastFewBitsDetailForm.controls.technical_skills.value,
-
+      "resume_url": this.resumeFileUrl,
+      "visume_url": this.visumeFileUrl,
       "current_career": this.lastFewBitsDetailForm.controls.current_career.value[0],
       "changecareer": this.lastFewBitsDetailForm.controls.changecareer.value,
       "change_career": this.lastFewBitsDetailForm.controls.change_career.value !== undefined && this.lastFewBitsDetailForm.controls.change_career.value !== null && this.lastFewBitsDetailForm.controls.change_career.value !== '' ? this.lastFewBitsDetailForm.controls.change_career.value[0] : '',
@@ -959,6 +964,8 @@ export class PersonalizationComponent implements OnInit {
                 if (objectKeys.includes("candidateModallastbitsfinal")) {
                   this.lastFewBitsJoinDetailForm.controls.joining_status.setValue(this.tempFormData['candidateModallastbitsfinal'].last_few_join.joining_status)
                   this.lastFewBitsJoinDetailForm.controls.joining_within.setValue(this.tempFormData['candidateModallastbitsfinal'].last_few_join.join_within)
+                  this.resumeFileUrl = this.tempFormData['candidateModallastbitsfinal'].last_few_join.resume_url;
+                  this.visumeFileUrl = this.tempFormData['candidateModallastbitsfinal'].last_few_join.visume_url;
                   this.value = this.tempFormData['candidateModallastbitsfinal'].last_few_join.salary_range?.min !== undefined ? this.tempFormData['candidateModallastbitsfinal'].last_few_join.salary_range.min : 0;
                   this.highValue = this.tempFormData['candidateModallastbitsfinal'].last_few_join.salary_range?.max;
                   if (objectKeys.includes("gainmorevisibilitymodal")) {
@@ -1053,6 +1060,22 @@ export class PersonalizationComponent implements OnInit {
       if (type === 'profile_url') {
         self.profileImagUrl = data.Location;
       }
+      if (type === 'resume_url') {
+        self.resumeFileUrl = data.Location;
+      }
+      if (type === 'visume_url') {
+        self.visumeFileUrl = data.Location;
+      }
     });
+  }
+  openFile(resumeUrl) {
+    console.log(resumeUrl);
+    let a = document.createElement("a");
+    document.body.appendChild(a);
+    a.href = resumeUrl;
+    a.download = 'resume';
+    a.target = '_blank';
+    a.click();
+    document.body.removeChild(a);
   }
 }

@@ -124,7 +124,8 @@
                                     </div>
                                     <div class="col">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="inputGroupFile01" (change)="uploadFile($event.target.files,'profile_url')">
+                                            <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                                (change)="uploadFile($event.target.files,'profile_url')">
                                             <label class="custom-file-label" for="inputGroupFile01">Upload Image</label>
                                         </div>
                                     </div>
@@ -1004,19 +1005,31 @@
                                 </div>
                                 <div class="form-group py-4">
                                     <h5 class="bold">Upload Resume</h5>
-                                    <label>How early are you available to join?</label>
+                                    <!-- <label>How early are you available to join?</label> -->
+                                    <img *ngIf="resumeFileUrl" src="../../../assets/images/file.jpg" width="25px"
+                                        (click)="openFile(resumeFileUrl)">
                                     <div class="custom-file w-max-300 d-block">
-                                        <input type="file" class=" custom-file-input" id="inputGroupFile01 " >
-                                        <label class="custom-file-label" for="inputGroupFile01">Upload Resume</label>
+                                        <input type="file" class="custom-file-input" id="inputGroupFile02"
+                                            (change)="uploadFile($event.target.files,'resume_url')">
+                                        <label class="custom-file-label" for="inputGroupFile02">Upload
+                                            Resume</label>
                                     </div>
                                 </div>
                                 <div class="form-group py-4">
                                     <h5 class="bold">Upload Visume</h5>
-                                    <label>How early are you available to join?</label>
+                                    <img *ngIf="visumeFileUrl" src="../../../assets/images/file.jpg" width="25px"
+                                        (click)="openFile(visumeFileUrl)">
+                                    <!-- <label>How early are you available to join?</label> -->
                                     <div class="custom-file w-max-300 d-block">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile03"
+                                            (change)="uploadFile($event.target.files,'visume_url')">
+                                        <label class="custom-file-label" for="inputGroupFile03">Upload
+                                            Visume</label>
+                                    </div>
+                                    <!-- <div class="custom-file w-max-300 d-block">
                                         <input type="file" class=" custom-file-input" id="inputGroupFile01">
                                         <label class="custom-file-label" for="inputGroupFile01">Upload Visume</label>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
