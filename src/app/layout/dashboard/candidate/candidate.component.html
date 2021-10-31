@@ -64,13 +64,13 @@
                                         </p>
                                     </div>
                                     <div class="card-image">
-                                        <div id="chart">
+                                        <!-- <div id="chart">
                                             <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
                                                 [xaxis]="chartOptions.xaxis" [stroke]="chartOptions.stroke"
                                                 [tooltip]="chartOptions.tooltip" [dataLabels]="chartOptions.dataLabels">
                                             </apx-chart>
-                                        </div>
-                                        <!-- <img src="../../../assets/images/orange-card-wave.png" /> -->
+                                        </div> -->
+                                        <img src="../../../assets/images/orange-card-wave.png" />
                                     </div>
                                 </div>
                                 <div class="col-sm col-md-5 col-lg-4 card-box">
@@ -81,13 +81,13 @@
                                         </p>
                                     </div>
                                     <div class="card-image">
-                                        <div id="chart">
+                                        <!-- <div id="chart">
                                             <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
                                                 [xaxis]="chartOptions.xaxis" [stroke]="chartOptions.stroke"
                                                 [tooltip]="chartOptions.tooltip" [dataLabels]="chartOptions.dataLabels">
                                             </apx-chart>
-                                        </div>
-                                        <!-- <img src="../../../assets/images/green-card-wave.png" /> -->
+                                        </div> -->
+                                        <img src="../../../assets/images/green-card-wave.png" />
                                     </div>
                                 </div>
                                 <div class="col-sm col-md-11 col-lg-3 card-box upload-customised">
@@ -439,6 +439,16 @@
             <div class="modal-body p-0">
                 <div class="row start-section">
                     <div class="col-sm col-sm-12 col-md-12 col-lg-8 section-form-content">
+                        <div class="user-profile mb-4 ">
+                            <div class="user-image">
+                                <img src="../../../assets/images/user-profile-placeholder.png" />
+                            </div>
+                            <div class="user-content">
+                                <h5>user name</h5>
+                                <label>-User Designation</label>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <input type="text" aria-describedby="email" placeholder="Email" size="lg"
                                 class="form-control" />
@@ -450,6 +460,10 @@
                             <div class="col">
                                 <input type="text" placeholder="Location" class="form-control" />
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" aria-describedby="link" placeholder="LinkedIn URL" size="lg"
+                                class="form-control" />
                         </div>
                         <div class="form-group py-2">
                             <h5 class="bold">Upload Resume</h5>
