@@ -1009,3 +1009,12 @@
 }
 
 
+
+.dropdown-toggle {
+    height: calc(3rem + 2px);
+    border: 1px solid $color-border;
+    color: $text-grey !important;
+    border-radius: 4px !important;
+    text-align: left;
+    font-size: 1rem;
+}

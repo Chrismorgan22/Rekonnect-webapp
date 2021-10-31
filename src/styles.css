@@ -1432,6 +1432,15 @@
   text-decoration: none;
 }
 
+.dropdown-toggle {
+  height: calc(3rem + 2px);
+  border: 1px solid #EEEEEE;
+  color: #727374 !important;
+  border-radius: 4px !important;
+  text-align: left;
+  font-size: 1rem;
+}
+
 body {
   padding: 0;
   margin: 0;
