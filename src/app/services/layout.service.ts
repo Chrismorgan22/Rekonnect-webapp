@@ -38,4 +38,12 @@ export class LayoutService {
       })
     );
   }
+  getStateList() {
+    const body = {
+      country: 'India'
+    }
+    return this._httpClient.post<any>('https://countriesnow.space/api/v0.1/countries/states', body).pipe(map(response => {
+      return response
+    }))
+  }
 }

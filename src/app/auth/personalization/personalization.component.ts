@@ -652,10 +652,10 @@ export class PersonalizationComponent implements OnInit {
       lookup_type: type
     }
     const drpJson = [];
-    this.layoutService.getLookupList(body).subscribe(res => {
-      res.data.map(ele => {
+    this.layoutService.getStateList().subscribe(res => {
+      res.data.states.map(ele => {
         const json = {
-          id: ele._id,
+          id: ele.state_code,
           name: ele.name
         }
         drpJson.push(json);
@@ -871,16 +871,17 @@ export class PersonalizationComponent implements OnInit {
       if (res.result === 'success') {
         const body = {
           user_id: localData._id
-        }
+        };
         this.authService.updateCandidateStatus(body).subscribe(res => {
           this.SpinnerService.hide();
           this._toastrService.success(
             'Registration successfully', 'Success'
           )
         })
+        $('#almostdonemodal').modal('hide');
+        this.getUserTempData()
       }
-      $('#almostdonemodal').modal('hide');
-      this.getUserTempData();
+
     })
     // }
   }
@@ -1034,9 +1035,10 @@ export class PersonalizationComponent implements OnInit {
               'Registration successfully', 'Success'
             )
           })
+          $('#companyDetailsModal').modal('hide');
+          this.getUserTempData();
         }
-        $('#companyDetailsModal').modal('hide');
-        this.getUserTempData();
+
       })
     }
   }

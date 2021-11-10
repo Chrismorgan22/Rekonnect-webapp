@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class BaseComponent implements OnInit {
   baseFlag: boolean = true;
   constructor(private route: Router) { 
+    console.log(this.route.url.indexOf('dashboard'))
     if (this.route.url.indexOf('dashboard') > -1) {
       this.baseFlag = false;
     }
