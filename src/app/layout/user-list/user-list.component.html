@@ -9,6 +9,12 @@
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
       <th scope="col">Mobile</th>
+      <!-- <th scope="col">City</th> -->
+      <th scope="col">State</th>
+      <th scope="col">Street</th>
+      <th scope="col">Zip Code</th>
+      <th scope="col">Education Type</th>
+      <th scope="col">Experience Type</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +23,11 @@
       <td>{{candidate?.user_details.last_name}}</td>
       <td>{{candidate?.user_details.email}}</td>
       <td>{{candidate?.user_details.phone}}</td>
+      <td>{{candidate?.candidate_details?.address_details?.state.name}}</td>
+      <td>{{candidate?.candidate_details?.address_details?.street}}</td>
+      <td>{{candidate?.candidate_details?.address_details?.zip_code}}</td>
+      <td>{{candidate?.candidate_details?.education_data?.education_type}}</td>
+      <td>{{candidate?.candidate_details?.experience_data?.experience_type}}</td>
     </tr>
   </tbody>
 </table>

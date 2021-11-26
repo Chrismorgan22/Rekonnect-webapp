@@ -131,7 +131,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
+                            <!-- <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label> -->
                             <div class="form-group">
                                 <input type="text" aria-describedby="streetaddress" placeholder="Street Address"
                                     size="lg" class="form-control" formControlName="street" />
@@ -278,8 +278,8 @@
                 <form class="section-form-content" [formGroup]="experienceDetailForm"
                     (ngSubmit)="experienceDetailsFormSubmit('candidateModalcenterexperience','candidateModalcenterexperiencetimeline')"
                     noValidate>
-                    <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit.</label>
+                    <!-- <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit.</label> -->
                     <div formArrayName="experienceDetails"
                         *ngFor="let experienceDetails of userExpDetails.experienceDetails['controls']; let i = index"
                         class="container-fluid start-section  w-100">
@@ -330,7 +330,7 @@
                                                 is required</div>
                                         </div>
                                     </div>
-                                    <div class="col">
+                                    <!-- <div class="col">
                                         <ng-multiselect-dropdown [placeholder]="'City'" [settings]="dropdownSettings1"
                                             [data]="cityDrp" formControlName="city"
                                             (onSelect)="onCityItemSelect($event,experienceDetails)"
@@ -341,9 +341,22 @@
                                             <div *ngIf="experienceDetails.controls.city.errors.required">City
                                                 is required</div>
                                         </div>
-                                    </div>
+                                    </div> -->
+                                    <!-- <div class="col" *ngIf="experienceDetails.controls.city.value[0]?.name === 'Other'"> -->
+                                        <div class="col">
+                                            <!-- <label for="exampleFormControlSelect2">City</label> -->
+                                            <input type="text" placeholder="City" class="form-control"
+                                                formControlName="city" />
+                                            <div *ngIf="experienceDetailSubmit && experienceDetails.controls.other_city.errors"
+                                                class="invalid-feedback" style="display:block;">
+                                                <div *ngIf="experienceDetails.controls.city.errors.required">
+                                                    City
+                                                    is required</div>
+                                            </div>
+                                        </div>
+                                    <!-- </div> -->
                                 </div>
-                                <div class="form-row form-group mt-3"
+                                <!-- <div class="form-row form-group mt-3"
                                     *ngIf="experienceDetails.controls.city.value[0]?.name === 'Other'">
                                     <div class="col">
                                         <label for="exampleFormControlSelect2">Other City</label>
@@ -356,7 +369,7 @@
                                                 is required</div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-row form-group mt-3">
                                     <div class="col">
                                         <label for="exampleFormControlSelect2">Start Date</label>
@@ -371,7 +384,6 @@
                                     </div>
                                     <div class="col">
                                         <label for="exampleFormControlSelect2">End Date</label>
-                                        {{todayDate}}
                                         <input type="date" placeholder="Country" class="form-control"
                                             formControlName="end_date"
                                             [min]="experienceDetails.controls.start_date.value" [max]="todayDate" />
@@ -452,7 +464,7 @@
                     <div class="experience-added-section d-flex align-items-center"
                         *ngFor="let companytimeline of companyTimeLineData">
                         <div class="company-content">
-                            <img class="company-image" src="../../../assets/images/google.png" />
+                            <!-- <img class="company-image" src="../../../assets/images/google.png" /> -->
                         </div>
                         <div>
                             <h6 class="bold">{{companytimeline.company_name}}</h6>
@@ -559,7 +571,7 @@
                         <div class="body-background-top">
                         </div>
                         <div class="section-form-content">
-                            <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
+                            <!-- <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label> -->
                             <div class="form-row form-group">
                                 <div class="col">
                                     <input type="text" class="form-control" placeholder="School Name"
@@ -706,7 +718,6 @@
                     </div>
                 </form>
             </div>
-            ip
         </div>
     </div>
 </div>
