@@ -418,6 +418,21 @@
      object-fit: cover;
 }
 
+.dashboard-section .custom-tab-nav {
+  -webkit-box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
+          box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  position: absolute;
+  top: -50px;
+  width: 100%;
+}
+
+.dashboard-section .custom-tab-nav .nav-pills .nav-item {
+  width: 50%;
+}
+
 .dashboard-section .card {
   -webkit-box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
           box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
@@ -1509,6 +1524,12 @@ body::-webkit-scrollbar-thumb {
   border-color: #15759A;
 }
 
+.start-section .section-form-content .selected-pill .btn-selected-pill {
+  background: white;
+  border: none;
+  color: #0C1A27;
+}
+
 .start-section .section-form-content .custom-dropdown .dropdown-toggle {
   height: calc(3rem + 2px);
   border: 1px solid #EEEEEE;
@@ -1536,12 +1557,6 @@ body::-webkit-scrollbar-thumb {
 
 .start-section .section-form-content .custom-radio-group > input:checked + .custom-radio-group {
   background: white;
-}
-
-.start-section .section-form-content .custom-radio-group .selected-pill .btn-selected-pill {
-  background: white;
-  border: none;
-  color: #0C1A27;
 }
 
 .start-section .section-form-content .custom-radio-group > label {

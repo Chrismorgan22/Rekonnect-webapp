@@ -30,6 +30,26 @@
         }
     }
 
+
+    .custom-tab-nav {
+        box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
+        background: white;
+        border-radius: 16px;
+        position: absolute;
+        top: -50px;
+        width: 100%;
+
+        .nav-pills {
+            .nav-item {
+                width: 50%;
+            }
+        }
+
+        .tab-content {
+            padding: 0 24px 24px 24px;
+        }
+    }
+
     //common card view
     .card {
         box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
