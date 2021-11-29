@@ -2017,7 +2017,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .footer {
-  display: none;
+  display: block;
 }
 
 .footer .footer-branding > img {
@@ -2292,5 +2292,9 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.p-carousel-indicators {
+  display: none !important;
 }
 /*# sourceMappingURL=styles.css.map */

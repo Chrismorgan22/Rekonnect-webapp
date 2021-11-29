@@ -227,4 +227,17 @@ body {
 .switch-button.switch-button-danger input[type="checkbox"]:checked + span label {
   border-color: #e82e1e;
 }
+
+.table thead th {
+  white-space: nowrap;
+}
+
+.table td,
+.table th {
+  border: 1px solid #dee2e6;
+}
+
+.sidebar-top-space {
+  overflow-x: hidden;
+}
 /*# sourceMappingURL=user-list.component.css.map */
