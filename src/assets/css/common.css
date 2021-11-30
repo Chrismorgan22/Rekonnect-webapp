@@ -27,6 +27,10 @@
   font-weight: 800;
 }
 
+.font-8 {
+  font-size: 8px !important;
+}
+
 .font-14 {
   font-size: 14px !important;
 }
@@ -79,6 +83,10 @@
   border-radius: 0px !important;
 }
 
+.border-none {
+  border: 0px !important;
+}
+
 .background-light-green {
   background: #f0f8eb;
 }
@@ -95,6 +103,10 @@
 
 .background-blue {
   background: #FDFEFF;
+}
+
+.text-verified {
+  color: #6FBA43;
 }
 
 .text-decoration-underline {
@@ -115,6 +127,10 @@
 
 .text-color-light {
   color: #949597 !important;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
 }
 
 .mt-8 {

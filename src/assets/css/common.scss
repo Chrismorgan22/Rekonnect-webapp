@@ -72,6 +72,10 @@ $font-extrabold: 800;
     font-weight: $font-extrabold;
 }
 
+.font-8 {
+    font-size: 8px !important;
+}
+
 .font-14 {
     font-size: 14px !important;
 }
@@ -127,6 +131,10 @@ h6 {
     border-radius: 0px !important;
 }
 
+.border-none {
+    border: 0px !important;
+}
+
 //color background
 .background-light-green {
     background: $background-light-green;
@@ -144,6 +152,10 @@ h6 {
 
 .background-blue {
     background: $background-blue;
+}
+
+.text-verified {
+    color: $color-secondary-green;
 }
 
 //text styling
@@ -165,6 +177,10 @@ h6 {
 
 .text-color-light {
     color: $text-color-light !important;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
 }
 
 
