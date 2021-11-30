@@ -800,7 +800,7 @@ body {
 }
 
 
-
+//apply for job page design
 .apply-for-job-section {
     margin-top: 40px;
     
@@ -844,6 +844,152 @@ body {
                         & img {
                             width: 100%;
                             height: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//create job page css
+.create-job-section {
+    .left-side {
+        .custom-tab-nav {
+            box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
+            border-radius: 16px;
+            position: absolute;
+            top: -66px;
+            width: 100%;
+    
+            .nav-pills {
+                .nav-item {
+                    width: calc(50% - 8px);
+                    margin-right: 8px;
+
+                    .nav-link {
+                        padding: 16px;
+                        text-align: center;
+                        color: inherit;
+                        font-size: 1.2rem;
+                        font-weight: $font-bold;
+                        background: #F6F6F6;
+                        border-bottom-right-radius: 0px;
+                        border-bottom-left-radius: 0px;
+                        
+
+                        span {
+                            padding: 8px 16px;
+                            background: #eee;
+                            border-radius: 48px;
+                            margin-right: 8px;
+                        }
+
+                        &.active {
+                            background: $text-white;
+
+                            span{
+                                background:$color-secondary !important;
+                                color: $text-white;
+                            }
+                        }
+                    }
+                }
+            }
+    
+            .tab-content {
+                padding: 0 24px 24px 24px;
+            }
+        }
+
+        .selected-pill {
+            .btn-selected-pill {
+                background: lighten(#005A74, 70%);
+                padding: 8px 16px;
+            }
+        }
+
+        .posting-complete {
+            .section-sub-title {
+                font-size: 1.5rem;
+                font-weight: $font-bold;
+            }
+            .section-content {
+                line-height: normal;
+            }
+
+            .image-section {
+                width: 350px;
+                height: auto;
+                display: block;
+                margin: 0 auto;
+
+                & img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+
+    .right-side {
+        .right-side-content {
+            .section-block {
+                margin: 24px 0;
+
+                .section-image {
+                    width: 120px;
+                    height: auto;
+                    
+                    & img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .section-content {
+                    h5 {
+                        font-size: 1.2rem;
+                        font-weight: $font-bold;
+                        color: $text-color;
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        .right-side-accordian {
+            .card {
+                border-radius: 0px;
+                box-shadow: none !important;
+            }
+
+            .custom-accord {
+                border-radius: 24px;
+                box-shadow: 0px 4px 13px rgb(17 38 146 / 20%);
+
+                .card {
+                    &:first-of-type {
+                        border-top-left-radius: 16px;
+                        border-top-right-radius: 16px;
+                    }
+                }
+
+                .card {
+                    &:last-of-type {
+                        border-bottom-left-radius: 16px;
+                        border-bottom-right-radius: 16px;
+                    }
+                }
+
+                .card {
+                    .card-header {
+                        button {
+                            color: $text-color;
+                            display: flex;
+                            justify-content: space-between;
+                            width: 100%;
+
                         }
                     }
                 }

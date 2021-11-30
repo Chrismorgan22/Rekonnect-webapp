@@ -130,6 +130,10 @@
   color: #949597 !important;
 }
 
+.text-uppercase {
+  text-transform: uppercase;
+}
+
 .mt-8 {
   margin-top: 8px;
 }
@@ -418,9 +422,17 @@
   width: 100%;
 }
 
+.dashboard-section .negative-top-offset.negative-top-offset-bg {
+  top: 290px !important;
+}
+
 .dashboard-section .banner {
   width: 100%;
   height: 200px;
+}
+
+.dashboard-section .banner.banner-bg-large {
+  height: 300px !important;
 }
 
 .dashboard-section .banner > img {
@@ -428,24 +440,6 @@
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-}
-
-.dashboard-section .custom-tab-nav {
-  -webkit-box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
-          box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
-  background: white;
-  border-radius: 16px;
-  position: absolute;
-  top: -50px;
-  width: 100%;
-}
-
-.dashboard-section .custom-tab-nav .nav-pills .nav-item {
-  width: 50%;
-}
-
-.dashboard-section .custom-tab-nav .tab-content {
-  padding: 0 24px 24px 24px;
 }
 
 .dashboard-section .card {
@@ -2358,5 +2352,72 @@ body::-webkit-scrollbar-thumb {
 .apply-for-job-section .profile-right-content .profile-content-card .feedback-section .background-blue .section-image img {
   width: 100%;
   height: 100%;
+}
+
+.create-job-section .left-side .custom-tab-nav {
+  -webkit-box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
+          box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
+  background: white;
+  border-radius: 16px;
+  position: absolute;
+  top: -50px;
+  width: 100%;
+}
+
+.create-job-section .left-side .custom-tab-nav .nav-pills .nav-item {
+  width: 50%;
+}
+
+.create-job-section .left-side .custom-tab-nav .nav-pills .nav-item .nav-link {
+  padding: 16px;
+  text-align: center;
+  color: inherit;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.create-job-section .left-side .custom-tab-nav .nav-pills .nav-item .nav-link span {
+  padding: 8px 16px;
+  background: #eee;
+  border-radius: 48px;
+  margin-right: 8px;
+}
+
+.create-job-section .left-side .custom-tab-nav .nav-pills .nav-item .nav-link.active span {
+  background: #FF6400 !important;
+  color: #fff;
+}
+
+.create-job-section .left-side .custom-tab-nav .tab-content {
+  padding: 0 24px 24px 24px;
+}
+
+.create-job-section .right-side .right-side-content .section-block {
+  margin: 24px 0;
+}
+
+.create-job-section .right-side .right-side-content .section-block .section-image {
+  width: 120px;
+  height: auto;
+}
+
+.create-job-section .right-side .right-side-content .section-block .section-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.create-job-section .right-side .right-side-content .section-block .section-content h5 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0C1A27;
+  margin-bottom: 0;
+}
+
+.create-job-section .right-side .right-side-accordian .card {
+  border-radius: 0px !important;
+}
+
+.create-job-section .right-side .right-side-accordian .custom-accord {
+  border-radius: 24px;
 }
 /*# sourceMappingURL=styles.css.map */
