@@ -788,14 +788,19 @@ body {
 .modal-dialog {
     max-width: fit-content !important;
 }
-.logout-modal-css{
+.logout-modal-css {
     padding-left: 20px !important;
     padding-right: 20px !important;
-  }
+}
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-.p-carousel-indicators{
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.p-carousel-indicators {
     display: none !important;
 }
