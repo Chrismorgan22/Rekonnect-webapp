@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Form, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  Form,
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import * as moment from 'moment';
 import { LayoutService } from 'src/app/services/layout.service';
@@ -12,14 +18,17 @@ import * as S3 from 'aws-sdk/clients/s3';
 import { environment } from '../../../environments/environment';
 // import { Options } from "@angular-slider/ngx-slider";
 
-
 declare var $: any;
 @Component({
   selector: 'app-personalization',
   templateUrl: './personalization.component.html',
-  styleUrls: ['./personalization.component.scss']
+  styleUrls: ['./personalization.component.scss'],
 })
 export class PersonalizationComponent implements OnInit {
+  isSchoolNum: boolean = false;
+  isDegreeNum: boolean = false;
+  isStudyNum: boolean = false;
+
   userRoleForm: FormGroup;
   addressForm: FormGroup;
   experienceTypeForm: FormGroup;
@@ -40,7 +49,7 @@ export class PersonalizationComponent implements OnInit {
   lastFewBitsJoinDetailsSubmit: boolean = false;
   onBoardDetailSubmit: boolean = false;
   companySubmit: boolean = false;
-  tempFormData: any = []
+  tempFormData: any = [];
   monthDrp: any = [];
   yearDrp: any = [];
   stateDrp: any = [];
@@ -53,7 +62,7 @@ export class PersonalizationComponent implements OnInit {
   languageDrp: any = [];
   selectedItems = [];
   dropdownSettings = {};
-  dropdownSettings1 = {}
+  dropdownSettings1 = {};
   companyTimeLineData: any = [];
   rangeValues: number[] = [0, 1000000];
   autoTicks = false;
@@ -70,57 +79,72 @@ export class PersonalizationComponent implements OnInit {
   highValue: number = 10000000;
   options = {
     floor: 0,
-    ceil: 10000000
+    ceil: 10000000,
   };
 
-  bucket = new S3(
-    {
-      accessKeyId: environment.accessKeyId,
-      secretAccessKey: environment.secretAccessKey,
-      region: environment.region
-    }
-  );
+  bucket = new S3({
+    accessKeyId: environment.accessKeyId,
+    secretAccessKey: environment.secretAccessKey,
+    region: environment.region,
+  });
   profileImagUrl: any = '';
   resumeFileUrl: any = '';
   visumeFileUrl: any = '';
-  employerIdArray = ['candidateModalCenter', 'candidateModalCenterupload', 'companyDetailsModal'];
-  formIdArray = ['candidateModalCenter', 'candidateModalCenterupload', 'candidateModalExperience', 'candidateModalEducation', 'candidateModallastbits', 'candidateModallastbitsfinal', 'gainmorevisibilitymodal', 'almostdonemodal']
-  constructor(private formBuilder: FormBuilder, private authService: AuthService,
-    private layoutService: LayoutService, private _toastrService: ToastrService,
-    private SpinnerService: NgxSpinnerService, private router: Router, private fileUploadService: FileUploadService) {
+  employerIdArray = [
+    'candidateModalCenter',
+    'candidateModalCenterupload',
+    'companyDetailsModal',
+  ];
+  formIdArray = [
+    'candidateModalCenter',
+    'candidateModalCenterupload',
+    'candidateModalExperience',
+    'candidateModalEducation',
+    'candidateModallastbits',
+    'candidateModallastbitsfinal',
+    'gainmorevisibilitymodal',
+    'almostdonemodal',
+  ];
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private layoutService: LayoutService,
+    private _toastrService: ToastrService,
+    private SpinnerService: NgxSpinnerService,
+    private router: Router,
+    private fileUploadService: FileUploadService
+  ) {
     // $('#candidateModalCenter').modal('show')
-
   }
 
   async ngOnInit() {
     this.monthDrp = moment.months();
-    this.todayDate = moment(new Date).format('yyyy-MM-DD');
+    this.todayDate = moment(new Date()).format('yyyy-MM-DD');
     const year = moment().get('year');
     for (let i = 1999; i <= year; i++) {
       this.yearDrp.push(i);
     }
     // (<FormArray>this.experienceDetailForm.get('experienceDetails')).clear();
     this.userRoleForm = this.formBuilder.group({
-      user_role: ['', Validators.required]
-    })
+      user_role: ['', Validators.required],
+    });
     this.addressForm = this.formBuilder.group({
       street: ['', Validators.required],
       state: ['', Validators.required],
       zip_code: ['', Validators.required],
       landmark: ['', Validators.required],
       // organization_strength: ['', Validators.required]
-    })
+    });
     this.experienceTypeForm = this.formBuilder.group({
-      experience_type: ['', Validators.required]
-    })
+      experience_type: ['', Validators.required],
+    });
     this.experienceDetailForm = this.formBuilder.group({
-      experienceDetails: this.formBuilder.array([this.addExperienceDetails()])
-
-    })
-    console.log(this.experienceDetailForm)
+      experienceDetails: this.formBuilder.array([this.addExperienceDetails()]),
+    });
+    console.log(this.experienceDetailForm);
     this.educationTypeForm = this.formBuilder.group({
-      education_type: ['', Validators.required]
-    })
+      education_type: ['', Validators.required],
+    });
     this.educationDetailForm = this.formBuilder.group({
       school_name: ['', Validators.required],
       degree: ['', Validators.required],
@@ -131,8 +155,8 @@ export class PersonalizationComponent implements OnInit {
       end_year: [''],
       currently_studying: [false],
       grade: ['', Validators.required],
-      description: ['', Validators.required]
-    })
+      description: ['', Validators.required],
+    });
     this.lastFewBitsDetailForm = this.formBuilder.group({
       soft_skills: ['', Validators.required],
       technical_skills: ['', Validators.required],
@@ -140,16 +164,16 @@ export class PersonalizationComponent implements OnInit {
       changecareer: ['', Validators.required],
       change_career: [''],
       passion: ['', Validators.required],
-      language: ['', Validators.required]
-    })
+      language: ['', Validators.required],
+    });
     this.lastFewBitsJoinDetailForm = this.formBuilder.group({
       joining_status: ['yes', Validators.required],
       joining_within: [''],
       rangeValues: [[0, 10000000]],
-    })
+    });
     this.onBoardDetailForm = this.formBuilder.group({
-      onboard: [false]
-    })
+      onboard: [false],
+    });
     this.companydetailsForm = this.formBuilder.group({
       company_name: ['', Validators.required],
       designation: ['', Validators.required],
@@ -157,7 +181,7 @@ export class PersonalizationComponent implements OnInit {
       company_website: ['', Validators.required],
       linkedin_url: ['', Validators.required],
       official_mail_address: ['', Validators.required],
-    })
+    });
     this.dropdownList = [];
     this.selectedItems = [];
     this.dropdownSettings = {
@@ -167,7 +191,7 @@ export class PersonalizationComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 3,
-      allowSearchFilter: true
+      allowSearchFilter: true,
     };
     this.dropdownSettings1 = {
       singleSelection: true,
@@ -175,25 +199,43 @@ export class PersonalizationComponent implements OnInit {
       textField: 'name',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      allowSearchFilter: true
-    }
-    await Promise.all([this.getStateList('State'), this.getLocationList('Location'), this.getCountryList('Country'),
+      allowSearchFilter: true,
+    };
+    await Promise.all([
+      this.getStateList('State'),
+      this.getLocationList('Location'),
+      this.getCountryList('Country'),
 
-    this.getSoftSkillsList('Soft_skills'), this.getTechnicalList('Technical_skills'), this.careerList('Career'), this.getLanguage('Language'), this.getUserTempData(),
-    this.getCityList('City')
-    ])
+      this.getSoftSkillsList('Soft_skills'),
+      this.getTechnicalList('Technical_skills'),
+      this.careerList('Career'),
+      this.getLanguage('Language'),
+      this.getUserTempData(),
+      this.getCityList('City'),
+    ]);
   }
   addButtonClick(): void {
-    if (this.experienceDetailForm.controls.experienceDetails['controls'].length < 10) {
-      (<FormArray>this.experienceDetailForm.get('experienceDetails')).push(this.addExperienceDetails());
+    if (
+      this.experienceDetailForm.controls.experienceDetails['controls'].length <
+      10
+    ) {
+      (<FormArray>this.experienceDetailForm.get('experienceDetails')).push(
+        this.addExperienceDetails()
+      );
     } else {
-      this._toastrService.warning('Warning', 'Maximum upto 10 numbers of experience can be added');
+      this._toastrService.warning(
+        'Warning',
+        'Maximum upto 10 numbers of experience can be added'
+      );
     }
 
-    console.log('this.', this.experienceDetailForm.controls.experienceDetails)
+    console.log('this.', this.experienceDetailForm.controls.experienceDetails);
   }
   removeExperience(i) {
-    this.experienceDetailForm.controls.experienceDetails['controls'].splice(i, 1)
+    this.experienceDetailForm.controls.experienceDetails['controls'].splice(
+      i,
+      1
+    );
   }
   addExperienceDetails(): FormGroup {
     return this.formBuilder.group({
@@ -205,25 +247,43 @@ export class PersonalizationComponent implements OnInit {
       start_date: ['', Validators.required],
       end_date: [''],
       job_description: ['', Validators.required],
-      currently_working: [false]
+      currently_working: [false],
     });
   }
-  get userRole() { return this.userRoleForm.controls }
-  get userAddress() { return this.addressForm.controls }
-  get userExperienceType() { return this.experienceTypeForm.controls }
-  get userExpDetails() { return this.experienceDetailForm.controls }
-  get userEducationType() { return this.educationTypeForm.controls }
-  get userEduDetails() { return this.educationDetailForm.controls }
-  get userSoftSkillDetails() { return this.lastFewBitsDetailForm.controls }
-  get userjoiningDetails() { return this.lastFewBitsJoinDetailForm.controls }
-  get companyDetails() { return this.companydetailsForm.controls }
+  get userRole() {
+    return this.userRoleForm.controls;
+  }
+  get userAddress() {
+    return this.addressForm.controls;
+  }
+  get userExperienceType() {
+    return this.experienceTypeForm.controls;
+  }
+  get userExpDetails() {
+    return this.experienceDetailForm.controls;
+  }
+  get userEducationType() {
+    return this.educationTypeForm.controls;
+  }
+  get userEduDetails() {
+    return this.educationDetailForm.controls;
+  }
+  get userSoftSkillDetails() {
+    return this.lastFewBitsDetailForm.controls;
+  }
+  get userjoiningDetails() {
+    return this.lastFewBitsJoinDetailForm.controls;
+  }
+  get companyDetails() {
+    return this.companydetailsForm.controls;
+  }
   moveToNextModal(currentModal, nextModal) {
     $('#' + currentModal).addClass('fade');
     $('#' + nextModal).removeClass('fade');
     $('#' + nextModal).css('display', 'block');
     $('#' + currentModal).css('display', 'none');
     $('#' + currentModal).modal('hide');
-    $('#' + nextModal).modal('show')
+    $('#' + nextModal).modal('show');
   }
   moveToPreviousModal(currentModal, prevModal) {
     $('#' + currentModal).addClass('fade');
@@ -231,68 +291,80 @@ export class PersonalizationComponent implements OnInit {
     $('#' + currentModal).css('display', 'none');
     $('#' + prevModal).css('display', 'block');
     $('#' + currentModal).modal('hide');
-    $('#' + prevModal).modal('show')
+    $('#' + prevModal).modal('show');
   }
   getUserTempData() {
-    const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
+    const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
     console.log(localData);
     const body = {
-      "user_id": localData._id,
-      "user_token": localData.user_token
-    }
+      user_id: localData._id,
+      user_token: localData.user_token,
+    };
     console.log(localData);
     this.authService.getTempUser(body).subscribe((data) => {
       console.log(data);
       if (data?.data[0].temp_data !== undefined) {
-        this.tempFormData = data.data[0].temp_data
-        console.log(this.tempFormData)
+        this.tempFormData = data.data[0].temp_data;
+        console.log(this.tempFormData);
         // $('#candidateModalCenter').modal('hide')
-        const objectKeys = Object.keys(data.data[0].temp_data)
-        console.log(objectKeys)
+        const objectKeys = Object.keys(data.data[0].temp_data);
+        console.log(objectKeys);
         let currentFormId;
         let openFormId;
         currentFormId = objectKeys[objectKeys.length - 1];
-        console.log(this.userRoleForm.controls.user_role.value)
-        if (this.tempFormData['candidateModalCenter']?.user_role === '1' || this.tempFormData['candidateModalCenter']?.user_role === 1 || this.userRoleForm.controls.user_role.value === '1' || this.userRoleForm.controls.user_role.value === 1) {
-          if (objectKeys.length !== 7 && localData.register_complete === false) {
+        console.log(this.userRoleForm.controls.user_role.value);
+        if (
+          this.tempFormData['candidateModalCenter']?.user_role === '1' ||
+          this.tempFormData['candidateModalCenter']?.user_role === 1 ||
+          this.userRoleForm.controls.user_role.value === '1' ||
+          this.userRoleForm.controls.user_role.value === 1
+        ) {
+          if (
+            objectKeys.length !== 7 &&
+            localData.register_complete === false
+          ) {
             openFormId = this.formIdArray[objectKeys.length];
-            this.setUpFormData()
-            this.moveToNextModal(currentFormId, openFormId)
-          }
-          else {
-            this.router.navigate(['/dashboard/candidate'])
+            this.setUpFormData();
+            this.moveToNextModal(currentFormId, openFormId);
+          } else {
+            this.router.navigate(['/dashboard/candidate']);
           }
         } else {
-          if (objectKeys.length !== 2 && localData.register_complete === false) {
+          if (
+            objectKeys.length !== 2 &&
+            localData.register_complete === false
+          ) {
             openFormId = this.employerIdArray[objectKeys.length];
-            this.setUpEmployerFormData()
-            this.moveToNextModal(currentFormId, openFormId)
+            this.setUpEmployerFormData();
+            this.moveToNextModal(currentFormId, openFormId);
           } else {
-            this.router.navigate(['/dashboard/employer'])
+            this.router.navigate(['/dashboard/employer']);
           }
         }
       } else {
-        $('#candidateModalCenter').modal('show')
+        $('#candidateModalCenter').modal('show');
       }
-    })
+    });
   }
   userRoleFormSubmit(currentModal, nextModal) {
     this.userRoleSubmit = true;
     if (this.userRoleForm.valid) {
-      console.log(this.userRoleForm)
-      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
+      console.log(this.userRoleForm);
+      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
       console.log(localData);
       const tempData = {};
-      tempData[currentModal] = { "user_role": Number(this.userRoleForm.controls.user_role.value) }
+      tempData[currentModal] = {
+        user_role: Number(this.userRoleForm.controls.user_role.value),
+      };
       const body = {
-        "user_id": localData._id,
-        "user_token": localData.user_token,
-        "temp_data": tempData
-      }
-      console.log(body)
+        user_id: localData._id,
+        user_token: localData.user_token,
+        temp_data: tempData,
+      };
+      console.log(body);
       this.authService.saveTempUser(body).subscribe((res) => {
-        this.moveToNextModal(currentModal, nextModal)
-      })
+        this.moveToNextModal(currentModal, nextModal);
+      });
     } else {
       return false;
     }
@@ -300,34 +372,39 @@ export class PersonalizationComponent implements OnInit {
   addressFormSubmit(currentModal, nextModal) {
     this.addressSubmit = true;
     if (this.addressForm.valid) {
-      console.log(this.addressForm)
-      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
+      console.log(this.addressForm);
+      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
       console.log(localData);
       const tempData = {};
-      console.log(this.profileImagUrl)
+      console.log(this.profileImagUrl);
       tempData[currentModal] = {
-        "address_details": {
-          "profile_url": this.profileImagUrl,
-          "street": this.addressForm.controls.street.value,
-          "state": this.addressForm.controls.state.value[0],
-          "zip_code": this.addressForm.controls.zip_code.value,
-          "landmark": this.addressForm.controls.landmark.value,
+        address_details: {
+          profile_url: this.profileImagUrl,
+          street: this.addressForm.controls.street.value,
+          state: this.addressForm.controls.state.value[0],
+          zip_code: this.addressForm.controls.zip_code.value,
+          landmark: this.addressForm.controls.landmark.value,
           // "organization_strength": this.addressForm.controls.organization_strength.value
-        }
-      }
+        },
+      };
       const body = {
-        "user_id": localData._id,
-        "user_token": localData.user_token,
-        "temp_data": tempData
-      }
-      console.log(body)
+        user_id: localData._id,
+        user_token: localData.user_token,
+        temp_data: tempData,
+      };
+      console.log(body);
       this.authService.saveTempUser(body).subscribe((res) => {
-        if (this.tempFormData['candidateModalCenter']?.user_role === '1' || this.tempFormData['candidateModalCenter']?.user_role === 1 || this.userRoleForm.controls.user_role.value === '1' || this.userRoleForm.controls.user_role.value === 1) {
-          this.moveToNextModal(currentModal, nextModal)
+        if (
+          this.tempFormData['candidateModalCenter']?.user_role === '1' ||
+          this.tempFormData['candidateModalCenter']?.user_role === 1 ||
+          this.userRoleForm.controls.user_role.value === '1' ||
+          this.userRoleForm.controls.user_role.value === 1
+        ) {
+          this.moveToNextModal(currentModal, nextModal);
         } else {
-          this.moveToNextModal(currentModal, 'companyDetailsModal')
+          this.moveToNextModal(currentModal, 'companyDetailsModal');
         }
-      })
+      });
     } else {
       return false;
     }
@@ -335,28 +412,30 @@ export class PersonalizationComponent implements OnInit {
   experienceTypeFormSubmit(currentModal, nextModal) {
     this.experienceTypeSubmit = true;
     if (this.experienceTypeForm.valid) {
-      console.log(this.experienceTypeForm)
-      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
+      console.log(this.experienceTypeForm);
+      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
       console.log(localData);
       const tempData = {};
       tempData[currentModal] = {
-        "experience_data": {
-          "experience_type": this.experienceTypeForm.controls.experience_type.value,
-        }
-      }
+        experience_data: {
+          experience_type:
+            this.experienceTypeForm.controls.experience_type.value,
+        },
+      };
       const body = {
-        "user_id": localData._id,
-        "user_token": localData.user_token,
-        "temp_data": tempData
-      }
-      console.log(body)
+        user_id: localData._id,
+        user_token: localData.user_token,
+        temp_data: tempData,
+      };
+      console.log(body);
       // this.authService.saveTempUser(body).subscribe((res) => {
-      if (this.experienceTypeForm.controls.experience_type.value !== 'Experienced') {
+      if (
+        this.experienceTypeForm.controls.experience_type.value !== 'Experienced'
+      ) {
         nextModal = 'candidateModalEducation';
-        this.authService.saveTempUser(body).subscribe((res) => {
-        })
+        this.authService.saveTempUser(body).subscribe((res) => {});
       }
-      this.moveToNextModal(currentModal, nextModal)
+      this.moveToNextModal(currentModal, nextModal);
       // })
     } else {
       return false;
@@ -376,58 +455,68 @@ export class PersonalizationComponent implements OnInit {
   experienceDetailsFormSubmit(currentModal, nextModal) {
     this.experienceDetailSubmit = true;
     if (this.experienceDetailForm.valid) {
-      console.log(this.experienceDetailForm)
-      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
+      console.log(this.experienceDetailForm);
+      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
       console.log(localData);
       const experienceArray = [];
       const timelineArray = [];
-      this.experienceDetailForm.controls.experienceDetails['controls'].map(ele => {
-        const json = {
-          "designation": ele.controls.designation.value,
-          "company": ele.controls.company.value,
-          "state": ele.controls.state.value[0],
-          "city": ele.controls.city.value[0],
-          "other_city": ele.controls.other_city.value,
-          "start_date": ele.controls.start_date.value,
-          "end_date": ele.controls.end_date.value,
-          "currently_working": ele.controls.currently_working.value,
-          "job_description": ele.controls.job_description.value,
+      this.experienceDetailForm.controls.experienceDetails['controls'].map(
+        (ele) => {
+          const json = {
+            designation: ele.controls.designation.value,
+            company: ele.controls.company.value,
+            state: ele.controls.state.value[0],
+            city: ele.controls.city.value[0],
+            other_city: ele.controls.other_city.value,
+            start_date: ele.controls.start_date.value,
+            end_date: ele.controls.end_date.value,
+            currently_working: ele.controls.currently_working.value,
+            job_description: ele.controls.job_description.value,
+          };
+          experienceArray.push(json);
+          const timelineJson = {
+            company_name: ele.controls.company.value,
+            total_experience: this.calculateExperience(
+              ele.controls.start_date.value,
+              ele.controls.end_date.value,
+              ele.controls.currently_working.value
+            ),
+          };
+          timelineArray.push(timelineJson);
         }
-        experienceArray.push(json);
-        const timelineJson = {
-          "company_name": ele.controls.company.value,
-          "total_experience": this.calculateExperience(ele.controls.start_date.value, ele.controls.end_date.value, ele.controls.currently_working.value),
-        }
-        timelineArray.push(timelineJson);
-      })
+      );
       const tempData = {};
       tempData['candidateModalExperience'] = {
-        "experience_data": {
-          "experience_type": this.experienceTypeForm.controls.experience_type.value,
-          "experience_details": experienceArray,
-          "timeline_details": timelineArray
-        }
-      }
+        experience_data: {
+          experience_type:
+            this.experienceTypeForm.controls.experience_type.value,
+          experience_details: experienceArray,
+          timeline_details: timelineArray,
+        },
+      };
       const body = {
-        "user_id": localData._id,
-        "user_token": localData.user_token,
-        "temp_data": tempData
-      }
-      console.log(body)
+        user_id: localData._id,
+        user_token: localData.user_token,
+        temp_data: tempData,
+      };
+      console.log(body);
       this.authService.saveTempUser(body).subscribe((res) => {
-        this.companyTimeLineData = body.temp_data['candidateModalExperience'].experience_data.timeline_details
+        this.companyTimeLineData =
+          body.temp_data[
+            'candidateModalExperience'
+          ].experience_data.timeline_details;
         // if (this.experienceTypeForm.controls.experience_type.value !== 'Experienced') {
         //   nextModal = 'candidateModallastbits';
         // }
-        this.moveToNextModal(currentModal, nextModal)
-      })
+        this.moveToNextModal(currentModal, nextModal);
+      });
     } else {
       return false;
     }
   }
   calculateExperience(startDate, endDate, currentlyWorking) {
     if (currentlyWorking) {
-      return 'Currently Working'
+      return 'Currently Working';
     } else {
       var endDates = moment(endDate);
       var startDates = moment(startDate);
@@ -444,28 +533,27 @@ export class PersonalizationComponent implements OnInit {
   educationTypeFormSubmit(currentModal, nextModal) {
     this.educationTypeSubmit = true;
     if (this.educationTypeForm.valid) {
-      console.log(this.educationTypeForm)
-      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
+      console.log(this.educationTypeForm);
+      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
       console.log(localData);
       const tempData = {};
       tempData[currentModal] = {
-        "education_data": {
-          "education_type": this.educationTypeForm.controls.education_type.value,
-        }
-      }
+        education_data: {
+          education_type: this.educationTypeForm.controls.education_type.value,
+        },
+      };
       const body = {
-        "user_id": localData._id,
-        "user_token": localData.user_token,
-        "temp_data": tempData
-      }
-      console.log(body)
+        user_id: localData._id,
+        user_token: localData.user_token,
+        temp_data: tempData,
+      };
+      console.log(body);
       // this.authService.saveTempUser(body).subscribe((res) => {
       if (this.educationTypeForm.controls.education_type.value !== 'Educated') {
         nextModal = 'candidateModallastbits';
-        this.authService.saveTempUser(body).subscribe((res) => {
-        })
+        this.authService.saveTempUser(body).subscribe((res) => {});
       }
-      this.moveToNextModal(currentModal, nextModal)
+      this.moveToNextModal(currentModal, nextModal);
       // })
     } else {
       return false;
@@ -473,9 +561,13 @@ export class PersonalizationComponent implements OnInit {
   }
   checkEducationStatus(event) {
     if (!event.target.checked) {
-      this.educationDetailForm.get('end_month').setValidators(Validators.required);
+      this.educationDetailForm
+        .get('end_month')
+        .setValidators(Validators.required);
       this.educationDetailForm.controls['end_month'].enable();
-      this.educationDetailForm.get('end_year').setValidators(Validators.required);
+      this.educationDetailForm
+        .get('end_year')
+        .setValidators(Validators.required);
       this.educationDetailForm.controls['end_year'].enable();
     } else {
       this.educationDetailForm.get('end_month').clearValidators();
@@ -490,44 +582,89 @@ export class PersonalizationComponent implements OnInit {
   }
   educationDetailsFormSubmit(currentModal, nextModal) {
     this.educationDetailSubmit = true;
+
+    const numbers: String[] = [
+      '0',
+      '1',
+      '2',
+      '3',
+      '4',
+      '5',
+      '6',
+      '7',
+      '8',
+      '9',
+    ];
+
+    for (let num in numbers) {
+      if (
+        this.educationDetailForm.controls.school_name.value.search(num) >= 0
+      ) {
+        console.log('Input fields has to be in Alphabets');
+        this.isSchoolNum = true;
+      }
+      if (this.educationDetailForm.controls.degree.value.search(num) >= 0) {
+        this.isDegreeNum = true;
+        console.log('Input fields has to be in Alphabets');
+      }
+
+      if (
+        this.educationDetailForm.controls.field_of_study.value.search(num) >= 0
+      ) {
+        console.log('Input fields has to be in Alphabets');
+        this.isStudyNum = true;
+      }
+    }
+
+    if (this.isStudyNum || this.isDegreeNum || this.isStudyNum) return;
+
+    if (
+      this.educationDetailForm.controls.end_month.value === '' ||
+      this.educationDetailForm.controls.end_year.value === ''
+    ) {
+      console.log('end dates empty!!');
+    }
+
     if (this.educationDetailForm.valid) {
-      console.log(this.educationDetailForm)
-      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
+      console.log(this.educationDetailForm);
+      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
       console.log(localData);
       const tempData = {};
       tempData['candidateModalEducation'] = {
-        "education_data": {
-          "education_type": this.educationTypeForm.controls.education_type.value,
-          "education_details": {
-            "school_name": this.educationDetailForm.controls.school_name.value,
-            "degree": this.educationDetailForm.controls.degree.value,
-            "field_of_study": this.educationDetailForm.controls.field_of_study.value,
-            "start_date": {
-              "month": this.educationDetailForm.controls.start_month.value,
-              "year": this.educationDetailForm.controls.start_year.value,
+        education_data: {
+          education_type: this.educationTypeForm.controls.education_type.value,
+          education_details: {
+            school_name: this.educationDetailForm.controls.school_name.value,
+            degree: this.educationDetailForm.controls.degree.value,
+            field_of_study:
+              this.educationDetailForm.controls.field_of_study.value,
+            start_date: {
+              month: this.educationDetailForm.controls.start_month.value,
+              year: this.educationDetailForm.controls.start_year.value,
             },
-            "end_date": {
-              "month": this.educationDetailForm.controls.end_month.value,
-              "year": this.educationDetailForm.controls.end_year.value,
+            end_date: {
+              month: this.educationDetailForm.controls.end_month.value,
+              year: this.educationDetailForm.controls.end_year.value,
             },
-            "grade": this.educationDetailForm.controls.grade.value,
-            "currently_studying": this.educationDetailForm.controls.currently_studying.value,
-            "description": this.educationDetailForm.controls.description.value,
-          }
-        }
-      }
+            grade: this.educationDetailForm.controls.grade.value,
+            currently_studying:
+              this.educationDetailForm.controls.currently_studying.value,
+            description: this.educationDetailForm.controls.description.value,
+          },
+        },
+      };
       const body = {
-        "user_id": localData._id,
-        "user_token": localData.user_token,
-        "temp_data": tempData
-      }
-      console.log(body)
+        user_id: localData._id,
+        user_token: localData.user_token,
+        temp_data: tempData,
+      };
+      console.log(body);
       this.authService.saveTempUser(body).subscribe((res) => {
         // if (this.experienceTypeForm.controls.experience_type.value !== 'Experienced') {
         //   nextModal = 'candidateModallastbits';
         // }
-        this.moveToNextModal(currentModal, nextModal)
-      })
+        this.moveToNextModal(currentModal, nextModal);
+      });
     } else {
       return false;
     }
@@ -535,7 +672,9 @@ export class PersonalizationComponent implements OnInit {
   radioCheck(event) {
     console.log(event.target.value);
     if (event.target.value === 'yes') {
-      this.lastFewBitsDetailForm.get('change_career').setValidators(Validators.required);
+      this.lastFewBitsDetailForm
+        .get('change_career')
+        .setValidators(Validators.required);
     } else {
       this.lastFewBitsDetailForm.get('change_career').clearValidators();
     }
@@ -543,237 +682,250 @@ export class PersonalizationComponent implements OnInit {
   }
   lastFewBitsDetailsFormSubmit(currentModal, nextModal) {
     this.lastFewBitsDetailSubmit = true;
-    console.log("lastFewBitsDetailFormSubmit", this.lastFewBitsDetailForm)
+    console.log('lastFewBitsDetailFormSubmit', this.lastFewBitsDetailForm);
     if (this.lastFewBitsDetailForm.valid) {
-      console.log(this.lastFewBitsDetailForm)
-      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
+      console.log(this.lastFewBitsDetailForm);
+      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
       console.log(localData);
       const tempData = {};
       tempData[currentModal] = {
-        "last_few_bits": {
-          "soft_skills": this.lastFewBitsDetailForm.controls.soft_skills.value,
-          "technical_skills": this.lastFewBitsDetailForm.controls.technical_skills.value,
-          "current_career": this.lastFewBitsDetailForm.controls.current_career.value[0],
-          "changecareer": this.lastFewBitsDetailForm.controls.changecareer.value,
-          "change_career": this.lastFewBitsDetailForm.controls.change_career.value !== undefined && this.lastFewBitsDetailForm.controls.change_career.value !== null && this.lastFewBitsDetailForm.controls.change_career.value !== '' ? this.lastFewBitsDetailForm.controls.change_career.value[0] : '',
-          "passion": this.lastFewBitsDetailForm.controls.passion.value,
-          "language": this.lastFewBitsDetailForm.controls.language.value,
-        }
-      }
+        last_few_bits: {
+          soft_skills: this.lastFewBitsDetailForm.controls.soft_skills.value,
+          technical_skills:
+            this.lastFewBitsDetailForm.controls.technical_skills.value,
+          current_career:
+            this.lastFewBitsDetailForm.controls.current_career.value[0],
+          changecareer: this.lastFewBitsDetailForm.controls.changecareer.value,
+          change_career:
+            this.lastFewBitsDetailForm.controls.change_career.value !==
+              undefined &&
+            this.lastFewBitsDetailForm.controls.change_career.value !== null &&
+            this.lastFewBitsDetailForm.controls.change_career.value !== ''
+              ? this.lastFewBitsDetailForm.controls.change_career.value[0]
+              : '',
+          passion: this.lastFewBitsDetailForm.controls.passion.value,
+          language: this.lastFewBitsDetailForm.controls.language.value,
+        },
+      };
       const body = {
-        "user_id": localData._id,
-        "user_token": localData.user_token,
-        "temp_data": tempData
-      }
-      console.log(body)
+        user_id: localData._id,
+        user_token: localData.user_token,
+        temp_data: tempData,
+      };
+      console.log(body);
       this.authService.saveTempUser(body).subscribe((res) => {
         // if (this.experienceTypeForm.controls.experience_type.value !== 'Experienced') {
         //   nextModal = 'candidateModallastbits';
         // }
-        this.moveToNextModal(currentModal, nextModal)
-      })
+        this.moveToNextModal(currentModal, nextModal);
+      });
     } else {
       return false;
     }
   }
   joiningStatus(value) {
     if (value === 'yes') {
-      this.lastFewBitsJoinDetailForm.get('joining_within').setValidators(Validators.required);
+      this.lastFewBitsJoinDetailForm
+        .get('joining_within')
+        .setValidators(Validators.required);
     } else {
       this.lastFewBitsJoinDetailForm.get('joining_within').clearValidators();
     }
-    this.lastFewBitsJoinDetailForm.get('joining_within').updateValueAndValidity();
+    this.lastFewBitsJoinDetailForm
+      .get('joining_within')
+      .updateValueAndValidity();
   }
   lastFewBitsJoinDetailsFormSubmit(currentModal, nextModal) {
     this.lastFewBitsJoinDetailsSubmit = true;
-    console.log(this.lastFewBitsJoinDetailForm.controls.rangeValues.value)
-    console.log(this.lastFewBitsJoinDetailForm)
+    console.log(this.lastFewBitsJoinDetailForm.controls.rangeValues.value);
+    console.log(this.lastFewBitsJoinDetailForm);
     if (this.lastFewBitsJoinDetailForm.valid) {
-      console.log(this.lastFewBitsJoinDetailForm)
-      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
+      console.log(this.lastFewBitsJoinDetailForm);
+      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
       console.log(localData);
       const tempData = {};
       tempData[currentModal] = {
-        "last_few_join": {
-          "joining_status": this.lastFewBitsJoinDetailForm.controls.joining_status.value,
-          "join_within": this.lastFewBitsJoinDetailForm.controls.joining_within.value,
-          "salary_range": {
-            "min": this.value,
-            "max": this.highValue
+        last_few_join: {
+          joining_status:
+            this.lastFewBitsJoinDetailForm.controls.joining_status.value,
+          join_within:
+            this.lastFewBitsJoinDetailForm.controls.joining_within.value,
+          salary_range: {
+            min: this.value,
+            max: this.highValue,
           },
-          "resume_url": this.resumeFileUrl,
-          "visume_url": this.visumeFileUrl,
-        }
-      }
+          resume_url: this.resumeFileUrl,
+          visume_url: this.visumeFileUrl,
+        },
+      };
       const body = {
-        "user_id": localData._id,
-        "user_token": localData.user_token,
-        "temp_data": tempData
-      }
-      console.log(body)
+        user_id: localData._id,
+        user_token: localData.user_token,
+        temp_data: tempData,
+      };
+      console.log(body);
       this.authService.saveTempUser(body).subscribe((res) => {
         // if (this.experienceTypeForm.controls.experience_type.value !== 'Experienced') {
         //   nextModal = 'candidateModallastbits';
         // }
-        this.moveToNextModal(currentModal, nextModal)
-      })
+        this.moveToNextModal(currentModal, nextModal);
+      });
     } else {
       return false;
     }
   }
   onBoardDetailsFormSubmit(currentModal, nextModal) {
     if (this.onBoardDetailForm.valid) {
-      console.log(this.onBoardDetailForm)
-      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
+      console.log(this.onBoardDetailForm);
+      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
       console.log(localData);
       const tempData = {};
       tempData[currentModal] = {
-        "on_board": this.onBoardDetailForm.controls.onboard.value,
-
-      }
+        on_board: this.onBoardDetailForm.controls.onboard.value,
+      };
       const body = {
-        "user_id": localData._id,
-        "user_token": localData.user_token,
-        "temp_data": tempData
-      }
-      console.log(body)
+        user_id: localData._id,
+        user_token: localData.user_token,
+        temp_data: tempData,
+      };
+      console.log(body);
       this.authService.saveTempUser(body).subscribe((res) => {
         // if (this.experienceTypeForm.controls.experience_type.value !== 'Experienced') {
         //   nextModal = 'candidateModallastbits';
         // }
-        this.moveToNextModal(currentModal, nextModal)
-      })
+        this.moveToNextModal(currentModal, nextModal);
+      });
     } else {
       return false;
     }
   }
   async getStateList(type) {
     const body = {
-      lookup_type: type
-    }
+      lookup_type: type,
+    };
     const drpJson = [];
-    this.layoutService.getStateList().subscribe(res => {
-      res.data.states.map(ele => {
+    this.layoutService.getStateList().subscribe((res) => {
+      res.data.states.map((ele) => {
         const json = {
           id: ele.state_code,
-          name: ele.name
-        }
+          name: ele.name,
+        };
         drpJson.push(json);
-      })
+      });
       this.stateDrp = drpJson;
-    })
+    });
   }
   async getLocationList(type) {
     const body = {
-      lookup_type: type
-    }
+      lookup_type: type,
+    };
     const drpJson = [];
-    this.layoutService.getLookupList(body).subscribe(res => {
-      res.data.map(ele => {
+    this.layoutService.getLookupList(body).subscribe((res) => {
+      res.data.map((ele) => {
         const json = {
           id: ele._id,
-          name: ele.name
-        }
+          name: ele.name,
+        };
         drpJson.push(json);
-      })
+      });
       this.locationDrp = drpJson;
-    })
+    });
   }
   async getCountryList(type) {
     const body = {
-      lookup_type: type
-    }
+      lookup_type: type,
+    };
     const drpJson = [];
-    this.layoutService.getLookupList(body).subscribe(res => {
-      res.data.map(ele => {
+    this.layoutService.getLookupList(body).subscribe((res) => {
+      res.data.map((ele) => {
         const json = {
           id: ele._id,
-          name: ele.name
-        }
+          name: ele.name,
+        };
         drpJson.push(json);
-      })
+      });
       this.countryDrp = drpJson;
-    })
+    });
   }
   async getCityList(type) {
     const body = {
-      lookup_type: type
-    }
+      lookup_type: type,
+    };
     const drpJson = [];
-    this.layoutService.getLookupList(body).subscribe(res => {
-      res.data.map(ele => {
+    this.layoutService.getLookupList(body).subscribe((res) => {
+      res.data.map((ele) => {
         const json = {
           id: ele._id,
-          name: ele.name
-        }
+          name: ele.name,
+        };
         drpJson.push(json);
-      })
+      });
       this.cityDrp = drpJson;
-    })
+    });
   }
   async getSoftSkillsList(type) {
     const body = {
-      lookup_type: type
-    }
+      lookup_type: type,
+    };
     const drpJson = [];
-    this.layoutService.getLookupList(body).subscribe(res => {
-      res.data.map(ele => {
+    this.layoutService.getLookupList(body).subscribe((res) => {
+      res.data.map((ele) => {
         const json = {
           id: ele._id,
-          name: ele.name
-        }
+          name: ele.name,
+        };
         drpJson.push(json);
-      })
+      });
       this.dropdownList = drpJson;
-    })
+    });
   }
   async getTechnicalList(type) {
     const body = {
-      lookup_type: type
-    }
+      lookup_type: type,
+    };
     const drpJson = [];
-    this.layoutService.getLookupList(body).subscribe(res => {
-      res.data.map(ele => {
+    this.layoutService.getLookupList(body).subscribe((res) => {
+      res.data.map((ele) => {
         const json = {
           id: ele._id,
-          name: ele.name
-        }
+          name: ele.name,
+        };
         drpJson.push(json);
-      })
+      });
       this.technicaldropdownList = drpJson;
-    })
+    });
   }
   async careerList(type) {
     const body = {
-      lookup_type: type
-    }
+      lookup_type: type,
+    };
     const drpJson = [];
-    this.layoutService.getLookupList(body).subscribe(res => {
-      res.data.map(ele => {
+    this.layoutService.getLookupList(body).subscribe((res) => {
+      res.data.map((ele) => {
         const json = {
           id: ele._id,
-          name: ele.name
-        }
+          name: ele.name,
+        };
         drpJson.push(json);
-      })
+      });
       this.currentCareerDrp = drpJson;
-    })
+    });
   }
   async getLanguage(type) {
     const body = {
-      lookup_type: type
-    }
+      lookup_type: type,
+    };
     const drpJson = [];
-    this.layoutService.getLookupList(body).subscribe(res => {
-      res.data.map(ele => {
+    this.layoutService.getLookupList(body).subscribe((res) => {
+      res.data.map((ele) => {
         const json = {
           id: ele._id,
-          name: ele.name
-        }
+          name: ele.name,
+        };
         drpJson.push(json);
-      })
+      });
       this.languageDrp = drpJson;
-    })
+    });
   }
   onItemSelect(item: any) {
     console.log(item);
@@ -792,185 +944,318 @@ export class PersonalizationComponent implements OnInit {
     }
     experienceControl.get('other_city').updateValueAndValidity();
     console.log(item);
-
   }
   saveFinalData() {
-    const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
+    const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
     const experienceArray = [];
     const timelineArray = [];
     if (this.experienceTypeForm.controls.experience_type.value !== 'Fresher') {
-      this.experienceDetailForm.controls.experienceDetails['controls'].map(ele => {
-        const json = {
-          "designation": ele.controls.designation.value,
-          "company": ele.controls.company.value,
-          "state": ele.controls.state.value[0],
-          "city": ele.controls.city.value[0],
-          "other_city": ele.controls.other_city.value,
-          "start_date": ele.controls.start_date.value,
-          "end_date": ele.controls.end_date.value,
-          "currently_working": ele.controls.currently_working.value,
-          "job_description": ele.controls.job_description.value,
+      this.experienceDetailForm.controls.experienceDetails['controls'].map(
+        (ele) => {
+          const json = {
+            designation: ele.controls.designation.value,
+            company: ele.controls.company.value,
+            state: ele.controls.state.value[0],
+            city: ele.controls.city.value[0],
+            other_city: ele.controls.other_city.value,
+            start_date: ele.controls.start_date.value,
+            end_date: ele.controls.end_date.value,
+            currently_working: ele.controls.currently_working.value,
+            job_description: ele.controls.job_description.value,
+          };
+          experienceArray.push(json);
         }
-        experienceArray.push(json);
-      })
+      );
     }
     // if (this.userRoleForm.controls.user_role.value === '1') {
     const json = {
-      "user_id": localData._id,
-      "profile_url": this.profileImagUrl,
-      "address_details": {
-        "street": this.addressForm.controls.street.value,
-        "state": this.addressForm.controls.state.value[0],
-        "zip_code": this.addressForm.controls.zip_code.value,
-        "landmark": this.addressForm.controls.landmark.value,
+      user_id: localData._id,
+      profile_url: this.profileImagUrl,
+      address_details: {
+        street: this.addressForm.controls.street.value,
+        state: this.addressForm.controls.state.value[0],
+        zip_code: this.addressForm.controls.zip_code.value,
+        landmark: this.addressForm.controls.landmark.value,
         // "organization_strength": this.addressForm.controls.organization_strength.value
       },
-      "education_data": {
-        "education_type": this.educationTypeForm.controls.education_type.value,
-        "education_details": {
-          "school_name": this.educationDetailForm.controls.school_name.value,
-          "degree": this.educationDetailForm.controls.degree.value,
-          "field_of_study": this.educationDetailForm.controls.field_of_study.value,
-          "start_date": {
-            "month": this.educationDetailForm.controls.start_month.value,
-            "year": this.educationDetailForm.controls.start_year.value,
+      education_data: {
+        education_type: this.educationTypeForm.controls.education_type.value,
+        education_details: {
+          school_name: this.educationDetailForm.controls.school_name.value,
+          degree: this.educationDetailForm.controls.degree.value,
+          field_of_study:
+            this.educationDetailForm.controls.field_of_study.value,
+          start_date: {
+            month: this.educationDetailForm.controls.start_month.value,
+            year: this.educationDetailForm.controls.start_year.value,
           },
-          "end_date": {
-            "month": this.educationDetailForm.controls.end_month.value,
-            "year": this.educationDetailForm.controls.end_year.value,
+          end_date: {
+            month: this.educationDetailForm.controls.end_month.value,
+            year: this.educationDetailForm.controls.end_year.value,
           },
-          "grade": this.educationDetailForm.controls.grade.value,
-          "currently_studying": this.educationDetailForm.controls.currently_studying.value,
-          "description": this.educationDetailForm.controls.description.value,
-        }
+          grade: this.educationDetailForm.controls.grade.value,
+          currently_studying:
+            this.educationDetailForm.controls.currently_studying.value,
+          description: this.educationDetailForm.controls.description.value,
+        },
       },
-      "experience_data": {
-        "experience_type": this.experienceTypeForm.controls.experience_type.value,
-        "experience_details": experienceArray
+      experience_data: {
+        experience_type: this.experienceTypeForm.controls.experience_type.value,
+        experience_details: experienceArray,
       },
-      "soft_skills": this.lastFewBitsDetailForm.controls.soft_skills.value,
-      "technical_skills": this.lastFewBitsDetailForm.controls.technical_skills.value,
-      "resume_url": this.resumeFileUrl,
-      "visume_url": this.visumeFileUrl,
-      "current_career": this.lastFewBitsDetailForm.controls.current_career.value[0],
-      "changecareer": this.lastFewBitsDetailForm.controls.changecareer.value,
-      "change_career": this.lastFewBitsDetailForm.controls.change_career.value !== undefined && this.lastFewBitsDetailForm.controls.change_career.value !== null && this.lastFewBitsDetailForm.controls.change_career.value !== '' ? this.lastFewBitsDetailForm.controls.change_career.value[0] : '',
-      "passion": this.lastFewBitsDetailForm.controls.passion.value,
-      "languages": this.lastFewBitsDetailForm.controls.language.value,
-      "joining_status": this.lastFewBitsJoinDetailForm.controls.joining_status.value,
-      "join_within": this.lastFewBitsJoinDetailForm.controls.joining_within.value,
-      "salary_range": {
-        "min": this.value,
-        "max": this.highValue
+      soft_skills: this.lastFewBitsDetailForm.controls.soft_skills.value,
+      technical_skills:
+        this.lastFewBitsDetailForm.controls.technical_skills.value,
+      resume_url: this.resumeFileUrl,
+      visume_url: this.visumeFileUrl,
+      current_career:
+        this.lastFewBitsDetailForm.controls.current_career.value[0],
+      changecareer: this.lastFewBitsDetailForm.controls.changecareer.value,
+      change_career:
+        this.lastFewBitsDetailForm.controls.change_career.value !== undefined &&
+        this.lastFewBitsDetailForm.controls.change_career.value !== null &&
+        this.lastFewBitsDetailForm.controls.change_career.value !== ''
+          ? this.lastFewBitsDetailForm.controls.change_career.value[0]
+          : '',
+      passion: this.lastFewBitsDetailForm.controls.passion.value,
+      languages: this.lastFewBitsDetailForm.controls.language.value,
+      joining_status:
+        this.lastFewBitsJoinDetailForm.controls.joining_status.value,
+      join_within: this.lastFewBitsJoinDetailForm.controls.joining_within.value,
+      salary_range: {
+        min: this.value,
+        max: this.highValue,
       },
-      "on_board": this.onBoardDetailForm.controls.onboard.value
-    }
-    console.log(json)
-    this.SpinnerService.show()
-    this.authService.saveCandidateRegistration(json).subscribe(res => {
+      on_board: this.onBoardDetailForm.controls.onboard.value,
+    };
+    console.log(json);
+    this.SpinnerService.show();
+    this.authService.saveCandidateRegistration(json).subscribe((res) => {
       if (res.result === 'success') {
         const body = {
-          user_id: localData._id
+          user_id: localData._id,
         };
-        this.authService.updateCandidateStatus(body).subscribe(res => {
+        this.authService.updateCandidateStatus(body).subscribe((res) => {
           this.SpinnerService.hide();
-          this._toastrService.success(
-            'Registration successfully', 'Success'
-          )
-        })
+          this._toastrService.success('Registration successfully', 'Success');
+        });
         $('#almostdonemodal').modal('hide');
-        this.getUserTempData()
+        this.getUserTempData();
       }
-
-    })
+    });
     // }
   }
   checkJoiningDaya() {
-    console.log('checkJoiningDaya')
-    if (this.lastFewBitsJoinDetailForm.controls.joining_within.value === 'later') {
+    console.log('checkJoiningDaya');
+    if (
+      this.lastFewBitsJoinDetailForm.controls.joining_within.value === 'later'
+    ) {
       this._toastrService.warning(
-        'Only immediate candidates allow who join within 7 to 15 days', 'Warning'
-      )
+        'Only immediate candidates allow who join within 7 to 15 days',
+        'Warning'
+      );
     }
   }
   setUpFormData() {
-    console.log(this.tempFormData)
-    const objectKeys = Object.keys(this.tempFormData)
-    console.log(objectKeys)
+    console.log(this.tempFormData);
+    const objectKeys = Object.keys(this.tempFormData);
+    console.log(objectKeys);
     if (objectKeys.length > 0) {
       if (objectKeys.includes('candidateModalCenter')) {
-        console.log(this.tempFormData['candidateModalCenter'].user_role)
-        this.userRoleForm.controls.user_role.setValue(this.tempFormData['candidateModalCenter'].user_role.toString());
+        console.log(this.tempFormData['candidateModalCenter'].user_role);
+        this.userRoleForm.controls.user_role.setValue(
+          this.tempFormData['candidateModalCenter'].user_role.toString()
+        );
         if (objectKeys.includes('candidateModalCenterupload')) {
-          console.log(this.tempFormData['candidateModalCenterupload'].address_details.state.toString())
-          this.profileImagUrl = this.tempFormData['candidateModalCenterupload'].address_details.profile_url;
-          this.addressForm.controls.street.setValue(this.tempFormData['candidateModalCenterupload'].address_details.street);
-          this.addressForm.controls.state.setValue([this.tempFormData['candidateModalCenterupload'].address_details.state]);
-          this.addressForm.controls.zip_code.setValue(this.tempFormData['candidateModalCenterupload'].address_details.zip_code);
-          this.addressForm.controls.landmark.setValue(this.tempFormData['candidateModalCenterupload'].address_details.landmark);
+          console.log(
+            this.tempFormData[
+              'candidateModalCenterupload'
+            ].address_details.state.toString()
+          );
+          this.profileImagUrl =
+            this.tempFormData[
+              'candidateModalCenterupload'
+            ].address_details.profile_url;
+          this.addressForm.controls.street.setValue(
+            this.tempFormData['candidateModalCenterupload'].address_details
+              .street
+          );
+          this.addressForm.controls.state.setValue([
+            this.tempFormData['candidateModalCenterupload'].address_details
+              .state,
+          ]);
+          this.addressForm.controls.zip_code.setValue(
+            this.tempFormData['candidateModalCenterupload'].address_details
+              .zip_code
+          );
+          this.addressForm.controls.landmark.setValue(
+            this.tempFormData['candidateModalCenterupload'].address_details
+              .landmark
+          );
           // this.addressForm.controls.organization_strength.setValue(this.tempFormData['candidateModalCenterupload'].address_details.organization_strength);
-          if (objectKeys.includes("candidateModalExperience")) {
-            this.experienceTypeForm.controls.experience_type.setValue(this.tempFormData['candidateModalExperience'].experience_data.experience_type)
-            if (this.tempFormData['candidateModalExperience'].experience_data.experience_type === "Experienced") {
-              (<FormArray>this.experienceDetailForm.get('experienceDetails')).clear();
-              this.tempFormData['candidateModalExperience'].experience_data.experience_details.forEach((x, i) => {
-                (<FormArray>this.experienceDetailForm.get('experienceDetails')).push(this.formBuilder.group({
-                  designation: [x.designation, Validators.required],
-                  company: [x.company, Validators.required],
-                  state: [[x.state], Validators.required],
-                  city: [[x.city], Validators.required],
-                  other_city: [x.other_city],
-                  start_date: [x.start_date, Validators.required],
-                  end_date: [x.end_date, Validators.required],
-                  job_description: [x.job_description, Validators.required],
-                  currently_working: [x.currently_working]
-                }))
+          if (objectKeys.includes('candidateModalExperience')) {
+            this.experienceTypeForm.controls.experience_type.setValue(
+              this.tempFormData['candidateModalExperience'].experience_data
+                .experience_type
+            );
+            if (
+              this.tempFormData['candidateModalExperience'].experience_data
+                .experience_type === 'Experienced'
+            ) {
+              (<FormArray>(
+                this.experienceDetailForm.get('experienceDetails')
+              )).clear();
+              this.tempFormData[
+                'candidateModalExperience'
+              ].experience_data.experience_details.forEach((x, i) => {
+                (<FormArray>(
+                  this.experienceDetailForm.get('experienceDetails')
+                )).push(
+                  this.formBuilder.group({
+                    designation: [x.designation, Validators.required],
+                    company: [x.company, Validators.required],
+                    state: [[x.state], Validators.required],
+                    city: [[x.city], Validators.required],
+                    other_city: [x.other_city],
+                    start_date: [x.start_date, Validators.required],
+                    end_date: [x.end_date, Validators.required],
+                    job_description: [x.job_description, Validators.required],
+                    currently_working: [x.currently_working],
+                  })
+                );
                 if (x.currently_working) {
-                  console.log(this.experienceDetailForm.controls)
-                  this.experienceDetailForm.controls.experienceDetails['controls'][i]['controls']['end_date'].disable();
+                  console.log(this.experienceDetailForm.controls);
+                  this.experienceDetailForm.controls.experienceDetails[
+                    'controls'
+                  ][i]['controls']['end_date'].disable();
                   // this.experienceDetailForm.controls.experienceDetails['controls'][i]['end_date'].setValue('')
                 }
               });
 
-              this.companyTimeLineData = this.tempFormData['candidateModalExperience'].experience_data.timeline_details
+              this.companyTimeLineData =
+                this.tempFormData[
+                  'candidateModalExperience'
+                ].experience_data.timeline_details;
             }
-            if (objectKeys.includes("candidateModalEducation")) {
-              this.educationTypeForm.controls.education_type.setValue(this.tempFormData['candidateModalEducation'].education_data.education_type)
-              if (this.tempFormData['candidateModalEducation'].education_data.education_type === "Educated") {
-                this.educationDetailForm.controls.school_name.setValue(this.tempFormData['candidateModalEducation'].education_data.education_details.school_name)
-                this.educationDetailForm.controls.degree.setValue(this.tempFormData['candidateModalEducation'].education_data.education_details.degree)
-                this.educationDetailForm.controls.field_of_study.setValue(this.tempFormData['candidateModalEducation'].education_data.education_details.field_of_study)
-                this.educationDetailForm.controls.start_month.setValue(this.tempFormData['candidateModalEducation'].education_data.education_details.start_date.month)
-                this.educationDetailForm.controls.start_year.setValue(this.tempFormData['candidateModalEducation'].education_data.education_details.start_date.year)
-                this.educationDetailForm.controls.end_month.setValue(this.tempFormData['candidateModalEducation'].education_data.education_details.end_date.month)
-                this.educationDetailForm.controls.end_year.setValue(this.tempFormData['candidateModalEducation'].education_data.education_details.end_date.year)
-                this.educationDetailForm.controls.currently_studying.setValue(this.tempFormData['candidateModalEducation'].education_data.education_details.currently_studying)
-                if (this.tempFormData['candidateModalEducation'].education_data.education_details.currently_studying) {
-                  this.educationDetailForm.controls.end_month.setValue('')
-                  this.educationDetailForm.controls.end_year.setValue('')
+            if (objectKeys.includes('candidateModalEducation')) {
+              this.educationTypeForm.controls.education_type.setValue(
+                this.tempFormData['candidateModalEducation'].education_data
+                  .education_type
+              );
+              if (
+                this.tempFormData['candidateModalEducation'].education_data
+                  .education_type === 'Educated'
+              ) {
+                this.educationDetailForm.controls.school_name.setValue(
+                  this.tempFormData['candidateModalEducation'].education_data
+                    .education_details.school_name
+                );
+                this.educationDetailForm.controls.degree.setValue(
+                  this.tempFormData['candidateModalEducation'].education_data
+                    .education_details.degree
+                );
+                this.educationDetailForm.controls.field_of_study.setValue(
+                  this.tempFormData['candidateModalEducation'].education_data
+                    .education_details.field_of_study
+                );
+                this.educationDetailForm.controls.start_month.setValue(
+                  this.tempFormData['candidateModalEducation'].education_data
+                    .education_details.start_date.month
+                );
+                this.educationDetailForm.controls.start_year.setValue(
+                  this.tempFormData['candidateModalEducation'].education_data
+                    .education_details.start_date.year
+                );
+                this.educationDetailForm.controls.end_month.setValue(
+                  this.tempFormData['candidateModalEducation'].education_data
+                    .education_details.end_date.month
+                );
+                this.educationDetailForm.controls.end_year.setValue(
+                  this.tempFormData['candidateModalEducation'].education_data
+                    .education_details.end_date.year
+                );
+                this.educationDetailForm.controls.currently_studying.setValue(
+                  this.tempFormData['candidateModalEducation'].education_data
+                    .education_details.currently_studying
+                );
+                if (
+                  this.tempFormData['candidateModalEducation'].education_data
+                    .education_details.currently_studying
+                ) {
+                  this.educationDetailForm.controls.end_month.setValue('');
+                  this.educationDetailForm.controls.end_year.setValue('');
                   this.educationDetailForm.controls.end_month.disable();
                   this.educationDetailForm.controls.end_year.disable();
                 }
-                this.educationDetailForm.controls.grade.setValue(this.tempFormData['candidateModalEducation'].education_data.education_details.grade)
-                this.educationDetailForm.controls.description.setValue(this.tempFormData['candidateModalEducation'].education_data.education_details.description)
+                this.educationDetailForm.controls.grade.setValue(
+                  this.tempFormData['candidateModalEducation'].education_data
+                    .education_details.grade
+                );
+                this.educationDetailForm.controls.description.setValue(
+                  this.tempFormData['candidateModalEducation'].education_data
+                    .education_details.description
+                );
               }
-              if (objectKeys.includes("candidateModallastbits")) {
-                this.lastFewBitsDetailForm.controls.current_career.setValue([this.tempFormData['candidateModallastbits'].last_few_bits.current_career]);
-                this.lastFewBitsDetailForm.controls.soft_skills.setValue(this.tempFormData['candidateModallastbits'].last_few_bits.soft_skills)
-                this.lastFewBitsDetailForm.controls.technical_skills.setValue(this.tempFormData['candidateModallastbits'].last_few_bits.technical_skills)
-                this.lastFewBitsDetailForm.controls.changecareer.setValue(this.tempFormData['candidateModallastbits'].last_few_bits.changecareer)
-                this.lastFewBitsDetailForm.controls.change_career.setValue([this.tempFormData['candidateModallastbits'].last_few_bits.change_career])
-                this.lastFewBitsDetailForm.controls.passion.setValue(this.tempFormData['candidateModallastbits'].last_few_bits.passion)
-                this.lastFewBitsDetailForm.controls.language.setValue(this.tempFormData['candidateModallastbits'].last_few_bits.language)
-                if (objectKeys.includes("candidateModallastbitsfinal")) {
-                  this.lastFewBitsJoinDetailForm.controls.joining_status.setValue(this.tempFormData['candidateModallastbitsfinal'].last_few_join.joining_status)
-                  this.lastFewBitsJoinDetailForm.controls.joining_within.setValue(this.tempFormData['candidateModallastbitsfinal'].last_few_join.join_within)
-                  this.resumeFileUrl = this.tempFormData['candidateModallastbitsfinal'].last_few_join.resume_url;
-                  this.visumeFileUrl = this.tempFormData['candidateModallastbitsfinal'].last_few_join.visume_url;
-                  this.value = this.tempFormData['candidateModallastbitsfinal'].last_few_join.salary_range?.min !== undefined ? this.tempFormData['candidateModallastbitsfinal'].last_few_join.salary_range.min : 0;
-                  this.highValue = this.tempFormData['candidateModallastbitsfinal'].last_few_join.salary_range?.max;
-                  if (objectKeys.includes("gainmorevisibilitymodal")) {
-                    this.onBoardDetailForm.controls.onboard.setValue(this.tempFormData['gainmorevisibilitymodal'].on_board)
+              if (objectKeys.includes('candidateModallastbits')) {
+                this.lastFewBitsDetailForm.controls.current_career.setValue([
+                  this.tempFormData['candidateModallastbits'].last_few_bits
+                    .current_career,
+                ]);
+                this.lastFewBitsDetailForm.controls.soft_skills.setValue(
+                  this.tempFormData['candidateModallastbits'].last_few_bits
+                    .soft_skills
+                );
+                this.lastFewBitsDetailForm.controls.technical_skills.setValue(
+                  this.tempFormData['candidateModallastbits'].last_few_bits
+                    .technical_skills
+                );
+                this.lastFewBitsDetailForm.controls.changecareer.setValue(
+                  this.tempFormData['candidateModallastbits'].last_few_bits
+                    .changecareer
+                );
+                this.lastFewBitsDetailForm.controls.change_career.setValue([
+                  this.tempFormData['candidateModallastbits'].last_few_bits
+                    .change_career,
+                ]);
+                this.lastFewBitsDetailForm.controls.passion.setValue(
+                  this.tempFormData['candidateModallastbits'].last_few_bits
+                    .passion
+                );
+                this.lastFewBitsDetailForm.controls.language.setValue(
+                  this.tempFormData['candidateModallastbits'].last_few_bits
+                    .language
+                );
+                if (objectKeys.includes('candidateModallastbitsfinal')) {
+                  this.lastFewBitsJoinDetailForm.controls.joining_status.setValue(
+                    this.tempFormData['candidateModallastbitsfinal']
+                      .last_few_join.joining_status
+                  );
+                  this.lastFewBitsJoinDetailForm.controls.joining_within.setValue(
+                    this.tempFormData['candidateModallastbitsfinal']
+                      .last_few_join.join_within
+                  );
+                  this.resumeFileUrl =
+                    this.tempFormData[
+                      'candidateModallastbitsfinal'
+                    ].last_few_join.resume_url;
+                  this.visumeFileUrl =
+                    this.tempFormData[
+                      'candidateModallastbitsfinal'
+                    ].last_few_join.visume_url;
+                  this.value =
+                    this.tempFormData['candidateModallastbitsfinal']
+                      .last_few_join.salary_range?.min !== undefined
+                      ? this.tempFormData['candidateModallastbitsfinal']
+                          .last_few_join.salary_range.min
+                      : 0;
+                  this.highValue =
+                    this.tempFormData[
+                      'candidateModallastbitsfinal'
+                    ].last_few_join.salary_range?.max;
+                  if (objectKeys.includes('gainmorevisibilitymodal')) {
+                    this.onBoardDetailForm.controls.onboard.setValue(
+                      this.tempFormData['gainmorevisibilitymodal'].on_board
+                    );
                   }
                 }
               }
@@ -978,24 +1263,44 @@ export class PersonalizationComponent implements OnInit {
           }
         }
       }
-
     }
   }
   setUpEmployerFormData() {
-    console.log(this.tempFormData)
-    const objectKeys = Object.keys(this.tempFormData)
-    console.log(objectKeys)
+    console.log(this.tempFormData);
+    const objectKeys = Object.keys(this.tempFormData);
+    console.log(objectKeys);
     if (objectKeys.length > 0) {
       if (objectKeys.includes('candidateModalCenter')) {
-        console.log(this.tempFormData['candidateModalCenter'].user_role)
-        this.userRoleForm.controls.user_role.setValue(this.tempFormData['candidateModalCenter'].user_role.toString());
+        console.log(this.tempFormData['candidateModalCenter'].user_role);
+        this.userRoleForm.controls.user_role.setValue(
+          this.tempFormData['candidateModalCenter'].user_role.toString()
+        );
         if (objectKeys.includes('candidateModalCenterupload')) {
-          console.log(this.tempFormData['candidateModalCenterupload'].address_details.state.toString())
-          this.profileImagUrl = this.tempFormData['candidateModalCenterupload'].address_details.profile_url;
-          this.addressForm.controls.street.setValue(this.tempFormData['candidateModalCenterupload'].address_details.street);
-          this.addressForm.controls.state.setValue([this.tempFormData['candidateModalCenterupload'].address_details.state]);
-          this.addressForm.controls.zip_code.setValue(this.tempFormData['candidateModalCenterupload'].address_details.zip_code);
-          this.addressForm.controls.landmark.setValue(this.tempFormData['candidateModalCenterupload'].address_details.landmark);
+          console.log(
+            this.tempFormData[
+              'candidateModalCenterupload'
+            ].address_details.state.toString()
+          );
+          this.profileImagUrl =
+            this.tempFormData[
+              'candidateModalCenterupload'
+            ].address_details.profile_url;
+          this.addressForm.controls.street.setValue(
+            this.tempFormData['candidateModalCenterupload'].address_details
+              .street
+          );
+          this.addressForm.controls.state.setValue([
+            this.tempFormData['candidateModalCenterupload'].address_details
+              .state,
+          ]);
+          this.addressForm.controls.zip_code.setValue(
+            this.tempFormData['candidateModalCenterupload'].address_details
+              .zip_code
+          );
+          this.addressForm.controls.landmark.setValue(
+            this.tempFormData['candidateModalCenterupload'].address_details
+              .landmark
+          );
           // if(objectKeys.includes(''))
         }
       }
@@ -1004,42 +1309,40 @@ export class PersonalizationComponent implements OnInit {
   compantDetailsFormSubmit() {
     this.companySubmit = true;
     if (this.companydetailsForm.valid) {
-      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0]
+      const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
       const json = {
-        "user_id": localData._id,
-        "company_logo": this.profileImagUrl,
-        "address_details": {
-          "street": this.addressForm.controls.street.value,
-          "state": this.addressForm.controls.state.value[0],
-          "zip_code": this.addressForm.controls.zip_code.value,
-          "landmark": this.addressForm.controls.landmark.value,
+        user_id: localData._id,
+        company_logo: this.profileImagUrl,
+        address_details: {
+          street: this.addressForm.controls.street.value,
+          state: this.addressForm.controls.state.value[0],
+          zip_code: this.addressForm.controls.zip_code.value,
+          landmark: this.addressForm.controls.landmark.value,
           // "organization_strength": this.addressForm.controls.organization_strength.value
         },
-        "designation": this.companydetailsForm.controls.designation.value,
-        "company_name": this.companydetailsForm.controls.company_name.value,
-        "no_of_employees": this.companydetailsForm.controls.no_of_employees.value,
-        "website": this.companydetailsForm.controls.company_website.value,
-        "linkedin_url": this.companydetailsForm.controls.linkedin_url.value,
-        "official_mail_id": this.companydetailsForm.controls.official_mail_address.value,
-      }
-      console.log(json)
-      this.SpinnerService.show()
-      this.authService.employerRegister(json).subscribe(res => {
+        designation: this.companydetailsForm.controls.designation.value,
+        company_name: this.companydetailsForm.controls.company_name.value,
+        no_of_employees: this.companydetailsForm.controls.no_of_employees.value,
+        website: this.companydetailsForm.controls.company_website.value,
+        linkedin_url: this.companydetailsForm.controls.linkedin_url.value,
+        official_mail_id:
+          this.companydetailsForm.controls.official_mail_address.value,
+      };
+      console.log(json);
+      this.SpinnerService.show();
+      this.authService.employerRegister(json).subscribe((res) => {
         if (res.result === 'success') {
           const body = {
-            user_id: localData._id
-          }
-          this.authService.updateCandidateStatus(body).subscribe(res => {
+            user_id: localData._id,
+          };
+          this.authService.updateCandidateStatus(body).subscribe((res) => {
             this.SpinnerService.hide();
-            this._toastrService.success(
-              'Registration successfully', 'Success'
-            )
-          })
+            this._toastrService.success('Registration successfully', 'Success');
+          });
           $('#companyDetailsModal').modal('hide');
           this.getUserTempData();
         }
-
-      })
+      });
     }
   }
   uploadFile(file, type) {
@@ -1050,7 +1353,7 @@ export class PersonalizationComponent implements OnInit {
       Key: 'Rekonnect' + file[0].name,
       Body: file[0],
       ACL: 'public-read',
-      ContentType: contentType
+      ContentType: contentType,
     };
     const self = this;
     this.bucket.upload(params, function (err, data) {
@@ -1072,7 +1375,7 @@ export class PersonalizationComponent implements OnInit {
   }
   openFile(resumeUrl) {
     console.log(resumeUrl);
-    let a = document.createElement("a");
+    let a = document.createElement('a');
     document.body.appendChild(a);
     a.href = resumeUrl;
     a.download = 'resume';

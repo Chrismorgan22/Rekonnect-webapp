@@ -278,8 +278,7 @@
                 <form class="section-form-content" [formGroup]="experienceDetailForm"
                     (ngSubmit)="experienceDetailsFormSubmit('candidateModalcenterexperience','candidateModalcenterexperiencetimeline')"
                     noValidate>
-                    <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit.</label>
+                    <label class="font-16 my-3">Add your most recent experience</label>
                     <div formArrayName="experienceDetails"
                         *ngFor="let experienceDetails of userExpDetails.experienceDetails['controls']; let i = index"
                         class="container-fluid start-section  w-100">
@@ -290,12 +289,12 @@
                             <div class="section-form-content">
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                        <label class="font-12 my-3">Job Details for job {{i+1}}</label>
+                                        <label class="font-12 my-3">Job Details </label>
                                     </div>
-                                    <div class="col-md-6 text-right">
+                                    <!-- <div class="col-md-6 text-right">
                                         <label class="font-bold text-right font-12 my-3"
                                             style="color:red;text-align:right" (click)="removeExperience(i)">X</label>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="form-row form-group">
                                     <div class="col">
@@ -569,6 +568,8 @@
                                         <div *ngIf="userEduDetails.school_name.errors.required">School Name
                                             is required</div>
                                     </div>
+
+                                    <span style="color:red;font-size: 12px;" *ngIf="isSchoolNum">School name should be in alphabets!</span>
                                 </div>
 
                             </div>
@@ -581,6 +582,8 @@
                                         <div *ngIf="userEduDetails.degree.errors.required">Degree
                                             is required</div>
                                     </div>
+                                    <span style="color:red;font-size: 12px;" *ngIf="isDegreeNum">Degree name should be in alphabets!</span>
+
                                 </div>
                                 <div class="col">
                                     <input type="text" class="form-control" placeholder="Field of study"
@@ -590,6 +593,8 @@
                                         <div *ngIf="userEduDetails.field_of_study.errors.required">Field of study
                                             is required</div>
                                     </div>
+                                    <span style="color:red;font-size: 12px;" *ngIf="isStudyNum">Field of study should be in alphabets!</span>
+
                                 </div>
                             </div>
 
