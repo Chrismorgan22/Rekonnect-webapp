@@ -805,7 +805,7 @@ export class PersonalizationComponent implements OnInit {
     };
     const drpJson = [];
     this.layoutService.getStateList().subscribe((res) => {
-      res.data.states.map((ele) => {
+      res.data.states?.map((ele) => {
         const json = {
           id: ele.state_code,
           name: ele.name,
@@ -821,7 +821,7 @@ export class PersonalizationComponent implements OnInit {
     };
     const drpJson = [];
     this.layoutService.getLookupList(body).subscribe((res) => {
-      res.data.map((ele) => {
+      res.data?.map((ele) => {
         const json = {
           id: ele._id,
           name: ele.name,
@@ -837,7 +837,7 @@ export class PersonalizationComponent implements OnInit {
     };
     const drpJson = [];
     this.layoutService.getLookupList(body).subscribe((res) => {
-      res.data.map((ele) => {
+      res.data?.map((ele) => {
         const json = {
           id: ele._id,
           name: ele.name,
@@ -853,7 +853,7 @@ export class PersonalizationComponent implements OnInit {
     };
     const drpJson = [];
     this.layoutService.getLookupList(body).subscribe((res) => {
-      res.data.map((ele) => {
+      res.data?.map((ele) => {
         const json = {
           id: ele._id,
           name: ele.name,
@@ -869,7 +869,7 @@ export class PersonalizationComponent implements OnInit {
     };
     const drpJson = [];
     this.layoutService.getLookupList(body).subscribe((res) => {
-      res.data.map((ele) => {
+      res.data?.map((ele) => {
         const json = {
           id: ele._id,
           name: ele.name,
@@ -885,7 +885,7 @@ export class PersonalizationComponent implements OnInit {
     };
     const drpJson = [];
     this.layoutService.getLookupList(body).subscribe((res) => {
-      res.data.map((ele) => {
+      res.data?.map((ele) => {
         const json = {
           id: ele._id,
           name: ele.name,
@@ -901,7 +901,7 @@ export class PersonalizationComponent implements OnInit {
     };
     const drpJson = [];
     this.layoutService.getLookupList(body).subscribe((res) => {
-      res.data.map((ele) => {
+      res.data?.map((ele) => {
         const json = {
           id: ele._id,
           name: ele.name,
@@ -917,7 +917,7 @@ export class PersonalizationComponent implements OnInit {
     };
     const drpJson = [];
     this.layoutService.getLookupList(body).subscribe((res) => {
-      res.data.map((ele) => {
+      res.data?.map((ele) => {
         const json = {
           id: ele._id,
           name: ele.name,
@@ -950,7 +950,7 @@ export class PersonalizationComponent implements OnInit {
     const experienceArray = [];
     const timelineArray = [];
     if (this.experienceTypeForm.controls.experience_type.value !== 'Fresher') {
-      this.experienceDetailForm.controls.experienceDetails['controls'].map(
+      this.experienceDetailForm.controls.experienceDetails['controls']?.map(
         (ele) => {
           const json = {
             designation: ele.controls.designation.value,
