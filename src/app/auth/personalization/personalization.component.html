@@ -1014,7 +1014,7 @@
                                     <img *ngIf="resumeFileUrl" src="../../../assets/images/file.jpg" width="25px"
                                         (click)="openFile(resumeFileUrl)">
                                     <div class="custom-file w-max-300 d-block">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile02"
+                                        <input type="file" class="custom-file-input" id="inputGroupFile02" accept=".pdf,.docx"
                                             (change)="uploadFile($event.target.files,'resume_url')">
                                         <label class="custom-file-label" for="inputGroupFile02">Upload
                                             Resume</label>
@@ -1026,7 +1026,7 @@
                                         (click)="openFile(visumeFileUrl)">
                                     <!-- <label>How early are you available to join?</label> -->
                                     <div class="custom-file w-max-300 d-block">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile03"
+                                        <input type="file" class="custom-file-input" id="inputGroupFile03" accept=".pdf,.docx"
                                             (change)="uploadFile($event.target.files,'visume_url')">
                                         <label class="custom-file-label" for="inputGroupFile03">Upload
                                             Visume</label>
