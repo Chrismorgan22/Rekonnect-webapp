@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "view-job.component.scss"
+    ],
+    "names": [],
+    "file": "view-job.component.css"
+}

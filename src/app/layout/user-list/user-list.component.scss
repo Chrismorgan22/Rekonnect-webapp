@@ -205,3 +205,13 @@ body {
         @include switch-button-color($danger-color);
     }
 }
+.table thead th {
+    white-space: nowrap;
+}
+.table td,
+.table th {
+    border: 1px solid #dee2e6;
+}
+// .sidebar-top-space {
+//     overflow-x: hidden;
+// }

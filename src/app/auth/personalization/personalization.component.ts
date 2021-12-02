@@ -158,10 +158,10 @@ export class PersonalizationComponent implements OnInit {
       description: ['', Validators.required],
     });
     this.lastFewBitsDetailForm = this.formBuilder.group({
-      soft_skills: ['', Validators.required],
-      technical_skills: ['', Validators.required],
-      current_career: ['', Validators.required],
-      changecareer: ['', Validators.required],
+      soft_skills: [[]],
+      technical_skills: [[]],
+      current_career: [[]],
+      changecareer: [false],
       change_career: [''],
       passion: ['', Validators.required],
       language: ['', Validators.required],
@@ -672,9 +672,7 @@ export class PersonalizationComponent implements OnInit {
   radioCheck(event) {
     console.log(event.target.value);
     if (event.target.value === 'yes') {
-      this.lastFewBitsDetailForm
-        .get('change_career')
-        .setValidators(Validators.required);
+      this.lastFewBitsDetailForm.get('change_career').clearValidators();
     } else {
       this.lastFewBitsDetailForm.get('change_career').clearValidators();
     }

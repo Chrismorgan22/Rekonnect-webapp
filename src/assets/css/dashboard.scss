@@ -16,6 +16,10 @@
         position: absolute;
         top: 205px;
         width: 100%;
+
+        &.negative-top-offset-bg {
+            top: 290px !important;
+        }
     }
 
     //banner css
@@ -23,12 +27,17 @@
         width: 100%;
         height: 200px;
 
+        &.banner-bg-large {
+            height: 300px !important;
+        }
+
         & > img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
     }
+
 
     //common card view
     .card {
