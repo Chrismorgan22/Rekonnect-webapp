@@ -236,7 +236,7 @@ h6 {
 
 .mb-sm-3 {
     @media (max-width: $information-mobile-sm) {
-        margin-bottom: 16px;
+        margin-bottom: 16px !important;
     }
 }
 
@@ -285,6 +285,12 @@ h6 {
 //flex and grid helper
 .d-flex {
     display: flex;
+}
+
+.d-small-block {
+    @media (max-width: $information-mobile-sm) {
+        display: block !important; 
+    }
 }
 
 .align-items-center {
