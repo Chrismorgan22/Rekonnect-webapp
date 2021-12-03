@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LayoutService } from 'src/app/services/layout.service';
 import { JobService } from 'src/app/services/job.service';
+import { Router } from '@angular/router';
 
 import * as moment from 'moment';
 import {
@@ -102,7 +103,8 @@ export class EmployerComponent implements OnInit {
   public chartOptions1: Partial<ChartOptions1>;
   constructor(
     private layoutService: LayoutService,
-    private jobService: JobService
+    private jobService: JobService,
+    private router : Router
   ) {
     this.events1 = [
       {
@@ -245,6 +247,11 @@ export class EmployerComponent implements OnInit {
       this.userProfileData = res.data[0];
       console.log(this.userProfileData);
     });
+  }
+
+  postJob(){
+
+    this.router.navigate(['/dashboard/create-job']);
   }
 
   handleSubmit = (): void => {

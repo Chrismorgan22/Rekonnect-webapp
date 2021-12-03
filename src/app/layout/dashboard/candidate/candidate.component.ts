@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LayoutService } from 'src/app/services/layout.service';
 import { JobService } from 'src/app/services/job.service';
+import { Router } from '@angular/router';
+
 
 import * as _ from 'lodash';
 import {
@@ -38,7 +40,8 @@ export class CandidateComponent implements OnInit {
 
   constructor(
     private layoutService: LayoutService,
-    private jobDetails: JobService
+    private jobDetails: JobService,
+    private router : Router
   ) {
     // this.events1 = [
     //   { status: 'Ordered', date: '15/10/2020 10:30', icon: PrimeIcons.SHOPPING_CART, color: '#9C27B0', image: 'game-controller.jpg' },
@@ -112,6 +115,17 @@ export class CandidateComponent implements OnInit {
       }
     });
   }
+
+
+
+  applyJob(){
+
+    this.router.navigate(['/dashboard/apply-for-job']);
+
+
+  }
+
+
   getTimelineData() {
     const timelineArray = [];
     const designationArr: any = [];
