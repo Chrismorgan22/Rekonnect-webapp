@@ -31,7 +31,7 @@
                                 </div>
                             </div>
                             <div class="user-content-action">
-                                <button class="btn btn-primary mr-3 btn-lg" data-toggle="modal"
+                                <button class="btn btn-primary mr-3 btn-lg" 
                                 (click)='postJob()'>Post new job listing</button>
                                 <button class="btn btn-secondary btn-lg">Recommend Expert</button>
                             </div>
@@ -148,12 +148,15 @@
                                     <!-- <img src="../../../../assets/images/temporary-images/conversion-graph.png" /> -->
                                     <!-- </div> -->
                                 </div>
-                                <div class="col-sm col-md-11 col-lg-3 card-box upload-customised">
-                                    <input type="file" id="myFile" name="filename">
+                                <div class="col-sm col-md-11 col-lg-3 ">
+                                    <button type="button" class="btn btn-primary upload-customised h-100" data-toggle="modal" data-target="#postjobModal">
+                                       Add organisation information
+                                      </button>
+                                    <!-- <input type="file" id="myFile" name="filename">
                                     <div>
                                         <span class="material-icons">add</span>
                                         <p>Upload Visume</p>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -470,103 +473,92 @@
 
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create Job Listing</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Company Details</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body p-0">
                 <div class="row start-section">
-                    <div class="col-sm col-sm-12 col-md-12 col-lg-8 section-form-content">
+                    <div class="col-sm col-sm-12 col-md-12 col-lg-12 section-form-content">
+                        <div class="user-profile mb-4 ">
+                            <div class="user-image">
+                                <img src="../../../assets/images/facebook-logo.png" />
+                            </div>
+                            <div class="form-group py-2 px-2">
+                                <h5 class="bold">Upload Company logo</h5>
+                                <label class="text-color-light">Add company logo</label>
+                                <div class="custom-file w-max-300 d-block">
+                                    <input type="file" class=" custom-file-input" id="inputGroupFile01 ">
+                                    <label class="custom-file-label" for="inputGroupFile01">Upload Logo</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group py-2 px-2">
+                            <h5 class="bold">Upload Introduction Video</h5>
+                            <label class="text-color-light">Add company Introduction video</label>
+                            <div class="custom-file w-max-300 d-block">
+                                <input type="file" class=" custom-file-input" id="inputGroupFile01 ">
+                                <label class="custom-file-label" for="inputGroupFile01">Upload Video</label>
+                            </div>
+                        </div>
                         <div class="form-row form-group">
                             <div class="col mb-2">
-                                <input type="text" class="form-control" placeholder="Job Title" (change)="handleTitle($event)" />
+                                <input type="text" class="form-control" placeholder="Company Name" />
                             </div>
                             <div class="col mb-2">
-                                <input type="text" placeholder="Company" class="form-control" (change)="handleCompany($event)" />
+                                <input type="text" placeholder="Company Size" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group ">
-                            <textarea type="text" class="form-control mb-2" placeholder="Job Description"
-                                id="exampleFormControlTextarea1" rows="3" formControlName="description" (change)="handleDescription($event)"></textarea>
+                            <textarea type="text" class="form-control mb-2" placeholder="Organisation Description"
+                                id="exampleFormControlTextarea1" rows="3" formControlName="description" ></textarea>
+                        </div>
+                        
+                        <div class="form-row form-group ">
+                            <div class="col mb-2">
+                                <input type="text" class="form-control" placeholder="Founded in year"/>
+                            </div>
+                            <div class="col mb-2">
+                                <input type="text" placeholder="Headquarters" class="form-control"/>
+                            </div>
+                            <div class="col mb-2">
+                                <input type="text" placeholder="Website" class="form-control"/>
+                            </div>
+                            <div class="col mb-2">
+                                <input type="text" class="form-control" placeholder="Organisation Type"/>
+                            </div>
+                            <div class="col mb-2">
+                                <input type="text" placeholder="Industry" class="form-control"/>
+                            </div>
+                        </div> 
+                    
+                       
+                        <label for="exampleFormControlSelect2">Add Team members</label>
+                        <div class="form-group py-2 px-2">
+                            <h5 class="bold">Upload Image</h5>
+                            <div class="custom-file w-max-300 d-block">
+                                <input type="file" class=" custom-file-input" id="inputGroupFile01 ">
+                                <label class="custom-file-label" for="inputGroupFile01">Upload Image</label>
+                            </div>
                         </div>
                         <div class="form-row form-group ">
                             <div class="col mb-2">
-                                <input type="text" class="form-control" placeholder="Pin Code" (change)="handlePin($event)"/>
+                                <input type="text" class="form-control" placeholder="Name"/>
                             </div>
                             <div class="col mb-2">
-                                <input type="text" placeholder="Location" class="form-control" (change)="handleLocation($event)"/>
+                                <input type="text" placeholder="Designation" class="form-control"/>
                             </div>
-                        </div> <div class="form-row form-group ">
-                            <div class="col mb-2">
-                                <div class="dropdown w-100">
-                                    <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                     Graduate
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                      <a class="dropdown-item" href="#">BE</a>
-                                      <a class="dropdown-item" href="#">ME</a>
-                                      <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                  </div>
-                            </div>
-                            <div class="col mb-2">
-                                <input type="text" placeholder="Specialization" class="form-control" (change)="handleSpec($event)"/>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <div class="dropdown w-100">
-                                <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                 Skills
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#">BE</a>
-                                  <a class="dropdown-item" href="#">ME</a>
-                                  <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                              </div>
-                        </div>
-                        <div class="form-group ">
-                            <div class="dropdown w-100">
-                                <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                 Year of Experience required
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#">0</a>
-                                  <a class="dropdown-item" href="#">2 to 5</a>
-                                  <a class="dropdown-item" href="#">5 to 10</a>
-                                  <a class="dropdown-item" href="#">more than 10</a>
-                                </div>
-                              </div>
-                        </div>
-                        <div class="form-group mb-2">
-                            <input type="text" aria-describedby="experience"
-                                placeholder="Minimum Work Experience Required" size="lg" class="form-control mb-2" />
-                        </div>
-                        <label class="my-4">range selector will come here</label>
-                        <div class="form-group mt-3">
-                            <label for="exampleFormControlSelect2">How early are you available to join?</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <button class="btn btn-secondary border-radius-0" type="button">Full Time</button>
-                                    <button class="btn btn-secondary" type="button">Part Time</button>
-                                    <button class="btn btn-secondary" type="button">Remote Friendly</button>
-                                </div>
-
-                            </div>
-
-                        </div>
+                        </div> 
+                        <button type="button" class="btn btn-primary btn-link w-min-250">Add more</button>
+                        
                     </div>
-                    <div class="col-sm col-sm-12 col-md-12 col-lg-4 p-0">
-                        <div class="modal-image">
-                            <img src="../../../../assets/images/side-modal-image.jpg" />
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary w-min-250" (click)="handleSubmit()">Create job listing</button>
+                <button type="button" class="btn btn-primary w-min-250">Save</button>
             </div>
         </div>
     </div>
