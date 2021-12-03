@@ -250,7 +250,7 @@
                             <h6>Recent Job Posts</h6>
                         </div>
                         <div class="card-body">
-                            <div class="job-card">
+                            <!-- <div class="job-card">
                                 <div class="job-header d-flex align-items-center">
                                     <div class="d-flex align-items-center">
                                         <div class="user-profile">
@@ -281,8 +281,8 @@
                                         consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel
                                         lorem.</p>
                                 </div>
-                            </div>
-                            <div class="job-card">
+                            </div> -->
+                            <div class="job-card" *ngFor="let job of jobs">
                                 <div class="job-header d-flex align-items-center">
                                     <div class="d-flex align-items-center">
                                         <div class="user-profile">
@@ -295,9 +295,8 @@
                                                 <label>3 hours ago</label>
                                             </p>
                                             <p class="d-flex m-0"><label class="mr-3"><span
-                                                        class="material-icons">work</span> Full Time</label><label
-                                                    class="mr-3"><span class="material-icons">location_on</span> Mumbai,
-                                                    India</label> </p>
+                                                        class="material-icons">work</span> {{job.catergory}}</label><label
+                                                    class="mr-3"><span class="material-icons">location_on</span> {{job.location}}</label> </p>
                                         </div>
                                     </div>
                                     <div class="user-action-content">
@@ -308,10 +307,7 @@
                                     </div>
                                 </div>
                                 <div class="job-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget sapien ut erat
-                                        vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
-                                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel
-                                        lorem.</p>
+                                    <p>{{job.details}}</p>
                                 </div>
                             </div>
 

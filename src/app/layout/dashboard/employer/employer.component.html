@@ -480,22 +480,22 @@
                     <div class="col-sm col-sm-12 col-md-12 col-lg-8 section-form-content">
                         <div class="form-row form-group">
                             <div class="col mb-2">
-                                <input type="text" class="form-control" placeholder="Job Title" />
+                                <input type="text" class="form-control" placeholder="Job Title" (change)="handleTitle($event)" />
                             </div>
                             <div class="col mb-2">
-                                <input type="text" placeholder="Company" class="form-control" />
+                                <input type="text" placeholder="Company" class="form-control" (change)="handleCompany($event)" />
                             </div>
                         </div>
                         <div class="form-group ">
                             <textarea type="text" class="form-control mb-2" placeholder="Job Description"
-                                id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
+                                id="exampleFormControlTextarea1" rows="3" formControlName="description" (change)="handleDescription($event)"></textarea>
                         </div>
                         <div class="form-row form-group ">
                             <div class="col mb-2">
-                                <input type="text" class="form-control" placeholder="Pin Code" />
+                                <input type="text" class="form-control" placeholder="Pin Code" (change)="handlePin($event)"/>
                             </div>
                             <div class="col mb-2">
-                                <input type="text" placeholder="Location" class="form-control" />
+                                <input type="text" placeholder="Location" class="form-control" (change)="handleLocation($event)"/>
                             </div>
                         </div> <div class="form-row form-group ">
                             <div class="col mb-2">
@@ -511,7 +511,7 @@
                                   </div>
                             </div>
                             <div class="col mb-2">
-                                <input type="text" placeholder="Specialization" class="form-control" />
+                                <input type="text" placeholder="Specialization" class="form-control" (change)="handleSpec($event)"/>
                             </div>
                         </div>
                         <div class="form-group ">
@@ -566,7 +566,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary w-min-250">Create job listing</button>
+                <button type="button" class="btn btn-primary w-min-250" (click)="handleSubmit()">Create job listing</button>
             </div>
         </div>
     </div>
