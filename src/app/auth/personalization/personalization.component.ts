@@ -74,12 +74,12 @@ export class PersonalizationComponent implements OnInit {
   // value = 0;
   vertical = false;
   tickInterval = 1;
-  value: number = 0;
+  value: number = 1;
   todayDate: any;
-  highValue: number = 10000000;
+  highValue: number = 100;
   options = {
-    floor: 0,
-    ceil: 10000000,
+    floor: 1,
+    ceil: 100,
   };
 
   bucket = new S3({
