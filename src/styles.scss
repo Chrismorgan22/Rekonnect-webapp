@@ -793,13 +793,17 @@ body {
     padding-right: 20px !important;
 }
 
-.p-carousel-indicators {
+
+
+.p-carousel-indicators{
     display: none !important;
 }
+
 
 //apply for job page design
 .apply-for-job-section {
     margin-top: 40px;
+    
 
     .profile-right-content {
         .t-block {
@@ -828,7 +832,10 @@ body {
 
             .feedback-section {
                 .background-blue {
-                    background: lighten(#005a74, 70%);
+
+                
+                    background: lighten(#005A74, 70%);
+
                     padding: 24px;
                     border-radius: 8px;
                     margin-top: 16px;
@@ -870,9 +877,12 @@ body {
                         color: inherit;
                         font-size: 1.2rem;
                         font-weight: $font-bold;
-                        background: #f6f6f6;
+
+                        background: #F6F6F6;
                         border-bottom-right-radius: 0px;
                         border-bottom-left-radius: 0px;
+                        
+
 
                         span {
                             padding: 8px 16px;
@@ -884,8 +894,9 @@ body {
                         &.active {
                             background: $text-white;
 
-                            span {
-                                background: $color-secondary !important;
+
+                            span{
+                                background:$color-secondary !important;
                                 color: $text-white;
                             }
                         }
@@ -900,7 +911,9 @@ body {
 
         .selected-pill {
             .btn-selected-pill {
+
                 background: lighten(#005a74, 70%);
+
                 padding: 8px 16px;
             }
         }
@@ -985,6 +998,7 @@ body {
                             display: flex;
                             justify-content: space-between;
                             width: 100%;
+
                         }
                     }
                 }
