@@ -28,7 +28,7 @@ export class PersonalizationComponent implements OnInit {
   isSchoolNum: boolean = false;
   isDegreeNum: boolean = false;
   isStudyNum: boolean = false;
-
+  completion: Number = 75;
   userRoleForm: FormGroup;
   addressForm: FormGroup;
   experienceTypeForm: FormGroup;
@@ -117,6 +117,15 @@ export class PersonalizationComponent implements OnInit {
     // $('#candidateModalCenter').modal('show')
   }
 
+  getValue(): number {
+    if (this.completion === 100) return 100;
+    else return 75;
+  }
+
+  getwidth(): string {
+    if (this.completion === 100) return '100%';
+    else return '75%';
+  }
   async ngOnInit() {
     this.monthDrp = moment.months();
     this.todayDate = moment(new Date()).format('yyyy-MM-DD');
@@ -214,6 +223,7 @@ export class PersonalizationComponent implements OnInit {
       this.getCityList('City'),
     ]);
   }
+
   addButtonClick(): void {
     if (
       this.experienceDetailForm.controls.experienceDetails['controls'].length <
@@ -1345,7 +1355,7 @@ export class PersonalizationComponent implements OnInit {
   }
   uploadFile(file, type) {
     const contentType = file[0].type;
-
+    this.completion = 100;
     const params = {
       Bucket: environment.Bucket,
       Key: 'Rekonnect' + file[0].name,

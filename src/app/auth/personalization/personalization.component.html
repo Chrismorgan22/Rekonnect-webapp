@@ -1135,8 +1135,8 @@
                             <h3 class="modal-title section-main-title bold p-2" id="exampleModalLongTitle">You
                                 are almost done!</h3>
                             <div class="progress mb-3">
-                                <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75"
-                                    aria-valuemin="0" aria-valuemax="100">75%</div>
+                                <div class="progress-bar" role="progressbar" [ngStyle]="{'width': completion===100 ? '100%' : '75%' }" [attr.aria-valuenow]="getValue()"
+                                    aria-valuemin="0" aria-valuemax="100">{{completion}}%</div>
                             </div>
                             <h6 class="font-bold my-3">A minimum completion rate of 75% is required to continue
                             </h6>
