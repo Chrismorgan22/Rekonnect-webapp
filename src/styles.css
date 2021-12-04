@@ -208,6 +208,10 @@
   width: 100%;
 }
 
+.h-100 {
+  height: 100%;
+}
+
 .w-min-250 {
   min-width: 250px;
 }
