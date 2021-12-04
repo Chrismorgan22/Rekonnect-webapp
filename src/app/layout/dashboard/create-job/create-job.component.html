@@ -26,7 +26,8 @@
                 <div class="start-section">
                   <div class="section-form-content">
                     <div class="form-group">
-                      <input type="text" aria-describedby="title" placeholder="Title" size="lg" class="form-control" />
+                      <input type="text" aria-describedby="title" placeholder="Title"   (change)="handleTitle
+                      ($event)" size="lg" class="form-control" />
                     </div>
                     <div class="form-row form-group">
                       <div class="col">
@@ -36,7 +37,11 @@
                             Job Type
                           </button>
                           <div class="dropdown-menu">
-                            ...
+                            <ul>
+                              <li style="list-style: none;" >Full-time</li>
+                              <li style="list-style: none;">Part-time</li>
+                              <li style="list-style: none;">Internship</li>
+                            </ul>
                           </div>
                         </div>
                       </div>
@@ -47,23 +52,26 @@
                             Job Category
                           </button>
                           <div class="dropdown-menu">
-                            ...
+                            <ul>
+                              <li style="list-style: none;">Remote</li>
+                              <li style="list-style: none;">On-site</li>
+                            </ul>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="form-row form-group">
                       <div class="col">
-                        <input type="text" class="form-control" placeholder="City" />
+                        <input type="text" class="form-control" placeholder="City" (change)="handleCity($event)" />
                       </div>
                       <div class="col">
-                        <input type="text" placeholder="Country" class="form-control" />
+                        <input type="text" placeholder="Country" class="form-control" (change)="handleCountry($event)" />
                       </div>
                     </div>
                     <div class="form-row form-group">
                       <div class="col">
                         <div class="input-group mb-3">
-                          <input type="text" class="form-control" placeholder="Minimum Salary Expected"
+                          <input type="text" class="form-control" placeholder="Minimum Salary Expected" (change)="handleMinS($event)"
                             aria-label="Recipient's username" aria-describedby="basic-addon2">
                           <div class="input-group-append">
                             <span class="input-group-text" id="basic-addon2">INR</span>
@@ -72,7 +80,7 @@
                       </div>
                       <div class="col">
                         <div class="input-group mb-3">
-                          <input type="text" class="form-control" placeholder="Maximum Salary Expected"
+                          <input type="text" class="form-control" placeholder="Maximum Salary Expected" (change)="handleMaxS($event)"
                             aria-label="Recipient's username" aria-describedby="basic-addon2">
                           <div class="input-group-append">
                             <span class="input-group-text" id="basic-addon2">INR</span>
@@ -109,12 +117,12 @@
                         </div>
                       </div>
                       <div class="col">
-                        <input type="text" placeholder="Minimum Experience Required" class="form-control" />
+                        <input type="text" placeholder="Minimum Experience Required" (change)="handleMinE($event)" class="form-control" />
                       </div>
                     </div>
                     <div class="form-row form-group">
                       <div class="col">
-                        <input type="text" placeholder="Maximum Experience Required" class="form-control" />
+                        <input type="text" (change)="handleMaxE($event)" class="form-control"placeholder="Maximum Experience Required" class="form-control" />
                       </div>
                       <div class="col">
 
@@ -170,7 +178,7 @@
                     </div>
                     <div class="form-footer text-right my-4">
                       <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Back</button>
-                      <button type="button" class="btn btn-primary w-min-250 btn-lg ml-2">Post Job listing</button>
+                      <button type="button" class="btn btn-primary w-min-250 btn-lg ml-2" (click)="handleSubmit()">Post Job listing</button>
                     </div>
                   </div>
                 </div>
