@@ -2521,33 +2521,6 @@ body::-webkit-scrollbar-thumb {
           box-shadow: none !important;
 }
 
-.create-job-section .right-side .right-side-accordian .custom-accord {
-  border-radius: 24px;
-  -webkit-box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
-          box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
-}
-
-.create-job-section .right-side .right-side-accordian .custom-accord .card:first-of-type {
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-}
-
-.create-job-section .right-side .right-side-accordian .custom-accord .card:last-of-type {
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-}
-
-.create-job-section .right-side .right-side-accordian .custom-accord .card .card-header button {
-  color: #0C1A27;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 100%;
-}
-
 .scandidate-section .parent-section-body .education-section .section-image {
   width: 100px;
   height: 100%;
@@ -2594,10 +2567,105 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
+.scandidate-section .parent-section-body .pricing-card {
+  padding: 32px;
+  border: 1px solid #15759A;
+  border-radius: 16px;
+}
+
+.scandidate-section .parent-section-body .pricing-card .price {
+  padding-top: 24px;
+  color: #15759A;
+}
+
+.scandidate-section .parent-section-body .pricing-card .section-list .image-section .image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (max-width: 576px) {
+  .scandidate-section .parent-section-body .pricing-card .section-list .image-section .image {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.scandidate-section .parent-section-body .pricing-card .section-list .image-section .image img {
+  width: 150px;
+  height: 150px;
+  margin-right: 16px;
+}
+
+.scandidate-section .parent-section-body .pricing-card .section-list .image-section .image h6 {
+  font-weight: 700;
+}
+
+.scandidate-section .parent-section-body .posting-complete .section-sub-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.scandidate-section .parent-section-body .posting-complete .section-content {
+  line-height: normal;
+}
+
+.scandidate-section .parent-section-body .posting-complete .image-section {
+  width: 350px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 576px) {
+  .scandidate-section .parent-section-body .posting-complete .image-section {
+    width: 100%;
+  }
+}
+
+.scandidate-section .parent-section-body .posting-complete .image-section img {
+  width: 100%;
+  height: 100%;
+}
+
 @media (max-width: 576px) {
   .button-group-section button {
     margin-right: 8px !important;
     padding: 0.3rem !important;
   }
+}
+
+.custom-accord {
+  border-radius: 24px;
+  -webkit-box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
+          box-shadow: 0px 4px 13px rgba(17, 38, 146, 0.2);
+}
+
+.custom-accord .card:first-of-type {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.custom-accord .card:last-of-type {
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.custom-accord .card {
+  border-radius: 0;
+}
+
+.custom-accord .card .card-header button {
+  color: #0C1A27;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  white-space: unset;
 }
 /*# sourceMappingURL=styles.css.map */
