@@ -2587,4 +2587,17 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
   height: 100%;
 }
+
+@media (max-width: 576px) {
+  .scandidate-section .parent-section-body .start-section {
+    padding: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .button-group-section button {
+    margin-right: 8px !important;
+    padding: 0.3rem !important;
+  }
+}
 /*# sourceMappingURL=styles.css.map */
