@@ -26,6 +26,7 @@ declare var $: any;
 })
 export class PersonalizationComponent implements OnInit {
   isSchoolNum: boolean = false;
+  goAhead: boolean = false;
   isDegreeNum: boolean = false;
   isStudyNum: boolean = false;
   completion: Number = 75;
@@ -35,6 +36,7 @@ export class PersonalizationComponent implements OnInit {
   experienceDetailForm: FormGroup;
   educationTypeForm: FormGroup;
   educationDetailForm: FormGroup;
+  ischange: boolean = false;
   lastFewBitsDetailForm: FormGroup;
   lastFewBitsJoinDetailForm: FormGroup;
   onBoardDetailForm: FormGroup;
@@ -683,8 +685,10 @@ export class PersonalizationComponent implements OnInit {
     console.log(event.target.value);
     if (event.target.value === 'yes') {
       this.lastFewBitsDetailForm.get('change_career').clearValidators();
+      this.ischange = true;
     } else {
       this.lastFewBitsDetailForm.get('change_career').clearValidators();
+      this.ischange = false;
     }
     this.lastFewBitsDetailForm.get('change_career').updateValueAndValidity();
   }
@@ -733,10 +737,12 @@ export class PersonalizationComponent implements OnInit {
   }
   joiningStatus(value) {
     if (value === 'yes') {
+      this.goAhead = true;
       this.lastFewBitsJoinDetailForm
         .get('joining_within')
         .setValidators(Validators.required);
     } else {
+      this.goAhead = false;
       this.lastFewBitsJoinDetailForm.get('joining_within').clearValidators();
     }
     this.lastFewBitsJoinDetailForm
@@ -1355,6 +1361,10 @@ export class PersonalizationComponent implements OnInit {
   }
   uploadFile(file, type) {
     const contentType = file[0].type;
+    if (file[0].size > 2200000) {
+      window.alert('file too large');
+      return;
+    }
     this.completion = 100;
     const params = {
       Bucket: environment.Bucket,

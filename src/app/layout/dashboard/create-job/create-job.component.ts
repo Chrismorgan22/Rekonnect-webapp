@@ -7,7 +7,8 @@ import { JobService } from '../../../services/job.service';
 })
 export class CreateJobComponent implements OnInit {
   constructor(private applyJob: JobService) {}
-
+  dropdownSettings1 = {};
+  current: any[] = ['full-time', 'part-time'];
   jobDetails: {
     Title: string;
     Type: string;
@@ -68,5 +69,13 @@ export class CreateJobComponent implements OnInit {
   };
   ngOnInit(): void {
     window.scrollTo(0, 0);
+    this.dropdownSettings1 = {
+      singleSelection: true,
+      idField: 'id',
+      textField: 'name',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      allowSearchFilter: true,
+    };
   }
 }

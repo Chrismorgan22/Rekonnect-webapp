@@ -3,7 +3,6 @@ import { LayoutService } from 'src/app/services/layout.service';
 import { JobService } from 'src/app/services/job.service';
 import { Router } from '@angular/router';
 
-
 import * as _ from 'lodash';
 import {
   ChartComponent,
@@ -37,11 +36,11 @@ export class CandidateComponent implements OnInit {
   userProfileData: any;
   events1: any[];
   designation: any = '';
-
+  userId: any = sessionStorage.getItem('_ud').substring(9, 33);
   constructor(
     private layoutService: LayoutService,
     private jobDetails: JobService,
-    private router : Router
+    private router: Router
   ) {
     // this.events1 = [
     //   { status: 'Ordered', date: '15/10/2020 10:30', icon: PrimeIcons.SHOPPING_CART, color: '#9C27B0', image: 'game-controller.jpg' },
@@ -116,15 +115,11 @@ export class CandidateComponent implements OnInit {
     });
   }
 
-
-
-  applyJob(){
-
-    this.router.navigate(['/dashboard/apply-for-job']);
-
-
+  applyJob(jobId: String) {
+    console.log(this.userId);
+    console.log(jobId);
+    this.router.navigate([`/dashboard/apply-for-job/${jobId}`]);
   }
-
 
   getTimelineData() {
     const timelineArray = [];

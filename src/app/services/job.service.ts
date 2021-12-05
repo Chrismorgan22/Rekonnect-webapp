@@ -14,7 +14,15 @@ export class JobService {
       })
     );
   }
-
+  applyJob(userId: string, jobId: any) {
+    return this.http
+      .post<any>(`${this._url}/JobCopy/applyJob/${jobId}`, { userId: userId })
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
   postJobs(job: any) {
     return this.http.post<any>(`${this._url}/JobCopy/createOne`, job).pipe(
       map((response) => {
