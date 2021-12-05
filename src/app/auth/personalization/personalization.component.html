@@ -857,7 +857,10 @@
                                 </select> -->
                                 <ng-multiselect-dropdown [placeholder]="'Change Career'" [settings]="dropdownSettings1"
                                     [data]="currentCareerDrp" formControlName="change_career"
-                                    (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                                    (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" 
+                                    [ngStyle]="{'display': ischange===true ? 'block' : 'none' }"
+                                    
+                                    >
                                 </ng-multiselect-dropdown>
                                 <div *ngIf="lastFewBitsDetailSubmit && userSoftSkillDetails.change_career.errors"
                                     class="invalid-feedback" style="display:block;">
@@ -1058,7 +1061,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
                             (click)="moveToPreviousModal('candidateModallastbitsfinal','candidateModallastbits')">Back</button>
-                        <button type="submit" class="btn btn-primary">Save &
+                        <button type="submit" class="btn btn-primary" [disabled]="goAhead">Save &
                             Continue</button>
                     </div>
                 </form>
