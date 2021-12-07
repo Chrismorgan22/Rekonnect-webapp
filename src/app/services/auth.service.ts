@@ -7,6 +7,10 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
+  isLogin = false;
+
+  roleAs: any;
+
   // userToken = sessionStorage.getItem('_ud') !== undefined && sessionStorage.getItem('_ud') !== null && sessionStorage.getItem('_ud') !== '' ? JSON.parse(sessionStorage.getItem('_ud'))[0].token : ''
   constructor(private _httpClient: HttpClient) { }
 
@@ -93,5 +97,25 @@ export class AuthService {
         return response;
       })
     )
+  }
+  isLoggedIn() {
+    console.log('sssssssssss')
+    const loggedIn = sessionStorage.getItem('_ud');
+    if (loggedIn !== undefined && loggedIn !== '' && loggedIn !== null) {
+      this.isLogin = true;
+      return this.isLogin;
+    }
+    else {
+      this.isLogin = false;
+      return this.isLogin;
+    }
+    console.log(this.isLogin)
+  }
+
+  getRole() {
+    console.log('dssdsdsds')
+    this.roleAs = sessionStorage.getItem('_ud');
+    console.log(this.roleAs)
+    return JSON.parse(this.roleAs)[0].role;
   }
 }

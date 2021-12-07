@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class JobService {
-  private _url: string = 'http://api.rekonnect.in';
+  private _url: string = 'http://localhost:8000';
   constructor(private http: HttpClient) {}
 
   getJobs() {
