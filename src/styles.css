@@ -2673,7 +2673,7 @@ body::-webkit-scrollbar-thumb {
   margin: 0;
 }
 
-.job-list-section .parent-section-body .top-filter .form-row .col {
+.job-list-section .parent-section-body .top-filter .form-row .col-sm {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2683,23 +2683,23 @@ body::-webkit-scrollbar-thumb {
   padding: 24px 16px;
 }
 
-.job-list-section .parent-section-body .top-filter .form-row .col:not(:last-of-type) {
+.job-list-section .parent-section-body .top-filter .form-row .col-sm:not(:last-of-type) {
   border-right: 1px solid #EEEEEE;
 }
 
-.job-list-section .parent-section-body .top-filter .form-row .col:is(:first-of-type) {
+.job-list-section .parent-section-body .top-filter .form-row .col-sm:is(:first-of-type) {
   padding-left: 32px;
 }
 
-.job-list-section .parent-section-body .top-filter .form-row .col:is(:last-of-type) {
+.job-list-section .parent-section-body .top-filter .form-row .col-sm:is(:last-of-type) {
   padding: 0;
 }
 
-.job-list-section .parent-section-body .top-filter .form-row .col > input {
+.job-list-section .parent-section-body .top-filter .form-row .col-sm > input {
   border: none;
 }
 
-.job-list-section .parent-section-body .top-filter .form-row .col .btn {
+.job-list-section .parent-section-body .top-filter .form-row .col-sm .btn {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   height: 100%;
@@ -2716,6 +2716,22 @@ body::-webkit-scrollbar-thumb {
   padding: 24px;
 }
 
+.job-list-section .parent-section-body .bottom-card-content .job-list-content .card .card-content .image-section {
+  width: 200px;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .job-list-section .parent-section-body .bottom-card-content .job-list-content .card .card-content .image-section {
+    width: 100%;
+  }
+}
+
+.job-list-section .parent-section-body .bottom-card-content .job-list-content .card .card-content .image-section img {
+  width: 100%;
+  height: 100%;
+}
+
 .job-list-section .parent-section-body .bottom-card-content .job-list-content .card .card-content .badge-pills .badge {
   padding: 8px;
   border: none;
@@ -2724,11 +2740,25 @@ body::-webkit-scrollbar-thumb {
   font-weight: normal;
 }
 
+@media (max-width: 768px) {
+  .job-list-section .parent-section-body .bottom-card-content .job-list-content .card .card-content .badge-pills .badge {
+    text-align: center;
+  }
+}
+
 .job-list-section .parent-section-body .bottom-card-content .job-list-content .card .card-content .badge-pills .badge.badge-primary {
   background: #DBEED0;
 }
 
 .job-list-section .parent-section-body .bottom-card-content .job-list-content .card .card-content .badge-pills .badge.badge-secondary {
   background: #FCE1D1;
+}
+
+@media (max-width: 576px) {
+  .job-list-section .parent-section-body .bottom-card-content .job-list-content .card .card-content .right-side {
+    display: block !important;
+    text-align: center;
+    margin-top: 16px;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

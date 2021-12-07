@@ -1174,7 +1174,7 @@ body {
             .form-row {
                 margin: 0;
 
-                & .col {
+                & .col-sm {
                     display: flex;
                     align-items: center;
                     padding: 24px 16px;
@@ -1220,6 +1220,19 @@ body {
                     padding: 24px;
 
                     .card-content {
+                        .image-section {
+                            width: 200px;
+                            height:auto;
+
+                             @media (max-width: $information-mobile-md) {
+                                    width: 100%;
+                            } 
+
+                            & img {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
                         .badge-pills {
                             .badge {
                                 padding: 8px;
@@ -1227,7 +1240,11 @@ body {
                                 margin-right: 8px;
                                 color: $text-color;
                                 font-weight: normal;
-                                
+
+                                 @media (max-width: $information-mobile-md) {
+                                    text-align: center;
+                                } 
+
                                 &.badge-primary {
                                     background: #DBEED0;
                                 }
@@ -1237,6 +1254,14 @@ body {
                                 }
                             }
                             
+                        }
+
+                        .right-side {
+                            @media (max-width: $information-mobile-sm) {
+                                display: block !important;
+                                text-align: center;
+                                margin-top: 16px;
+                            }
                         }
                     }
                 }
