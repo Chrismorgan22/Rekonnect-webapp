@@ -1166,3 +1166,46 @@ body {
         }
     }
 }
+
+//job list section
+.job-list-section {
+    .parent-section-body {
+        .top-filter {
+            .form-row {
+                margin: 0;
+
+                & .col {
+                    display: flex;
+                    align-items: center;
+                    padding: 24px 16px;
+                   
+
+                    &:not(:last-of-type) {
+                        border-right: 1px solid $color-border;
+                    }
+
+                    &:is(:first-of-type) {
+                        padding-left: 32px;
+                    }
+
+                    &:is(:last-of-type) {
+                        padding: 0;
+                    }
+
+                    & > input {
+                        border: none;
+                    }
+
+                    & .btn {
+                        border-top-left-radius: 0 ;
+                        border-bottom-left-radius: 0 ;
+                        height: 100%;
+                        width: 100%;
+                        border-top-right-radius: 12px;
+                        border-bottom-right-radius: 12px;
+                    }
+                }
+            }
+        }
+    }
+}

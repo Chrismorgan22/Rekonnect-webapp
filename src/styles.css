@@ -2668,4 +2668,43 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
   white-space: unset;
 }
+
+.job-list-section .parent-section-body .top-filter .form-row {
+  margin: 0;
+}
+
+.job-list-section .parent-section-body .top-filter .form-row .col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 24px 16px;
+}
+
+.job-list-section .parent-section-body .top-filter .form-row .col:not(:last-of-type) {
+  border-right: 1px solid #EEEEEE;
+}
+
+.job-list-section .parent-section-body .top-filter .form-row .col:is(:first-of-type) {
+  padding-left: 32px;
+}
+
+.job-list-section .parent-section-body .top-filter .form-row .col:is(:last-of-type) {
+  padding: 0;
+}
+
+.job-list-section .parent-section-body .top-filter .form-row .col > input {
+  border: none;
+}
+
+.job-list-section .parent-section-body .top-filter .form-row .col .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  height: 100%;
+  width: 100%;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
 /*# sourceMappingURL=styles.css.map */
