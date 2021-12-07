@@ -1207,5 +1207,40 @@ body {
                 }
             }
         }
+
+        .top-card-content {
+            .dropdown-title {
+                min-width: 65px;
+            }
+        }
+
+        .bottom-card-content {
+            .job-list-content {
+                & .card {
+                    padding: 24px;
+
+                    .card-content {
+                        .badge-pills {
+                            .badge {
+                                padding: 8px;
+                                border: none;
+                                margin-right: 8px;
+                                color: $text-color;
+                                font-weight: normal;
+                                
+                                &.badge-primary {
+                                    background: #DBEED0;
+                                }
+
+                                &.badge-secondary {
+                                    background: #FCE1D1;
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
     }
 }
