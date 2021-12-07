@@ -374,6 +374,8 @@ export class PersonalizationComponent implements OnInit {
         temp_data: tempData,
       };
       console.log(body);
+      localData['role'] = Number(this.userRoleForm.controls.user_role.value);
+      sessionStorage.setItem('_ud', JSON.stringify([localData]));
       this.authService.saveTempUser(body).subscribe((res) => {
         this.moveToNextModal(currentModal, nextModal);
       });
@@ -445,7 +447,7 @@ export class PersonalizationComponent implements OnInit {
         this.experienceTypeForm.controls.experience_type.value !== 'Experienced'
       ) {
         nextModal = 'candidateModalEducation';
-        this.authService.saveTempUser(body).subscribe((res) => {});
+        this.authService.saveTempUser(body).subscribe((res) => { });
       }
       this.moveToNextModal(currentModal, nextModal);
       // })
@@ -563,7 +565,7 @@ export class PersonalizationComponent implements OnInit {
       // this.authService.saveTempUser(body).subscribe((res) => {
       if (this.educationTypeForm.controls.education_type.value !== 'Educated') {
         nextModal = 'candidateModallastbits';
-        this.authService.saveTempUser(body).subscribe((res) => {});
+        this.authService.saveTempUser(body).subscribe((res) => { });
       }
       this.moveToNextModal(currentModal, nextModal);
       // })
@@ -711,8 +713,8 @@ export class PersonalizationComponent implements OnInit {
           change_career:
             this.lastFewBitsDetailForm.controls.change_career.value !==
               undefined &&
-            this.lastFewBitsDetailForm.controls.change_career.value !== null &&
-            this.lastFewBitsDetailForm.controls.change_career.value !== ''
+              this.lastFewBitsDetailForm.controls.change_career.value !== null &&
+              this.lastFewBitsDetailForm.controls.change_career.value !== ''
               ? this.lastFewBitsDetailForm.controls.change_career.value[0]
               : '',
           passion: this.lastFewBitsDetailForm.controls.passion.value,
@@ -1027,8 +1029,8 @@ export class PersonalizationComponent implements OnInit {
       changecareer: this.lastFewBitsDetailForm.controls.changecareer.value,
       change_career:
         this.lastFewBitsDetailForm.controls.change_career.value !== undefined &&
-        this.lastFewBitsDetailForm.controls.change_career.value !== null &&
-        this.lastFewBitsDetailForm.controls.change_career.value !== ''
+          this.lastFewBitsDetailForm.controls.change_career.value !== null &&
+          this.lastFewBitsDetailForm.controls.change_career.value !== ''
           ? this.lastFewBitsDetailForm.controls.change_career.value[0]
           : '',
       passion: this.lastFewBitsDetailForm.controls.passion.value,
@@ -1080,6 +1082,9 @@ export class PersonalizationComponent implements OnInit {
         this.userRoleForm.controls.user_role.setValue(
           this.tempFormData['candidateModalCenter'].user_role.toString()
         );
+        const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
+        localData['role'] = Number(this.userRoleForm.controls.user_role.value);
+        sessionStorage.setItem('_ud', JSON.stringify([localData]));
         if (objectKeys.includes('candidateModalCenterupload')) {
           console.log(
             this.tempFormData[
@@ -1260,7 +1265,7 @@ export class PersonalizationComponent implements OnInit {
                     this.tempFormData['candidateModallastbitsfinal']
                       .last_few_join.salary_range?.min !== undefined
                       ? this.tempFormData['candidateModallastbitsfinal']
-                          .last_few_join.salary_range.min
+                        .last_few_join.salary_range.min
                       : 0;
                   this.highValue =
                     this.tempFormData[
@@ -1289,6 +1294,9 @@ export class PersonalizationComponent implements OnInit {
         this.userRoleForm.controls.user_role.setValue(
           this.tempFormData['candidateModalCenter'].user_role.toString()
         );
+         const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
+        localData['role'] = Number(this.userRoleForm.controls.user_role.value);
+        sessionStorage.setItem('_ud', JSON.stringify([localData]));
         if (objectKeys.includes('candidateModalCenterupload')) {
           console.log(
             this.tempFormData[

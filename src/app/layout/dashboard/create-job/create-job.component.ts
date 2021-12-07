@@ -1,14 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { JobService } from '../../../services/job.service';
+declare var $: any;
 @Component({
   selector: 'app-create-job',
   templateUrl: './create-job.component.html',
   styleUrls: ['./create-job.component.scss'],
 })
 export class CreateJobComponent implements OnInit {
-  constructor(private applyJob: JobService) {}
+  constructor(private applyJob: JobService) { }
   dropdownSettings1 = {};
   current: any[] = ['full-time', 'part-time'];
+  jobCategory: any;
+  education: any;
+  jobType: any;
+  remote: any;
+  postVacancy: any;
   jobDetails: {
     Title: string;
     Type: string;
@@ -20,17 +26,21 @@ export class CreateJobComponent implements OnInit {
     minExp: string;
     maxExp: string;
   } = {
-    Title: '',
-    Type: '',
-    Category: '',
-    City: '',
-    Country: '',
-    minSalary: '',
-    maxSalary: '',
-    minExp: '',
-    maxExp: '',
-  };
-
+      Title: '',
+      Type: '',
+      Category: '',
+      City: '',
+      Country: '',
+      minSalary: '',
+      maxSalary: '',
+      minExp: '',
+      maxExp: '',
+    };
+  stateDrp: any = [];
+  jobCategoryArray: any = [];
+  remoteArray: any = [];
+  educationLevelArray: any = [];
+  postVacancyArray: any = [];
   handleTitle = (event: Event) => {
     this.jobDetails.Title = (<HTMLInputElement>event.target).value;
   };
@@ -63,8 +73,16 @@ export class CreateJobComponent implements OnInit {
 
   handleSubmit = () => {
     console.log(this.jobDetails);
+    this.jobDetails['Category'] = this.jobCategory;
+    this.jobDetails['Type'] = this.jobType;
     this.applyJob.postJobs(this.jobDetails).subscribe(() => {
       console.log('Job created!!');
+      $('.nav-link').removeClass('active');
+      $('.tab-pane').removeClass('active');
+      $('#pills-profile-tab').addClass('active');
+      // $('#pills-profile-tab').addClass('fade');
+      $('#pills-profile').removeClass('fade')
+      $('#pills-profile').addClass('active')
     });
   };
   ngOnInit(): void {
@@ -77,5 +95,45 @@ export class CreateJobComponent implements OnInit {
       unSelectAllText: 'UnSelect All',
       allowSearchFilter: true,
     };
+    this.stateDrp = ['Full-time', 'Part-time', 'Internship']
+    this.jobCategoryArray = ['Remote', 'On-site'];
+    this.remoteArray = ['Full Time Remote', 'Part Time Remote'];
+    this.educationLevelArray = ['High', 'Medium', 'Low'];
+    this.postVacancyArray = [1, 2, 3, 4, 5];
+  }
+  onItemSelect(item: any) {
+    console.log(item);
+    this.jobType = item;
+  }
+  onSelectAll(items: any) {
+    console.log(items);
+  }
+  onJobCategoryItemSelect(item: any) {
+    console.log(item);
+    this.jobCategory = item;
+  }
+  onJobCategorySelectAll(items: any) {
+    console.log(items);
+  }
+  onRemoteItemSelect(item: any) {
+    console.log(item);
+    this.remote = item;
+  }
+  onRemoteSelectAll(items: any) {
+    console.log(items);
+  }
+  onEducationSelect(item: any) {
+    console.log(item);
+    this.education = item;
+  }
+  onEducationSelectAll(items: any) {
+    console.log(items);
+  }
+  onPostVacancySelect(item: any) {
+    console.log(item);
+    this.postVacancy = item;
+  }
+  onPostVacancySelectAll(items: any) {
+    console.log(items);
   }
 }
