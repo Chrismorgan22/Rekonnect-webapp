@@ -1,1 +1,4 @@
 /* No CSS *//*# sourceMappingURL=create-job.component.css.map */
+.invalid-feedback{
+    display: block !important;
+}

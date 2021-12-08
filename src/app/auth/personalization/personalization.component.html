@@ -425,7 +425,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-4">
-                            <button type="button" class="btn btn-primary" (click)="addButtonClick()">
+                            <button type="button" class="btn btn-primary" [disabled]="workingExpFlag" (click)="addButtonClick()">
                                 Add More Experience
                             </button>
                         </div>
@@ -1061,7 +1061,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
                             (click)="moveToPreviousModal('candidateModallastbitsfinal','candidateModallastbits')">Back</button>
-                        <button type="submit" class="btn btn-primary" [disabled]="goAhead">Save &
+                        <button type="submit" class="btn btn-primary" [disabled]="!goAhead">Save &
                             Continue</button>
                     </div>
                 </form>

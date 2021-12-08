@@ -23,8 +23,8 @@ const routes: Routes = [
         component: CandidateComponent,
         canActivate: [AuthGuard],
         data: {
-          role: '1'
-        }
+          role: '1',
+        },
       },
       {
         path: 'expert',
@@ -35,8 +35,8 @@ const routes: Routes = [
         component: EmployerComponent,
         canActivate: [AuthGuard],
         data: {
-          role: '2'
-        }
+          role: '2',
+        },
       },
       {
         path: 'institute',
@@ -47,64 +47,63 @@ const routes: Routes = [
         component: CandidateProfileComponent,
         canActivate: [AuthGuard],
         data: {
-          role: '1'
-        }
+          role: '1',
+        },
       },
       {
         path: 'job-list',
         component: JobListComponent,
         canActivate: [AuthGuard],
         data: {
-          role: '1'
-        }
+          role: '1',
+        },
       },
       {
         path: 'view-job',
         component: ViewJobComponent,
         canActivate: [AuthGuard],
         data: {
-          role: '2'
-        }
+          role: '2',
+        },
       },
       {
         path: 'bgv-form-dashboard',
         component: BgvFormDashboardComponent,
         canActivate: [AuthGuard],
         data: {
-          role: '1'
-        } 
+          role: '1',
+        },
       },
       {
         path: 'create-job',
         component: CreateJobComponent,
         canActivate: [AuthGuard],
         data: {
-          role: '2'
-        }
-
+          role: '2',
+        },
       },
       {
-        path: 'candidate-job-view',
+        path: 'organisation-view',
         component: CandidateJobViewComponent,
         canActivate: [AuthGuard],
         data: {
-          role: '1'
-        }
+          role: '1',
+        },
       },
       {
         path: 'apply-for-job',
         component: ApplyForJobComponent,
         canActivate: [AuthGuard],
         data: {
-          role: '1'
-        }
-      }
-    ]
-  }
+          role: '1',
+        },
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {}
