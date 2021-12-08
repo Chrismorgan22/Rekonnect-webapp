@@ -1308,6 +1308,18 @@ body {
             }
         }
 
+        .border-scandidate-banner {
+            padding: 16px;
+            border-radius: 16px;
+            border: 1px dashed $color-primary;
+            margin-top: 16px;
+
+            .user-image {
+                width: 40px !important;
+                height: 40px !important;
+                margin-bottom: 16px !important;
+            }
+        }
 
         .graph-cards {
             @media (max-width: $information-mobile-sm) {
@@ -1362,6 +1374,28 @@ body {
     }
 
     .job-right-content {
+
+        .profile-basic-card {
+            .profile-user-block {
+                .user-profile {
+                    display: flex;
+                    align-items: center;
+
+                    .user-image {
+                        width: 100px;
+                        height: 100px;
+                        margin-right: 16px;
+                        border-radius: 54px;
+
+                        & img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+        }
+
         &.top-content {
             @media (min-width: $information-mobile-md) {
                 display: flex;

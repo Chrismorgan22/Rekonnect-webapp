@@ -2800,6 +2800,19 @@ body::-webkit-scrollbar-thumb {
   color: #0C1A27;
 }
 
+.view-job-section .job-left-content .border-scandidate-banner {
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px dashed #15759A;
+  margin-top: 16px;
+}
+
+.view-job-section .job-left-content .border-scandidate-banner .user-image {
+  width: 40px !important;
+  height: 40px !important;
+  margin-bottom: 16px !important;
+}
+
 @media (max-width: 576px) {
   .view-job-section .job-left-content .graph-cards {
     margin-bottom: 16px;
@@ -2848,6 +2861,27 @@ body::-webkit-scrollbar-thumb {
 
 .view-job-section .job-left-content .graph-cards .card .progress.blue .progress-bar {
   background-color: #005A74;
+}
+
+.view-job-section .job-right-content .profile-basic-card .profile-user-block .user-profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.view-job-section .job-right-content .profile-basic-card .profile-user-block .user-profile .user-image {
+  width: 100px;
+  height: 100px;
+  margin-right: 16px;
+  border-radius: 54px;
+}
+
+.view-job-section .job-right-content .profile-basic-card .profile-user-block .user-profile .user-image img {
+  width: 100%;
+  height: 100%;
 }
 
 @media (min-width: 768px) {
