@@ -114,6 +114,10 @@
   text-decoration: underline;
 }
 
+.text-white {
+  color: #fff;
+}
+
 .text-primary {
   color: #15759A;
 }
@@ -1516,6 +1520,12 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
+.selected-pill .btn-selected-pill {
+  background: white;
+  border: none;
+  color: #0C1A27;
+}
+
 @media (max-width: 992px) {
   .start-section {
     padding: 50px;
@@ -1570,12 +1580,6 @@ body::-webkit-scrollbar-thumb {
 
 .start-section .section-form-content .custom-radio-group > input:checked + .custom-radio-group {
   background: white;
-}
-
-.start-section .section-form-content .custom-radio-group .selected-pill .btn-selected-pill {
-  background: white;
-  border: none;
-  color: #0C1A27;
 }
 
 .start-section .section-form-content .custom-radio-group > label {
@@ -2796,6 +2800,12 @@ body::-webkit-scrollbar-thumb {
   color: #0C1A27;
 }
 
+@media (max-width: 576px) {
+  .view-job-section .job-left-content .graph-cards {
+    margin-bottom: 16px;
+  }
+}
+
 .view-job-section .job-left-content .graph-cards .card {
   border-radius: 8px;
   padding: 16px;
@@ -2894,5 +2904,27 @@ body::-webkit-scrollbar-thumb {
 
 .view-job-section .job-right-content.top-content .btn.btn-secondary {
   border-radius: 8px;
+}
+
+.view-job-section .job-right-content .area-grey .form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.view-job-section .job-right-content .area-grey .mandate-section {
+  padding: 16px;
+  border: 1px dashed #15759A;
+  border-radius: 16px;
+  color: #15759A;
+  margin-bottom: 16px;
+}
+
+.area-grey {
+  padding: 16px;
+  background: #EEF4F9;
 }
 /*# sourceMappingURL=styles.css.map */

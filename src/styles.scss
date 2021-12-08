@@ -37,6 +37,13 @@ body {
         display: none;
     }
 }
+.selected-pill {
+    .btn-selected-pill {
+        background: lighten($color-primary, 70%);
+        border: none;
+        color: $text-color;
+    }
+}
 
 .start-section {
     @media (max-width: $information-mobile-lg) {
@@ -93,15 +100,7 @@ body {
                 }
             }
 
-            .selected-pill {
-                .btn-selected-pill {
-                    background: lighten($color-primary, 70%);
-                    border: none;
-                    color: $text-color;
-
-                  
-                }
-            }
+          
 
             & > label {
                 padding-left: 8px;
@@ -1311,6 +1310,9 @@ body {
 
 
         .graph-cards {
+            @media (max-width: $information-mobile-sm) {
+                margin-bottom: 16px;
+            } 
             .card {
                 border-radius: 8px;
                 padding: 16px;
@@ -1409,5 +1411,24 @@ body {
                 border-radius: 8px;
             }
         }
+
+        & .area-grey {
+            .form-group {
+                display: flex;
+                align-items: center;
+            }
+
+            .mandate-section {
+                padding: 16px;
+                border: 1px dashed $color-primary;
+                border-radius: 16px;
+                color: $color-primary;
+                margin-bottom: 16px;
+            }
+        }
     }
+}
+.area-grey {
+    padding: 16px;
+    background: #EEF4F9;
 }
