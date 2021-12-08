@@ -26,7 +26,7 @@ declare var $: any;
 })
 export class PersonalizationComponent implements OnInit {
   isSchoolNum: boolean = false;
-  goAhead: boolean = false;
+  goAhead: boolean = true;
   isDegreeNum: boolean = false;
   isStudyNum: boolean = false;
   completion: Number = 75;
@@ -107,6 +107,7 @@ export class PersonalizationComponent implements OnInit {
     'gainmorevisibilitymodal',
     'almostdonemodal',
   ];
+  workingExpFlag:boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
@@ -459,10 +460,12 @@ export class PersonalizationComponent implements OnInit {
     if (!event.target.checked) {
       experienceControl.get('end_date').setValidators(Validators.required);
       experienceControl.controls['end_date'].enable();
+      this.workingExpFlag = false;
     } else {
       experienceControl.controls['end_date'].disable();
       experienceControl.get('end_date').clearValidators();
       experienceControl.controls['end_date'].setValue('');
+      this.workingExpFlag = true;
     }
     experienceControl.get('end_date').updateValueAndValidity();
   }
