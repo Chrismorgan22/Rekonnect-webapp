@@ -8,7 +8,7 @@ declare var $: any;
   styleUrls: ['./create-job.component.scss'],
 })
 export class CreateJobComponent implements OnInit {
-  constructor(private applyJob: JobService, private fb: FormBuilder) { }
+  constructor(private applyJob: JobService, private fb: FormBuilder) {}
   dropdownSettings1 = {};
   current: any[] = ['full-time', 'part-time'];
   jobCategory: any;
@@ -23,21 +23,6 @@ export class CreateJobComponent implements OnInit {
   educationLevelArray: any = [];
   postVacancyArray: any = [];
   submitted: boolean = false;
-
-  handleSubmit = () => {
-    // console.log(this.jobDetails);
-    // this.jobDetails['Category'] = this.jobCategory;
-    // this.jobDetails['Type'] = this.jobType;
-    // this.applyJob.postJobs(this.jobDetails).subscribe(() => {
-    //   console.log('Job created!!');
-    //   $('.nav-link').removeClass('active');
-    //   $('.tab-pane').removeClass('active');
-    //   $('#pills-profile-tab').addClass('active');
-    //   // $('#pills-profile-tab').addClass('fade');
-    //   $('#pills-profile').removeClass('fade')
-    //   $('#pills-profile').addClass('active')
-    // });
-  };
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.dropdownSettings1 = {
@@ -48,7 +33,7 @@ export class CreateJobComponent implements OnInit {
       unSelectAllText: 'UnSelect All',
       allowSearchFilter: true,
     };
-    this.stateDrp = ['Full-time', 'Part-time', 'Internship']
+    this.stateDrp = ['Full-time', 'Part-time', 'Internship'];
     this.jobCategoryArray = ['Remote', 'On-site'];
     this.remoteArray = ['Full Time Remote', 'Part Time Remote'];
     this.educationLevelArray = ['High', 'Medium', 'Low'];
@@ -66,17 +51,54 @@ export class CreateJobComponent implements OnInit {
       min_experience: ['', Validators.required],
       max_experience: ['', Validators.required],
       post_vacancy: ['', Validators.required],
-      isVisume: [''],
-      is_candidate_report: [''],
-      job_description: ['', Validators.required]
-    })
+      isVisume: [false],
+      is_candidate_report: [false],
+      job_description: ['', Validators.required],
+    });
   }
-  get f() { return this.jobPostForm.controls; }
+  get f() {
+    return this.jobPostForm.controls;
+  }
   submitData() {
-    console.log(this.jobPostForm)
+    console.log(this.jobPostForm);
     this.submitted = true;
     if (this.jobPostForm.valid) {
-
+      const json = {
+        user_id: JSON.parse(sessionStorage.getItem('_ud'))[0]['_id'],
+        job_title: this.jobPostForm.controls.title.value,
+        job_type: this.jobPostForm.controls.job_type.value.toString(),
+        job_category: this.jobPostForm.controls.job_category.value.toString(),
+        city: this.jobPostForm.controls.city.value,
+        country: this.jobPostForm.controls.country.value,
+        salary_range: {
+          min: this.jobPostForm.controls.min_salary.value,
+          max: this.jobPostForm.controls.max_salary.value,
+        },
+        remote_type: this.jobPostForm.controls.is_remote.value.toString(),
+        education_level:
+          this.jobPostForm.controls.education_level.value.toString(),
+        minimum_experience_required:
+          this.jobPostForm.controls.min_experience.value,
+        maximum_experience_required:
+          this.jobPostForm.controls.max_experience.value,
+        top_skills: 'LeaderShip',
+        post_vacancies: this.jobPostForm.controls.post_vacancy.value.toString(),
+        is_visume: this.jobPostForm.controls.isVisume.value,
+        is_scandidate: this.jobPostForm.controls.is_candidate_report.value,
+        job_description: this.jobPostForm.controls.job_description.value,
+      };
+      this.applyJob.postJobs(json).subscribe((result: any) => {
+        if (result.result === 'success') {
+          this.submitted = false;
+          console.log('Job created!!');
+          $('.nav-link').removeClass('active');
+          $('.tab-pane').removeClass('active');
+          $('#pills-profile-tab').addClass('active');
+          // $('#pills-profile-tab').addClass('fade');
+          $('#pills-profile').removeClass('fade');
+          $('#pills-profile').addClass('active');
+        }
+      });
     }
   }
   onItemSelect(item: any) {

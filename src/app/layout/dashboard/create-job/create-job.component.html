@@ -1,7 +1,10 @@
 <div class="dashboard-section">
   <header>
     <div class="banner banner-bg-large">
-      <img class="banner-img" src="../../../../assets/images/job-posting/job-listing-band.jpg" />
+      <img
+        class="banner-img"
+        src="../../../../assets/images/job-posting/job-listing-band.jpg"
+      />
     </div>
   </header>
 
@@ -10,127 +13,325 @@
       <div class="row parent-section-body mt-3">
         <!-- row one -->
         <div class="col-sm col-sm-12 mb-sm-3 col-md-12 col-lg-7 left-side">
-          <div class="custom-tab-nav ">
+          <div class="custom-tab-nav">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-                  aria-controls="pills-home" aria-selected="true"><span>1</span>Job Posting</a>
+                <a
+                  class="nav-link active"
+                  id="pills-home-tab"
+                  data-toggle="pill"
+                  href="#pills-home"
+                  role="tab"
+                  aria-controls="pills-home"
+                  aria-selected="true"
+                  ><span>1</span>Job Posting</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                  aria-controls="pills-profile" aria-selected="false"><span>2</span>Job Posting Completed</a>
+                <a
+                  class="nav-link"
+                  id="pills-profile-tab"
+                  data-toggle="pill"
+                  href="#pills-profile"
+                  role="tab"
+                  aria-controls="pills-profile"
+                  aria-selected="false"
+                  ><span>2</span>Job Posting Completed</a
+                >
               </li>
             </ul>
             <div class="tab-content mt-4 pt-4" id="pills-tabContent">
-              <div class="tab-pane show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+              <div
+                class="tab-pane show active"
+                id="pills-home"
+                role="tabpanel"
+                aria-labelledby="pills-home-tab"
+              >
                 <div class="start-section">
                   <div class="section-form-content">
-                    <form [formGroup]="jobPostForm" (ngSubmit)="submitData()" noValidate>
+                    <form
+                      [formGroup]="jobPostForm"
+                      (ngSubmit)="submitData()"
+                      noValidate
+                    >
                       <div class="form-group">
-                        <input type="text" aria-describedby="title" formControlName="title" placeholder="Title"
-                          size="lg" class="form-control" />
-                        <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-                          <div *ngIf="f.title.errors.required">Title is required</div>
+                        <input
+                          type="text"
+                          aria-describedby="title"
+                          formControlName="title"
+                          placeholder="Title"
+                          size="lg"
+                          class="form-control"
+                        />
+                        <div
+                          *ngIf="submitted && f.title.errors"
+                          class="invalid-feedback"
+                        >
+                          <div *ngIf="f.title.errors.required">
+                            Title is required
+                          </div>
                         </div>
                       </div>
                       <div class="form-row form-group">
                         <div class="col">
-                          <ng-multiselect-dropdown [placeholder]="' Job Type'" [settings]="dropdownSettings1"
-                            formControlName="job_type" [data]="stateDrp" (onSelect)="onItemSelect($event)"
-                            (onSelectAll)="onSelectAll($event)">
+                          <ng-multiselect-dropdown
+                            [placeholder]="' Job Type'"
+                            [settings]="dropdownSettings1"
+                            formControlName="job_type"
+                            [data]="stateDrp"
+                            (onSelect)="onItemSelect($event)"
+                            (onSelectAll)="onSelectAll($event)"
+                          >
                           </ng-multiselect-dropdown>
+                          <div
+                            *ngIf="submitted && f.job_type.errors"
+                            class="invalid-feedback"
+                          >
+                            <div *ngIf="f.job_type.errors.required">
+                              Job type is required
+                            </div>
+                          </div>
                         </div>
                         <div class="col">
-
-                          <ng-multiselect-dropdown [placeholder]="' Job Category'" [settings]="dropdownSettings1"
-                            formControlName="job_category" [data]="jobCategoryArray"
-                            (onSelect)="onJobCategoryItemSelect($event)" (onSelectAll)="onJobCategorySelectAll($event)">
+                          <ng-multiselect-dropdown
+                            [placeholder]="' Job Category'"
+                            [settings]="dropdownSettings1"
+                            formControlName="job_category"
+                            [data]="jobCategoryArray"
+                            (onSelect)="onJobCategoryItemSelect($event)"
+                            (onSelectAll)="onJobCategorySelectAll($event)"
+                          >
                           </ng-multiselect-dropdown>
+                          <div
+                            *ngIf="submitted && f.job_category.errors"
+                            class="invalid-feedback"
+                          >
+                            <div *ngIf="f.job_category.errors.required">
+                              Job category is required
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div class="form-row form-group">
                         <div class="col">
-                          <input type="text" class="form-control" placeholder="City" formControlName="city" />
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="City"
+                            formControlName="city"
+                          />
+                          <div
+                            *ngIf="submitted && f.city.errors"
+                            class="invalid-feedback"
+                          >
+                            <div *ngIf="f.city.errors.required">
+                              City is required
+                            </div>
+                          </div>
                         </div>
                         <div class="col">
-                          <input type="text" placeholder="Country" class="form-control" formControlName="country" />
+                          <input
+                            type="text"
+                            placeholder="Country"
+                            class="form-control"
+                            formControlName="country"
+                          />
+                          <div
+                            *ngIf="submitted && f.country.errors"
+                            class="invalid-feedback"
+                          >
+                            <div *ngIf="f.country.errors.required">
+                              Country is required
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div class="form-row form-group">
                         <div class="col">
                           <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Minimum Salary Expected"
-                              formControlName="min_salary">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Minimum Salary Expected"
+                              formControlName="min_salary"
+                            />
                             <div class="input-group-append">
-                              <span class="input-group-text" id="basic-addon2">INR</span>
+                              <span class="input-group-text" id="basic-addon2"
+                                >INR</span
+                              >
+                            </div>
+                          </div>
+                          <div
+                            *ngIf="submitted && f.min_salary.errors"
+                            class="invalid-feedback"
+                          >
+                            <div *ngIf="f.min_salary.errors.required">
+                              Minimum salary is required
                             </div>
                           </div>
                         </div>
                         <div class="col">
                           <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Maximum Salary Expected"
-                              formControlName="max_salary">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Maximum Salary Expected"
+                              formControlName="max_salary"
+                            />
                             <div class="input-group-append">
-                              <span class="input-group-text" id="basic-addon2">INR</span>
+                              <span class="input-group-text" id="basic-addon2"
+                                >INR</span
+                              >
+                            </div>
+                          </div>
+                          <div
+                            *ngIf="submitted && f.max_salary.errors"
+                            class="invalid-feedback"
+                          >
+                            <div *ngIf="f.max_salary.errors.required">
+                              Maximun salary is required
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="form-row form-group mt-3 w-100 align-items-center d-small-block">
+                      <div
+                        class="
+                          form-row form-group
+                          mt-3
+                          w-100
+                          align-items-center
+                          d-small-block
+                        "
+                      >
                         <div class="col">
-                          <label for="exampleFormControlSelect2">Does this position support remote? </label>
+                          <label for="exampleFormControlSelect2"
+                            >Does this position support remote?
+                          </label>
                         </div>
                         <div class="col">
-
-                          <ng-multiselect-dropdown [placeholder]="'Full Time Remote'" [settings]="dropdownSettings1"
-                            formControlName="is_remote" [data]="remoteArray" (onSelect)="onRemoteItemSelect($event)"
-                            (onSelectAll)="onRemoteSelectAll($event)">
+                          <ng-multiselect-dropdown
+                            [placeholder]="'Full Time Remote'"
+                            [settings]="dropdownSettings1"
+                            formControlName="is_remote"
+                            [data]="remoteArray"
+                            (onSelect)="onRemoteItemSelect($event)"
+                            (onSelectAll)="onRemoteSelectAll($event)"
+                          >
                           </ng-multiselect-dropdown>
+                          <div
+                            *ngIf="submitted && f.is_remote.errors"
+                            class="invalid-feedback"
+                          >
+                            <div *ngIf="f.is_remote.errors.required">
+                              Selection is required
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div class="form-row form-group">
                         <div class="col">
-                          <ng-multiselect-dropdown [placeholder]="'Education Level'" [settings]="dropdownSettings1"
-                            [data]="educationLevelArray" (onSelect)="onEducationSelect($event)"
-                            formControlName="education_level" (onSelectAll)="onEducationSelectAll($event)">
+                          <ng-multiselect-dropdown
+                            [placeholder]="'Education Level'"
+                            [settings]="dropdownSettings1"
+                            [data]="educationLevelArray"
+                            (onSelect)="onEducationSelect($event)"
+                            formControlName="education_level"
+                            (onSelectAll)="onEducationSelectAll($event)"
+                          >
                           </ng-multiselect-dropdown>
+                          <div
+                            *ngIf="submitted && f.education_level.errors"
+                            class="invalid-feedback"
+                          >
+                            <div *ngIf="f.education_level.errors.required">
+                              Education level is required
+                            </div>
+                          </div>
                         </div>
                         <div class="col">
-                          <input type="text" placeholder="Minimum Experience Required" formControlName="min_experience"
-                            class="form-control" />
+                          <input
+                            type="text"
+                            placeholder="Minimum Experience Required"
+                            formControlName="min_experience"
+                            class="form-control"
+                          />
+                          <div
+                            *ngIf="submitted && f.min_experience.errors"
+                            class="invalid-feedback"
+                          >
+                            <div *ngIf="f.min_experience.errors.required">
+                              Minimum experience is required
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div class="form-row form-group">
                         <div class="col">
-                          <input type="text" formControlName="max_experience" placeholder="Maximum Experience Required"
-                            class="form-control" />
+                          <input
+                            type="text"
+                            formControlName="max_experience"
+                            placeholder="Maximum Experience Required"
+                            class="form-control"
+                          />
+                          <div
+                            *ngIf="submitted && f.max_experience.errors"
+                            class="invalid-feedback"
+                          >
+                            <div *ngIf="f.max_experience.errors.required">
+                              Maximum experience is required
+                            </div>
+                          </div>
                         </div>
-                        <div class="col">
-
-                        </div>
+                        <div class="col"></div>
                       </div>
                       <div class="form-group py-2">
                         <h5 class="bold">Top Skills Required</h5>
-                        <label class="text-color-light">This skills helps us curate to the prospective
-                          candidates</label>
+                        <label class="text-color-light"
+                          >This skills helps us curate to the prospective
+                          candidates</label
+                        >
                         <div class="selected-pill my-3">
-                          <span class="btn btn-selected-pill mr-3">Leadership <span class="material-icons">
-                              add
-                            </span></span>
-                          <span class="btn btn-selected-pill mr-3">Management <span class="material-icons">
-                              add
-                            </span></span>
+                          <span class="btn btn-selected-pill mr-3"
+                            >Leadership
+                            <span class="material-icons"> add </span></span
+                          >
+                          <span class="btn btn-selected-pill mr-3"
+                            >Management
+                            <span class="material-icons"> add </span></span
+                          >
                         </div>
                       </div>
-                      <div class="form-row form-group mt-3 w-100 align-items-center">
+                      <div
+                        class="
+                          form-row form-group
+                          mt-3
+                          w-100
+                          align-items-center
+                        "
+                      >
                         <div class="col">
-                          <h5 for="exampleFormControlSelect2">Post Vacancies</h5>
+                          <h5 for="exampleFormControlSelect2">
+                            Post Vacancies
+                          </h5>
                         </div>
                         <div class="col">
-                          <ng-multiselect-dropdown [placeholder]="'Select'" [settings]="dropdownSettings1"
-                            [data]="postVacancyArray" (onSelect)="onPostVacancySelect($event)"
-                            formControlName="post_vacancy" (onSelectAll)="onPostVacancySelectAll($event)">
+                          <ng-multiselect-dropdown
+                            [placeholder]="'Select'"
+                            [settings]="dropdownSettings1"
+                            [data]="postVacancyArray"
+                            (onSelect)="onPostVacancySelect($event)"
+                            formControlName="post_vacancy"
+                            (onSelectAll)="onPostVacancySelectAll($event)"
+                          >
                           </ng-multiselect-dropdown>
+                          <div
+                            *ngIf="submitted && f.post_vacancy.errors"
+                            class="invalid-feedback"
+                          >
+                            <div *ngIf="f.post_vacancy.errors.required">
+                              Post vacancy is required
+                            </div>
+                          </div>
                           <!-- <div class="btn-group custom-dropdown">
                           <button class="btn w-100 btn-secondary btn-lg dropdown-toggle w-min-250" type="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -144,49 +345,113 @@
                       </div>
                       <div class="form-group my-3">
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="isVisume">
-                          <label class="form-check-label text-center" for="gridCheck">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="gridCheck"
+                            formControlName="isVisume"
+                          />
+                          <label
+                            class="form-check-label text-center"
+                            for="gridCheck"
+                          >
                             Is visume important for this role?
                           </label>
                         </div>
                       </div>
                       <div class="form-group my-3">
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="gridCheck"
-                            formControlName="is_candidate_report">
-                          <label class="form-check-label text-center" for="gridCheck">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="gridCheck"
+                            formControlName="is_candidate_report"
+                          />
+                          <label
+                            class="form-check-label text-center"
+                            for="gridCheck"
+                          >
                             Is Scandidate report important for this role?
                           </label>
                         </div>
                       </div>
                       <div class="form-group mt-3">
-                        <textarea class="form-control" placeholder="Description" id="exampleFormControlTextarea1"
-                          rows="4" formControlName="job_description"></textarea>
+                        <textarea
+                          class="form-control"
+                          placeholder="Description"
+                          id="exampleFormControlTextarea1"
+                          rows="4"
+                          formControlName="job_description"
+                        ></textarea>
+                        <div
+                          *ngIf="submitted && f.job_description.errors"
+                          class="invalid-feedback"
+                        >
+                          <div *ngIf="f.job_description.errors.required">
+                            Job Description is required
+                          </div>
+                        </div>
                       </div>
                       <div class="form-footer text-right my-4">
-                        <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Back</button>
-                        <button type="submit" class="btn btn-primary w-min-250 btn-lg ml-2">Post
-                          Job listing</button>
+                        <button
+                          type="button"
+                          class="btn btn-secondary btn-lg"
+                          data-dismiss="modal"
+                        >
+                          Back
+                        </button>
+                        <button
+                          type="submit"
+                          class="btn btn-primary w-min-250 btn-lg ml-2"
+                        >
+                          Post Job listing
+                        </button>
                       </div>
                     </form>
                   </div>
                 </div>
               </div>
-              <div class="tab-pane posting-complete fade" id="pills-profile" role="tabpanel"
-                aria-labelledby="pills-profile-tab">
+              <div
+                class="tab-pane posting-complete fade"
+                id="pills-profile"
+                role="tabpanel"
+                aria-labelledby="pills-profile-tab"
+              >
                 <div class="text-center">
-                  <h5 class="modal-title section-sub-title mb-3" id="exampleModalLongTitle">Job Listed Sucessfully</h5>
-                  <p class="section-content font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
-                    sapien ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel lorem.
+                  <h5
+                    class="modal-title section-sub-title mb-3"
+                    id="exampleModalLongTitle"
+                  >
+                    Job Listed Sucessfully
+                  </h5>
+                  <p class="section-content font-16">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                    eget sapien ut erat vestibulum ultrices in vel lorem. Morbi
+                    leo lacus. Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit. Nam eget sapien ut erat vestibulum ultrices
+                    in vel lorem.
                   </p>
                   <div class="image-section">
-                    <img class="" src="../../../../assets/images/job-posting/job-posting-complete.png" />
+                    <img
+                      class=""
+                      src="../../../../assets/images/job-posting/job-posting-complete.png"
+                    />
                   </div>
 
                   <div class="form-footer text-right my-4">
-                    <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Back</button>
-                    <button type="button" class="btn btn-primary w-min-250 btn-lg ml-2">Done</button>
+                    <button
+                      type="button"
+                      class="btn btn-secondary btn-lg"
+                      data-dismiss="modal"
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-primary w-min-250 btn-lg ml-2"
+                    >
+                      Done
+                    </button>
                   </div>
                 </div>
               </div>
@@ -196,14 +461,22 @@
         <div class="col-sm col-sm-12 col-md-12 col-lg-4 mx-4 pl-3 right-side">
           <div class="right-side-content">
             <div class="section-block d-flex align-items-center">
-              <img class="section-image mr-3" src="../../../../assets/images/job-posting/curated-candidates.png" />
+              <img
+                class="section-image mr-3"
+                src="../../../../assets/images/job-posting/curated-candidates.png"
+              />
               <div class="section-content">
-                <h5 class="section-tag-line">Curated candidates as per your requirements</h5>
+                <h5 class="section-tag-line">
+                  Curated candidates as per your requirements
+                </h5>
                 <label class="font-14">Lorem Ipsum Dolor sit.</label>
               </div>
             </div>
             <div class="section-block d-flex align-items-center">
-              <img class="section-image mr-3" src="../../../../assets/images/job-posting/great-coverage.png" />
+              <img
+                class="section-image mr-3"
+                src="../../../../assets/images/job-posting/great-coverage.png"
+              />
 
               <div class="section-content">
                 <h5 class="section-tag-line">Great Coverage</h5>
@@ -211,7 +484,10 @@
               </div>
             </div>
             <div class="section-block d-flex align-items-center">
-              <img class="section-image mr-3" src="../../../../assets/images/job-posting/easy-to-manage.png" />
+              <img
+                class="section-image mr-3"
+                src="../../../../assets/images/job-posting/easy-to-manage.png"
+              />
 
               <div class="section-content">
                 <h5 class="section-tag-line">Easy to manage</h5>
@@ -225,72 +501,109 @@
               <div class="card">
                 <div class="card-header" id="headingOne">
                   <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                      aria-controls="collapseOne">
-                      How to reach best candidates? <span class="material-icons">
-                        expand_more
-                      </span>
+                    <button
+                      class="btn btn-link"
+                      data-toggle="collapse"
+                      data-target="#collapseOne"
+                      aria-expanded="true"
+                      aria-controls="collapseOne"
+                    >
+                      How to reach best candidates?
+                      <span class="material-icons"> expand_more </span>
                     </button>
                   </h5>
                 </div>
 
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div
+                  id="collapseOne"
+                  class="collapse show"
+                  aria-labelledby="headingOne"
+                  data-parent="#accordion"
+                >
                   <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                    eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                    assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
-                    sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-                    labore sustainable VHS.
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life
+                    accusamus terry richardson ad squid. 3 wolf moon officia
+                    aute, non cupidatat skateboard dolor brunch. Food truck
+                    quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                    sunt aliqua put a bird on it squid single-origin coffee
+                    nulla assumenda shoreditch et. Nihil anim keffiyeh
+                    helvetica, craft beer labore wes anderson cred nesciunt
+                    sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                    Leggings occaecat craft beer farm-to-table, raw denim
+                    aesthetic synth nesciunt you probably haven't heard of them
+                    accusamus labore sustainable VHS.
                   </div>
                 </div>
               </div>
               <div class="card">
                 <div class="card-header" id="headingTwo">
                   <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
-                      aria-expanded="false" aria-controls="collapseTwo">
+                    <button
+                      class="btn btn-link collapsed"
+                      data-toggle="collapse"
+                      data-target="#collapseTwo"
+                      aria-expanded="false"
+                      aria-controls="collapseTwo"
+                    >
                       How to edit job listing?
-                      <span class="material-icons">
-                        expand_more
-                      </span>
+                      <span class="material-icons"> expand_more </span>
                     </button>
                   </h5>
                 </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div
+                  id="collapseTwo"
+                  class="collapse"
+                  aria-labelledby="headingTwo"
+                  data-parent="#accordion"
+                >
                   <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                    eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                    assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
-                    sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-                    labore sustainable VHS.
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life
+                    accusamus terry richardson ad squid. 3 wolf moon officia
+                    aute, non cupidatat skateboard dolor brunch. Food truck
+                    quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                    sunt aliqua put a bird on it squid single-origin coffee
+                    nulla assumenda shoreditch et. Nihil anim keffiyeh
+                    helvetica, craft beer labore wes anderson cred nesciunt
+                    sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                    Leggings occaecat craft beer farm-to-table, raw denim
+                    aesthetic synth nesciunt you probably haven't heard of them
+                    accusamus labore sustainable VHS.
                   </div>
                 </div>
               </div>
               <div class="card">
                 <div class="card-header" id="headingThree">
                   <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
-                      aria-expanded="false" aria-controls="collapseThree">
+                    <button
+                      class="btn btn-link collapsed"
+                      data-toggle="collapse"
+                      data-target="#collapseThree"
+                      aria-expanded="false"
+                      aria-controls="collapseThree"
+                    >
                       How Lorem ipsum dolor sit amet?
-                      <span class="material-icons">
-                        expand_more
-                      </span>
+                      <span class="material-icons"> expand_more </span>
                     </button>
                   </h5>
                 </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div
+                  id="collapseThree"
+                  class="collapse"
+                  aria-labelledby="headingThree"
+                  data-parent="#accordion"
+                >
                   <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                    eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                    assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
-                    sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-                    labore sustainable VHS.
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life
+                    accusamus terry richardson ad squid. 3 wolf moon officia
+                    aute, non cupidatat skateboard dolor brunch. Food truck
+                    quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                    sunt aliqua put a bird on it squid single-origin coffee
+                    nulla assumenda shoreditch et. Nihil anim keffiyeh
+                    helvetica, craft beer labore wes anderson cred nesciunt
+                    sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                    Leggings occaecat craft beer farm-to-table, raw denim
+                    aesthetic synth nesciunt you probably haven't heard of them
+                    accusamus labore sustainable VHS.
                   </div>
                 </div>
               </div>

@@ -24,7 +24,7 @@ export class JobService {
       );
   }
   postJobs(job: any) {
-    return this.http.post<any>(`${this._url}/JobCopy/createOne`, job).pipe(
+    return this.http.post<any>(`${this._url}/job/save`, job).pipe(
       map((response) => {
         return response;
       })
