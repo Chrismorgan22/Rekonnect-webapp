@@ -25,110 +25,113 @@
               <div class="tab-pane show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                 <div class="start-section">
                   <div class="section-form-content">
-                    <div class="form-group">
-                      <input type="text" aria-describedby="title" placeholder="Title" (change)="handleTitle
-                      ($event)" size="lg" class="form-control" />
-                    </div>
-                    <div class="form-row form-group">
-                      <div class="col">
-                        <ng-multiselect-dropdown [placeholder]="' Job Type'" [settings]="dropdownSettings1"
-                          [data]="stateDrp" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
-                        </ng-multiselect-dropdown>
+                    <form [formGroup]="jobPostForm" (ngSubmit)="submitData()" noValidate>
+                      <div class="form-group">
+                        <input type="text" aria-describedby="title" formControlName="title" placeholder="Title"
+                          size="lg" class="form-control" />
+                        <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                          <div *ngIf="f.title.errors.required">Title is required</div>
+                        </div>
                       </div>
-                      <div class="col">
+                      <div class="form-row form-group">
+                        <div class="col">
+                          <ng-multiselect-dropdown [placeholder]="' Job Type'" [settings]="dropdownSettings1"
+                            formControlName="job_type" [data]="stateDrp" (onSelect)="onItemSelect($event)"
+                            (onSelectAll)="onSelectAll($event)">
+                          </ng-multiselect-dropdown>
+                        </div>
+                        <div class="col">
 
-                        <ng-multiselect-dropdown [placeholder]="' Job Category'" [settings]="dropdownSettings1"
-                          [data]="jobCategoryArray" (onSelect)="onJobCategoryItemSelect($event)"
-                          (onSelectAll)="onJobCategorySelectAll($event)">
-                        </ng-multiselect-dropdown>
+                          <ng-multiselect-dropdown [placeholder]="' Job Category'" [settings]="dropdownSettings1"
+                            formControlName="job_category" [data]="jobCategoryArray"
+                            (onSelect)="onJobCategoryItemSelect($event)" (onSelectAll)="onJobCategorySelectAll($event)">
+                          </ng-multiselect-dropdown>
+                        </div>
                       </div>
-                    </div>
-                    <div class="form-row form-group">
-                      <div class="col">
-                        <input type="text" class="form-control" placeholder="City" (change)="handleCity($event)" />
+                      <div class="form-row form-group">
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="City" formControlName="city" />
+                        </div>
+                        <div class="col">
+                          <input type="text" placeholder="Country" class="form-control" formControlName="country" />
+                        </div>
                       </div>
-                      <div class="col">
-                        <input type="text" placeholder="Country" class="form-control"
-                          (change)="handleCountry($event)" />
-                      </div>
-                    </div>
-                    <div class="form-row form-group">
-                      <div class="col">
-                        <div class="input-group mb-3">
-                          <input type="text" class="form-control" placeholder="Minimum Salary Expected"
-                            (change)="handleMinS($event)" aria-label="Recipient's username"
-                            aria-describedby="basic-addon2">
-                          <div class="input-group-append">
-                            <span class="input-group-text" id="basic-addon2">INR</span>
+                      <div class="form-row form-group">
+                        <div class="col">
+                          <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Minimum Salary Expected"
+                              formControlName="min_salary">
+                            <div class="input-group-append">
+                              <span class="input-group-text" id="basic-addon2">INR</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Maximum Salary Expected"
+                              formControlName="max_salary">
+                            <div class="input-group-append">
+                              <span class="input-group-text" id="basic-addon2">INR</span>
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col">
-                        <div class="input-group mb-3">
-                          <input type="text" class="form-control" placeholder="Maximum Salary Expected"
-                            (change)="handleMaxS($event)" aria-label="Recipient's username"
-                            aria-describedby="basic-addon2">
-                          <div class="input-group-append">
-                            <span class="input-group-text" id="basic-addon2">INR</span>
-                          </div>
+                      <div class="form-row form-group mt-3 w-100 align-items-center d-small-block">
+                        <div class="col">
+                          <label for="exampleFormControlSelect2">Does this position support remote? </label>
+                        </div>
+                        <div class="col">
+
+                          <ng-multiselect-dropdown [placeholder]="'Full Time Remote'" [settings]="dropdownSettings1"
+                            formControlName="is_remote" [data]="remoteArray" (onSelect)="onRemoteItemSelect($event)"
+                            (onSelectAll)="onRemoteSelectAll($event)">
+                          </ng-multiselect-dropdown>
                         </div>
                       </div>
-                    </div>
-                    <div class="form-row form-group mt-3 w-100 align-items-center d-small-block">
-                      <div class="col">
-                        <label for="exampleFormControlSelect2">Does this position support remote? </label>
+                      <div class="form-row form-group">
+                        <div class="col">
+                          <ng-multiselect-dropdown [placeholder]="'Education Level'" [settings]="dropdownSettings1"
+                            [data]="educationLevelArray" (onSelect)="onEducationSelect($event)"
+                            formControlName="education_level" (onSelectAll)="onEducationSelectAll($event)">
+                          </ng-multiselect-dropdown>
+                        </div>
+                        <div class="col">
+                          <input type="text" placeholder="Minimum Experience Required" formControlName="min_experience"
+                            class="form-control" />
+                        </div>
                       </div>
-                      <div class="col">
+                      <div class="form-row form-group">
+                        <div class="col">
+                          <input type="text" formControlName="max_experience" placeholder="Maximum Experience Required"
+                            class="form-control" />
+                        </div>
+                        <div class="col">
 
-                        <ng-multiselect-dropdown [placeholder]="'Full Time Remote'" [settings]="dropdownSettings1"
-                          [data]="remoteArray" (onSelect)="onRemoteItemSelect($event)"
-                          (onSelectAll)="onRemoteSelectAll($event)">
-                        </ng-multiselect-dropdown>
+                        </div>
                       </div>
-                    </div>
-                    <div class="form-row form-group">
-                      <div class="col">
-                        <ng-multiselect-dropdown [placeholder]="'Education Level'" [settings]="dropdownSettings1"
-                          [data]="educationLevelArray" (onSelect)="onEducationSelect($event)"
-                          (onSelectAll)="onEducationSelectAll($event)">
-                        </ng-multiselect-dropdown>
+                      <div class="form-group py-2">
+                        <h5 class="bold">Top Skills Required</h5>
+                        <label class="text-color-light">This skills helps us curate to the prospective
+                          candidates</label>
+                        <div class="selected-pill my-3">
+                          <span class="btn btn-selected-pill mr-3">Leadership <span class="material-icons">
+                              add
+                            </span></span>
+                          <span class="btn btn-selected-pill mr-3">Management <span class="material-icons">
+                              add
+                            </span></span>
+                        </div>
                       </div>
-                      <div class="col">
-                        <input type="text" placeholder="Minimum Experience Required" (change)="handleMinE($event)"
-                          class="form-control" />
-                      </div>
-                    </div>
-                    <div class="form-row form-group">
-                      <div class="col">
-                        <input type="text" (change)="handleMaxE($event)" class="form-control"
-                          placeholder="Maximum Experience Required" class="form-control" />
-                      </div>
-                      <div class="col">
-
-                      </div>
-                    </div>
-                    <div class="form-group py-2">
-                      <h5 class="bold">Top Skills Required</h5>
-                      <label class="text-color-light">This skills helps us curate to the prospective candidates</label>
-                      <div class="selected-pill my-3">
-                        <span class="btn btn-selected-pill mr-3">Leadership <span class="material-icons">
-                            add
-                          </span></span>
-                        <span class="btn btn-selected-pill mr-3">Management <span class="material-icons">
-                            add
-                          </span></span>
-                      </div>
-                    </div>
-                    <div class="form-row form-group mt-3 w-100 align-items-center">
-                      <div class="col">
-                        <h5 for="exampleFormControlSelect2">Post Vacancies</h5>
-                      </div>
-                      <div class="col">
-                        <ng-multiselect-dropdown [placeholder]="'Select'" [settings]="dropdownSettings1"
-                          [data]="postVacancyArray" (onSelect)="onPostVacancySelect($event)"
-                          (onSelectAll)="onPostVacancySelectAll($event)">
-                        </ng-multiselect-dropdown>
-                        <!-- <div class="btn-group custom-dropdown">
+                      <div class="form-row form-group mt-3 w-100 align-items-center">
+                        <div class="col">
+                          <h5 for="exampleFormControlSelect2">Post Vacancies</h5>
+                        </div>
+                        <div class="col">
+                          <ng-multiselect-dropdown [placeholder]="'Select'" [settings]="dropdownSettings1"
+                            [data]="postVacancyArray" (onSelect)="onPostVacancySelect($event)"
+                            formControlName="post_vacancy" (onSelectAll)="onPostVacancySelectAll($event)">
+                          </ng-multiselect-dropdown>
+                          <!-- <div class="btn-group custom-dropdown">
                           <button class="btn w-100 btn-secondary btn-lg dropdown-toggle w-min-250" type="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             2
@@ -137,33 +140,35 @@
                             ...
                           </div>
                         </div> -->
+                        </div>
                       </div>
-                    </div>
-                    <div class="form-group my-3">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="onboard">
-                        <label class="form-check-label text-center" for="gridCheck">
-                          Is visume important for this role?
-                        </label>
+                      <div class="form-group my-3">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="isVisume">
+                          <label class="form-check-label text-center" for="gridCheck">
+                            Is visume important for this role?
+                          </label>
+                        </div>
                       </div>
-                    </div>
-                    <div class="form-group my-3">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="onboard">
-                        <label class="form-check-label text-center" for="gridCheck">
-                          Is Scandidate report important for this role?
-                        </label>
+                      <div class="form-group my-3">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="gridCheck"
+                            formControlName="is_candidate_report">
+                          <label class="form-check-label text-center" for="gridCheck">
+                            Is Scandidate report important for this role?
+                          </label>
+                        </div>
                       </div>
-                    </div>
-                    <div class="form-group mt-3">
-                      <textarea class="form-control" placeholder="Description" id="exampleFormControlTextarea1" rows="4"
-                        formControlName="job_description"></textarea>
-                    </div>
-                    <div class="form-footer text-right my-4">
-                      <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Back</button>
-                      <button type="button" class="btn btn-primary w-min-250 btn-lg ml-2" (click)="handleSubmit()">Post
-                        Job listing</button>
-                    </div>
+                      <div class="form-group mt-3">
+                        <textarea class="form-control" placeholder="Description" id="exampleFormControlTextarea1"
+                          rows="4" formControlName="job_description"></textarea>
+                      </div>
+                      <div class="form-footer text-right my-4">
+                        <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Back</button>
+                        <button type="submit" class="btn btn-primary w-min-250 btn-lg ml-2">Post
+                          Job listing</button>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
