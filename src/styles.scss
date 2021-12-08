@@ -1272,3 +1272,142 @@ body {
 .invalid-feedback {
     display: block !important;
 }
+
+//view job section
+.view-job-section {
+    &.not-edit-mode {
+        .form-control[readonly] {
+            background-color: transparent;
+            border: none;
+        }
+
+        textarea {
+            resize: none;
+            height: 100%;
+        }
+    }
+
+    .job-left-content {
+        .top-content {
+            .badge-group {
+                .badge-job-type {
+                    background: #FDD839;
+                    color: $text-color;
+                }
+                .badge-job-level {
+                    background: #D3E4F1;
+                    color: $text-color;
+                }
+                .badge-location {
+                    background: #DBF0E5 ;
+                    color: $text-color;
+                }
+                .badge-vacancy {
+                    background: #F9EFDE ;
+                    color: $text-color;
+                }
+            }
+        }
+
+
+        .graph-cards {
+            .card {
+                border-radius: 8px;
+                padding: 16px;
+                border: none;
+
+                .arrow-space {
+                    padding: 8px;
+                    border-radius: 4px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    &.red {
+                        background: #FFC199;
+                    }
+
+                    &.green {
+                        background: #D1ECDD;
+                    }
+
+                    &.blue {
+                        background: #CCDEE3;
+                    }
+                }
+
+                .progress{
+                    &.red {
+                        .progress-bar {
+                            background-color: #FF6400;
+                        }
+                    }
+
+                    &.green {
+                        .progress-bar {
+                            background-color: #168005;
+                        }
+                    }
+
+                    &.blue {
+                        .progress-bar {
+                            background-color: #005A74;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .job-right-content {
+        &.top-content {
+            @media (min-width: $information-mobile-md) {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+            } 
+
+
+            .custom-dropdown {
+
+                span {
+                    display: block;
+                    width: 16px;
+                    height: 16px;
+                    border-radius: 54px;
+                    margin-right: 8px;
+                }
+                .active {
+                    display: flex;
+                    align-items: center;
+
+                    .active {
+                        background: green;
+                    }
+                }
+
+                .dropdown-item {
+                    display: flex;
+                    align-items: center;
+                }
+
+
+                .inactive {
+                    .inactive {
+                        background: rgb(202, 72, 72);
+                    }
+                }
+
+                .archive {
+                    .archieve {
+                        background: rgb(184, 184, 49);
+                    }
+                }
+            }
+
+            .btn.btn-secondary {
+                border-radius: 8px;
+            }
+        }
+    }
+}

@@ -2761,7 +2761,138 @@ body::-webkit-scrollbar-thumb {
     margin-top: 16px;
   }
 }
-.invalid-feedback{
+
+.invalid-feedback {
   display: block !important;
-} 
+}
+
+.view-job-section.not-edit-mode .form-control[readonly] {
+  background-color: transparent;
+  border: none;
+}
+
+.view-job-section.not-edit-mode textarea {
+  resize: none;
+  height: 100%;
+}
+
+.view-job-section .job-left-content .top-content .badge-group .badge-job-type {
+  background: #FDD839;
+  color: #0C1A27;
+}
+
+.view-job-section .job-left-content .top-content .badge-group .badge-job-level {
+  background: #D3E4F1;
+  color: #0C1A27;
+}
+
+.view-job-section .job-left-content .top-content .badge-group .badge-location {
+  background: #DBF0E5;
+  color: #0C1A27;
+}
+
+.view-job-section .job-left-content .top-content .badge-group .badge-vacancy {
+  background: #F9EFDE;
+  color: #0C1A27;
+}
+
+.view-job-section .job-left-content .graph-cards .card {
+  border-radius: 8px;
+  padding: 16px;
+  border: none;
+}
+
+.view-job-section .job-left-content .graph-cards .card .arrow-space {
+  padding: 8px;
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.view-job-section .job-left-content .graph-cards .card .arrow-space.red {
+  background: #FFC199;
+}
+
+.view-job-section .job-left-content .graph-cards .card .arrow-space.green {
+  background: #D1ECDD;
+}
+
+.view-job-section .job-left-content .graph-cards .card .arrow-space.blue {
+  background: #CCDEE3;
+}
+
+.view-job-section .job-left-content .graph-cards .card .progress.red .progress-bar {
+  background-color: #FF6400;
+}
+
+.view-job-section .job-left-content .graph-cards .card .progress.green .progress-bar {
+  background-color: #168005;
+}
+
+.view-job-section .job-left-content .graph-cards .card .progress.blue .progress-bar {
+  background-color: #005A74;
+}
+
+@media (min-width: 768px) {
+  .view-job-section .job-right-content.top-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+.view-job-section .job-right-content.top-content .custom-dropdown span {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 54px;
+  margin-right: 8px;
+}
+
+.view-job-section .job-right-content.top-content .custom-dropdown .active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.view-job-section .job-right-content.top-content .custom-dropdown .active .active {
+  background: green;
+}
+
+.view-job-section .job-right-content.top-content .custom-dropdown .dropdown-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.view-job-section .job-right-content.top-content .custom-dropdown .inactive .inactive {
+  background: #ca4848;
+}
+
+.view-job-section .job-right-content.top-content .custom-dropdown .archive .archieve {
+  background: #b8b831;
+}
+
+.view-job-section .job-right-content.top-content .btn.btn-secondary {
+  border-radius: 8px;
+}
 /*# sourceMappingURL=styles.css.map */

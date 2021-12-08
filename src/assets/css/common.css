@@ -113,6 +113,10 @@
   text-decoration: underline;
 }
 
+.text-white {
+  color: #fff;
+}
+
 .text-primary {
   color: #15759A;
 }
