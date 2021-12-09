@@ -1529,6 +1529,7 @@ body::-webkit-scrollbar-thumb {
 @media (max-width: 992px) {
   .start-section {
     padding: 50px;
+    padding-top: 0px !important;
   }
 }
 
