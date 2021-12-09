@@ -2962,4 +2962,69 @@ body::-webkit-scrollbar-thumb {
   padding: 16px;
   background: #EEF4F9;
 }
+
+.organisation-section .badge-pills .badge {
+  padding: 8px;
+  border: none;
+  margin-right: 8px;
+  color: #0C1A27;
+  font-weight: normal;
+}
+
+@media (max-width: 768px) {
+  .organisation-section .badge-pills .badge {
+    text-align: center;
+  }
+}
+
+.organisation-section .badge-pills .badge.badge-primary {
+  background: #DBEED0;
+}
+
+.organisation-section .badge-pills .badge.badge-secondary {
+  background: #FCE1D1;
+}
+
+.organisation-section .top-content .content {
+  margin-top: 80px;
+}
+
+.organisation-section .custom-organisation-tab .nav {
+  border-top: 1px solid #EEEEEE;
+  border-bottom: 1px solid #EEEEEE;
+  margin: 24px 0;
+}
+
+.organisation-section .custom-organisation-tab .nav .nav-item {
+  padding: 8px 8px 0;
+}
+
+.organisation-section .custom-organisation-tab .nav .nav-item .nav-link {
+  color: #0C1A27;
+}
+
+.organisation-section .custom-organisation-tab .nav .nav-item .nav-link.active {
+  background: transparent;
+  border-bottom: 4px solid #15759A;
+  color: #0C1A27;
+  font-weight: 700;
+  border-radius: 0;
+}
+
+.organisation-section .team-section .user-profile .image-section {
+  width: 100%;
+  height: auto;
+  margin-bottom: 16px;
+}
+
+.organisation-section .team-section .user-profile .image-section img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.organisation-section .team-section .user-profile .user {
+  text-align: center;
+}
 /*# sourceMappingURL=styles.css.map */
