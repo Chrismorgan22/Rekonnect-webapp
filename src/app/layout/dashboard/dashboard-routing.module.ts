@@ -91,7 +91,7 @@ const routes: Routes = [
         },
       },
       {
-        path: 'apply-for-job',
+        path: 'apply-for-job/:id',
         component: ApplyForJobComponent,
         canActivate: [AuthGuard],
         data: {

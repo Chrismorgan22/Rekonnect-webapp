@@ -71,7 +71,7 @@
                         </div>
                         <div class="bottom-card-content">
                             <div class="job-list-content">
-                                <div class="card mb-4">
+                                <div class="card mb-4" *ngFor="let job of jobListData">
                                     <div class="card-content row">
                                         <div class="head col-sm col-xl-2 col-lg-3 col-md-2 col-sm-12 mr-4">
                                             <div class="image-section ">
@@ -79,14 +79,16 @@
                                             </div>
                                         </div>
                                         <div class="col-sm col-xl-9 col-lg-9 col-md-8 col-sm-12">
-                                            <div class="right-side d-flex align-items-center justify-content-space-between">
-                                                <h5>UX Designer</h5>
+                                            <div
+                                                class="right-side d-flex align-items-center justify-content-space-between">
+                                                <h5>{{job.job_title}}</h5>
                                                 <div class="right-side d-flex align-items-center">
                                                     <label class="date mr-4 text-grey">
-                                                        Posted 3 hour ago
+                                                        Posted {{job.created_at}}
                                                     </label>
                                                     <div class="user-action d-flex justify-content-center pb-3">
-                                                        <button class="btn btn-primary btn-sm mr-2"> View Job
+                                                        <button class="btn btn-primary btn-sm mr-2"
+                                                            (click)="viewJob(job)"> View Job
                                                             Post</button>
                                                         <button class="btn btn-secondary btn-sm mr-2"><span
                                                                 class="material-icons">
@@ -99,15 +101,11 @@
 
                                             <div class="card-content">
                                                 <div class="badge-pills mb-3">
-                                                    <span class="badge badge-primary">Full-time</span>
-                                                    <span class="badge badge-secondary">Delhi</span>
+                                                    <span class="badge badge-primary">{{job.job_type}}</span>
+                                                    <span class="badge badge-secondary">{{job.city}}</span>
                                                 </div>
                                                 <div class="body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                                        eget sapien ut erat vestibulum ultrices in vel lorem. Morbi
-                                                        leo lacus. Lorem ipsum dolor sit amet, consectetur
-                                                        adipiscing elit. Nam eget sapien ut erat vestibulum ultrices
-                                                        in vel lorem. </p>
+                                                    <p>{{job.job_description}} </p>
                                                 </div>
                                             </div>
                                         </div>

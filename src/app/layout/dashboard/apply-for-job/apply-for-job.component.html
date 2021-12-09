@@ -55,11 +55,7 @@
                     <div class="d-flex d-small-block t-block justify-content-space-between align-items-center">
                         <div class="top-content">
                             <div class="section-sub-small-title my-4">Apply for job</div>
-                            <p class="text-grey mt-1 mb-4 font-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                                mattis nisi id dolor varius, volutpat egestas lectus pharetra. Etiam tempor lacus est,
-                                ac placerat arcu luctus pulvinar. Fusce mattis nibh at leo tincidunt mollis. Fusce magna
-                                ligula, porta venenatis sagittis eu, cursus non augue. Ut purus metus, venenatis eget
-                                augue in, vulputate congue nulla. Sed aliquam justo vel velit finibus, qui</p>
+                            <p class="text-grey mt-1 mb-4 font-16">{{jobDetail?.job_description}}</p>
                         </div>
                         <div>
                             <button class="btn btn-secondary w-min-250 mb-sm-3">Preview</button>
@@ -225,11 +221,14 @@
                                     <div class="content">
                                         <h6 class="text-uppercase">Scandidate</h6>
                                         <div class="text-grey mb-3">
-                                            On ReKonnect, candidates can choose total transparency - as a unique offering, we conduct checks on identity, address, education and experience along with a feedback report taken by our team directly from past employers. 
-                                            A Scandidate report gives new employers the confidence to Know Your Hire. 
+                                            On ReKonnect, candidates can choose total transparency - as a unique
+                                            offering, we conduct checks on identity, address, education and experience
+                                            along with a feedback report taken by our team directly from past employers.
+                                            A Scandidate report gives new employers the confidence to Know Your Hire.
                                         </div>
-                                        <a class="text-primary text-right w-100 ">Request for Feedback <span class="material-icons font-14">
-                                            arrow_forward_ios
+                                        <a class="text-primary text-right w-100 ">Request for Feedback <span
+                                                class="material-icons font-14">
+                                                arrow_forward_ios
                                             </span> </a>
                                     </div>
                                 </div>
@@ -241,7 +240,8 @@
                                     </span></button>
                                 <button type="button" class="btn btn-secondary mr-2 btn-lg"
                                     data-dismiss="modal">Save</button>
-                                <button type="button" class="btn btn-primary mr-2 w-min-250 btn-lg" (click)="handleApply()">Apply for
+                                <button type="button" class="btn btn-primary mr-2 w-min-250 btn-lg"
+                                    [disabled]="jobAppliedFlag" (click)="applyForjob()">Apply for
                                     Job</button>
                             </div>
                         </div>
