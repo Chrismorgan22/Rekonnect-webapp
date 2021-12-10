@@ -3,7 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { Location } from '@angular/common';
 import { NgxSpinnerService } from 'ngx-spinner';
+
 import {
   SocialAuthService,
   GoogleLoginProvider,
@@ -24,7 +26,12 @@ export class SignInComponent implements OnInit {
   submitted = false;
   socialUser: SocialUser;
   isLoggedin: boolean;
+  body: { email: string; password: string } = {
+    email: this.email,
+    password: this.password,
+  };
   constructor(
+    private location: Location,
     private formBuilder: FormBuilder,
     private _router: Router,
     private _authService: AuthService,
@@ -57,15 +64,15 @@ export class SignInComponent implements OnInit {
     console.log(this.email, this.password);
 
     event.preventDefault();
-    this.submitted = true;
-    console.log(this.form);
-    if (this.form.valid) {
-      this.SpinnerService.show();
-      const json = {};
-      json['email'] = this.form.controls.email.value;
-      json['password'] = this.form.controls.password.value;
-      this.loginAPICall(json);
-    }
+    this.body.email = this.email;
+    this.body.password = this.password;
+
+    this._authService.adminLogin(this.body).subscribe((data) => {
+      if (data !== null) {
+        console.log('adminLogin success ');
+        this._router.navigate(['/candidate-list']);
+      }
+    });
   }
   loginWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((x) => {
