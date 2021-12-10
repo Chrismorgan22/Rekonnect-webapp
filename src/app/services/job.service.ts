@@ -4,7 +4,9 @@ import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 @Injectable({ providedIn: 'root' })
 export class JobService {
+
   constructor(private http: HttpClient) { }
+
 
   getJobs() {
     return this.http.post<any>(`${environment.apiUrl}/job/list`, null).pipe(
@@ -37,10 +39,12 @@ export class JobService {
     );
   }
   getJobAppliedStatus(body) {
+
     return this.http.post<any>(`${environment.apiUrl}/job/application/applied/status`, body).pipe(
       map((response) => {
         return response;
       })
     );
+
   }
 }
