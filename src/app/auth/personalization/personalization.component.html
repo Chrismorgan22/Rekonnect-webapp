@@ -347,17 +347,17 @@
                                         </div>
                                     </div> -->
                                     <!-- <div class="col" *ngIf="experienceDetails.controls.city.value[0]?.name === 'Other'"> -->
-                                        <div class="col">
-                                            <!-- <label for="exampleFormControlSelect2">City</label> -->
-                                            <input type="text" placeholder="City" class="form-control"
-                                                formControlName="city" />
-                                            <div *ngIf="experienceDetailSubmit && experienceDetails.controls.other_city.errors"
-                                                class="invalid-feedback" style="display:block;">
-                                                <div *ngIf="experienceDetails.controls.city.errors.required">
-                                                    City
-                                                    is required</div>
-                                            </div>
+                                    <div class="col">
+                                        <!-- <label for="exampleFormControlSelect2">City</label> -->
+                                        <input type="text" placeholder="City" class="form-control"
+                                            formControlName="city" />
+                                        <div *ngIf="experienceDetailSubmit && experienceDetails.controls.other_city.errors"
+                                            class="invalid-feedback" style="display:block;">
+                                            <div *ngIf="experienceDetails.controls.city.errors.required">
+                                                City
+                                                is required</div>
                                         </div>
+                                    </div>
                                     <!-- </div> -->
                                 </div>
                                 <!-- <div class="form-row form-group mt-3"
@@ -399,7 +399,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group my-3">
+
+                            <div class="form-group my-3" *ngIf="i === ((userExpDetails.experienceDetails['controls'].length)-1)">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="gridCheck"
                                         formControlName="currently_working"
@@ -425,7 +426,8 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-4">
-                            <button type="button" class="btn btn-primary" [disabled]="workingExpFlag" (click)="addButtonClick()">
+                            <button type="button" class="btn btn-primary" [disabled]="workingExpFlag"
+                                (click)="addButtonClick()">
                                 Add More Experience
                             </button>
                         </div>
@@ -586,7 +588,8 @@
                                             is required</div>
                                     </div>
 
-                                    <span style="color:red;font-size: 12px;" *ngIf="isSchoolNum">School name should be in alphabets!</span>
+                                    <span style="color:red;font-size: 12px;" *ngIf="isSchoolNum">School name should be
+                                        in alphabets!</span>
                                 </div>
 
                             </div>
@@ -599,7 +602,8 @@
                                         <div *ngIf="userEduDetails.degree.errors.required">Degree
                                             is required</div>
                                     </div>
-                                    <span style="color:red;font-size: 12px;" *ngIf="isDegreeNum">Degree name should be in alphabets!</span>
+                                    <span style="color:red;font-size: 12px;" *ngIf="isDegreeNum">Degree name should be
+                                        in alphabets!</span>
 
                                 </div>
                                 <div class="col">
@@ -610,7 +614,8 @@
                                         <div *ngIf="userEduDetails.field_of_study.errors.required">Field of study
                                             is required</div>
                                     </div>
-                                    <span style="color:red;font-size: 12px;" *ngIf="isStudyNum">Field of study should be in alphabets!</span>
+                                    <span style="color:red;font-size: 12px;" *ngIf="isStudyNum">Field of study should be
+                                        in alphabets!</span>
 
                                 </div>
                             </div>
@@ -857,10 +862,8 @@
                                 </select> -->
                                 <ng-multiselect-dropdown [placeholder]="'Change Career'" [settings]="dropdownSettings1"
                                     [data]="currentCareerDrp" formControlName="change_career"
-                                    (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" 
-                                    [ngStyle]="{'display': ischange===true ? 'block' : 'none' }"
-                                    
-                                    >
+                                    (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)"
+                                    [ngStyle]="{'display': ischange===true ? 'block' : 'none' }">
                                 </ng-multiselect-dropdown>
                                 <div *ngIf="lastFewBitsDetailSubmit && userSoftSkillDetails.change_career.errors"
                                     class="invalid-feedback" style="display:block;">
@@ -928,7 +931,7 @@
                     <div class="container-fluid start-section  w-100">
                         <div class="section-form-content">
                             <div class="form-group py-4">
-                                <label>Select Salary Range   Denomtions in Lakhs<span style="color:red">*</span> </label>
+                                <label>Select Salary Range Denomtions in Lakhs<span style="color:red">*</span> </label>
                                 <div class="custom-file  d-block">
                                     <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
                                         formControlName="rangeValues"></ngx-slider>
@@ -1033,8 +1036,8 @@
                                     <img *ngIf="resumeFileUrl" src="../../../assets/images/file.jpg" width="25px"
                                         (click)="openFile(resumeFileUrl)">
                                     <div class="custom-file w-max-300 d-block">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile02" accept=".pdf,.docx"
-                                            (change)="uploadFile($event.target.files,'resume_url')">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile02"
+                                            accept=".pdf,.docx" (change)="uploadFile($event.target.files,'resume_url')">
                                         <label class="custom-file-label" for="inputGroupFile02">Upload
                                             Resume</label>
                                     </div>
@@ -1045,8 +1048,8 @@
                                         (click)="openFile(visumeFileUrl)">
                                     <!-- <label>How early are you available to join?</label> -->
                                     <div class="custom-file w-max-300 d-block">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile03" accept=".pdf,.docx"
-                                            (change)="uploadFile($event.target.files,'visume_url')">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile03"
+                                            accept=".pdf,.docx" (change)="uploadFile($event.target.files,'visume_url')">
                                         <label class="custom-file-label" for="inputGroupFile03">Upload
                                             Visume</label>
                                     </div>
@@ -1138,8 +1141,10 @@
                             <h3 class="modal-title section-main-title bold p-2" id="exampleModalLongTitle">You
                                 are almost done!</h3>
                             <div class="progress mb-3">
-                                <div class="progress-bar" role="progressbar" [ngStyle]="{'width': completion===100 ? '100%' : '75%' }" [attr.aria-valuenow]="getValue()"
-                                    aria-valuemin="0" aria-valuemax="100">{{completion}}%</div>
+                                <div class="progress-bar" role="progressbar"
+                                    [ngStyle]="{'width': completion===100 ? '100%' : '75%' }"
+                                    [attr.aria-valuenow]="getValue()" aria-valuemin="0" aria-valuemax="100">
+                                    {{completion}}%</div>
                             </div>
                             <h6 class="font-bold my-3">A minimum completion rate of 75% is required to continue
                             </h6>
