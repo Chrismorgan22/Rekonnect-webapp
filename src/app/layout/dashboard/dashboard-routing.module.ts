@@ -12,6 +12,7 @@ import { BgvFormDashboardComponent } from './bgv-form-dashboard/bgv-form-dashboa
 import { CreateJobComponent } from './create-job/create-job.component';
 import { CandidateJobViewComponent } from './candidate-job-view/candidate-job-view.component';
 import { ApplyForJobComponent } from './apply-for-job/apply-for-job.component';
+import { AuthGuard } from 'src/app/services/auth.guard';
 const routes: Routes = [
   {
     path: '',
@@ -20,6 +21,10 @@ const routes: Routes = [
       {
         path: 'candidate',
         component: CandidateComponent,
+        canActivate: [AuthGuard],
+        data: {
+          role: '1',
+        },
       },
       {
         path: 'expert',
@@ -28,6 +33,10 @@ const routes: Routes = [
       {
         path: 'employer',
         component: EmployerComponent,
+        canActivate: [AuthGuard],
+        data: {
+          role: '2',
+        },
       },
       {
         path: 'institute',
@@ -36,37 +45,65 @@ const routes: Routes = [
       {
         path: 'candidate-profile',
         component: CandidateProfileComponent,
+        canActivate: [AuthGuard],
+        data: {
+          role: '1',
+        },
       },
       {
         path: 'job-list',
         component: JobListComponent,
+        canActivate: [AuthGuard],
+        data: {
+          role: '1',
+        },
       },
       {
         path: 'view-job',
         component: ViewJobComponent,
+        canActivate: [AuthGuard],
+        data: {
+          role: '2',
+        },
       },
       {
         path: 'bgv-form-dashboard',
         component: BgvFormDashboardComponent,
+        canActivate: [AuthGuard],
+        data: {
+          role: '1',
+        },
       },
       {
         path: 'create-job',
         component: CreateJobComponent,
+        canActivate: [AuthGuard],
+        data: {
+          role: '2',
+        },
       },
       {
-        path: 'candidate-job-view',
+        path: 'organisation-view',
         component: CandidateJobViewComponent,
+        canActivate: [AuthGuard],
+        data: {
+          role: '1',
+        },
       },
       {
-        path: 'apply-for-job',
+        path: 'apply-for-job/:id',
         component: ApplyForJobComponent,
-      }
-    ]
-  }
+        canActivate: [AuthGuard],
+        data: {
+          role: '1',
+        },
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {}

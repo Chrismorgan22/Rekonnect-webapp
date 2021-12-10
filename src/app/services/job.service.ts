@@ -8,15 +8,15 @@ export class JobService {
   constructor(private http: HttpClient) {}
 
   getJobs() {
-    return this.http.get<any>(`${this._url}/JobCopy/getAll`).pipe(
+    return this.http.post<any>(`${this._url}/job/list`, null).pipe(
       map((response) => {
         return response;
       })
     );
   }
-  applyJob(userId: string, jobId: any) {
+  applyJob(jobData) {
     return this.http
-      .post<any>(`${this._url}/JobCopy/applyJob/${jobId}`, { userId: userId })
+      .post<any>(`${this._url}/job/application/apply`, jobData)
       .pipe(
         map((response) => {
           return response;
@@ -24,10 +24,26 @@ export class JobService {
       );
   }
   postJobs(job: any) {
-    return this.http.post<any>(`${this._url}/JobCopy/createOne`, job).pipe(
+    return this.http.post<any>(`${this._url}/job/save`, job).pipe(
       map((response) => {
         return response;
       })
     );
+  }
+  getJobDetails(id) {
+    return this.http.get<any>(`${this._url}/job/details/` + id).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
+  getJobAppliedStatus(body) {
+    return this.http
+      .post<any>(`${this._url}/job/application/applied/status`, body)
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
   }
 }

@@ -18,6 +18,8 @@ import { BgvFormDashboardComponent } from './bgv-form-dashboard/bgv-form-dashboa
 import { CreateJobComponent } from './create-job/create-job.component';
 import { CandidateJobViewComponent } from './candidate-job-view/candidate-job-view.component';
 import { ApplyForJobComponent } from './apply-for-job/apply-for-job.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [DashboardComponent, CandidateComponent, ExpertComponent,
     EmployerComponent, InstituteComponent, CandidateProfileComponent,JobListComponent, ViewJobComponent, BgvFormDashboardComponent, CreateJobComponent, CandidateJobViewComponent, ApplyForJobComponent],
@@ -27,7 +29,10 @@ import { ApplyForJobComponent } from './apply-for-job/apply-for-job.component';
     NgApexchartsModule,
     TimelineModule,
     AvatarModule,
-    AvatarGroupModule
+    AvatarGroupModule,
+    NgMultiSelectDropDownModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class DashboardModule { }

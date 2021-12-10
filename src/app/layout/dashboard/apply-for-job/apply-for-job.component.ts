@@ -1,26 +1,61 @@
 import { Component, OnInit } from '@angular/core';
 import { JobService } from 'src/app/services/job.service';
 import { ActivatedRoute } from '@angular/router';
-import { log } from 'console';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-apply-for-job',
   templateUrl: './apply-for-job.component.html',
   styleUrls: ['./apply-for-job.component.scss'],
 })
 export class ApplyForJobComponent implements OnInit {
-  userId: any = sessionStorage.getItem('_ud').substring(9, 33);
+  userId: any = JSON.parse(sessionStorage.getItem('_ud'))[0]['_id'];
   jobId: string;
-  constructor(private jobApply: JobService, private route: ActivatedRoute) {}
+  jobDetail: any;
+  jobAppliedFlag: boolean = false;
+  constructor(private jobApply: JobService, private route: ActivatedRoute, private SpinnerService: NgxSpinnerService, private _toastrService: ToastrService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     window.scrollTo(0, 0);
     this.jobId = this.route.snapshot.params.id;
     console.log(this.jobId);
+    await this.getJobDetails();
+    await this.getJobappliedStatusData();
   }
 
-  handleApply = () => {
-    this.jobApply.applyJob(this.userId, this.jobId).subscribe((data) => {
+  getJobDetails() {
+    this.jobApply.getJobDetails(this.jobId).subscribe((data) => {
       console.log('Job applied', data);
+      if (data.result === 'success') {
+        this.jobDetail = data.data[0];
+
+      }
+    });
+  }
+  applyForjob() {
+    this.SpinnerService.show()
+    const json = {
+      job_id: this.jobDetail._id,
+      candidate_id: this.userId
+    }
+    this.jobApply.applyJob(json).subscribe((data) => {
+      console.log('Job applied', data);
+      this.SpinnerService.hide()
+      this._toastrService.success('Job Applied Successfully', 'Success');
+      this.getJobappliedStatusData()
     });
   };
+  getJobappliedStatusData() {
+    const json = {
+      job_id: this.jobId,
+      candidate_id: this.userId
+    }
+    this.jobApply.getJobAppliedStatus(json).subscribe((data) => {
+      if (data.data.length !== 0) {
+        this.jobAppliedFlag = true;
+      } else {
+        this.jobAppliedFlag = false;
+      }
+    });
+  }
 }

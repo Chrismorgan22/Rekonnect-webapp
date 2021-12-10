@@ -1,72 +1,28 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { JobService } from '../../../services/job.service';
+declare var $: any;
 @Component({
   selector: 'app-create-job',
   templateUrl: './create-job.component.html',
   styleUrls: ['./create-job.component.scss'],
 })
 export class CreateJobComponent implements OnInit {
-  constructor(private applyJob: JobService) {}
+  constructor(private applyJob: JobService, private fb: FormBuilder) {}
   dropdownSettings1 = {};
   current: any[] = ['full-time', 'part-time'];
-  jobDetails: {
-    Title: string;
-    Type: string;
-    Category: string;
-    City: string;
-    Country: string;
-    minSalary: string;
-    maxSalary: string;
-    minExp: string;
-    maxExp: string;
-  } = {
-    Title: '',
-    Type: '',
-    Category: '',
-    City: '',
-    Country: '',
-    minSalary: '',
-    maxSalary: '',
-    minExp: '',
-    maxExp: '',
-  };
-
-  handleTitle = (event: Event) => {
-    this.jobDetails.Title = (<HTMLInputElement>event.target).value;
-  };
-  handleType = (value: string) => {
-    console.log(value);
-
-    this.jobDetails.Type = value;
-  };
-  handleCat = (event: Event) => {
-    this.jobDetails.Category = (<HTMLInputElement>event.target).value;
-  };
-  handleCity = (event: Event) => {
-    this.jobDetails.City = (<HTMLInputElement>event.target).value;
-  };
-  handleCountry = (event: Event) => {
-    this.jobDetails.Country = (<HTMLInputElement>event.target).value;
-  };
-  handleMinS = (event: Event) => {
-    this.jobDetails.minSalary = (<HTMLInputElement>event.target).value;
-  };
-  handleMaxS = (event: Event) => {
-    this.jobDetails.maxSalary = (<HTMLInputElement>event.target).value;
-  };
-  handleMaxE = (event: Event) => {
-    this.jobDetails.maxExp = (<HTMLInputElement>event.target).value;
-  };
-  handleMinE = (event: Event) => {
-    this.jobDetails.minExp = (<HTMLInputElement>event.target).value;
-  };
-
-  handleSubmit = () => {
-    console.log(this.jobDetails);
-    this.applyJob.postJobs(this.jobDetails).subscribe(() => {
-      console.log('Job created!!');
-    });
-  };
+  jobCategory: any;
+  education: any;
+  jobType: any;
+  remote: any;
+  postVacancy: any;
+  jobPostForm: FormGroup;
+  stateDrp: any = [];
+  jobCategoryArray: any = [];
+  remoteArray: any = [];
+  educationLevelArray: any = [];
+  postVacancyArray: any = [];
+  submitted: boolean = false;
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.dropdownSettings1 = {
@@ -77,5 +33,107 @@ export class CreateJobComponent implements OnInit {
       unSelectAllText: 'UnSelect All',
       allowSearchFilter: true,
     };
+    this.stateDrp = ['Full-time', 'Part-time', 'Internship'];
+    this.jobCategoryArray = ['Remote', 'On-site'];
+    this.remoteArray = ['Full Time Remote', 'Part Time Remote'];
+    this.educationLevelArray = ['High', 'Medium', 'Low'];
+    this.postVacancyArray = [1, 2, 3, 4, 5];
+    this.jobPostForm = this.fb.group({
+      title: ['', Validators.required],
+      job_type: ['', Validators.required],
+      job_category: ['', Validators.required],
+      city: ['', Validators.required],
+      country: ['', Validators.required],
+      min_salary: ['', Validators.required],
+      max_salary: ['', Validators.required],
+      is_remote: ['', Validators.required],
+      education_level: ['', Validators.required],
+      min_experience: ['', Validators.required],
+      max_experience: ['', Validators.required],
+      post_vacancy: ['', Validators.required],
+      isVisume: [false],
+      is_candidate_report: [false],
+      job_description: ['', Validators.required],
+    });
+  }
+  get f() {
+    return this.jobPostForm.controls;
+  }
+  submitData() {
+    console.log(this.jobPostForm);
+    this.submitted = true;
+    if (this.jobPostForm.valid) {
+      const json = {
+        user_id: JSON.parse(sessionStorage.getItem('_ud'))[0]['_id'],
+        job_title: this.jobPostForm.controls.title.value,
+        job_type: this.jobPostForm.controls.job_type.value.toString(),
+        job_category: this.jobPostForm.controls.job_category.value.toString(),
+        city: this.jobPostForm.controls.city.value,
+        country: this.jobPostForm.controls.country.value,
+        salary_range: {
+          min: this.jobPostForm.controls.min_salary.value,
+          max: this.jobPostForm.controls.max_salary.value,
+        },
+        remote_type: this.jobPostForm.controls.is_remote.value.toString(),
+        education_level:
+          this.jobPostForm.controls.education_level.value.toString(),
+        minimum_experience_required:
+          this.jobPostForm.controls.min_experience.value,
+        maximum_experience_required:
+          this.jobPostForm.controls.max_experience.value,
+        top_skills: 'LeaderShip',
+        post_vacancies: this.jobPostForm.controls.post_vacancy.value.toString(),
+        is_visume: this.jobPostForm.controls.isVisume.value,
+        is_scandidate: this.jobPostForm.controls.is_candidate_report.value,
+        job_description: this.jobPostForm.controls.job_description.value,
+      };
+      this.applyJob.postJobs(json).subscribe((result: any) => {
+        if (result.result === 'success') {
+          this.submitted = false;
+          console.log('Job created!!');
+          $('.nav-link').removeClass('active');
+          $('.tab-pane').removeClass('active');
+          $('#pills-profile-tab').addClass('active');
+          // $('#pills-profile-tab').addClass('fade');
+          $('#pills-profile').removeClass('fade');
+          $('#pills-profile').addClass('active');
+        }
+      });
+    }
+  }
+  onItemSelect(item: any) {
+    console.log(item);
+    this.jobType = item;
+  }
+  onSelectAll(items: any) {
+    console.log(items);
+  }
+  onJobCategoryItemSelect(item: any) {
+    console.log(item);
+    this.jobCategory = item;
+  }
+  onJobCategorySelectAll(items: any) {
+    console.log(items);
+  }
+  onRemoteItemSelect(item: any) {
+    console.log(item);
+    this.remote = item;
+  }
+  onRemoteSelectAll(items: any) {
+    console.log(items);
+  }
+  onEducationSelect(item: any) {
+    console.log(item);
+    this.education = item;
+  }
+  onEducationSelectAll(items: any) {
+    console.log(items);
+  }
+  onPostVacancySelect(item: any) {
+    console.log(item);
+    this.postVacancy = item;
+  }
+  onPostVacancySelectAll(items: any) {
+    console.log(items);
   }
 }
