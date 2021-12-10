@@ -18,6 +18,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class SignInComponent implements OnInit {
   form: FormGroup;
+  email: string = '';
+  password: string = '';
   loading = false;
   submitted = false;
   socialUser: SocialUser;
@@ -45,8 +47,16 @@ export class SignInComponent implements OnInit {
   get f() {
     return this.form.controls;
   }
+  handleMail(event: Event): void {
+    this.email = (<HTMLInputElement>event.target).value;
+  }
+  handlePass(event: Event): void {
+    this.password = (<HTMLInputElement>event.target).value;
+  }
+  onSubmit(event: Event) {
+    console.log(this.email, this.password);
 
-  onSubmit() {
+    event.preventDefault();
     this.submitted = true;
     console.log(this.form);
     if (this.form.valid) {
