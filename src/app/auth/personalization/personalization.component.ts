@@ -107,7 +107,7 @@ export class PersonalizationComponent implements OnInit {
     'gainmorevisibilitymodal',
     'almostdonemodal',
   ];
-  workingExpFlag:boolean = false;
+  workingExpFlag: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
@@ -228,10 +228,7 @@ export class PersonalizationComponent implements OnInit {
   }
 
   addButtonClick(): void {
-    if (
-      this.experienceDetailForm.controls.experienceDetails['controls'].length <
-      10
-    ) {
+    if (this.experienceDetailForm.controls.experienceDetails['controls'].length < 10) {
       (<FormArray>this.experienceDetailForm.get('experienceDetails')).push(
         this.addExperienceDetails()
       );
@@ -1297,7 +1294,7 @@ export class PersonalizationComponent implements OnInit {
         this.userRoleForm.controls.user_role.setValue(
           this.tempFormData['candidateModalCenter'].user_role.toString()
         );
-         const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
+        const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
         localData['role'] = Number(this.userRoleForm.controls.user_role.value);
         sessionStorage.setItem('_ud', JSON.stringify([localData]));
         if (objectKeys.includes('candidateModalCenterupload')) {

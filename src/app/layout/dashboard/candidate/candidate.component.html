@@ -292,11 +292,11 @@
                                             <p class="d-flex m-0 align-items-center"><label
                                                     class="font-bold"><span>Posted By </span> Sharman Singh</label>
                                                 <span class="dot"></span>
-                                                <label>3 hours ago</label>
+                                                <label>{{job.created_at}}</label>
                                             </p>
                                             <p class="d-flex m-0"><label class="mr-3"><span
-                                                        class="material-icons">work</span> {{job.catergory}}</label><label
-                                                    class="mr-3"><span class="material-icons">location_on</span> {{job.location}}</label> </p>
+                                                        class="material-icons">work</span> {{job.job_category}}</label><label
+                                                    class="mr-3"><span class="material-icons">location_on</span> {{job.city}}</label> </p>
                                         </div>
                                     </div>
                                     <div class="user-action-content">
@@ -307,7 +307,7 @@
                                     </div>
                                 </div>
                                 <div class="job-content">
-                                    <p>{{job.details}}</p>
+                                    <p>{{job.job_description}}</p>
                                 </div>
                             </div>
 
