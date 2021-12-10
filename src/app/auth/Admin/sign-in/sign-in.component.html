@@ -1,0 +1,100 @@
+<!-- <div class="card">
+    <h4 class="card-header">Sign In</h4>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="firstName">Email</label>
+                <input type="text" formControlName="email" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                    <div *ngIf="f.email.errors.email">Enter valid email address</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" formControlName="password" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                    <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Signin
+                </button>
+                <a routerLink="/auth/candidate/signup" class="btn btn-link">Sign Up</a>
+            </div>
+        </form>
+    </div>
+</div> -->
+<section>
+    <div class="row w-100">
+        <div class="col-sm col-lg-5 col-sm-12">
+            <img class="login-image img-fluid" src="../../../../assets/images/login.png" />
+        </div>
+        <div class="col-sm col-lg-6 col-sm-12">
+            <div class="section start-section">
+                <div class="section-heading">
+                    <h1 class="font-bold">Login to ReKonnect</h1>
+                    <h5 class="text-color-light font-normal">We help you kickstart/restart your career</h5>
+                </div>
+                <form class="section-form-content" [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" placeholder="Email"
+                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">Email is required</div>
+                            <div *ngIf="f.email.errors.email">Enter valid email address</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" formControlName="password" class="form-control"
+                            id="exampleInputPassword1" placeholder="Password"
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                        </div>
+                        <small class="form-text text-muted mt-8 text-right"> <button class="btn btn-link">Forgot
+                                Password?<span class="material-icons">lock</span></button> </small>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg mt-24 w-100">Submit</button>
+                </form>
+                <div class="section-footer">
+                    <div class="title text-center">
+                        <span>OR</span>
+                    </div>
+                    <div class="row mt-16" style="justify-content: space-evenly;">
+                        <div class="col-sm col-md-4 col-sm-12" (click)="loginWithGoogle()">
+                            <div class="border-outline-box">
+                                <img class="img-fluid" src="../../../../assets/images/google.png" />
+                            </div>
+                        </div>
+                        <div class="col-sm col-md-4 col-sm-12" (click)="loginInWithFB()">
+                            <div class="border-outline-box">
+                                <img class="img-fluid" src="../../../../assets/images/facebook.png" />
+                            </div>
+                        </div>
+                        <div class="col-sm col-md-4 col-sm-12" (click)="loginWithLinkedIn()">
+                            <div class="border-outline-box">
+                                <img class="img-fluid" src="../../../../assets/images/linkedin.png" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-30 w-100 text-center mt-16">
+                        <h6 class="text-color-light">Dont have an account? <a class="text-primary"
+                                routerLink="/auth/candidate/signup">Sign Up</a> </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+    <p style="color: white">Please Wait. </p>
+</ngx-spinner>
