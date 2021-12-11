@@ -1,6 +1,11 @@
-<div class="switch-button switch-button-lg">
+
+
+<div style="display: flex;"><div class="switch-button switch-button-lg">
   <input type="checkbox" name="item3" id="item3" (change)="changeUserRoleSwitch($event)" checked />
   <span><label for="item3"></label></span>
+</div>
+<span>Search </span>
+<input type="text" (change)="filterUsers($event)">
 </div>
 <table class="table">
   <thead>
@@ -9,7 +14,7 @@
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
       <th scope="col">Mobile</th>
-      <th scope="col">State</th>
+      <!-- <th scope="col">State</th>
       <th scope="col">Street</th>
       <th scope="col">Zip Code</th>
       <th scope="col">Education Type</th>
@@ -23,16 +28,16 @@
       <th scope="col">Passion</th>
       <th scope="col">Salary Range</th>
       <th scope="col">Soft Skills</th>
-      <th scope="col">Technical Skills</th>
+      <th scope="col">Technical Skills</th> -->
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let candidate of userData">
+    <tr *ngFor="let candidate of filterUser">
       <td>{{candidate?.user_details.first_name}}</td>
       <td>{{candidate?.user_details.last_name}}</td>
       <td>{{candidate?.user_details.email}}</td>
       <td>{{candidate?.user_details.phone}}</td>
-      <td>{{candidate?.candidate_details?.address_details?.state.name}}</td>
+      <!-- <td>{{candidate?.candidate_details?.address_details?.state.name}}</td>
       <td>{{candidate?.candidate_details?.address_details?.street}}</td>
       <td>{{candidate?.candidate_details?.address_details?.zip_code}}</td>
       <td>{{candidate?.candidate_details?.education_data?.education_type}}</td>
@@ -50,7 +55,7 @@
       <td><label *ngFor="let skill of candidate?.candidate_details?.soft_skills;let i=index"><b>{{i+1}}.</b>
           {{skill.name}}</label>
       <td><label *ngFor="let skill of candidate?.candidate_details?.technical_skills;let i=index"><b>{{i+1}}.</b>
-          {{skill.name}}</label>
+          {{skill.name}}</label> -->
     </tr>
   </tbody>
 </table>
