@@ -67,6 +67,14 @@ const routes: Routes = [
         },
       },
       {
+        path: 'view-job/:id',
+        component: ViewJobComponent,
+        canActivate: [AuthGuard],
+        data: {
+          role: '2',
+        },
+      },
+      {
         path: 'bgv-form-dashboard',
         component: BgvFormDashboardComponent,
         canActivate: [AuthGuard],
