@@ -13,6 +13,7 @@ import { CreateJobComponent } from './create-job/create-job.component';
 import { CandidateJobViewComponent } from './candidate-job-view/candidate-job-view.component';
 import { ApplyForJobComponent } from './apply-for-job/apply-for-job.component';
 import { AuthGuard } from 'src/app/services/auth.guard';
+import { EmployerViewJobComponent } from './employer-view-job/employer-view-job.component';
 const routes: Routes = [
   {
     path: '',
@@ -106,6 +107,14 @@ const routes: Routes = [
           role: '1',
         },
       },
+      {
+        path: 'employer-view-job',
+        component: EmployerViewJobComponent,
+        canActivate: [AuthGuard],
+        data: {
+          role: '2',
+        },
+      },
     ],
   },
 ];
@@ -114,4 +123,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DashboardRoutingModule {}
+export class DashboardRoutingModule { }

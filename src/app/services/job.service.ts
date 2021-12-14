@@ -8,8 +8,8 @@ export class JobService {
   constructor(private http: HttpClient) { }
 
 
-  getJobs() {
-    return this.http.post<any>(`${environment.apiUrl}/job/list`, null).pipe(
+  getJobs(json: any = null) {
+    return this.http.post<any>(`${environment.apiUrl}/job/list`, json).pipe(
       map((response) => {
         return response;
       })
