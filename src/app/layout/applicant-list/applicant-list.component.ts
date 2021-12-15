@@ -4,11 +4,11 @@ import { ToastrService } from 'ngx-toastr';
 import { LayoutService } from 'src/app/services/layout.service';
 
 @Component({
-  selector: 'app-user-list',
+  selector: 'app-applicant-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss'],
 })
-export class UserListComponent implements OnInit {
+export class ApplicantListComponent implements OnInit {
   userData: any[];
   searchTerm: string;
   constructor(
@@ -16,15 +16,13 @@ export class UserListComponent implements OnInit {
     public _toastrService: ToastrService,
     public SpinnerService: NgxSpinnerService
   ) {}
-  totalLength:any;
-  page:number=1;
-
-
+  totalLength: any;
+  page: number = 1;
 
   filterUser: string[];
   ngOnInit(): void {
     this.getUserListData(1);
-    this.totalLength=this.userData.length;
+    this.totalLength = this.userData.length;
   }
 
   filterUsers(event: Event): void {
