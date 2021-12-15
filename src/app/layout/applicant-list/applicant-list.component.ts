@@ -19,16 +19,44 @@ export class ApplicantListComponent implements OnInit {
   ) {}
   totalLength: any;
   page: number = 1;
-
+  totalApp: any[] = [];
   filterUser: string[];
   applicants: any[];
+  userInfo: {
+    firstName: string;
+    lastName: string;
+    jobTitle: string;
+  };
+  numberApp: { firstName: string; lastName: string; jobTitle: string }[];
   ngOnInit(): void {
     this.getUserListData(1);
     this.totalLength = this.userData.length;
     this._jobService.getApplicants().subscribe((response) => {
       this.applicants = response;
       console.log(this.applicants);
+
+      for (let i = 0; i < this.applicants.length; i++) {
+        this.userInfo = { firstName: '', lastName: '', jobTitle: '' };
+
+        this._jobService
+          .getUserById(this.applicants[i].candidate_id)
+          .subscribe((response) => {
+            console.log(response);
+
+            this.userInfo.firstName = response[0]?.first_name;
+            this.userInfo.lastName = response[0]?.last_name;
+          });
+
+        this._jobService
+          .getJobDetails(this.applicants[i].job_id)
+          .subscribe((response) => {
+            this.userInfo.jobTitle = response?.data[0]?.job_title;
+          });
+
+        this.totalApp?.push(this.userInfo);
+      }
     });
+    console.log(this.totalApp);
   }
 
   filterUsers(event: Event): void {

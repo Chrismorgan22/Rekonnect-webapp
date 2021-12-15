@@ -16,15 +16,13 @@ export class UserListComponent implements OnInit {
     public _toastrService: ToastrService,
     public SpinnerService: NgxSpinnerService
   ) {}
-  totalLength:any;
-  page:number=1;
-
-
+  totalLength: any;
+  page: number = 1;
 
   filterUser: string[];
   ngOnInit(): void {
     this.getUserListData(1);
-    this.totalLength=this.userData.length;
+    this.totalLength = this.userData.length;
   }
 
   filterUsers(event: Event): void {
@@ -38,6 +36,8 @@ export class UserListComponent implements OnInit {
     });
   }
   getUserListData(userRole) {
+    console.log(userRole);
+
     this.userData = [];
     this.SpinnerService.show();
     this._layoutService.getUserList(userRole).subscribe((response) => {

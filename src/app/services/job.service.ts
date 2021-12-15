@@ -54,4 +54,14 @@ export class JobService {
       })
     );
   }
+
+  getUserById(id: any) {
+    return this.http
+      .get<any>(`http://localhost:8000/user/applicant/` + id)
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
 }
