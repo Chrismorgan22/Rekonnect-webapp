@@ -247,6 +247,11 @@ export class PersonalizationComponent implements OnInit {
       1
     );
   }
+  setMinData() {
+    if (this.experienceDetailForm?.controls && this.experienceDetailForm?.controls.experienceDetails['controls'].length > 1) {
+      return this.userExpDetails.experienceDetails['controls'][(this.userExpDetails.experienceDetails['controls'].length) - 2].controls.end_date.value;
+    }
+  }
   addExperienceDetails(): FormGroup {
     return this.formBuilder.group({
       designation: ['', Validators.required],
@@ -1409,4 +1414,5 @@ export class PersonalizationComponent implements OnInit {
     a.click();
     document.body.removeChild(a);
   }
+  // log(val) { console.log(val); }
 }

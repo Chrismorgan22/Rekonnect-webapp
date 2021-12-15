@@ -376,7 +376,7 @@
                                     <div class="col">
                                         <label for="exampleFormControlSelect2">Start Date</label>
                                         <input type="date" placeholder="Country" class="form-control"
-                                            formControlName="start_date" />
+                                            formControlName="start_date" [min]="setMinData()"/>
                                         <div *ngIf="experienceDetailSubmit && experienceDetails.controls.start_date.errors"
                                             class="invalid-feedback" style="display:block;">
                                             <div *ngIf="experienceDetails.controls.start_date.errors.required">Start
