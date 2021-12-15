@@ -9,14 +9,18 @@ import { UserListComponent } from './user-list/user-list.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AboutComponent } from './about/about.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ApplicantListComponent } from './applicant-list/applicant-list.component';
 
 @NgModule({
-  declarations: [LayoutComponent, PostJobComponent, UserListComponent, AboutComponent, ProfileComponent],
-  imports: [
-    CommonModule,
-    BaseModule,
-    LayoutRoutingModule,
-    NgxSpinnerModule
-  ]
+  declarations: [
+    ApplicantListComponent,
+    LayoutComponent,
+    PostJobComponent,
+    UserListComponent,
+    AboutComponent,
+    ProfileComponent,
+  ],
+  imports: [CommonModule, BaseModule, LayoutRoutingModule, NgxSpinnerModule],
+  exports: [ApplicantListComponent],
 })
-export class LayoutModule { }
+export class LayoutModule {}

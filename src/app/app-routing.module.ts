@@ -2,20 +2,22 @@ import { NgModule } from '@angular/core';
 import { ApplyForJobComponent } from './layout/dashboard/apply-for-job/apply-for-job.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SignInComponent } from './auth/Admin/sign-in/sign-in.component';
+import { ApplicantListComponent } from './layout/applicant-list/applicant-list.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 const routes: Routes = [
   {
     path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
 
   {
     path: 'base',
-    loadChildren: () => import('./base/base.module').then((m) => m.BaseModule)
+    loadChildren: () => import('./base/base.module').then((m) => m.BaseModule),
   },
   {
     path: '',
-    loadChildren: () => import('./layout/layout.module').then((m) => m.LayoutModule)
+    loadChildren: () =>
+      import('./layout/layout.module').then((m) => m.LayoutModule),
   },
   {
     path: 'dashboard/apply-for-job/:id',
@@ -24,6 +26,10 @@ const routes: Routes = [
   {
     path: 'admin',
     component: SignInComponent,
+  },
+  {
+    path: 'applicant-list',
+    component: ApplicantListComponent,
   },
 
   // {
@@ -41,4 +47,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

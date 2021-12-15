@@ -7,12 +7,14 @@ import { BaseModule } from './base/base.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent
   ],
-  imports: [
+  imports: [NgxPaginationModule,
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
