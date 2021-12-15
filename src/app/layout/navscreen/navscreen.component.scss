@@ -1,0 +1,21 @@
+.body {
+    background-image: url("https://rekonnect.in/assets/images/background-illustration-services.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .navButton {
+        padding: 20px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .btn-primary {
+            margin-right: 3%;
+        }
+    }
+}

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { ApplyForJobComponent } from './layout/dashboard/apply-for-job/apply-for-job.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SignInComponent } from './auth/Admin/sign-in/sign-in.component';
+import { NavscreenComponent } from './layout/navscreen/navscreen.component';
 import { ApplicantListComponent } from './layout/applicant-list/applicant-list.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 const routes: Routes = [
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'admin',
     component: SignInComponent,
+  },
+  {
+    path: 'navigate',
+    component: NavscreenComponent,
   },
   {
     path: 'applicant-list',

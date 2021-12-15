@@ -10,6 +10,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { AboutComponent } from './about/about.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ApplicantListComponent } from './applicant-list/applicant-list.component';
+import { NavscreenComponent } from './navscreen/navscreen.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ApplicantListComponent } from './applicant-list/applicant-list.componen
     UserListComponent,
     AboutComponent,
     ProfileComponent,
+    NavscreenComponent,
   ],
   imports: [CommonModule, BaseModule, LayoutRoutingModule, NgxSpinnerModule],
   exports: [ApplicantListComponent],
