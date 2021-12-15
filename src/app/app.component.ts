@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
         }
       }
     }else{
-      router.navigate(['/'])
+      router.navigate([location.path()]);
     }
   }
   ngOnInit(): void {
