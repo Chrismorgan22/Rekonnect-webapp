@@ -20,9 +20,10 @@ import { CandidateJobViewComponent } from './candidate-job-view/candidate-job-vi
 import { ApplyForJobComponent } from './apply-for-job/apply-for-job.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EmployerViewJobComponent } from './employer-view-job/employer-view-job.component';
 @NgModule({
   declarations: [DashboardComponent, CandidateComponent, ExpertComponent,
-    EmployerComponent, InstituteComponent, CandidateProfileComponent,JobListComponent, ViewJobComponent, BgvFormDashboardComponent, CreateJobComponent, CandidateJobViewComponent, ApplyForJobComponent],
+    EmployerComponent, InstituteComponent, CandidateProfileComponent,JobListComponent, ViewJobComponent, BgvFormDashboardComponent, CreateJobComponent, CandidateJobViewComponent, ApplyForJobComponent, EmployerViewJobComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

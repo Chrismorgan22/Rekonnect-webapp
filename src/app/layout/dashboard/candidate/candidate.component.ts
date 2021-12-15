@@ -90,14 +90,27 @@ export class CandidateComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserProfileData();
-
-    this.jobDetails.getJobs().subscribe((data) => {
-      this.jobs = data;
-      console.log(data);
-    });
-    console.log(this.jobs);
+    this.getJobDetails();
+    // this.jobDetails.getJobs().subscribe((data) => {
+    //   data?.data.map((ele) => {
+    //     ele['created_at'] = moment(ele.created_at).fromNow();
+    //   })
+    //   this.jobs = data;
+    //   console.log(data);
+    // });
+    // console.log(this.jobs);
   }
 
+  getJobDetails(){
+    this.jobDetails.getJobs().subscribe((result: any) => {
+      if (result.result === 'success') {
+        result?.data.map((ele) => {
+          ele['created_at'] = moment(ele.created_at).fromNow();
+        })
+        this.jobs = result.data;
+      }
+    });
+  }
   getUserProfileData() {
     const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
     this.layoutService.getUserProfile(localData._id).subscribe((res) => {

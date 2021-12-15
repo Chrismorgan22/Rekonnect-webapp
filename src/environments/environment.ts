@@ -10,7 +10,7 @@ export const environment = {
   region: 'ap-south-1',
   Bucket: 'rekonnectfileupload'
 };
-
+// apiUrl: 'https://api.rekonnect.in',
 
 
 
