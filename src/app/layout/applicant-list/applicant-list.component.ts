@@ -34,9 +34,10 @@ export class ApplicantListComponent implements OnInit {
     this._jobService.getApplicants().subscribe((response) => {
       this.applicants = response;
       console.log(this.applicants);
-
       for (let i = 0; i < this.applicants.length; i++) {
         this.userInfo = { firstName: '', lastName: '', jobTitle: '' };
+
+        console.log(this.applicants[0].candidate_id);
 
         this._jobService
           .getUserById(this.applicants[i].candidate_id)
@@ -50,8 +51,11 @@ export class ApplicantListComponent implements OnInit {
         this._jobService
           .getJobDetails(this.applicants[i].job_id)
           .subscribe((response) => {
-            this.userInfo.jobTitle = response?.data[0]?.job_title;
+            console.log(response);
+
+            this.userInfo.jobTitle = response.data[0]?.job_title;
           });
+        console.log(this.userInfo);
 
         this.totalApp?.push(this.userInfo);
       }
