@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { LayoutService } from 'src/app/services/layout.service';
-
+import { JobService } from 'src/app/services/job.service';
 @Component({
   selector: 'app-applicant-list',
   templateUrl: './user-list.component.html',
@@ -14,15 +14,21 @@ export class ApplicantListComponent implements OnInit {
   constructor(
     public _layoutService: LayoutService,
     public _toastrService: ToastrService,
-    public SpinnerService: NgxSpinnerService
+    public SpinnerService: NgxSpinnerService,
+    private _jobService: JobService
   ) {}
   totalLength: any;
   page: number = 1;
 
   filterUser: string[];
+  applicants: any[];
   ngOnInit(): void {
     this.getUserListData(1);
     this.totalLength = this.userData.length;
+    this._jobService.getApplicants().subscribe((response) => {
+      this.applicants = response;
+      console.log(this.applicants);
+    });
   }
 
   filterUsers(event: Event): void {
