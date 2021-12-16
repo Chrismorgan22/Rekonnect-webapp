@@ -10,9 +10,11 @@ import { ToastrModule } from 'ngx-toastr';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PaymentComponent } from './payment/payment.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PaymentComponent
   ],
   imports: [NgxPaginationModule,
     BrowserModule,

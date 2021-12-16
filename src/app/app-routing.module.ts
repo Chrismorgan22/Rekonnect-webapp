@@ -5,6 +5,7 @@ import { SignInComponent } from './auth/Admin/sign-in/sign-in.component';
 import { NavscreenComponent } from './layout/navscreen/navscreen.component';
 import { ApplicantListComponent } from './layout/applicant-list/applicant-list.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
+import { PaymentComponent } from './payment/payment.component';
 const routes: Routes = [
   {
     path: 'auth',
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: 'applicant-list',
     component: ApplicantListComponent,
+  },
+  {
+    path: 'payment',
+    component: PaymentComponent,
   },
 
   // {
