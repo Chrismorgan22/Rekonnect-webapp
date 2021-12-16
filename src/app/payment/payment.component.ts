@@ -30,28 +30,29 @@ export class PaymentComponent implements OnInit {
       return;
     }
 
-    const data = await fetch('http://localhost:1337/razorpay', {
+    const data = await fetch('http://localhost:8000/razorpay', {
       method: 'POST',
     }).then((t) => t.json());
 
     console.log(data);
 
     const options = {
-      key: this.__DEV__ ? 'rzp_test_uGoq5ABJztRAhk' : 'PRODUCTION_KEY',
+      key: this.__DEV__ ? 'rzp_test_nBBe0QbVWt2oIh' : 'PRODUCTION_KEY',
       currency: data.currency,
       amount: data.amount.toString(),
       order_id: data.id,
       name: 'Donation',
-      description: 'Thank you for nothing. Please give us some money',
-      image: 'http://localhost:1337/logo.svg',
+      description: 'Thank you !',
+      image: '',
       handler: function (response) {
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature);
+        // alert(response.razorpay_payment_id);
+        // alert(response.razorpay_order_id);
+        // alert(response.razorpay_signature);
+        alert('payment success');
       },
       prefill: {
-        name,
-        email: 'sdfdsjfh2@ndsfdf.com',
+        name: 'alroy fernandes',
+        email: 'alroyfernandes07518@gmail.com@gmail.com',
         phone_number: '9899999999',
       },
     };
