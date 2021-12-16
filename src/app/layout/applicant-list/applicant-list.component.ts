@@ -47,6 +47,8 @@ export class ApplicantListComponent implements OnInit {
         this._jobService
           .getJobDetails(this.applicants[i].job_id)
           .subscribe((response) => {
+            console.log(response);
+
             this.userInfo.jobTitle = response.data[0]?.job_title;
           });
         console.log(this.userInfo);

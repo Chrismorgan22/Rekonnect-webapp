@@ -70,7 +70,10 @@ export class SignInComponent implements OnInit {
     this._authService.adminLogin(this.body).subscribe((data) => {
       if (data !== null) {
         console.log('adminLogin success ');
-        this._router.navigate(['/candidate-list']);
+        console.log(data);
+
+        sessionStorage.setItem('_ud', JSON.stringify([data]));
+        this._router.navigate(['/navigate']);
       }
     });
   }
