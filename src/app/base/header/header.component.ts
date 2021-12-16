@@ -5,36 +5,35 @@ declare var $: any;
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  loginFlag:boolean = false;
+  loginFlag: boolean = false;
   // logoutFlag:boolean = false;
-  constructor(private router: Router,private eventService:EventService) { }
+  constructor(private router: Router, private eventService: EventService) {}
 
   ngOnInit(): void {
     this.eventService.tokenSubObservable$.subscribe((muted: boolean) => {
-      const localData = JSON.parse(sessionStorage.getItem('_ud'))
-      if(localData){
-        this.loginFlag= true
-      }else{
-        this.loginFlag= false
+      const localData = JSON.parse(sessionStorage.getItem('_ud'));
+      if (localData) {
+        this.loginFlag = true;
+      } else {
+        this.loginFlag = false;
       }
       // console.log(muted)
       // if (muted) {}
-})
-      
+    });
   }
-  openLogoutModal(){
-    $('#logoutmodal').modal('show')
+  openLogoutModal() {
+    $('#logoutmodal').modal('show');
   }
-  logout(){
-    this.eventService.updateHeader(false)
+  logout() {
+    this.eventService.updateHeader(false);
     sessionStorage.clear();
-    this.router.navigate(['/'])
-    $('#logoutmodal').modal('hide')
+    this.router.navigate(['/']);
+    $('#logoutmodal').modal('hide');
   }
-  dismiss(){
-    $('#logoutmodal').modal('hide')
+  dismiss() {
+    $('#logoutmodal').modal('hide');
   }
 }
