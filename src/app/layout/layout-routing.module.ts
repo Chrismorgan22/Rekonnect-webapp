@@ -5,9 +5,7 @@ import { AboutComponent } from './about/about.component';
 import { LayoutComponent } from './layout.component';
 import { PostJobComponent } from './post-job/post-job.component';
 import { UserListComponent } from './user-list/user-list.component';
-import {
-  AuthGuardService as AuthGuard
-} from '../services/auth-guard.service'
+import { AuthGuardService as AuthGuard } from '../services/auth-guard.service';
 import { ProfileComponent } from './profile/profile.component';
 const routes: Routes = [
   {
@@ -16,31 +14,32 @@ const routes: Routes = [
     children: [
       {
         path: 'post-job',
-        component: PostJobComponent
+        component: PostJobComponent,
       },
       {
         path: 'candidate-list',
-        component: UserListComponent
+        component: UserListComponent,
       },
       {
         path: 'about',
-        component: AboutComponent
+        component: AboutComponent,
       },
       {
         path: 'profile',
-        component: ProfileComponent
+        component: ProfileComponent,
       },
       {
         path: 'dashboard',
-        loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
-        canActivate: [AuthGuard]
-      }
-    ]
-  }
+        loadChildren: () =>
+          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+        canActivate: [AuthGuard],
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class LayoutRoutingModule { }
+export class LayoutRoutingModule {}
