@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { JobService } from '../../../services/job.service';
 @Component({
   selector: 'app-bgv-form-dashboard',
   templateUrl: './bgv-form-dashboard.component.html',
@@ -8,7 +8,29 @@ import { Component, OnInit } from '@angular/core';
 export class BgvFormDashboardComponent implements OnInit {
   name: String = '';
   email: String = '';
+  user = JSON.parse(sessionStorage.getItem('_ud'));
+
+  userData: {
+    userId: String;
+    fname: String;
+    lname: String;
+    email: String;
+  } = {
+    userId: '',
+    fname: '',
+    lname: '',
+    email: '',
+  };
   __DEV__ = document.domain === 'localhost';
+
+  constructor(private _jobService: JobService) {}
+  setRecord() {
+    console.log('called');
+
+    this._jobService.postBgv(this.userData).subscribe((data) => {
+      console.log(data);
+    });
+  }
   loadScript(src) {
     return new Promise((resolve) => {
       const script = document.createElement('script');
@@ -46,29 +68,52 @@ export class BgvFormDashboardComponent implements OnInit {
       name: 'BGV report',
       description: 'Payment towards BGV report!',
       image: '',
-      handler: function (response) {
-        // alert(response.razorpay_payment_id);
-        // alert(response.razorpay_order_id);
-        // alert(response.razorpay_signature);
+      handler: async function (response) {
         alert('payment success');
+        // const cred = await fetch('http://localhost:8000/report/apply', {
+        //   method: 'POST',
+
+        //   body: JSON.stringify({
+        //     userId: this.userData.userId,
+        //     fname: this.userData.fname,
+        //     lname: this.userData.lname,
+        //     email: this.userData.email,
+        //   }),
+        // })
+        //   .then((response) => {
+        //     response.json();
+        //   })
+        //   .catch((err) => console.log(err));
+
+        // console.log(cred);
       },
       prefill: {
         name: 'alroy fernandes',
-        email: 'alroyfernandes07518@gmail.com@gmail.com',
+        email: 'alroyfernandes07518@gmail.com',
         phone_number: '9899999999',
       },
     };
     const paymentObject = new (window as any).Razorpay(options);
+    this.setRecord();
     paymentObject.open();
   }
-  constructor() {}
 
   handleName(event: Event) {
     this.name = (<HTMLInputElement>event.target).value;
   }
   handleEmail(event: Event) {
     this.email = (<HTMLInputElement>event.target).value;
+    this.userData.email = this.email;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.user);
+    console.log(this.user[0]);
+
+    this.userData.userId = this.user[0]._id;
+    this.userData.fname = this.user[0].first_name;
+    this.userData.lname = this.user[0].last_name;
+
+    console.log(this.userData);
+  }
 }
