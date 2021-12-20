@@ -83,10 +83,10 @@
                     <div class="col-sm col-sm-12 col-md-12 col-lg-12 section-form-content">
                       <div class="form-row form-group">
                         <div class="col">
-                          <input type="phone" class="form-control" placeholder="Name" />
+                          <input type="phone" class="form-control" placeholder="Name"  (change)="handleName($event)"/>
                         </div>
                         <div class="col">
-                          <input type="text" placeholder="Email" class="form-control" />
+                          <input type="text" placeholder="Email" class="form-control" (change)="handleEmail($event)"/>
                         </div>
                       </div>
                       <div class="form-row form-group">
@@ -115,7 +115,7 @@
                       </div>
                       <div class="d-flex align-items-center justify-content-flex-end my-4 py-4 button-group-section">
                         <button type="button" class="btn btn-secondary mr-4 btn-lg">Back</button>
-                        <button type="submit" class="btn btn-primary btn-lg">Save & proceed</button>
+                        <button type="submit" class="btn btn-primary btn-lg" (click)="displayRazorpay()">Save & proceed</button>
                       </div>
                     </div>
                   </div>

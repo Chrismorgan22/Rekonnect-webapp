@@ -30,7 +30,7 @@ export class PaymentComponent implements OnInit {
       return;
     }
 
-    const data = await fetch('http://localhost:8000/razorpay', {
+    const data = await fetch('http://localhost:8000/api/razorpay', {
       method: 'POST',
     }).then((t) => t.json());
 
