@@ -17,4 +17,7 @@ export class NavscreenComponent implements OnInit {
   applicant() {
     this.router.navigate(['/applicant-list']);
   }
+  bgvApplicant() {
+    this.router.navigate(['/bgvapplicant-list']);
+  }
 }

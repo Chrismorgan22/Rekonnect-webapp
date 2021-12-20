@@ -1,0 +1,53 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">email</th>
+
+        <th scope="col">pdf</th>
+        <!--
+        <th scope="col">Street</th>
+        <th scope="col">Zip Code</th>
+        <th scope="col">Education Type</th>
+        <th scope="col">Experience Type</th>
+        <th scope="col">Join Status</th>
+        <th scope="col">Join Within</th>
+        <th scope="col">Current Career</th>
+        <th scope="col">Change Career?</th>
+        <th scope="col">Change Career</th>
+        <th scope="col">Language</th>
+        <th scope="col">Passion</th>
+        <th scope="col">Salary Range</th>
+        <th scope="col">Soft Skills</th>
+        <th scope="col">Technical Skills</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let candidate of totalApp ">
+        <td>{{candidate?.fname}}</td>
+        <td>{{candidate?.lname}}</td>
+        <td>{{candidate?.email}}</td>
+       
+        <!-- <td>{{candidate?.candidate_details?.address_details?.state.name}}</td>
+        <td>{{candidate?.candidate_details?.address_details?.street}}</td>
+        <td>{{candidate?.candidate_details?.address_details?.zip_code}}</td>
+        <td>{{candidate?.candidate_details?.education_data?.education_type}}</td>
+        <td>{{candidate?.candidate_details?.experience_data?.experience_type}}</td>
+        <td>{{candidate?.candidate_details?.joining_status === true?'Yes':'No'}}</td>
+        <td>{{candidate?.candidate_details?.join_within}}</td>
+        <td>{{candidate?.candidate_details?.current_career?.name}}</td>
+        <td>{{candidate?.candidate_details?.changecareer === true?'Yes':'No'}}</td>
+        <td>{{candidate?.candidate_details?.change_career?.name}}</td>
+        <td><label *ngFor="let lang of candidate?.candidate_details?.languages;let i=index"><b>{{i+1}}.</b>
+            {{lang.name}}</label>
+        <td>{{candidate?.candidate_details?.passion}}</td>
+        <td>Rs. {{candidate?.candidate_details?.salary_range?.min}} - Rs.
+          {{candidate?.candidate_details?.salary_range?.max}}</td>
+        <td><label *ngFor="let skill of candidate?.candidate_details?.soft_skills;let i=index"><b>{{i+1}}.</b>
+            {{skill.name}}</label>
+        <td><label *ngFor="let skill of candidate?.candidate_details?.technical_skills;let i=index"><b>{{i+1}}.</b>
+            {{skill.name}}</label> -->
+      </tr>
+    </tbody>
+  </table>

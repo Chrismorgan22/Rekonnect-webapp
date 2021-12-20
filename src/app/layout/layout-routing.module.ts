@@ -7,6 +7,7 @@ import { PostJobComponent } from './post-job/post-job.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { AuthGuardService as AuthGuard } from '../services/auth-guard.service';
 import { ProfileComponent } from './profile/profile.component';
+import { BgvlistComponent } from './bgvlist/bgvlist.component';
 const routes: Routes = [
   {
     path: '',
@@ -15,6 +16,10 @@ const routes: Routes = [
       {
         path: 'post-job',
         component: PostJobComponent,
+      },
+      {
+        path: 'bgvapplicant-list',
+        component: BgvlistComponent,
       },
       {
         path: 'candidate-list',

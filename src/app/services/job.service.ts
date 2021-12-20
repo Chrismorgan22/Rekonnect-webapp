@@ -4,9 +4,7 @@ import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 @Injectable({ providedIn: 'root' })
 export class JobService {
-
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient) {}
 
   getJobs(json: any = null) {
     return this.http.post<any>(`${environment.apiUrl}/job/list`, json).pipe(
@@ -39,13 +37,13 @@ export class JobService {
     );
   }
   getJobAppliedStatus(body) {
-
-    return this.http.post<any>(`${environment.apiUrl}/job/application/applied/status`, body).pipe(
-      map((response) => {
-        return response;
-      })
-    );
-
+    return this.http
+      .post<any>(`${environment.apiUrl}/job/application/applied/status`, body)
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
   }
 
   getApplicants() {
@@ -64,5 +62,19 @@ export class JobService {
           return response;
         })
       );
+  }
+  postBgv(body: any) {
+    return this.http.post<any>(`http://localhost:8000/report/apply`, body).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
+  getBgv() {
+    return this.http.get<any>(`http://localhost:8000/report/users`).pipe(
+      map((response) => {
+        return response;
+      })
+    );
   }
 }

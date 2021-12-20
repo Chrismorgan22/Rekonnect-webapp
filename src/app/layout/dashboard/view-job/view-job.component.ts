@@ -6,13 +6,17 @@ declare var $: any;
 @Component({
   selector: 'app-view-job',
   templateUrl: './view-job.component.html',
-  styleUrls: ['./view-job.component.scss']
+  styleUrls: ['./view-job.component.scss'],
 })
 export class ViewJobComponent implements OnInit {
   jobId: any;
   jobDetail: any;
-  appliedUserList: any=[]
-  constructor(private jobService: JobService, private route: ActivatedRoute, private jobApplicationService: JobApplicationService) { }
+  appliedUserList: any = [];
+  constructor(
+    private jobService: JobService,
+    private route: ActivatedRoute,
+    private jobApplicationService: JobApplicationService
+  ) {}
 
   async ngOnInit() {
     this.jobId = this.route.snapshot.paramMap.get('id');
@@ -22,7 +26,7 @@ export class ViewJobComponent implements OnInit {
     } else {
       this.jobService.getJobs().subscribe((result: any) => {
         if (result.result === 'success') {
-          console.log(result)
+          console.log(result);
           // result?.data.map((ele) => {
           //   ele['created_at'] = moment(ele.created_at).fromNow();
           // })
@@ -37,8 +41,8 @@ export class ViewJobComponent implements OnInit {
       console.log('Job applied', data);
       if (data.result === 'success') {
         this.jobDetail = data.data[0];
-        console.log(this.jobDetail)
-        this.jobDetail["skills"] = this.jobDetail.top_skills.split(',')
+        console.log(this.jobDetail);
+        this.jobDetail['skills'] = this.jobDetail.top_skills.split(',');
       }
     });
   }
@@ -55,7 +59,7 @@ export class ViewJobComponent implements OnInit {
         // this.jobDetail = data.data[0];
         // console.log(this.jobDetail)
         // this.jobDetail["skills"] = this.jobDetail.top_skills.split(',')
-        console.log(data)
+        console.log(data);
       }
     });
   }

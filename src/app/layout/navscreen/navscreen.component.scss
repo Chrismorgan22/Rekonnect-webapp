@@ -17,5 +17,22 @@
         .btn-primary {
             margin-right: 3%;
         }
+        .btn-secondary {
+            margin-right: 3%;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .body {
+        .navButton {
+            flex-direction: column;
+            .btn-primary {
+                margin-bottom: 3%;
+            }
+            .btn-secondary {
+                margin-bottom: 3%;
+            }
+        }
     }
 }
