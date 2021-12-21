@@ -28,7 +28,11 @@
         <td>{{candidate?.fname}}</td>
         <td>{{candidate?.lname}}</td>
         <td>{{candidate?.email}}</td>
-       
+       <td> <input type="file" id="bgvUpload" style="display:none" (change)="uploadFile($event.target.files,candidate._id)">
+    <label for="bgvUpload" style="color:white;padding:7px;background-color:rgb(35, 177, 153);border-radius:18px;cursor:pointer">
+      Upload Pdf 
+    </label>
+      </td>
         <!-- <td>{{candidate?.candidate_details?.address_details?.state.name}}</td>
         <td>{{candidate?.candidate_details?.address_details?.street}}</td>
         <td>{{candidate?.candidate_details?.address_details?.zip_code}}</td>
