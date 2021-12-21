@@ -10,13 +10,14 @@ import { FileUploadService } from '../../services/file-upload.service';
   styleUrls: ['./bgvlist.component.scss'],
 })
 export class BgvlistComponent implements OnInit {
+  isSubmit: boolean = false;
   constructor(
     private _bgvList: JobService,
     private _fileService: FileUploadService
   ) {}
   body: { id: string; url: string } = {
     id: '',
-    url: '',
+    url: 'https://rekonnectfileupload.s3.ap-south-1.amazonaws.com/Rekonnectreciept%20for%20sem%20fees.pdf',
   };
   bucket = new S3({
     accessKeyId: environment.accessKeyId,
@@ -31,28 +32,42 @@ export class BgvlistComponent implements OnInit {
   }
 
   uploadFile(file, type) {
-    // const contentType = file[0].type;
-    // if (file[0].size > 2200000) {
-    //   window.alert('file too large');
-    //   return;
-    // }
-    // const params = {
-    //   Bucket: environment.Bucket,
-    //   Key: 'Rekonnect' + file[0].name,
-    //   Body: file[0],
-    //   ACL: 'public-read',
-    //   ContentType: contentType,
-    // };
-    // const self = this;
-    // this.bucket.upload(params, function (err, data) {
-    //   if (err) {
-    //     console.log('There was an error uploading your file: ', err);
-    //     return false;
-    //   }
-    //   console.log('Successfully uploaded file.', data);
-    //   this.body.id = type;
-    //   this.body.url = data.Location;
-    // });
-    console.log(this._fileService.uploadFileData(file));
+    const contentType = file[0].type;
+    if (file[0].size > 2200000) {
+      window.alert('file too large');
+      return;
+    }
+    const params = {
+      Bucket: environment.Bucket,
+      Key: 'Rekonnect' + file[0].name,
+      Body: file[0],
+      ACL: 'public-read',
+      ContentType: contentType,
+    };
+    this.bucket.upload(params, function (err, data) {
+      if (err) {
+        console.log('There was an error uploading your file: ', err);
+        return false;
+      }
+      console.log('Successfully uploaded file.', data);
+
+      this.body.url = data.Location;
+    });
+    console.log(this.body);
+    this.body.id = type;
+    this._bgvList.postPdf(this.body).subscribe((data) => {
+      return data;
+    });
+  }
+
+  //   this._fileService.uploadFileData(file).send(function (err, data) {
+  //     this.body.id = type;
+  //     this.body.url = data.Location;
+  // }
+
+  postPdf(): any {
+    this._bgvList.postPdf(this.body).subscribe((data) => {
+      return data;
+    });
   }
 }

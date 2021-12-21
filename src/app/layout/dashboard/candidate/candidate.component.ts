@@ -36,6 +36,8 @@ export class CandidateComponent implements OnInit {
   userProfileData: any;
   events1: any[];
   designation: any = '';
+  isBgv: boolean = false;
+  fileUrl: string;
   userId: any = sessionStorage.getItem('_ud').substring(9, 33);
   constructor(
     private layoutService: LayoutService,
@@ -87,10 +89,29 @@ export class CandidateComponent implements OnInit {
       },
     };
   }
-
+  downloadMyFile() {
+    const link = document.createElement('a');
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', this.fileUrl);
+    link.setAttribute('download', this.fileUrl);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
   ngOnInit(): void {
     this.getUserProfileData();
     this.getJobDetails();
+    const bgvModel = this.jobDetails
+      .fetchSingle(this.userId)
+      .subscribe((data) => {
+        console.log(data[0]);
+
+        if (data[0].pdf !== '') {
+          this.isBgv = true;
+          this.fileUrl = data[0].pdf;
+        }
+      });
+
     // this.jobDetails.getJobs().subscribe((data) => {
     //   data?.data.map((ele) => {
     //     ele['created_at'] = moment(ele.created_at).fromNow();
@@ -101,12 +122,12 @@ export class CandidateComponent implements OnInit {
     // console.log(this.jobs);
   }
 
-  getJobDetails(){
+  getJobDetails() {
     this.jobDetails.getJobs().subscribe((result: any) => {
       if (result.result === 'success') {
         result?.data.map((ele) => {
           ele['created_at'] = moment(ele.created_at).fromNow();
-        })
+        });
         this.jobs = result.data;
       }
     });
