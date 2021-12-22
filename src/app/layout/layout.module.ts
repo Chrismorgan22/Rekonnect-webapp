@@ -12,6 +12,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ApplicantListComponent } from './applicant-list/applicant-list.component';
 import { NavscreenComponent } from './navscreen/navscreen.component';
 import { BgvlistComponent } from './bgvlist/bgvlist.component';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,13 @@ import { BgvlistComponent } from './bgvlist/bgvlist.component';
     NavscreenComponent,
     BgvlistComponent,
   ],
-  imports: [CommonModule, BaseModule, LayoutRoutingModule, NgxSpinnerModule],
+  imports: [
+    CommonModule,
+    BaseModule,
+    LayoutRoutingModule,
+    NgxSpinnerModule,
+    MatSliderModule,
+  ],
   exports: [ApplicantListComponent],
 })
 export class LayoutModule {}
