@@ -13,7 +13,7 @@ import { ApplicantListComponent } from './applicant-list/applicant-list.componen
 import { NavscreenComponent } from './navscreen/navscreen.component';
 import { BgvlistComponent } from './bgvlist/bgvlist.component';
 import { MatSliderModule } from '@angular/material/slider';
-
+import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   declarations: [
     ApplicantListComponent,
@@ -28,6 +28,7 @@ import { MatSliderModule } from '@angular/material/slider';
   imports: [
     CommonModule,
     BaseModule,
+    MatPaginatorModule,
     LayoutRoutingModule,
     NgxSpinnerModule,
     MatSliderModule,
