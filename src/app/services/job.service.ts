@@ -77,4 +77,24 @@ export class JobService {
       })
     );
   }
+
+  postPdf(body: any) {
+    return this.http
+      .post<any>(`http://localhost:8000/report/addPdf`, body)
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
+  fetchSingle(id: string) {
+    return this.http
+      .post<any>(`http://localhost:8000/report/single/`, { id })
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
 }

@@ -38,6 +38,8 @@
                     </div>
                     <div class="bgv" style="display:flex;align-items: center; justify-content:center;margin-top:3%">
                         <button class="btn btn-primary btn-sm" routerLink="/dashboard/bgv-form-dashboard">get BGV report</button>
+                        <button class="btn btn-secondary btn-sm" style="margin-left: 8px;" *ngIf="isBgv" (click)="downloadMyFile()">Download your report</button>
+
                     </div>
                 </div>
                 <div class="col-sm col-sm-12 col-md-6 col-lg-9">
