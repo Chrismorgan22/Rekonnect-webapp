@@ -185,8 +185,6 @@ export class SignUpComponent implements OnInit {
         //   { toastClass: 'toast ngx-toastr', closeButton: true }
         // );
       } else {
-        console.log('bruh assa tu');
-
         this.SpinnerService.hide();
         this._toastrService.error(response.message, response.result);
         this._toastrService.error('directing to login page', 'alert');
