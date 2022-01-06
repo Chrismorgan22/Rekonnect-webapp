@@ -24,10 +24,14 @@ export class UserListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   ngOnInit(): void {
-    this.getUserListData(1);
-    // this._layoutService.paginateUsers('1', '10').subscribe((response) => {
-    //   this.userData = response.data;
-    // });
+    // this.getUserListData(1);
+    this._layoutService.paginateUsers('1', '10').subscribe((response) => {
+      this.userData = response.results;
+      this.filterUser = this.userData;
+      console.log(response.results);
+    });
+    console.log(this.userData);
+
     this.totalLength = this.userData.length;
   }
 
