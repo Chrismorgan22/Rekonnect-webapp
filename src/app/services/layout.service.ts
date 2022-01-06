@@ -76,7 +76,8 @@ export class LayoutService {
     params = params.append(page, limit);
     return this._httpClient
       .post<any>('http://localhost:8000/user/paginate', {
-        params: params,
+        page,
+        limit,
       })
       .pipe(
         map((response) => {
