@@ -44,6 +44,7 @@ export class PersonalizationComponent implements OnInit {
   userRoleSubmit: boolean = false;
   addressSubmit: boolean = false;
   experienceTypeSubmit: boolean = false;
+  isEducated: boolean = false;
   experienceDetailSubmit: boolean = false;
   educationTypeSubmit: boolean = false;
   educationDetailSubmit: boolean = false;
@@ -228,7 +229,10 @@ export class PersonalizationComponent implements OnInit {
   }
 
   addButtonClick(): void {
-    if (this.experienceDetailForm.controls.experienceDetails['controls'].length < 10) {
+    if (
+      this.experienceDetailForm.controls.experienceDetails['controls'].length <
+      10
+    ) {
       (<FormArray>this.experienceDetailForm.get('experienceDetails')).push(
         this.addExperienceDetails()
       );
@@ -248,8 +252,14 @@ export class PersonalizationComponent implements OnInit {
     );
   }
   setMinData() {
-    if (this.experienceDetailForm?.controls && this.experienceDetailForm?.controls.experienceDetails['controls'].length > 1) {
-      return this.userExpDetails.experienceDetails['controls'][(this.userExpDetails.experienceDetails['controls'].length) - 2].controls.end_date.value;
+    if (
+      this.experienceDetailForm?.controls &&
+      this.experienceDetailForm?.controls.experienceDetails['controls'].length >
+        1
+    ) {
+      return this.userExpDetails.experienceDetails['controls'][
+        this.userExpDetails.experienceDetails['controls'].length - 2
+      ].controls.end_date.value;
     }
   }
   addExperienceDetails(): FormGroup {
@@ -449,9 +459,11 @@ export class PersonalizationComponent implements OnInit {
       if (
         this.experienceTypeForm.controls.experience_type.value !== 'Experienced'
       ) {
-        nextModal = 'candidateModalEducation';
-        this.authService.saveTempUser(body).subscribe((res) => { });
+        // nextModal = 'candidateModalEducation';
+        this.authService.saveTempUser(body).subscribe((res) => {});
       }
+      // nextModal = 'candidateModalEducation';
+      nextModal = 'candidate';
       this.moveToNextModal(currentModal, nextModal);
       // })
     } else {
@@ -524,14 +536,21 @@ export class PersonalizationComponent implements OnInit {
           body.temp_data[
             'candidateModalExperience'
           ].experience_data.timeline_details;
-        // if (this.experienceTypeForm.controls.experience_type.value !== 'Experienced') {
-        //   nextModal = 'candidateModallastbits';
-        // }
+        if (
+          this.experienceTypeForm.controls.experience_type.value !==
+          'Experienced'
+        ) {
+          nextModal = 'candidateModallastbits';
+        }
+        nextModal = 'candidateModallastbits';
         this.moveToNextModal(currentModal, nextModal);
       });
     } else {
       return false;
     }
+    // } else {
+    //   return false;
+    // }
   }
   calculateExperience(startDate, endDate, currentlyWorking) {
     if (currentlyWorking) {
@@ -548,6 +567,10 @@ export class PersonalizationComponent implements OnInit {
       // console.log(year,month)
       return year + ' Years ' + month + ' months ';
     }
+  }
+  educationFix() {
+    // this.educationTypeSubmit = true;
+    this.isEducated = true;
   }
   educationTypeFormSubmit(currentModal, nextModal) {
     this.educationTypeSubmit = true;
@@ -570,8 +593,11 @@ export class PersonalizationComponent implements OnInit {
       // this.authService.saveTempUser(body).subscribe((res) => {
       if (this.educationTypeForm.controls.education_type.value !== 'Educated') {
         nextModal = 'candidateModallastbits';
-        this.authService.saveTempUser(body).subscribe((res) => { });
+        this.authService.saveTempUser(body).subscribe((res) => {});
       }
+
+      nextModal = 'candidateModalExperience';
+
       this.moveToNextModal(currentModal, nextModal);
       // })
     } else {
@@ -679,9 +705,13 @@ export class PersonalizationComponent implements OnInit {
       };
       console.log(body);
       this.authService.saveTempUser(body).subscribe((res) => {
-        // if (this.experienceTypeForm.controls.experience_type.value !== 'Experienced') {
-        //   nextModal = 'candidateModallastbits';
-        // }
+        if (
+          this.experienceTypeForm.controls.experience_type.value !==
+          'Experienced'
+        ) {
+          nextModal = 'candidateModallastbits';
+        }
+        nextModal = 'candidateModallastbits';
         this.moveToNextModal(currentModal, nextModal);
       });
     } else {
@@ -718,8 +748,8 @@ export class PersonalizationComponent implements OnInit {
           change_career:
             this.lastFewBitsDetailForm.controls.change_career.value !==
               undefined &&
-              this.lastFewBitsDetailForm.controls.change_career.value !== null &&
-              this.lastFewBitsDetailForm.controls.change_career.value !== ''
+            this.lastFewBitsDetailForm.controls.change_career.value !== null &&
+            this.lastFewBitsDetailForm.controls.change_career.value !== ''
               ? this.lastFewBitsDetailForm.controls.change_career.value[0]
               : '',
           passion: this.lastFewBitsDetailForm.controls.passion.value,
@@ -1034,8 +1064,8 @@ export class PersonalizationComponent implements OnInit {
       changecareer: this.lastFewBitsDetailForm.controls.changecareer.value,
       change_career:
         this.lastFewBitsDetailForm.controls.change_career.value !== undefined &&
-          this.lastFewBitsDetailForm.controls.change_career.value !== null &&
-          this.lastFewBitsDetailForm.controls.change_career.value !== ''
+        this.lastFewBitsDetailForm.controls.change_career.value !== null &&
+        this.lastFewBitsDetailForm.controls.change_career.value !== ''
           ? this.lastFewBitsDetailForm.controls.change_career.value[0]
           : '',
       passion: this.lastFewBitsDetailForm.controls.passion.value,
@@ -1270,7 +1300,7 @@ export class PersonalizationComponent implements OnInit {
                     this.tempFormData['candidateModallastbitsfinal']
                       .last_few_join.salary_range?.min !== undefined
                       ? this.tempFormData['candidateModallastbitsfinal']
-                        .last_few_join.salary_range.min
+                          .last_few_join.salary_range.min
                       : 0;
                   this.highValue =
                     this.tempFormData[
