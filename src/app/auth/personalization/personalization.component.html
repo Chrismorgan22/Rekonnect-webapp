@@ -158,11 +158,13 @@
                                 </div>
                                 <div class="col">
                                     <input type="text" placeholder="Zip Code" class="form-control"
-                                        formControlName="zip_code" />
+                                        formControlName="zip_code" (keyup)="validatePin($event)"/>
                                     <div *ngIf="addressSubmit && userAddress.zip_code.errors" class="invalid-feedback"
                                         style="display:block;">
                                         <div *ngIf="userAddress.zip_code.errors.required">Zip Code is required</div>
+                                        
                                     </div>
+                                    <span *ngIf="isPinError" style="color:red">Zip Code should be in number</span>
                                 </div>
                             </div>
 

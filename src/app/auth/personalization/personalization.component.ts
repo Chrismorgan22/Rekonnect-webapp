@@ -26,6 +26,7 @@ declare var $: any;
 })
 export class PersonalizationComponent implements OnInit {
   isSchoolNum: boolean = false;
+  isPinError: boolean = false;
   goAhead: boolean = true;
   isDegreeNum: boolean = false;
   isStudyNum: boolean = false;
@@ -125,7 +126,18 @@ export class PersonalizationComponent implements OnInit {
     if (this.completion === 100) return 100;
     else return 75;
   }
+  validatePin(event: Event) {
+    const input = (<HTMLInputElement>event.target).value;
+    console.log(input);
+    console.log(parseInt(input));
 
+    if (!parseInt(input)) {
+      this.isPinError = true;
+    } else {
+      this.isPinError = false;
+    }
+    console.log(this.isPinError);
+  }
   getwidth(): string {
     if (this.completion === 100) return '100%';
     else return '75%';
