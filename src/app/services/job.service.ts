@@ -104,6 +104,7 @@ export class JobService {
       })
     );
   }
+
   checkJobApplications(id: string) {
     return this.http
       .post<any>(`http://localhost:8000/job/application/getApplicant`, {
