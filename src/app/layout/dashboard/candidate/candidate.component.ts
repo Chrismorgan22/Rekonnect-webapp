@@ -38,6 +38,8 @@ export class CandidateComponent implements OnInit {
   designation: any = '';
   isBgv: boolean = false;
   fileUrl: string;
+  numberOfJobs: any;
+  appliedJobs: any;
   userId: any = sessionStorage.getItem('_ud').substring(9, 33);
   constructor(
     private layoutService: LayoutService,
@@ -101,6 +103,17 @@ export class CandidateComponent implements OnInit {
   ngOnInit(): void {
     this.getUserProfileData();
     this.getJobDetails();
+    this.jobDetails.fetchJobs().subscribe((data) => {
+      console.log(data);
+
+      this.numberOfJobs = data.length;
+    });
+
+    this.jobDetails.checkJobApplications(this.userId).subscribe((data) => {
+      console.log(data);
+      this.appliedJobs = data.length;
+    });
+
     const bgvModel = this.jobDetails
       .fetchSingle(this.userId)
       .subscribe((data) => {
