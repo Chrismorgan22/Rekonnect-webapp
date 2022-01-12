@@ -97,4 +97,23 @@ export class JobService {
         })
       );
   }
+  fetchJobs() {
+    return this.http.get<any>(`http://localhost:8000/job/getALL`).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
+
+  checkJobApplications(id: string) {
+    return this.http
+      .post<any>(`http://localhost:8000/job/application/getApplicant`, {
+        userId: id,
+      })
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
 }

@@ -186,11 +186,13 @@ export class SignUpComponent implements OnInit {
         // );
       } else {
         this.SpinnerService.hide();
-        this._toastrService.error(response.message, response.result);
-        this._toastrService.error('directing to login page', 'alert');
+        // this._toastrService.error(response.message, response.result);
+        sessionStorage.setItem('_ud', JSON.stringify([response.data]));
 
+        this._toastrService.success('Loggin you in');
+        this._router.navigate(['/dashboard/candidate']);
         // this._toastrService.error('directing to login page');
-        this._router.navigate(['/auth/user/signin']);
+        // this._router.navigate(['/auth/user/signin']);
       }
     });
   }

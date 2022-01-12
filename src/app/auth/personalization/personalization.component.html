@@ -112,7 +112,7 @@
             </div>
             <div class="modal-body">
                 <form class="section-form-content" [formGroup]="addressForm"
-                    (ngSubmit)="addressFormSubmit('candidateModalCenterupload','candidateModalExperience')" noValidate>
+                    (ngSubmit)="addressFormSubmit('candidateModalCenterupload','candidateModalEducation')" noValidate>
                     <div class="container-fluid start-section  w-100">
                         <div class="section-form-content">
                             <div class="input-group mb-3">
@@ -158,11 +158,13 @@
                                 </div>
                                 <div class="col">
                                     <input type="text" placeholder="Zip Code" class="form-control"
-                                        formControlName="zip_code" />
+                                        formControlName="zip_code" (keyup)="validatePin($event)"/>
                                     <div *ngIf="addressSubmit && userAddress.zip_code.errors" class="invalid-feedback"
                                         style="display:block;">
                                         <div *ngIf="userAddress.zip_code.errors.required">Zip Code is required</div>
+                                        
                                     </div>
+                                    <span *ngIf="isPinError" style="color:red">Zip Code should be in number</span>
                                 </div>
                             </div>
 
@@ -189,7 +191,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
                             (click)="moveToPreviousModal('candidateModalCenterupload','candidateModalCenter')">Back</button>
-                        <button type="submit" class="btn btn-primary">Save &
+                        <button type="submit" class="btn btn-primary" (click)="educationFix()">Save &
                             Continue</button>
                     </div>
                 </form>
@@ -217,7 +219,7 @@
             </div>
             <div class="modal-body d-flex justify-content-center">
                 <form class="section-form-content" [formGroup]="educationTypeForm"
-                    (ngSubmit)="educationTypeFormSubmit('candidateModalEducation','candidateModalcentereducation')"
+                    (ngSubmit)="educationTypeFormSubmit('candidateModalEducation','candidateModalExperience')"
                     noValidate>
                     <div class="row modal-content-section">
                         <div class="custom-control custom-radio custom--radio">
@@ -235,7 +237,7 @@
                                 formControlName="education_type" value='Non-Educated' type="radio" name="education_type"
                                 id="candidate">
                             <!-- <span class="check"></span> -->
-                            <div class="btn outlined-dotted-add-button custom-control-radio-area" for="candidate">
+                            <div class="btn outlined-dotted-add-button custom-control-radio-area" for="candidate" (click)="educationFix()">
                                 <span class="icon-button"><span class="material-icons">done</span></span>
                                 <div class="label">Nothing to add? <br />Check this and proceed</div>
                             </div>
