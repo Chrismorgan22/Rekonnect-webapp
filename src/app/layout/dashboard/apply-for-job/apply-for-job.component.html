@@ -112,7 +112,7 @@
                                         <label class="text-color-light">Be sure to include an updated resume</label>
                                         <div class="custom-file w-max-300 d-block">
                                             <input type="file" class=" custom-file-input" id="inputGroupFile01 "
-                                                size="lg">
+                                                size="lg" (change)="uploadFile($event.target.files)">
                                             <label class="custom-file-label" for="inputGroupFile01">Upload
                                                 Resume</label>
                                         </div>
