@@ -16,6 +16,16 @@ export class ApplyForJobComponent implements OnInit {
   jobId: string;
   jobDetail: any;
   jobAppliedFlag: boolean = false;
+  Resume: string;
+  Vesume: string;
+  Cover: string;
+  json: {
+    job_id: any;
+    candidate_id: any;
+    resumeLink: any;
+    vesumeLink: any;
+    coverLetterLink: any;
+  };
   constructor(
     private jobApply: JobService,
     private route: ActivatedRoute,
@@ -41,14 +51,18 @@ export class ApplyForJobComponent implements OnInit {
   }
   applyForjob() {
     this.SpinnerService.show();
-    const json = {
+    const json = {};
+    this.json = {
       job_id: this.jobDetail._id,
       candidate_id: this.userId,
-      resumeLink: 'www',
-      vesumeLink: 'www',
-      coverLetterLink: 'www',
+      resumeLink:
+        'https://rekonnectfileupload.s3.ap-south-1.amazonaws.com/RekonnectAlroyResume%20%286%29.pdf',
+      vesumeLink: this.Vesume,
+      coverLetterLink: this.Cover,
     };
-    this.jobApply.applyJob(json).subscribe((data) => {
+    console.log(this.json);
+
+    this.jobApply.applyJob(this.json).subscribe((data) => {
       console.log('Job applied', data);
       this.SpinnerService.hide();
       this._toastrService.success('Job Applied Successfully', 'Success');
@@ -77,7 +91,51 @@ export class ApplyForJobComponent implements OnInit {
     secretAccessKey: environment.secretAccessKey,
     region: environment.region,
   });
-  uploadFile(file) {
+  uploadFileResume(file) {
+    const contentType = file[0].type;
+    if (file[0].size > 2200000) {
+      window.alert('file too large');
+      return;
+    }
+    const params = {
+      Bucket: environment.Bucket,
+      Key: 'Rekonnect' + file[0].name,
+      Body: file[0],
+      ACL: 'public-read',
+      ContentType: contentType,
+    };
+    this.bucket.upload(params, function (err, data) {
+      if (err) {
+        console.log('There was an error uploading your file: ', err);
+        return false;
+      }
+      console.log('Successfully uploaded file.', data);
+      this.Resume = data.location;
+      console.log(this.Resume);
+    });
+  }
+  uploadFilevesume(file) {
+    const contentType = file[0].type;
+    if (file[0].size > 2200000) {
+      window.alert('file too large');
+      return;
+    }
+    const params = {
+      Bucket: environment.Bucket,
+      Key: 'Rekonnect' + file[0].name,
+      Body: file[0],
+      ACL: 'public-read',
+      ContentType: contentType,
+    };
+    this.bucket.upload(params, function (err, data) {
+      if (err) {
+        console.log('There was an error uploading your file: ', err);
+        return false;
+      }
+      console.log('Successfully uploaded file.', data);
+    });
+  }
+  uploadFileCover(file) {
     const contentType = file[0].type;
     if (file[0].size > 2200000) {
       window.alert('file too large');
