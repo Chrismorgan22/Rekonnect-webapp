@@ -15,7 +15,7 @@ export class JobService {
   }
   applyJob(jobData) {
     return this.http
-      .post<any>(`${environment.apiUrl}/job/application/apply`, jobData)
+      .post<any>(`http://localhost:8000/job/application/applyForJob`, jobData)
       .pipe(
         map((response) => {
           return response;
