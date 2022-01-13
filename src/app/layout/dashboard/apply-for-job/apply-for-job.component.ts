@@ -44,6 +44,9 @@ export class ApplyForJobComponent implements OnInit {
     const json = {
       job_id: this.jobDetail._id,
       candidate_id: this.userId,
+      resumeLink: 'www',
+      vesumeLink: 'www',
+      coverLetterLink: 'www',
     };
     this.jobApply.applyJob(json).subscribe((data) => {
       console.log('Job applied', data);

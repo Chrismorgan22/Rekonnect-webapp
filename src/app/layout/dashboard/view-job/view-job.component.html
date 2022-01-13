@@ -224,8 +224,13 @@
                         <div
                           class="user-action d-flex justify-content-center pb-3"
                         >
-                          <button class="btn btn-primary btn-sm mr-2">
+                          <button class="btn btn-primary btn-sm mr-2" >
+                            <a [attr.href]="
+                            candidate.resumeLink"                             target="_blank"
+                             style="color:white">
                             View Profile
+                            </a>
+                           
                           </button>
                           <button class="btn btn-success btn-sm mr-2">
                             <span class="material-icons"> done </span>

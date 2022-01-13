@@ -53,14 +53,9 @@ export class ViewJobComponent implements OnInit {
   getUserByJob() {
     this.jobApplicationService.getUserByJob(this.jobId).subscribe((data) => {
       console.log(data);
+      this.appliedUserList = data;
 
-      if (data.result === 'success') {
-        this.appliedUserList = data.data;
-        // this.jobDetail = data.data[0];
-        // console.log(this.jobDetail)
-        // this.jobDetail["skills"] = this.jobDetail.top_skills.split(',')
-        console.log(data);
-      }
+      console.log(this.appliedUserList);
     });
   }
 }
