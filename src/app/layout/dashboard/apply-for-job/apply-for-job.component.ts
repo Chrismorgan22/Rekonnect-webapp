@@ -155,6 +155,5 @@ export class ApplyForJobComponent implements OnInit {
       }
       console.log('Successfully uploaded file.', data);
     });
-    console.log(this.bucket);
   }
 }
