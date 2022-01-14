@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LayoutService } from 'src/app/services/layout.service';
 import { JobService } from 'src/app/services/job.service';
+import { JobApplicationService } from 'src/app/services/job-application.service';
+
 import { Router } from '@angular/router';
 
 import * as moment from 'moment';
@@ -16,6 +18,7 @@ import {
   ApexLegend,
   ApexFill,
 } from 'ng-apexcharts';
+import { log } from 'console';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -40,6 +43,9 @@ export type ChartOptions1 = {
   styleUrls: ['./employer.component.scss'],
 })
 export class EmployerComponent implements OnInit {
+  appliedUserList: any = [];
+  listOfJobs: any = [];
+  empID: string = JSON.parse(sessionStorage.getItem('_ud'))[0]._id;
   jobData: {
     title: string;
     company: string;
@@ -104,7 +110,8 @@ export class EmployerComponent implements OnInit {
   constructor(
     private layoutService: LayoutService,
     private jobService: JobService,
-    private router : Router
+    private router: Router,
+    private jobApplicationService: JobApplicationService
   ) {
     this.events1 = [
       {
@@ -237,20 +244,43 @@ export class EmployerComponent implements OnInit {
       },
     };
   }
-  ngOnInit(): void {
+
+  ngOnInit() {
     this.getUserProfileData();
+
+    // console.log(this.empID);
+    // console.log(this.listOfJobs);
+    this.getUserByJob();
   }
+
   getUserProfileData() {
     const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
     this.layoutService.getUserProfile(localData._id).subscribe((res) => {
       console.log(res);
       this.userProfileData = res.data[0];
+      // this.empID = this.userProfileData;
+      this.empID = this.userProfileData.employer_details[0]._id;
       console.log(this.userProfileData);
     });
   }
+  getUserByJob() {
+    console.log('fuck');
+    this.jobService.fetchJobsPosted(this.empID).subscribe((data) => {
+      this.listOfJobs = data;
+    });
+    for (let i = 0; i < this.listOfJobs.length; i++) {
+      let jobId = this.listOfJobs[i]._id;
+      this.jobApplicationService.getUserByJob(jobId).subscribe((data) => {
+        console.log(data);
+        this.appliedUserList.psuh(data);
 
-  postJob(){
+        console.log(this.appliedUserList);
+      });
+    }
 
+    console.log('done');
+  }
+  postJob() {
     this.router.navigate(['/dashboard/create-job']);
   }
 

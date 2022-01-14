@@ -126,4 +126,14 @@ export class JobService {
         })
       );
   }
+
+  fetchJobsPosted(id: string) {
+    return this.http
+      .get<any>(`http://localhost:8000/job/getJobsPosted/${id}`)
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
 }
