@@ -18,6 +18,8 @@ import {
 })
 export class SignUpComponent implements OnInit {
   form: FormGroup;
+  password: string;
+  cPassword: string;
   loading = false;
   submitted = false;
   specializationData: any;
@@ -50,7 +52,12 @@ export class SignUpComponent implements OnInit {
       // company_name: ['', Validators.required]
     });
   }
-
+  updateP(event: Event): void {
+    this.password = (<HTMLInputElement>event.target).value;
+  }
+  updateCP(event: Event): void {
+    this.cPassword = (<HTMLInputElement>event.target).value;
+  }
   // convenience getter for easy access to form fields
   get f() {
     return this.form.controls;
@@ -59,6 +66,10 @@ export class SignUpComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     console.log(this.form);
+    if (this.password !== this.cPassword) {
+      this._toastrService.error('passwords do not match');
+      return;
+    }
     if (this.form.valid) {
       this.SpinnerService.show();
       const json = {};

@@ -136,7 +136,7 @@
                     <div class="form-group">
                         <input type="password" id="exampleInputPassword1" placeholder="Password"
                             formControlName="password" class="form-control"
-                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }"  (keyup)="updateP($event)" />
                         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                             <div *ngIf="f.password.errors.required">Password is required</div>
                             <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
@@ -145,7 +145,7 @@
                     <div class="form-group">
                         <input type="password" class="form-control" id="colFormLabelLg" placeholder="Confirm Password"
                             formControlName="confirmPassword" class="form-control"
-                            [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                            [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"  (keyup)="updateCP($event)"/>
                         <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
                             <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
                             <div *ngIf="f.confirmPassword.errors.minlength">Confirm Password must be at least 6

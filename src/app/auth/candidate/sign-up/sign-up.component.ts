@@ -21,6 +21,8 @@ export class SignUpComponent implements OnInit {
   loading = false;
   submitted = false;
   specializationData: any;
+  password: string;
+  cPassword: string;
   socialUser: SocialUser;
   isLoggedin: boolean;
   constructor(
@@ -32,7 +34,12 @@ export class SignUpComponent implements OnInit {
     private SpinnerService: NgxSpinnerService,
     private socialAuthService: SocialAuthService
   ) {}
-
+  updateP(event: Event): void {
+    this.password = (<HTMLInputElement>event.target).value;
+  }
+  updateCP(event: Event): void {
+    this.cPassword = (<HTMLInputElement>event.target).value;
+  }
   ngOnInit() {
     this.form = this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -56,6 +63,13 @@ export class SignUpComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     console.log(this.form);
+    console.log(this.password, this.cPassword);
+
+    if (this.password !== this.cPassword) {
+      window.alert('passwords do not match');
+      console.log('wrong');
+      return;
+    }
     if (this.form.valid) {
       this.SpinnerService.show();
       const json = {};
@@ -65,6 +79,8 @@ export class SignUpComponent implements OnInit {
       json['phone'] = this.form.controls.phone.value;
       // json['specialization'] = this.form.controls.specialization.value;
       json['password'] = this.form.controls.password.value;
+      console.log(json);
+
       this.registerAPICall(json);
     }
   }
