@@ -17,9 +17,6 @@ import {
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
-  password: string;
-  cPassword: string;
-
   form: FormGroup;
   loading = false;
   submitted = false;
@@ -35,12 +32,7 @@ export class SignUpComponent implements OnInit {
     private SpinnerService: NgxSpinnerService,
     private socialAuthService: SocialAuthService
   ) {}
-  updateP(event: Event): void {
-    this.password = (<HTMLInputElement>event.target).value;
-  }
-  updateCP(event: Event): void {
-    this.cPassword = (<HTMLInputElement>event.target).value;
-  }
+
   ngOnInit() {
     this.form = this.formBuilder.group({
       firstName: ['', Validators.required],
