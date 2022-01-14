@@ -76,18 +76,23 @@
                             <div class="form-group border-bottom education-section">
                                 <h5 class="bold pt-4">Experience Summary</h5>
                                 <label class="text-color-light">Last retained position in the company</label>
-                                <div class="pb-4 d-flex align-items-center">
-                                    <img class="section-image"
-                                        src="../../../../assets/images/job-posting/education-icon.png" />
-                                    <div class="content mt-3">
-                                        <h5 class="bold">Passionfruit Pvt </h5>
-                                        <p class="font-16 text-grey mb-0">Lead UX Lead</p>
-                                        <p class="font-14 text-grey mt-2"> Jan 2020 - Jan 2021 <span
-                                                class="material-icons text-grey font-8 mx-3">
-                                                fiber_manual_record
-                                            </span> 1 Year</p>
+
+
+                                <div *ngFor="let exp of expData ">
+                                    <div class="pb-4 d-flex align-items-center">
+                                        <img class="section-image"
+                                            src="../../../../assets/images/job-posting/education-icon.png" />
+                                        <div class="content mt-3">
+                                            <h5 class="bold">{{exp.company}} </h5>
+                                            <p class="font-16 text-grey mb-0">{{exp.designation}}</p>
+                                            <p class="font-14 text-grey mt-2"> {{exp.start_date}} {{exp.end_date}}</p> <span
+                                                    class="material-icons text-grey font-8 mx-3">
+                                                    fiber_manual_record
+                                                </span> 1 Year</p>
+                                        </div>
                                     </div>
                                 </div>
+                               
                             </div>
                             <div class="form-group border-bottom education-section">
                                 <h5 class="bold pt-4">Educational Summary</h5>
@@ -95,14 +100,17 @@
                                 <div class="pb-4 d-flex align-items-center">
                                     <img class="section-image"
                                         src="../../../../assets/images/job-posting/education-icon.png" />
-                                    <div class="content mt-3">
-                                        <h5 class="bold">Delhi University</h5>
-                                        <p class="font-16 text-grey mb-0">Information Technology</p>
-                                        <p class="font-14 text-grey mt-2"> Jan 2020 - Jan 2021 <span
-                                                class="material-icons text-grey font-8 mx-3">
-                                                fiber_manual_record
-                                            </span> 1 Year</p>
-                                    </div>
+                                        <div *ngFor="let edu of eduData">
+                                            <div class="content mt-3">
+                                                <h5 class="bold">{{edu.school_name}}</h5>
+                                                <p class="font-16 text-grey mb-0">{{edu.description}}</p>
+                                                <p class="font-14 text-grey mt-2"> {{edu.start_date.month}}{{edu.start_date.year}}  {{edu.end_data.month}}{{edu.start_date.year}} <span
+                                                        class="material-icons text-grey font-8 mx-3">
+                                                        fiber_manual_record
+                                                    </span> 1 Year</p>
+                                            </div>
+                                        </div>
+                               
                                 </div>
                             </div>
                             <div class="start-section border-bottom">
