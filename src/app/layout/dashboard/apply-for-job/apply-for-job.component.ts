@@ -47,8 +47,10 @@ export class ApplyForJobComponent implements OnInit {
       if (data.experience_data.experience_type !== 'Experienced')
         this.isExp = false;
 
-      this.expData = data.experience_data.experience_deatils;
+      this.expData = data.experience_data.experience_details;
       this.eduData = data.education_data.education_details;
+
+      console.log(this.expData, this.eduData);
     });
   }
 
