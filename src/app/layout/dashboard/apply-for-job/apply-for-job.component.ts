@@ -19,6 +19,9 @@ export class ApplyForJobComponent implements OnInit {
   Resume: string;
   Vesume: string;
   Cover: string;
+  isExp: boolean;
+  expData: [];
+  eduData: [];
   json: {
     job_id: any;
     candidate_id: any;
@@ -39,6 +42,14 @@ export class ApplyForJobComponent implements OnInit {
     console.log(this.jobId);
     await this.getJobDetails();
     await this.getJobappliedStatusData();
+    this.jobApply.fetchCandidate(this.userId).subscribe((data) => {
+      console.log(data);
+      if (data.experience_data.experience_type !== 'Experienced')
+        this.isExp = false;
+
+      this.expData = data.experience_data.experience_deatils;
+      this.eduData = data.education_data.education_details;
+    });
   }
 
   getJobDetails() {
