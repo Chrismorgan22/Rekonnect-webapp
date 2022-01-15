@@ -264,7 +264,6 @@ export class EmployerComponent implements OnInit {
     });
   }
   getUserByJob() {
-    console.log('fuck');
     this.jobService.fetchJobsPosted(this.empID).subscribe((data) => {
       this.listOfJobs = data;
     });

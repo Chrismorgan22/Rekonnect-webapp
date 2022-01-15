@@ -12,6 +12,13 @@ export class ViewJobComponent implements OnInit {
   jobId: any;
   jobDetail: any;
   appliedUserList: any = [];
+  isModal: boolean = false;
+  candidateDetails: {
+    name: string;
+    exp: any[];
+    edu: any[];
+  };
+  expe: {}[] = null;
   constructor(
     private jobService: JobService,
     private route: ActivatedRoute,
@@ -45,6 +52,21 @@ export class ViewJobComponent implements OnInit {
         this.jobDetail['skills'] = this.jobDetail.top_skills.split(',');
       }
     });
+  }
+  manageUser(userId: string) {
+    this.isModal = true;
+    console.log(this.appliedUserList);
+
+    this.jobService.fetchCandidate(userId).subscribe((data) => {
+      console.log(data, data.experience_data.experience_details);
+
+      this.expe = data.experience_data.experience_details;
+      this.candidateDetails.edu = data.education_data.education_details;
+    });
+    console.log(this.expe);
+  }
+  toggleIt() {
+    this.isModal = !this.isModal;
   }
   editJob() {
     $('.view-job-section').removeClass('not-edit-mode');

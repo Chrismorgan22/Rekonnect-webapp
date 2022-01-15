@@ -224,9 +224,8 @@
                         <div
                           class="user-action d-flex justify-content-center pb-3"
                         >
-                          <button class="btn btn-primary btn-sm mr-2" >
-                            <a [attr.href]="
-                            candidate.resumeLink"                             target="_blank"
+                          <button class="btn btn-primary btn-sm mr-2" (click)="manageUser(candidate.candidate_id)">
+                            <a                             target="_blank"
                              style="color:white">
                             View Profile
                             </a>
@@ -332,6 +331,34 @@
           </div>
         </div>
       </div>
+      <div class="modal_user" [ngStyle]="{display: isModal ? 'flex' :'none'}">
+        <span class="toggle" (click)="toggleIt()">X</span>
+        <div class="wrapper">
+          <img src="https://www.cnet.com/a/img/gYqc1tZjVGRoIKdg_MqBeZfFltU=/940x0/2019/12/15/71f4408f-b4c7-4ecd-bfea-6f6151e9a3d9/gettyimages-1130598318.jpg" alt="">
+          <div class="personalDetails">
+            <h4>Raj kumar</h4>
+          </div>
+          <div class="professionalDetails">
+            <h3>Education details</h3>
+           
+            <div class="edu">
+              <span class="schoolName">Delhi University</span>
+              <span class="duration">jan 2020-jan2022</span>
+            </div>
+            <h4>Work experience</h4>
+            <div class="work">
+              <span class="workName">infotech pvt</span>
+              <span class="workDuration">jan 2020-jan2022</span>
+            </div>
+          </div>
+          <div class="buttons">
+            <button>view Resume</button>
+            <button>view vesume</button>
+            <button>view cover letter</button>
+          </div>
+        </div>
+      </div>
+
     </section>
   </main>
 </div>
