@@ -19,6 +19,7 @@ export class ViewJobComponent implements OnInit {
     edu: any[];
   };
   expe: {}[] = null;
+  educ: {}[] = null;
   constructor(
     private jobService: JobService,
     private route: ActivatedRoute,
@@ -61,7 +62,7 @@ export class ViewJobComponent implements OnInit {
       console.log(data, data.experience_data.experience_details);
 
       this.expe = data.experience_data.experience_details;
-      this.candidateDetails.edu = data.education_data.education_details;
+      this.educ = data.education_data.education_details;
     });
     console.log(this.expe);
   }

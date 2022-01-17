@@ -331,7 +331,7 @@
           </div>
         </div>
       </div>
-      <div class="modal_user" [ngStyle]="{display: isModal ? 'flex' :'none'}">
+      <!-- <div class="modal_user" >
         <span class="toggle" (click)="toggleIt()">X</span>
         <div class="wrapper">
           <img src="https://www.cnet.com/a/img/gYqc1tZjVGRoIKdg_MqBeZfFltU=/940x0/2019/12/15/71f4408f-b4c7-4ecd-bfea-6f6151e9a3d9/gettyimages-1130598318.jpg" alt="">
@@ -357,8 +357,161 @@
             <button>view cover letter</button>
           </div>
         </div>
-      </div>
+      </div> -->
+      <div class="card profile-content-card" [ngStyle]="{display: isModal ? 'flex' :'none'}" style="position:fixed;top:20%;left:20%;width: 480px;height:auto">
+        <div class="card-body">
+          <button (click)="toggleIt()" style="float:right"> Close</button>
+            <!-- <div class="form-group border-bottom">
+                <h5 class="bold">Professional Summary</h5>
+                <label class="text-color-light pb-4">Lorem ipsum dolor sit amet, consectetur adipiscing
+                    elit.
+                    Proin mattis nisi id dolor varius, volutpat egestas lectus pharetra. Etiam tempor
+                    lacus est, ac placerat arcu luctus pulvinar. Fusce mattis nibh at leo tincidunt
+                    mollis. Fusce magna ligula, porta venenatis sagittis eu, cursus non augue. Ut purus
+                    metus, venenatis eget augue in, vulputate congue nulla. Sed aliquam justo vel velit
+                    finibus, qui</label>
+            </div> -->
+            <div class="form-group border-bottom education-section">
+                <h5 class="bold pt-4">Experience Summary</h5>
+                <label class="text-color-light">Last retained position in the company</label>
 
+
+                <div >
+                    <div class="pb-4 d-flex align-items-center">
+                        <img class="section-image"
+                            src="../../../../assets/images/job-posting/education-icon.png"  width="80px"/>
+                            <div class="wrapper" style="display: flex;justify-content:space-between;margin-left: 16px;">
+                            <div *ngFor="let exp of expe" >
+                        <div class="content mt-3" style="margin-left:18px">
+                            <h5 class="bold">{{exp.company}} </h5>
+                            <p class="font-16 text-grey mb-0">{{exp.designation}}</p>
+                            <p class="font-14 text-grey mt-2"> start:{{exp.start_date}} </p><p> end: {{exp.end_date}}</p> <span
+                                    class="material-icons text-grey font-8 mx-3">
+                                    fiber_manual_record
+                                </span> 1 Year
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="form-group border-bottom education-section">
+                <h5 class="bold pt-4">Educational Summary</h5>
+                <label class="text-color-light">Last retained position in the company</label>
+                <div class="pb-4 d-flex align-items-center">
+                    <img class="section-image"
+                        src="../../../../assets/images/job-posting/education-icon.png"  width="80px"/>
+                        <div  *ngFor="let edu of educ">
+                            <div class="content mt-3" style="margin-left: 16px;">
+                                <h5 class="bold">{{edu.school_name}}</h5>
+                                <p class="font-16 text-grey mb-0">{{edu.description}}</p>
+                                <p class="font-14 text-grey mt-2"> {{edu.start_date.month}}{{edu.start_date.year}}  {{edu.end_data.month}}{{edu.start_date.year}} <span
+                                        class="material-icons text-grey font-8 mx-3">
+                                        fiber_manual_record
+                                    </span> 1 Year</p>
+                            </div>
+                        </div>
+               
+                </div>
+            </div>
+         
+            <!-- <div class="form-group border-bottom">
+                <h5 class="bold pt-4">Add Upskilling undertaken</h5>
+                <label class="text-color-light">Showcase your latest achievements, this adds more
+                    credability to your profile</label>
+                <div class="card course-card border-none pb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm col-sm-12 col-md-6 col-md-6 mb-sm-3 col-lg-3">
+                                <div class="course-card mr-1">
+                                    <img src="../../../assets/images/curated-courses-for-you-placeholder-image-1.jpg"
+                                        class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Build Wireframes & Low-Fidelity
+                                            Prototypes</h5>
+                                        <p class="card-text">Offered By Telitah Phil</p>
+                                    </div>
+                                    <div class="my-3 text-right px-2">
+                                        <button class="btn btn-sm btn-primary">add</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm col-sm-12 col-md-6 col-md-6 mb-sm-3 col-lg-3">
+                                <div class="card course-card mr-1">
+                                    <img src="../../../assets/images/curated-courses-for-you-placeholder-image-1.jpg"
+                                        class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Build Wireframes & Low-Fidelity
+                                            Prototypes</h5>
+                                        <p class="card-text">Offered By Telitah Phil</p>
+                                    </div>
+                                    <div class="my-3 text-right px-2">
+                                        <button class="btn btn-sm btn-primary">add</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- <div class="form-group border-bottom">
+                <h5 class="bold pt-4">Add mentorship undertaken</h5>
+                <label class="text-color-light">Showcase your latest achievements, this adds more
+                    credability to your profile</label>
+                <div class="experts-card pb-4">
+                    <div class="card-body">
+                        <div class="row px-3">
+                            <div class="col-sm col-sm-12 col-lg-6 ">
+                                <div class="row expert-card mr-3">
+                                    <div class="col-sm col-lg-4 image-card">
+                                        <img class=""
+                                            src="../../../assets/images/expert-placeholder-image-1.jpg" />
+                                    </div>
+                                    <div class="col-sm col-lg-8 content-card">
+                                        <h6>Soniya S</h6>
+                                        <label>design and research instructor</label>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                                            eget sapien
+                                            ut erat vestibulum ultrices in vel lorem. Morbi leo lacus.
+                                            Lorem ipsum
+                                            dolor sit amet, consectetur adipiscing elit. Nam eget </p>
+                                        <button size="small"
+                                            class="btn btn-primary btn-sm mt-3">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- <div class="form-group feedback-section">
+                <h5 class="bold pt-4">Add feedback</h5>
+                <label class="text-color-light">No feedbacks available, request for some
+                    feedback</label>
+                <div class="d-flex align-items-center background-blue">
+                    <div class="section-image">
+                        <img src="../../../../assets/images/scandidatelogo.jpg">
+                    </div>
+                    <div class="content">
+                        <h6 class="text-uppercase">Scandidate</h6>
+                        <div class="text-grey mb-3">
+                            On ReKonnect, candidates can choose total transparency - as a unique
+                            offering, we conduct checks on identity, address, education and experience
+                            along with a feedback report taken by our team directly from past employers.
+                            A Scandidate report gives new employers the confidence to Know Your Hire.
+                        </div>
+                        <a class="text-primary text-right w-100 ">Request for Feedback <span
+                                class="material-icons font-14">
+                                arrow_forward_ios
+                            </span> </a>
+                    </div>
+                </div>
+            </div> -->
+         
+        </div>
+    </div>
     </section>
   </main>
 </div>
