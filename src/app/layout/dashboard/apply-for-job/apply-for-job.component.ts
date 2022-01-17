@@ -13,7 +13,27 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ApplyForJobComponent implements OnInit {
   userId: any = JSON.parse(sessionStorage.getItem('_ud'))[0]['_id'];
+  Entire: any = JSON.parse(sessionStorage.getItem('_ud'))[0];
   jobId: string;
+  passion: string;
+  totalExp: string;
+  candidate: {
+    name: string;
+    Phone: string;
+    email: string;
+    location: string;
+    preffered: string;
+  } = {
+    name:
+      JSON.parse(sessionStorage.getItem('_ud'))[0].first_name +
+      ' ' +
+      JSON.parse(sessionStorage.getItem('_ud'))[0].last_name,
+    email: JSON.parse(sessionStorage.getItem('_ud'))[0].email,
+    Phone: JSON.parse(sessionStorage.getItem('_ud'))[0].phone,
+    location: '',
+    preffered: '',
+  };
+
   jobDetail: any;
   jobAppliedFlag: boolean = false;
   Resume: string;
@@ -37,6 +57,8 @@ export class ApplyForJobComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
+    console.log(this.candidate);
+
     window.scrollTo(0, 0);
     this.jobId = this.route.snapshot.params.id;
     console.log(this.jobId);
@@ -46,10 +68,17 @@ export class ApplyForJobComponent implements OnInit {
       console.log(data);
       if (data.experience_data.experience_type !== 'Experienced')
         this.isExp = false;
-
+      const date1: any = new Date();
+      const date2: any = new Date();
+      const diffTime = Math.abs(date2 - date1);
+      this.totalExp = JSON.stringify(
+        Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+      );
       this.expData = data.experience_data.experience_details;
       this.eduData = data.education_data.education_details;
-
+      this.passion = data.passion;
+      this.candidate.location = data.address_details.state.name + ', India';
+      // this.candidate.location=data.
       console.log(this.expData, this.eduData);
     });
   }

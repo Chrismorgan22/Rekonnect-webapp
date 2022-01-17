@@ -17,19 +17,19 @@
                                         <img src="../../../assets/images/user-profile-placeholder.png" />
                                     </div>
                                     <div class="user-content my-3">
-                                        <h5>Jayesh Kumar <span class="material-icons text-verified"> stars</span> </h5>
-                                        <label>UX Designer</label>
+                                        <h5>{{candidate.name}} <span class="material-icons text-verified"> stars</span> </h5>
+                                        <label>{{passion}}</label>
                                     </div>
                                     <div class="mt-4 text-left sub-content">
                                         <h6 class="font-bold"> Email</h6>
                                         <label> <span class="material-icons font-16 mr-">
                                                 mail_outline
-                                            </span>some@email.com</label>
+                                            </span>{{candidate.email}}</label>
 
                                         <h6 class="font-bold mt-4"> Phone</h6>
                                         <label> <span class="material-icons font-16">
                                                 phone
-                                            </span> +919876543210</label>
+                                            </span> {{candidate.Phone}}</label>
 
                                         <h6 class="font-bold mt-4"> Total Experience</h6>
                                         <label> <span class="material-icons">
@@ -39,7 +39,7 @@
                                         <h6 class="font-bold mt-4"> Current Location</h6>
                                         <label> <span class="material-icons">
                                                 location_on
-                                            </span> India, Goa</label>
+                                            </span> {{candidate.location}}</label>
 
                                         <h6 class="font-bold mt-4"> Preffered Location</h6>
                                         <label> <span class="material-icons">
