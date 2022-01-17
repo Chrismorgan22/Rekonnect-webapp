@@ -34,7 +34,9 @@ export class SignUpComponent implements OnInit {
     private _toastrService: ToastrService,
     private SpinnerService: NgxSpinnerService,
     private socialAuthService: SocialAuthService
-  ) {}
+  ) {
+    console.log('bruh');
+  }
 
   ngOnInit() {
     this.form = this.formBuilder.group({

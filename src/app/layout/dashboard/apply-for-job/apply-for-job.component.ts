@@ -104,28 +104,33 @@ export class ApplyForJobComponent implements OnInit {
     secretAccessKey: environment.secretAccessKey,
     region: environment.region,
   });
-  uploadFileResume(file) {
-    const contentType = file[0].type;
-    if (file[0].size > 2200000) {
-      window.alert('file too large');
-      return;
-    }
-    const params = {
-      Bucket: environment.Bucket,
-      Key: 'Rekonnect' + file[0].name,
-      Body: file[0],
-      ACL: 'public-read',
-      ContentType: contentType,
-    };
-    this.bucket.upload(params, function (err, data) {
-      if (err) {
-        console.log('There was an error uploading your file: ', err);
-        return false;
+  async uploadFileResume(file) {
+    try {
+      const contentType = file[0].type;
+      if (file[0].size > 2200000) {
+        window.alert('file too large');
+        return;
       }
-      console.log('Successfully uploaded file.', data);
-      this.Resume = data.location;
+      const params = {
+        Bucket: environment.Bucket,
+        Key: 'Rekonnect' + file[0].name,
+        Body: file[0],
+        ACL: 'public-read',
+        ContentType: contentType,
+      };
+      await this.bucket.upload(params, async function (err, data) {
+        if (err) {
+          console.log('There was an error uploading your file: ', err);
+          return false;
+        }
+        console.log('Successfully uploaded file.', data);
+        this.Resume = await data.location;
+        console.log(this.Resume);
+      });
       console.log(this.Resume);
-    });
+    } catch (error) {
+      console.log(error);
+    }
   }
   uploadFilevesume(file) {
     const contentType = file[0].type;
