@@ -214,11 +214,11 @@
                       <div class="user-content mt-3">
                         <div class="user-avatar">
                           <img
-                            src="../../../../assets/images/temporary-images/candidate-placeholder-image-1.png"
+                            [src]="image"
                           />
                         </div>
                         <div class="user-text text-center">
-                          <h4>{{candidate?.userByJob?.first_name}} {{candidate?.userByJob?.last_name}}</h4>
+                          <h4>{{candidate.name}}</h4>
                           <label>UX Designer</label>
                         </div>
                         <div
