@@ -16,7 +16,9 @@ import { Router } from '@angular/router';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import * as S3 from 'aws-sdk/clients/s3';
 import { environment } from '../../../environments/environment';
-// import { Options } from "@angular-slider/ngx-slider";
+import { SignupService } from '../../services/sign-up.service';
+// import { Options } from "@angular-slider/
+// ngx-slider";
 
 declare var $: any;
 @Component({
@@ -25,6 +27,7 @@ declare var $: any;
   styleUrls: ['./personalization.component.scss'],
 })
 export class PersonalizationComponent implements OnInit {
+  userData: any;
   isSchoolNum: boolean = false;
   isPinError: boolean = false;
   goAhead: boolean = true;
@@ -117,6 +120,7 @@ export class PersonalizationComponent implements OnInit {
     private _toastrService: ToastrService,
     private SpinnerService: NgxSpinnerService,
     private router: Router,
+    private signupService: SignupService,
     private fileUploadService: FileUploadService
   ) {
     // $('#candidateModalCenter').modal('show')
@@ -145,6 +149,10 @@ export class PersonalizationComponent implements OnInit {
   async ngOnInit() {
     this.monthDrp = moment.months();
     this.todayDate = moment(new Date()).format('yyyy-MM-DD');
+    // this.signupService.tokenSubObservable$.subscribe((data) => {
+    //   this.userData = data;
+    //   console.log(data);
+    // });
     const year = moment().get('year');
     for (let i = 1999; i <= year; i++) {
       this.yearDrp.push(i);
@@ -401,6 +409,9 @@ export class PersonalizationComponent implements OnInit {
       console.log(body);
       localData['role'] = Number(this.userRoleForm.controls.user_role.value);
       sessionStorage.setItem('_ud', JSON.stringify([localData]));
+      this.authService.userRegister(this.userData).subscribe((data) => {
+        console.log('user reg!');
+      });
       this.authService.saveTempUser(body).subscribe((res) => {
         this.moveToNextModal(currentModal, nextModal);
       });

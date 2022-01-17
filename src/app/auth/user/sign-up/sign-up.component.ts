@@ -5,6 +5,7 @@ import { AuthService } from '../../../services/auth.service';
 import { LayoutService } from '../../../services/layout.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { SignupService } from '../../../services/sign-up.service';
 import {
   SocialAuthService,
   GoogleLoginProvider,
@@ -33,7 +34,8 @@ export class SignUpComponent implements OnInit {
     private _layoutService: LayoutService,
     private _toastrService: ToastrService,
     private SpinnerService: NgxSpinnerService,
-    private socialAuthService: SocialAuthService
+    private socialAuthService: SocialAuthService,
+    private signUpService: SignupService
   ) {
     console.log('bruh');
   }
@@ -83,7 +85,11 @@ export class SignUpComponent implements OnInit {
       // json['specialization'] = this.form.controls.specialization.value;
       json['password'] = this.form.controls.password.value;
       // json['role'] = Number(this.form.controls.user_role.value);
-      this.registerAPICall(json);
+
+      this.signUpService.updateHeader(json);
+      this._router.navigate(['/auth/welcome']);
+
+      // this.registerAPICall(json);
     }
   }
   loginWithGoogle(): void {
