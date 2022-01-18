@@ -76,6 +76,7 @@ export class PersonalizationComponent implements OnInit {
   disabled = false;
   invert = false;
   showTicks = false;
+  cannotGo: boolean;
   step = 1;
   thumbLabel = false;
   // value = 0;
@@ -1125,10 +1126,14 @@ export class PersonalizationComponent implements OnInit {
     if (
       this.lastFewBitsJoinDetailForm.controls.joining_within.value === 'later'
     ) {
-      this._toastrService.warning(
-        'Only immediate candidates allow who join within 7 to 15 days',
-        'Warning'
-      );
+      // this._toastrService.warning(
+      //   'Only immediate candidates allow who join within 7 to 15 days',
+      //   'Warning'
+      // );
+      this.cannotGo = true;
+     
+    } else {
+      this.cannotGo = false;
     }
   }
   setUpFormData() {

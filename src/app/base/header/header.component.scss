@@ -1,0 +1,15 @@
+@media screen and (max-width: 768px) {
+    #navbar {
+        .container {
+            flex-wrap: unset;
+            #navbarNavDropdown {
+                display: flex;
+                form {
+                    button {
+                        min-width: unset !important;
+                    }
+                }
+            }
+        }
+    }
+}

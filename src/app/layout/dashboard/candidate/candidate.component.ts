@@ -33,8 +33,26 @@ export class CandidateComponent implements OnInit {
   @ViewChild('chart') chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
   jobs: any[];
+  jobie: {
+    id: string;
+    created: string;
+    description: string;
+    category: string;
+    city: string;
+    name: string;
+    profile: string;
+  };
   userProfileData: any;
   events1: any[];
+  entireJob: {
+    name: string;
+    profile: string;
+    created: string;
+    id: string;
+    description: string;
+    category: string;
+    city: string;
+  }[] = [];
   designation: any = '';
   isBgv: boolean = false;
   fileUrl: string;
@@ -137,13 +155,27 @@ export class CandidateComponent implements OnInit {
 
   getJobDetails() {
     this.jobDetails.getJobs().subscribe((result: any) => {
+      console.log(result);
+
       if (result.result === 'success') {
         result?.data.map((ele) => {
           ele['created_at'] = moment(ele.created_at).fromNow();
         });
         this.jobs = result.data;
+        this.jobs.map((job: any) => {
+          this.jobie.id = job._id;
+          this.jobie.created = job.created_at;
+          this.jobie.description = job.job_description;
+          this.jobie.category = job.job_category;
+          this.jobie.city = job.city + ' ' + job.country;
+
+          this.entireJob.push(this.jobie);
+        });
+
+        console.log(this.entireJob);
       }
     });
+    console.log(this.jobs);
   }
   getUserProfileData() {
     const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];

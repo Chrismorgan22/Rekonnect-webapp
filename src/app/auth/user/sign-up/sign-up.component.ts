@@ -89,7 +89,7 @@ export class SignUpComponent implements OnInit {
       this.signUpService.updateHeader(json);
       this._router.navigate(['/auth/welcome']);
 
-      // this.registerAPICall(json);
+      this.registerAPICall(json);
     }
   }
   loginWithGoogle(): void {
