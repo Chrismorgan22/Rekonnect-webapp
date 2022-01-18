@@ -11,7 +11,19 @@ declare var $: any;
 export class ViewJobComponent implements OnInit {
   jobId: any;
   jobDetail: any;
-  appliedUserList: any = [];
+  entireUser: any[];
+  image: string;
+  name: string;
+  appliedUserList: any[] = [];
+  appliedUser: { name: string; id: string; image: string };
+  isModal: boolean = false;
+  candidateDetails: {
+    name: string;
+    exp: any[];
+    edu: any[];
+  }[];
+  expe: {}[] = null;
+  educ: {}[] = null;
   constructor(
     private jobService: JobService,
     private route: ActivatedRoute,
@@ -19,10 +31,12 @@ export class ViewJobComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
+    this.jobService.getUserById;
     this.jobId = this.route.snapshot.paramMap.get('id');
     if (this.jobId) {
       this.getJobDetails();
       this.getUserByJob();
+      this.fetchProper();
     } else {
       this.jobService.getJobs().subscribe((result: any) => {
         if (result.result === 'success') {
@@ -46,16 +60,45 @@ export class ViewJobComponent implements OnInit {
       }
     });
   }
+  manageUser(userId: string) {
+    this.isModal = true;
+    console.log(this.appliedUserList);
+
+    this.jobService.fetchCandidate(userId).subscribe((data) => {
+      this.image = data.profile_url;
+      console.log(data, data.experience_data.experience_details);
+
+      this.expe = data.experience_data.experience_details;
+      this.educ = data.education_data.education_details;
+    });
+    console.log(this.expe);
+  }
+  toggleIt() {
+    this.isModal = !this.isModal;
+  }
   editJob() {
     $('.view-job-section').removeClass('not-edit-mode');
     $('.form-control').removeAttr('readonly');
   }
-  getUserByJob() {
-    this.jobApplicationService.getUserByJob(this.jobId).subscribe((data) => {
-      console.log(data);
-      this.appliedUserList = data;
+  async getUserByJob() {
+    try {
+      this.jobApplicationService.getUserByJob(this.jobId).subscribe((data) => {
+        console.log(data);
+        this.appliedUserList = data;
 
-      console.log(this.appliedUserList);
-    });
+        console.log(this.appliedUserList);
+      });
+    } catch (error) {}
+  }
+  fetchProper() {
+    console.log('fuck');
+
+    for (let i = 0; i < this.appliedUserList.length; i++) {
+      this.jobService
+        .getUserById(this.appliedUserList[i].candidate_id)
+        .subscribe((data) => {
+          console.log(data);
+        });
+    }
   }
 }

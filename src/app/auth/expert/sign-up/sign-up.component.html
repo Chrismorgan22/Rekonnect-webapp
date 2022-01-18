@@ -114,7 +114,7 @@
                         <div class="form-group">
                             <input type="password" class="form-control" id="colFormLabelLg" placeholder="Confirm Password"
                                 formControlName="confirmPassword" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                                [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"  />
                             <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
                                 <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
                                 <div *ngIf="f.confirmPassword.errors.minlength">Confirm Password must be at least 6

@@ -13,12 +13,35 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ApplyForJobComponent implements OnInit {
   userId: any = JSON.parse(sessionStorage.getItem('_ud'))[0]['_id'];
+  Entire: any = JSON.parse(sessionStorage.getItem('_ud'))[0];
   jobId: string;
+  passion: string;
+  totalExp: string;
+  candidate: {
+    name: string;
+    Phone: string;
+    email: string;
+    location: string;
+    preffered: string;
+  } = {
+    name:
+      JSON.parse(sessionStorage.getItem('_ud'))[0].first_name +
+      ' ' +
+      JSON.parse(sessionStorage.getItem('_ud'))[0].last_name,
+    email: JSON.parse(sessionStorage.getItem('_ud'))[0].email,
+    Phone: JSON.parse(sessionStorage.getItem('_ud'))[0].phone,
+    location: '',
+    preffered: '',
+  };
+
   jobDetail: any;
   jobAppliedFlag: boolean = false;
   Resume: string;
   Vesume: string;
   Cover: string;
+  isExp: boolean;
+  expData: [];
+  eduData: [];
   json: {
     job_id: any;
     candidate_id: any;
@@ -34,11 +57,30 @@ export class ApplyForJobComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
+    console.log(this.candidate);
+
     window.scrollTo(0, 0);
     this.jobId = this.route.snapshot.params.id;
     console.log(this.jobId);
     await this.getJobDetails();
     await this.getJobappliedStatusData();
+    this.jobApply.fetchCandidate(this.userId).subscribe((data) => {
+      console.log(data);
+      if (data.experience_data.experience_type !== 'Experienced')
+        this.isExp = false;
+      const date1: any = new Date();
+      const date2: any = new Date();
+      const diffTime = Math.abs(date2 - date1);
+      this.totalExp = JSON.stringify(
+        Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+      );
+      this.expData = data.experience_data.experience_details;
+      this.eduData = data.education_data.education_details;
+      this.passion = data.passion;
+      this.candidate.location = data.address_details.state.name + ', India';
+      // this.candidate.location=data.
+      console.log(this.expData, this.eduData);
+    });
   }
 
   getJobDetails() {
@@ -91,28 +133,33 @@ export class ApplyForJobComponent implements OnInit {
     secretAccessKey: environment.secretAccessKey,
     region: environment.region,
   });
-  uploadFileResume(file) {
-    const contentType = file[0].type;
-    if (file[0].size > 2200000) {
-      window.alert('file too large');
-      return;
-    }
-    const params = {
-      Bucket: environment.Bucket,
-      Key: 'Rekonnect' + file[0].name,
-      Body: file[0],
-      ACL: 'public-read',
-      ContentType: contentType,
-    };
-    this.bucket.upload(params, function (err, data) {
-      if (err) {
-        console.log('There was an error uploading your file: ', err);
-        return false;
+  async uploadFileResume(file) {
+    try {
+      const contentType = file[0].type;
+      if (file[0].size > 2200000) {
+        window.alert('file too large');
+        return;
       }
-      console.log('Successfully uploaded file.', data);
-      this.Resume = data.location;
+      const params = {
+        Bucket: environment.Bucket,
+        Key: 'Rekonnect' + file[0].name,
+        Body: file[0],
+        ACL: 'public-read',
+        ContentType: contentType,
+      };
+      await this.bucket.upload(params, async function (err, data) {
+        if (err) {
+          console.log('There was an error uploading your file: ', err);
+          return false;
+        }
+        console.log('Successfully uploaded file.', data);
+        this.Resume = await data.location;
+        console.log(this.Resume);
+      });
       console.log(this.Resume);
-    });
+    } catch (error) {
+      console.log(error);
+    }
   }
   uploadFilevesume(file) {
     const contentType = file[0].type;

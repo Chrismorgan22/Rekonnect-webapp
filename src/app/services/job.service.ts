@@ -116,4 +116,24 @@ export class JobService {
         })
       );
   }
+
+  fetchCandidate(id: string) {
+    return this.http
+      .get<any>(`http://localhost:8000/candidate/findById/${id}`)
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
+
+  fetchJobsPosted(id: string) {
+    return this.http
+      .get<any>(`http://localhost:8000/job/getJobsPosted/${id}`)
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
 }
