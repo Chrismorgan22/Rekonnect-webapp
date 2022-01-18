@@ -14,7 +14,7 @@
                             <div class="profile-user-block text-center">
                                 <div class="user-profile pb-4">
                                     <div class="user-image">
-                                        <img src="../../../assets/images/user-profile-placeholder.png" />
+                                        <img [src]="userImg" />
                                     </div>
                                     <div class="user-content my-3">
                                         <h5>{{candidate.name}} <span class="material-icons text-verified"> stars</span> </h5>
@@ -31,10 +31,10 @@
                                                 phone
                                             </span> {{candidate.Phone}}</label>
 
-                                        <h6 class="font-bold mt-4"> Total Experience</h6>
+                                        <!-- <h6 class="font-bold mt-4"> Total Experience</h6>
                                         <label> <span class="material-icons">
                                                 business
-                                            </span> 5years, 3months</label>
+                                            </span> 5years, 3months</label> -->
 
                                         <h6 class="font-bold mt-4"> Current Location</h6>
                                         <label> <span class="material-icons">
