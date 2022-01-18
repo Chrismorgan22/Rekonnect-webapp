@@ -925,7 +925,14 @@
                     <div class="container-fluid start-section  w-100">
                         <div class="section-form-content">
                             <div class="form-group py-4">
-                                <label>Expected salary (in INR p.a.)<span style="color:red">*</span> </label>
+                                <div style="display:flex;flex-direction: column;">
+                                <input type="
+                                text" placeholder="Enter preious salary" style="padding: 8px;
+                                width: 40%;
+                                border: 1px solid #15759A;
+                                border-radius: 6px; 
+                                margin-bottom:12px">
+                                <label>Expected salary (in INR p.a.)<span style="color:red">*</span> </label></div>
                                 <div class="custom-file  d-block">
                                     <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
                                         formControlName="rangeValues"></ngx-slider>
@@ -969,7 +976,14 @@
                                     </div>
 
                                 </div>
-                                <div class="form-group mt-3" *ngIf="userjoiningDetails.joining_status.value === 'no'">
+                                <div class="form-group mt-3" *ngIf="userjoiningDetails.joining_status.value === 'no' ">
+                                    <label style="color:red">*Note: Thank you for registering with us. Since ReKonnect
+                                        is only
+                                        for immediately
+                                        available individuals, your Resume will be in our database. However, you would
+                                        be inactive until your status changes</label>
+                                </div>
+                                <div class="form-group mt-3" *ngIf="cannotGo">
                                     <label style="color:red">*Note: Thank you for registering with us. Since ReKonnect
                                         is only
                                         for immediately
