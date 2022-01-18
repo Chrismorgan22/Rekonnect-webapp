@@ -59,8 +59,8 @@
                     Up</button>
                 <button *ngIf="!loginFlag" class="btn btn-primary ml-2 my-sm-0" type="button" routerLink="/auth/user/signin">Sign
                     In</button>
-                    <button *ngIf="!loginFlag" class="btn btn-primary ml-2 my-sm-0" type="button" routerLink="/auth/admin"> Admin Sign
-                        Up</button>
+                    <!-- <button *ngIf="!loginFlag" class="btn btn-primary ml-2 my-sm-0" type="button" routerLink="/auth/admin"> Admin Sign
+                        Up</button> -->
                 <button *ngIf="loginFlag"class="btn btn-primary my-2 my-sm-0" type="button" (click)="openLogoutModal()">Logout</button>
             </form>
 
