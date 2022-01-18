@@ -1129,10 +1129,8 @@ export class PersonalizationComponent implements OnInit {
       //   'Only immediate candidates allow who join within 7 to 15 days',
       //   'Warning'
       // );
-      // this.userjoiningDetails.joining_status.value
       this.cannotGo = true;
-      // this.goAhead = false;
-      // this.lastFewBitsJoinDetailForm.get('joining_within').clearValidators();
+     
     } else {
       this.cannotGo = false;
     }
