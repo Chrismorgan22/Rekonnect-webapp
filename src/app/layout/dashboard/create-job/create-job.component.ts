@@ -13,6 +13,7 @@ export class CreateJobComponent implements OnInit {
   current: any[] = ['full-time', 'part-time'];
   jobCategory: any;
   education: any;
+  topSkills: [];
   jobType: any;
   remote: any;
   postVacancy: any;
@@ -33,6 +34,7 @@ export class CreateJobComponent implements OnInit {
       unSelectAllText: 'UnSelect All',
       allowSearchFilter: true,
     };
+    this.getSkills();
     this.stateDrp = ['Full-time', 'Part-time', 'Internship'];
     this.jobCategoryArray = ['Remote', 'On-site'];
     this.remoteArray = ['Full Time Remote', 'Part Time Remote'];
@@ -100,6 +102,13 @@ export class CreateJobComponent implements OnInit {
         }
       });
     }
+  }
+  getSkills() {
+    this.applyJob.fetchSkills('Soft_skills').subscribe((data) => {
+      console.log(data.data);
+
+      this.topSkills = data.data;
+    });
   }
   onItemSelect(item: any) {
     console.log(item);

@@ -69,6 +69,15 @@ export class JobService {
         })
       );
   }
+  fetchSkills(type: string) {
+    return this.http
+      .post<any>(`http://localhost:8000/lookup/`, { lookup_type: type })
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
   postBgv(body: any) {
     return this.http.post<any>(`http://localhost:8000/report/apply`, body).pipe(
       map((response) => {
