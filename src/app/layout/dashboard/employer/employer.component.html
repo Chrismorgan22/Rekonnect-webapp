@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <!-- row one -->
-                <div class="col-sm col-sm-12 mb-sm-3 col-md-6 col-lg-3">
+                <div class="col-sm col-sm-12 mb-sm-3 col-md-6 col-lg-3" style="display:none">
                     <!-- <div class="card timeline-card">
                         <div class="card-header d-flex align-items-center justify-content-space-between">
                             <h6>Employer Timeline</h6>
@@ -70,7 +70,7 @@
                 [legend]="chartOptions1.legend" [fill]="chartOptions1.fill"></apx-chart> -->
 
                 <div class="col-sm col-sm-12 col-md-6 col-lg-9">
-                    <div class="card profile-card">
+                    <div class="card profile-card" style="width:88vw">
                         <div class="card-header d-flex align-items-center justify-content-space-between">
                             <h6>Profile Stats</h6>
                             <a href=""><span class="material-icons">edit</span></a>
@@ -171,7 +171,7 @@
                             <h6>Candidates that match your requirements for recent job post</h6>
                         </div>
                         <div class="card-body">
-                            <div class="row d-flex justify-content-center">
+                            <div class="row d-flex justify-content-center" *ngFor="let user of apppliedUserData">
                                 <div class="col-sm col-sm-12 col-md-6 col-lg-3">
                                     <div class="candidate-card">
                                         <span class="top-pick-label">Top Pick</span>
@@ -181,7 +181,7 @@
                                                     src="../../../../assets/images/temporary-images/candidate-placeholder-image-1.png" />
                                             </div>
                                             <div class="user-text text-center">
-                                                <h4>Jayesh Kumar</h4>
+                                                <h4>{{user.first_name}} {{user.last_name}}</h4>
                                                 <label>UX Designer</label>
                                             </div>
                                             <div class="user-action d-flex justify-content-center pb-3">
@@ -196,7 +196,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm col-sm-12 col-md-6 col-lg-3">
+                                <!-- <div class="col-sm col-sm-12 col-md-6 col-lg-3">
                                     <div class="candidate-card">
                                         <span class="top-pick-label">Top Pick</span>
                                         <div class="user-content">
@@ -265,7 +265,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -279,7 +279,33 @@
                         </div>
                         <div class="card-body">
                             <div class="row px-3">
-                                <div class="col-sm col-sm-12 col-lg-5 mb-md-3 mb-2">
+                                <div *ngFor="let job of totalJobs">
+                                <div class="col-sm col-sm-12 mb-md-3 mb-2">
+                                    <div class="posted-job-card mr-3">
+                                        <div class="header-card">
+                                            <div class="header-image">
+                                                <h5>{{job.job_title}}</h5>
+                                                <img
+                                                    src="../../../../assets/images/temporary-images/smiley-image.jpg" />
+                                            </div>
+                                            <div class="user-profile">
+                                                <div class="user-image">
+                                                    <img
+                                                        src="../../../../assets/images/temporary-images/Cone-min.png" />
+                                                </div>
+                                                <div class="user-content">
+                                                    <h5>ARMAN FINANCIAL SERVICES INC.</h5>
+                                                    <label>{{job.city}} {{job.country}}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="content-card">
+                                            <p>{{job.job_description}}</p>
+                                            <label>{{job.job_type}} {{job.job_category}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-sm col-sm-12 col-lg-5 mb-md-3 mb-2">
                                     <div class="posted-job-card mr-3">
                                         <div class="header-card">
                                             <div class="header-image">
@@ -305,34 +331,8 @@
                                             <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-sm col-sm-12 col-lg-5 mb-md-3 mb-2">
-                                    <div class="posted-job-card mr-3">
-                                        <div class="header-card">
-                                            <div class="header-image">
-                                                <h5>Financial Analyst</h5>
-                                                <img
-                                                    src="../../../../assets/images/temporary-images/smiley-image.jpg" />
-                                            </div>
-                                            <div class="user-profile">
-                                                <div class="user-image">
-                                                    <img
-                                                        src="../../../../assets/images/temporary-images/Cone-min.png" />
-                                                </div>
-                                                <div class="user-content">
-                                                    <h5>ARMAN FINANCIAL SERVICES INC.</h5>
-                                                    <label>Ahmedabad, Gujarat</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="content-card">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget sapien
-                                                ut erat vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum
-                                                dolor sit amet, consectetur adipiscing elit. Nam eget </p>
-                                            <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
-                                        </div>
-                                    </div>
-                                </div>
+                                </div> -->
+                            </div>
                                 <div class="col-sm col-sm-12 col-lg-2 d-flex align-items-center">
                                     <a class="btn btn-link text-primary">See more <span class="material-icons">
                                             play_circle_filled
@@ -471,7 +471,7 @@
 <!-- Job Listing Modal -->
 <div class="modal fade" id="postjobModal" tabindex="-1" role="dialog" aria-labelledby="postjobModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog candidate-apply-job-modal" role="document">
+    <div class="modal-dialog candidate-apply-job-modal" role="document" >
 
         <div class="modal-content">
             <div class="modal-header">

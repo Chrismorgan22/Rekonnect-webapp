@@ -45,6 +45,8 @@ export type ChartOptions1 = {
 export class EmployerComponent implements OnInit {
   appliedUserList: any = [];
   listOfJobs: any = [];
+  totalJobs: any[] = [];
+  apppliedUserData: any[] = [];
   empID: string = JSON.parse(sessionStorage.getItem('_ud'))[0]._id;
   jobData: {
     title: string;
@@ -246,11 +248,12 @@ export class EmployerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUserProfileData();
+    this.getUserByJob();
 
+    this.getUserProfileData();
+    this.getTotalJobs();
     // console.log(this.empID);
     // console.log(this.listOfJobs);
-    this.getUserByJob();
   }
 
   getUserProfileData() {
@@ -263,19 +266,44 @@ export class EmployerComponent implements OnInit {
       console.log(this.userProfileData);
     });
   }
-  getUserByJob() {
-    this.jobService.fetchJobsPosted(this.empID).subscribe((data) => {
-      this.listOfJobs = data;
-    });
+  async getTotalJobs() {
+    try {
+      this.jobService.getAllJobs().subscribe((data) => {
+        console.log(data);
+        this.totalJobs = data;
+        this.getApplicants();
+      });
+    } catch (error) {}
+  }
+  getApplicants() {
     for (let i = 0; i < this.listOfJobs.length; i++) {
       let jobId = this.listOfJobs[i]._id;
       this.jobApplicationService.getUserByJob(jobId).subscribe((data) => {
         console.log(data);
-        this.appliedUserList.psuh(data);
-
+        this.appliedUserList.push(data[0]);
+        this.fetchProperUser();
         console.log(this.appliedUserList);
       });
     }
+  }
+  fetchProperUser() {
+    for (let i = 0; i < this.appliedUserList.length; i++) {
+      this.jobService
+        .getUserById(this.appliedUserList[i].candidate_id)
+        .subscribe((data) => {
+          console.log(data);
+          this.apppliedUserData.push(data[0]);
+        });
+    }
+    console.log(this.apppliedUserData);
+  }
+  getUserByJob() {
+    console.log(this.empID);
+
+    this.jobService.fetchJobsPosted(this.empID).subscribe((data) => {
+      this.listOfJobs = data;
+      console.log(data);
+    });
 
     console.log('done');
   }

@@ -1,6 +1,6 @@
 //dashboard
 .dashboard-section {
-    position:relative;
+    position: relative;
 
     .profile-completion {
         background: $emphasis-color;
@@ -13,7 +13,7 @@
     }
 
     .negative-top-offset {
-        position: absolute;
+        // position: absolute;
         top: 205px;
         width: 100%;
 
@@ -37,7 +37,6 @@
             object-fit: cover;
         }
     }
-
 
     //common card view
     .card {
@@ -106,13 +105,13 @@
                 }
 
                 & span {
-                    color: #1AA053;
+                    color: #1aa053;
                 }
             }
 
             .card-image {
                 width: 325px;
-                height:160px;
+                height: 160px;
 
                 @media (max-width: $information-mobile-md) {
                     display: none;
@@ -126,9 +125,9 @@
         }
 
         .upload-customised {
-            border: 1px dashed #1AA053;
-            background: lighten(#1AA053, 60%);
-            color: #1AA053;
+            border: 1px dashed #1aa053;
+            background: lighten(#1aa053, 60%);
+            color: #1aa053;
             position: relative;
 
             @media (max-width: $information-mobile-md) {
@@ -155,13 +154,10 @@
                     top: 0;
                     left: 0;
                 }
-                
             }
         }
 
-        
-
-        .employer-card-box{
+        .employer-card-box {
             padding: 24px 0 0;
             box-shadow: 0px 10px 13px rgba(17, 38, 146, 0.05);
             border-radius: 8px;
@@ -173,7 +169,7 @@
                 }
 
                 & span {
-                    color: #1AA053;
+                    color: #1aa053;
                 }
 
                 .dropdown {
@@ -205,11 +201,11 @@
                     }
 
                     .light-blue {
-                        background: #85F4FA;
+                        background: #85f4fa;
                     }
 
                     .dark-blue {
-                        background: #3A57E8;
+                        background: #3a57e8;
                     }
                 }
             }
@@ -253,7 +249,7 @@
         .job-card {
             padding: 24px;
             margin: 0;
-        
+
             &:not(:last-of-type) {
                 border-bottom: 1px solid $color-border;
                 margin: 16px 0;
@@ -266,7 +262,6 @@
                 }
             }
 
-           
             .job-header {
                 justify-content: space-between;
 
@@ -285,7 +280,7 @@
                 }
 
                 .user-main-content {
-                    display:  flex;
+                    display: flex;
                     flex-direction: column;
                     margin-left: 16px;
 
@@ -305,7 +300,6 @@
                             font-size: 14px;
                             color: $text-color;
                         }
-                      
                     }
 
                     .dot {
@@ -321,9 +315,10 @@
 
                 .user-action-content {
                     display: none;
-                    a, .btn {
+                    a,
+                    .btn {
                         margin-right: 8px;
-                    } 
+                    }
 
                     a {
                         & > span {
@@ -334,7 +329,7 @@
             }
 
             .job-content {
-                & > p{
+                & > p {
                     font-size: 14px;
                     color: $text-grey;
                     padding: 0 24px;
@@ -403,8 +398,6 @@
                 }
             }
         }
-
-       
     }
 
     .course-card {
@@ -434,13 +427,13 @@
 
     .filter-card {
         .filter-block {
-             & > .form-control {
-                 border-radius: 50px;
-                 background: #eee;
-                 padding: 24px;
-                 border: 1px solid $color-border;
-                 margin-bottom: 24px;
-             }
+            & > .form-control {
+                border-radius: 50px;
+                background: #eee;
+                padding: 24px;
+                border: 1px solid $color-border;
+                margin-bottom: 24px;
+            }
         }
 
         .filter-accordian {
@@ -454,7 +447,7 @@
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    
+
                     .btn-link {
                         color: $text-color;
                         font-weight: $font-semibold;
@@ -469,12 +462,10 @@
                     }
                 }
 
-                &  .card-body {
+                & .card-body {
                     padding-bottom: 0;
                     border-bottom: 1px solid $color-border;
                     margin-bottom: 8px;
-
-
 
                     ul {
                         padding: 0;
@@ -488,24 +479,21 @@
         }
     }
 
-
-   
-
     //Employer Dashboard
     .employer-header-band {
         @media (max-width: $information-mobile-sm) {
-           flex-direction: column;
+            flex-direction: column;
 
-           .user-content-action {
-               display: flex;
+            .user-content-action {
+                display: flex;
 
-               .btn.btn-lg {
+                .btn.btn-lg {
                     padding: 0.8rem;
-                    font-size: .875rem;
+                    font-size: 0.875rem;
                     line-height: 1;
                     margin-top: 16px;
-               }
-           }
+                }
+            }
         }
     }
 
@@ -628,7 +616,7 @@
     }
 
     //expert Dashboard
-    .expert-card-box{
+    .expert-card-box {
         padding: 24px 0 0;
         box-shadow: 0px 10px 13px rgba(17, 38, 146, 0.05);
         border-radius: 8px;
@@ -636,7 +624,7 @@
 
         .card-text {
             &.text-green {
-                color: #1AA053;
+                color: #1aa053;
             }
 
             &.text-orange {
@@ -679,7 +667,7 @@
                     font-weight: $font-medium;
                     color: $text-color;
 
-                    &.active ,
+                    &.active,
                     &:focus,
                     &:hover {
                         border-top: none;
@@ -697,7 +685,7 @@
                     border-radius: 0;
                     .card-body {
                         border-radius: 0;
-                        border-top: 4px solid #3A57E8;
+                        border-top: 4px solid #3a57e8;
 
                         .breadcrumb-label {
                             font-size: 0.8rem;
@@ -726,8 +714,6 @@
                     }
                 }
             }
-
-         
         }
     }
 
@@ -749,11 +735,11 @@
                 }
 
                 .light-blue {
-                    background: #85F4FA;
+                    background: #85f4fa;
                 }
 
                 .dark-blue {
-                    background: #3A57E8;
+                    background: #3a57e8;
                 }
             }
         }
@@ -824,7 +810,7 @@
             }
 
             .card-pill {
-                padding:4px 8px;
+                padding: 4px 8px;
                 border-radius: 8px;
                 color: $text-white;
                 width: fit-content;
@@ -834,12 +820,12 @@
                     margin-right: 8px;
                 }
 
-               &.pill-orange {
-                    background: #F16A1B;
-               }
+                &.pill-orange {
+                    background: #f16a1b;
+                }
 
                 &.pill-blue {
-                    background: #3A57E8;
+                    background: #3a57e8;
                 }
             }
         }
@@ -885,26 +871,26 @@
     .start-section {
         width: 900px;
 
-          @media (max-width: $information-mobile-md) {
-                width: 100%;
-            }
+        @media (max-width: $information-mobile-md) {
+            width: 100%;
+        }
 
         .section-form-content {
             padding: 32px 60px;
 
             @media (max-width: $information-mobile-md) {
-               padding: 16px;
+                padding: 16px;
             }
 
             .custom-radio {
                 display: inline-block !important;
                 position: relative;
                 align-items: center;
-            
+
                 &:not(:last-child) {
                     margin: 0 12px 0 0;
                 }
-            
+
                 .custom-radio-button {
                     left: 0;
                     top: 12px;
@@ -913,7 +899,7 @@
                     position: absolute;
                     width: 100%;
                     height: 100%;
-            
+
                     &:checked + .custom-control-radio-area,
                     &:hover + .custom-control-radio-area {
                         border: 1px solid $emphasis-color !important;
@@ -921,7 +907,6 @@
                     }
                 }
             }
-            
         }
     }
 
@@ -930,7 +915,7 @@
         height: 100%;
 
         @media (max-width: $information-mobile-md) {
-          display: none;
+            display: none;
         }
 
         & img {
@@ -944,7 +929,6 @@
 //profile page
 .profile-page {
     .profile-basic-card {
-
         & .profile-user-block {
             .user-profile {
                 .user-image {
@@ -971,7 +955,6 @@
                     width: 100%;
                     margin: 24px 0;
                 }
-               
             }
 
             .user-socials {
@@ -996,10 +979,10 @@
     }
 
     .profile-content-card {
-        &>  .card-body {
+        & > .card-body {
             padding: 0;
             box-shadow: none;
-            border:none;
+            border: none;
         }
 
         .card-header {
@@ -1013,11 +996,8 @@
                 }
             }
         }
-       
     }
 }
-
-
 
 .dropdown-toggle {
     height: calc(3rem + 2px);
