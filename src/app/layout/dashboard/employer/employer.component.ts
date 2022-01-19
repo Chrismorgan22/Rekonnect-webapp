@@ -266,6 +266,7 @@ export class EmployerComponent implements OnInit {
   getUserByJob() {
     this.jobService.fetchJobsPosted(this.empID).subscribe((data) => {
       this.listOfJobs = data;
+      console.log(data);
     });
     for (let i = 0; i < this.listOfJobs.length; i++) {
       let jobId = this.listOfJobs[i]._id;
