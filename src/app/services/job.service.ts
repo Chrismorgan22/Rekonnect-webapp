@@ -45,7 +45,13 @@ export class JobService {
         })
       );
   }
-
+  getAllJobs() {
+    return this.http.get<any>(`http://localhost:8000/job/getAll`).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
   getApplicants() {
     return this.http.get<any>(`http://localhost:8000/job/application/`).pipe(
       map((response) => {
