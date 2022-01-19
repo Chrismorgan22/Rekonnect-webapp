@@ -292,9 +292,10 @@ export class EmployerComponent implements OnInit {
         .getUserById(this.appliedUserList[i].candidate_id)
         .subscribe((data) => {
           console.log(data);
-          this.apppliedUserData.push(data);
+          this.apppliedUserData.push(data[0]);
         });
     }
+    console.log(this.apppliedUserData);
   }
   getUserByJob() {
     console.log(this.empID);
