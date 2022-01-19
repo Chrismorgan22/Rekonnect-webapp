@@ -358,7 +358,7 @@
           </div>
         </div>
       </div> -->
-      <div class="card profile-content-card" [ngStyle]="{display: isModal ? 'flex' :'none'}" style="position:fixed;top:20%;left:20%;width: 480px;height:auto">
+      <div class="card profile-content-card" [ngStyle]="{display: isModal ? 'flex' :'none'}" style="position:fixed;top:20%;left:20%;width: 580px;height:auto">
         <div class="card-body">
           <button (click)="toggleIt()" style="float:right"> Close</button>
             <!-- <div class="form-group border-bottom">
@@ -377,18 +377,15 @@
 
 
                 <div >
-                    <div class="pb-4 d-flex align-items-center">
+                    <div class="pb-4 d-flex align-items-center" style="justify-content:space-around !important">
                         <img class="section-image"
                             src="../../../../assets/images/job-posting/education-icon.png"  width="80px"/>
-                            <div class="wrapper" style="display: flex;justify-content:space-between;margin-left: 16px;">
-                            <div *ngFor="let exp of expe" >
-                        <div class="content mt-3" style="margin-left:18px">
+                            <div class="wrapper" style="display: flex;justify-content:space-between;margin-left: 16px; width:65%">
+                            <div *ngFor="let exp of expe"  style="width: 65%;">
+                        <div class="content mt-3" style="margin-left:18px;width:100%">
                             <h5 class="bold">{{exp.company}} </h5>
                             <p class="font-16 text-grey mb-0">{{exp.designation}}</p>
-                            <p class="font-14 text-grey mt-2"> start:{{exp.start_date}} </p><p> end: {{exp.end_date}}</p> <span
-                                    class="material-icons text-grey font-8 mx-3">
-                                    fiber_manual_record
-                                </span> 1 Year
+                            <p class="font-14 text-grey mt-2"> start:{{exp.start_date}} </p><p> end: {{exp.end_date}}</p> 
                         </div>
                       </div>
                     </div>
@@ -399,10 +396,10 @@
             <div class="form-group border-bottom education-section">
                 <h5 class="bold pt-4">Educational Summary</h5>
                 <label class="text-color-light">Last retained position in the company</label>
-                <div class="pb-4 d-flex align-items-center">
+                <div class="pb-4 d-flex align-items-center" style="width: 77%;justify-content:space-evenly">
                     <img class="section-image"
                         src="../../../../assets/images/job-posting/education-icon.png"  width="80px"/>
-                        <div  *ngFor="let edu of educ">
+                        <div  *ngFor="let edu of educ" >
                             <div class="content mt-3" style="margin-left: 16px;">
                                 <h5 class="bold">{{edu.school_name}}</h5>
                                 <p class="font-16 text-grey mb-0">{{edu.description}}</p>
@@ -416,6 +413,18 @@
                 </div>
             </div>
          
+            <div class="form-group border-bottom education-section">
+              <h5 class="bold pt-4">Technical Skills</h5>
+              <div class="skillsContainer" *ngFor="let skill of TS">
+                <div style="margin-left: 10px;">{{skill.name}}</div>
+                                </div>
+              </div>
+              <div class="form-group border-bottom education-section">
+                <h5 class="bold pt-4">Soft Skills</h5>
+                <div class="skillsContainer" *ngFor="let skill of SS">
+                  <span style="margin-left: 10px;"> {{skill.name}}</span>
+                                  </div>
+                </div>
             <!-- <div class="form-group border-bottom">
                 <h5 class="bold pt-4">Add Upskilling undertaken</h5>
                 <label class="text-color-light">Showcase your latest achievements, this adds more

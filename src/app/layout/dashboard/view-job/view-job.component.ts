@@ -14,11 +14,15 @@ export class ViewJobComponent implements OnInit {
   entireUser: any[];
   image: string;
   name: string;
+  TS: any[] = [];
+  SS: any[] = [];
   appliedUserList: any[] = [];
   appliedUser: { name: string; id: string; image: string };
   isModal: boolean = false;
   candidateDetails: {
+    id: string;
     name: string;
+    skills: any[];
     exp: any[];
     edu: any[];
   }[];
@@ -67,11 +71,15 @@ export class ViewJobComponent implements OnInit {
     this.jobService.fetchCandidate(userId).subscribe((data) => {
       this.image = data.profile_url;
       console.log(data, data.experience_data.experience_details);
-
+      this.TS = data.technical_skills;
+      this.SS = data.soft_skills;
       this.expe = data.experience_data.experience_details;
       this.educ = data.education_data.education_details;
+
+      console.log(this.SS, this.TS);
     });
     console.log(this.expe);
+    console.log(this.SS, this.TS);
   }
   toggleIt() {
     this.isModal = !this.isModal;
