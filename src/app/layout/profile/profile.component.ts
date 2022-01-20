@@ -8,6 +8,7 @@ import { JobService } from '../../services/job.service';
 export class ProfileComponent implements OnInit {
   userId: string = JSON.parse(sessionStorage.getItem('_ud'))[0]._id;
   professionalData: {};
+  bruh: boolean;
   userData: any = JSON.parse(sessionStorage.getItem('_ud'))[0];
   isfirst: boolean = false;
   isthird: boolean = false;
