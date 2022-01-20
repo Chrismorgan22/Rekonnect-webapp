@@ -211,7 +211,20 @@
                                     </div>
                                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                                         data-parent="#accordionExample">
-                                        <div class="card-body">
+                                       
+                                        <div style="position: relative;">
+                                            <span *ngIf="isFresher"> Fresher!</span>  <span style="position: absolute;top:5px;right:18px;font-size:16px" (click)="toggleEdit('third')">Edit</span>
+                                           <div style="padding:22px">
+                                            <div *ngFor="let pExp of personalData.experience_data.experience_details">
+                                                <div style="padding:22px" *ngIf="isFresher==false">
+                                                   <div class="email" style="padding:9px;font-size:20px">{{pExp.company}}</div>
+                                                   <div class="PhoneandLocation" style="padding:9px;display:flex;align-items:center;justify-content:space-between ">
+                                                      <span style="font-size:20px">{{pExp.job_description}}</span>  <span style="font-size:20px"> {{pExp.designation}}</span>
+                                                   </div>
+                                                   <div class="address" style="padding:9px;font-size:20px">{{pExp.start_date}} {{pExp.end_date}}</div>
+                                               </div>
+                                        </div>
+                                        <div class="card-body" *ngFor="isthird">
                                             <div class="section start-section">
 
                                                 <form class="section-form-content">
@@ -430,7 +443,6 @@
                     </div>
                 </div>
             </div>
-
         </section>
         <button (click)="updateField()">Update</button>
     </main>

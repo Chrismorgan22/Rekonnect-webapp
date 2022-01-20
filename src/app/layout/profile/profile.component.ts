@@ -10,7 +10,9 @@ export class ProfileComponent implements OnInit {
   professionalData: {};
   userData: any = JSON.parse(sessionStorage.getItem('_ud'))[0];
   isfirst: boolean = false;
+  isthird: boolean = false;
   personalData: any = {};
+  isFresher: boolean = false;
   isUneducated: boolean = false;
   issecond: boolean = false;
   constructor(private _jobService: JobService) {
@@ -25,6 +27,11 @@ export class ProfileComponent implements OnInit {
       }
       case 'second': {
         this.issecond = !this.issecond;
+        break;
+      }
+      case 'third': {
+        this.isthird = !this.isthird;
+        break;
       }
     }
   }
@@ -103,6 +110,9 @@ export class ProfileComponent implements OnInit {
       console.log(data);
       if (data.education_data.education_type === 'Non-Educated')
         this.isUneducated = true;
+
+      if (data.experience_data.experience_type === 'Fresher')
+        this.isFresher = true;
     });
     console.log(this.isUneducated);
   }
