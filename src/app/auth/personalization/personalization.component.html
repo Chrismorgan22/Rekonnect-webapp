@@ -926,13 +926,17 @@
                         <div class="section-form-content">
                             <div class="form-group py-4">
                                 <div style="display:flex;flex-direction: column;">
-                                <input type="
+                                <!-- <input type="
                                 text" placeholder="Enter 
                                 Last Drawn Salary" style="padding: 8px;
                                 width: 40%;
                                 border: 1px solid #15759A;
                                 border-radius: 6px; 
-                                margin-bottom:12px">
+                                margin-bottom:12px"> -->
+                                <label>Last drawn salary (in INR p.a.)<span style="color:red">*</span> </label>
+
+                                <ngx-slider [(value)]="Dvalue" [(highValue)]="DhighValue" [options]="drawnOptions"
+                                      formControlName="last_drawn" ></ngx-slider>
                                 <label>Expected salary (in INR p.a.)<span style="color:red">*</span> </label></div>
                                 <div class="custom-file  d-block">
                                     <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
