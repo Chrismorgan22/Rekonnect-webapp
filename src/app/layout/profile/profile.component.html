@@ -14,7 +14,6 @@
     <main class="negative-top-offset">
         <section class="container">
             <div class="row parent-section-body profile-page">
-                <!-- row one -->
                 <div class="col-sm col-sm-12 mb-sm-3 col-md-12 col-lg-3">
                     <div class="card profile-basic-card">
                         <div class="card-header d-flex align-items-center border-none justify-content-space-between">
@@ -23,14 +22,14 @@
                         </div>
                         <div class="card-body">
                             <div class="profile-user-block text-center">
-                                <div class="user-profile">
+                                <div class="user-profile"></div>
                                     <div class="user-image">
-                                        <img src="../../../assets/images/user-profile-placeholder.png" />
+                                        <img [src]="photUrl" width="225px" />
                                     </div>
                                     <div class="user-content my-3">
                                         <h5>{{userData.first_name}} {{userData.last_name}}</h5>
                                         <label>UX Design</label>
-                                        <label class="d-block"><i>Haryana India</i></label>
+                                        <label class="d-block"><i>{{personalData.address_details.state.name}}</i></label>
                                         <h2><span class="badge badge-secondary">Candidate</span></h2>
                                     </div>
                                     <div class="user-socials">
@@ -50,7 +49,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -73,20 +72,30 @@
 
                                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                         data-parent="#accordionExample">
-                                        <div class="card-body">
+                                        <div style="position: relative;">
+                                            <span style="position: absolute;top:5px;right:18px;font-size:16px" (click)="toggleEdit('first')">Edit</span>
+                                           <div style="padding:22px">
+                                               <div class="email" style="padding:9px;font-size:20px">Email:{{userData.email}}</div>
+                                               <div class="PhoneandLocation" style="padding:9px;display:flex;align-items:center;justify-content:space-between ">
+                                                  <span style="font-size:20px">Phone: {{userData.phone}}</span>  <span style="font-size:20px"> Location:{{personalData.address_details.state.name}}</span>
+                                               </div>
+                                               <div class="address" style="padding:9px;font-size:20px"> address:{{personalData.address_details.landmark}} {{personalData.address_details.street}} {{personalData.address_details.zip_code}}</div>
+                                           </div>
+                                        </div>
+                                        <div *ngIf="isfirst" class="card-body">
                                             <div class="section start-section">
 
                                                 <form class="section-form-content">
                                                     <div class="form-group">
                                                         <div class="form-group">
-                                                            <input type="email" class="form-control"
+                                                            <input type="email" class="form-control" (change)="updateUserField($event,'email')"
                                                                 id="exampleInputEmail1" aria-describedby="emailHelp"
                                                                 placeholder="Enter email">
                                                         </div>
                                                         <div class="form-row form-group">
                                                             <div class="col">
                                                                 <input type="tel" class="form-control"
-                                                                    placeholder="Phone" />
+                                                                    placeholder="Phone" (change)="updateUserField($event,'phone')"/>
                                                             </div>
                                                             <div class="col">
                                                                 <input type="text" placeholder="Location"
@@ -102,6 +111,7 @@
                                                 </form>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="card">
@@ -110,47 +120,60 @@
                                             <button class="btn btn-link btn-block text-left collapsed" type="button"
                                                 data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
                                                 aria-controls="collapseTwo">
-                                                <span class="material-icons">add</span> Experience
+                                                <span class="material-icons">add</span> Education
                                             </button>
                                         </h2>
                                     </div>
                                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                                         data-parent="#accordionExample">
-                                        <div class="card-body">
+                                        
+                                        <div style="position: relative;" >
+                                            <span *ngIf="isUneducated" style="padding:22px">Please add your education!!</span>
+                                            <span style="position: absolute;top:5px;right:18px;font-size:16px" (click)="toggleEdit('second')">Edit</span>
+                                           <div *ngFor="let educ of personalData.education_data.education_details">
+                                            <div style="padding:22px" *ngIf="isUneducated==false">
+                                               <div class="email" style="padding:9px;font-size:20px">School Name:{{educ.school_name}}</div>
+                                               <div class="PhoneandLocation" style="padding:9px;display:flex;align-items:center;justify-content:space-between ">
+                                                  <span style="font-size:20px"> Desciption:{{educ.description}}</span>  <span style="font-size:20px">School grade: {{educ.grade}}</span>
+                                               </div>
+                                               <div class="address" style="padding:9px;font-size:20px">start:{{educ.start_date.month}} {{educ.start_date.year}}   end:{{educ.end_date.month}} {{educ.end_date.year}}</div>
+                                           </div>
+                                        </div>
+                                        </div>
+                                        <div class="card-body" *ngIf="issecond">
                                             <div class="section start-section">
 
                                                 <form class="section-form-content">
                                                     <div class="form-row form-group">
                                                         <div class="col">
                                                             <input type="text" class="form-control"
-                                                                placeholder="Designation"
-                                                                formControlName="Designation" />
+                                                                placeholder="School Name"
+                                                                formControlName="Designation" 
+                                                                (change)="updateUserField($event,'schoolName')"/>
                                                         </div>
                                                         <div class="col">
-                                                            <input type="text" placeholder="Company"
-                                                                formControlName="company" class="form-control" />
+                                                            <input type="text" placeholder="Grade"
+                                                                formControlName="company" class="form-control" 
+                                                                (change)="updateUserField($event,'schoolGrade')"
+
+                                                                />
                                                         </div>
                                                     </div>
-                                                    <div class="form-row form-group">
-                                                        <div class="col">
-                                                            <input type="text" class="form-control"
-                                                                placeholder="location" formControlName="location" />
-                                                        </div>
-                                                        <div class="col">
-                                                            <input type="text" placeholder="Country"
-                                                                formControlName="country" class="form-control" />
-                                                        </div>
-                                                    </div>
+                                                   
 
                                                     <div class="form-row form-group mt-3">
                                                         <div class="col">
                                                             <label for="exampleFormControlSelect2">Start Date</label>
                                                             <input type="date" placeholder="Country"
+                                                            (change)="updateUserField($event,'startDate')"
+
                                                                 formControlName="country" class="form-control" />
                                                         </div>
                                                         <div class="col">
                                                             <label for="exampleFormControlSelect2">End Date</label>
                                                             <input type="date" placeholder="Country"
+                                                            (change)="updateUserField($event,'endDate')"
+
                                                                 formControlName="country" class="form-control" />
                                                         </div>
                                                     </div>
@@ -165,8 +188,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group mt-3">
-                                                        <label for="exampleFormControlSelect2">Job Description</label>
-                                                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                        <label for="exampleFormControlSelect2">Education Description</label>
+                                                        <textarea (change)="updateUserField($event,'schoolDesc')"  class="form-control" id="exampleFormControlTextarea1"
                                                             rows="3"></textarea>
                                                     </div>
 
@@ -181,13 +204,26 @@
                                             <button class="btn btn-link btn-block text-left collapsed" type="button"
                                                 data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
                                                 aria-controls="collapseThree">
-                                                <span class="material-icons">add</span> Education
+                                                <span class="material-icons">add</span> Expereince
                                             </button>
                                         </h2>
                                     </div>
                                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                                         data-parent="#accordionExample">
-                                        <div class="card-body">
+                                       
+                                        <div style="position: relative;">
+                                            <span *ngIf="isFresher"> Fresher!</span>  <span style="position: absolute;top:5px;right:18px;font-size:16px" (click)="toggleEdit('third')">Edit</span>
+                                           <div style="padding:22px">
+                                            <div *ngFor="let pExp of personalData.experience_data.experience_details">
+                                                <div style="padding:22px" >
+                                                   <div class="email" style="padding:9px;font-size:20px">{{pExp.company}}</div>
+                                                   <div class="PhoneandLocation" style="padding:9px;display:flex;align-items:center;justify-content:space-between ">
+                                                      <span style="font-size:20px">{{pExp.job_description}}</span>  <span style="font-size:20px"> {{pExp.designation}}</span>
+                                                   </div>
+                                                   <div class="address" style="padding:9px;font-size:20px">{{pExp.start_date}} {{pExp.end_date}}</div>
+                                               </div>
+                                        </div>
+                                        <div class="card-body" *ngIf="isthird">
                                             <div class="section start-section">
 
                                                 <form class="section-form-content">
@@ -195,40 +231,40 @@
                                                         <div class="col">
                                                             <input type="text" class="form-control"
                                                                 placeholder="Designation"
-                                                                formControlName="Designation" />
+                                                                formControlName="Designation" (change)="updateUserField($event,'workDesig')"/>
                                                         </div>
                                                         <div class="col">
                                                             <input type="text" placeholder="Company"
-                                                                formControlName="company" class="form-control" />
+                                                                formControlName="company" class="form-control"  (change)="updateUserField($event,'workCompany')"/>
                                                         </div>
                                                     </div>
                                                     <div class="form-row form-group">
                                                         <div class="col">
                                                             <input type="text" class="form-control"
-                                                                placeholder="location" formControlName="location" />
+                                                                placeholder="location" formControlName="location" (change)="updateUserField($event,'state')" />
                                                         </div>
                                                         <div class="col">
                                                             <input type="text" placeholder="Country"
-                                                                formControlName="country" class="form-control" />
+                                                                formControlName="country" class="form-control"  (change)="updateUserField($event,'city')"/>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-row form-group mt-3">
                                                         <div class="col">
                                                             <label class="text-grey" for="exampleFormControlSelect2">Start Date</label>
-                                                            <input type="date" placeholder="Country"
+                                                            <input type="date" placeholder="Country" (change)="updateUserField($event,'startWork')"
                                                                 formControlName="country" class="form-control" />
                                                         </div>
                                                         <div class="col">
                                                             <label class="text-grey" for="exampleFormControlSelect2">End Date</label>
                                                             <input type="date" placeholder="Country"
-                                                                formControlName="country" class="form-control" />
+                                                                formControlName="country" class="form-control" (change)="updateUserField($event,'endWork')" />
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group my-3">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"
+                                                            <input class="form-check-input" type="checkbox" (change)="updateUserField($event,'stillThere')"
                                                                 id="gridCheck">
                                                             <label class="form-check-label text-grey" for="gridCheck">
                                                                 I am currently working here in this role
@@ -238,7 +274,7 @@
                                                     <div class="form-group mt-3">
                                                         <label class="text-grey" for="exampleFormControlSelect2">Job Description</label>
                                                         <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                            rows="3"></textarea>
+                                                            rows="3" (change)="updateUserField($event,'workDesc')"></textarea>
                                                     </div>
 
                                                 </form>
@@ -246,6 +282,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                                 <div class="card">
                                     <div class="card-header" id="headingFour">
                                         <h2 class="mb-0">
@@ -406,7 +443,8 @@
                     </div>
                 </div>
             </div>
-
+            </div>
         </section>
+        <button (click)="updateField()">Update</button>
     </main>
 </div>
