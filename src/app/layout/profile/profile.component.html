@@ -24,7 +24,7 @@
                             <div class="profile-user-block text-center">
                                 <div class="user-profile"></div>
                                     <div class="user-image">
-                                        <img src="../../../assets/images/user-profile-placeholder.png" width="275px" />
+                                        <img [src]="photUrl" width="225px" />
                                     </div>
                                     <div class="user-content my-3">
                                         <h5>{{userData.first_name}} {{userData.last_name}}</h5>
@@ -215,7 +215,7 @@
                                             <span *ngIf="isFresher"> Fresher!</span>  <span style="position: absolute;top:5px;right:18px;font-size:16px" (click)="toggleEdit('third')">Edit</span>
                                            <div style="padding:22px">
                                             <div *ngFor="let pExp of personalData.experience_data.experience_details">
-                                                <div style="padding:22px" *ngIf="isFresher==false">
+                                                <div style="padding:22px" >
                                                    <div class="email" style="padding:9px;font-size:20px">{{pExp.company}}</div>
                                                    <div class="PhoneandLocation" style="padding:9px;display:flex;align-items:center;justify-content:space-between ">
                                                       <span style="font-size:20px">{{pExp.job_description}}</span>  <span style="font-size:20px"> {{pExp.designation}}</span>
