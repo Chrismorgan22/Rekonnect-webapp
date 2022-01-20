@@ -13,6 +13,17 @@ export class ProfileComponent implements OnInit {
   isfirst: boolean = false;
   isthird: boolean = false;
   personalData: any = {};
+  expDetail: {
+    designation: string;
+    company: string;
+    state: string;
+    city: string;
+    other_city: string;
+    start_date: string;
+    end_date: string;
+    currently_working: boolean;
+    job_description: string;
+  };
   isFresher: boolean = false;
   isUneducated: boolean = false;
   issecond: boolean = false;
@@ -90,6 +101,42 @@ export class ProfileComponent implements OnInit {
         >event.target).value;
         break;
       }
+      case 'workDesig': {
+        this.expDetail.designation = (<HTMLInputElement>event.target).value;
+        break;
+      }
+      case 'workCompany': {
+        this.personalData.experience_data.experience_type = 'Experienced';
+        this.expDetail.company = (<HTMLInputElement>event.target).value;
+        break;
+      }
+      case 'state': {
+        this.expDetail.state = (<HTMLInputElement>event.target).value;
+        break;
+      }
+      case 'city': {
+        this.expDetail.city = (<HTMLInputElement>event.target).value;
+        break;
+      }
+      case 'startWork': {
+        this.expDetail.start_date = (<HTMLInputElement>event.target).value;
+        break;
+      }
+      case 'endWork': {
+        this.expDetail.end_date = (<HTMLInputElement>event.target).value;
+        break;
+      }
+      case 'stillThere': {
+        this.expDetail.currently_working = true;
+        break;
+      }
+      case 'workDesc': {
+        this.expDetail.job_description = (<HTMLInputElement>event.target).value;
+        break;
+      }
+      default: {
+        this.expDetail.currently_working = false;
+      }
     }
   }
 
@@ -99,6 +146,8 @@ export class ProfileComponent implements OnInit {
       .subscribe((data) => {
         console.log(data);
       });
+    if (this.expDetail !== null)
+      this.personalData.experience_data.experience_details.push(this.expDetail);
     this._jobService
       .updateCandidate(this.userId, this.personalData)
       .subscribe((data) => {
