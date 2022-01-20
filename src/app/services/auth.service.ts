@@ -105,6 +105,8 @@ export class AuthService {
       );
   }
   saveCandidateRegistration(body) {
+    console.log(body);
+
     return this._httpClient
       .post<any>(`${environment.apiUrl}/candidate/registration`, body)
       .pipe(
@@ -133,23 +135,22 @@ export class AuthService {
       );
   }
   isLoggedIn() {
-    console.log('sssssssssss')
+    console.log('sssssssssss');
     const loggedIn = sessionStorage.getItem('_ud');
     if (loggedIn !== undefined && loggedIn !== '' && loggedIn !== null) {
       this.isLogin = true;
       return this.isLogin;
-    }
-    else {
+    } else {
       this.isLogin = false;
       return this.isLogin;
     }
-    console.log(this.isLogin)
+    console.log(this.isLogin);
   }
 
   getRole() {
-    console.log('dssdsdsds')
+    console.log('dssdsdsds');
     this.roleAs = sessionStorage.getItem('_ud');
-    console.log(this.roleAs)
+    console.log(this.roleAs);
     return JSON.parse(this.roleAs)[0].role;
   }
 }

@@ -71,6 +71,7 @@ export class PersonalizationComponent implements OnInit {
   dropdownSettings = {};
   dropdownSettings1 = {};
   companyTimeLineData: any = [];
+  last_drawn: number[] = [0, 1000000];
   rangeValues: number[] = [0, 1000000];
   autoTicks = false;
   disabled = false;
@@ -84,12 +85,17 @@ export class PersonalizationComponent implements OnInit {
   tickInterval = 1;
   value: number = 1;
   todayDate: any;
+  Dvalue: number = 1;
+  DhighValue: number = 100;
   highValue: number = 100;
   options = {
     floor: 1,
     ceil: 100,
   };
-
+  drawnOptions = {
+    floor: 1,
+    ceil: 100,
+  };
   bucket = new S3({
     accessKeyId: environment.accessKeyId,
     secretAccessKey: environment.secretAccessKey,
@@ -204,6 +210,7 @@ export class PersonalizationComponent implements OnInit {
       joining_status: ['yes', Validators.required],
       joining_within: [''],
       rangeValues: [[0, 10000000]],
+      last_drawn: [[0, 10000000]],
     });
     this.onBoardDetailForm = this.formBuilder.group({
       onboard: [false],
@@ -830,6 +837,10 @@ export class PersonalizationComponent implements OnInit {
             min: this.value,
             max: this.highValue,
           },
+          last_drawn_salary_range: {
+            min: this.Dvalue,
+            max: this.DhighValue,
+          },
           resume_url: this.resumeFileUrl,
           visume_url: this.visumeFileUrl,
         },
@@ -1102,6 +1113,10 @@ export class PersonalizationComponent implements OnInit {
         min: this.value,
         max: this.highValue,
       },
+      last_drawn_salary_range: {
+        min: this.Dvalue,
+        max: this.DhighValue,
+      },
       on_board: this.onBoardDetailForm.controls.onboard.value,
     };
     console.log(json);
@@ -1131,7 +1146,6 @@ export class PersonalizationComponent implements OnInit {
       //   'Warning'
       // );
       this.cannotGo = true;
-     
     } else {
       this.cannotGo = false;
     }
