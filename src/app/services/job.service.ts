@@ -141,6 +141,15 @@ export class JobService {
         })
       );
   }
+  updateCandidate(id: string, body: any) {
+    return this.http
+      .post<any>(`http://localhost:8000/candidate/update/${id}`, body)
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
   updateUserData(id: string, body: any) {
     return this.http
       .post<any>(`http://localhost:8000/user/update/${id}`, body)

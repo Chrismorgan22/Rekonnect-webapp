@@ -74,7 +74,7 @@
                                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                         data-parent="#accordionExample">
                                         <div style="position: relative;">
-                                            <span style="position: absolute;top:5px;right:18px;font-size:16px" (click)="toggleFirstEdit()">Edit</span>
+                                            <span style="position: absolute;top:5px;right:18px;font-size:16px" (click)="toggleEdit('first')">Edit</span>
                                            <div style="padding:22px">
                                                <div class="email" style="padding:9px;font-size:20px">Email:{{userData.email}}</div>
                                                <div class="PhoneandLocation" style="padding:9px;display:flex;align-items:center;justify-content:space-between ">
@@ -96,7 +96,7 @@
                                                         <div class="form-row form-group">
                                                             <div class="col">
                                                                 <input type="tel" class="form-control"
-                                                                    placeholder="Phone" />
+                                                                    placeholder="Phone" (change)="updateUserField($event,'phone')"/>
                                                             </div>
                                                             <div class="col">
                                                                 <input type="text" placeholder="Location"
@@ -121,47 +121,60 @@
                                             <button class="btn btn-link btn-block text-left collapsed" type="button"
                                                 data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
                                                 aria-controls="collapseTwo">
-                                                <span class="material-icons">add</span> Experience
+                                                <span class="material-icons">add</span> Education
                                             </button>
                                         </h2>
                                     </div>
                                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                                         data-parent="#accordionExample">
-                                        <div class="card-body">
+                                        
+                                        <div style="position: relative;" >
+                                            <span *ngIf="isUneducated" style="padding:22px">Please add your education!!</span>
+                                            <span style="position: absolute;top:5px;right:18px;font-size:16px" (click)="toggleEdit('second')">Edit</span>
+                                           <div *ngFor="let educ of personalData.education_data.education_details">
+                                            <div style="padding:22px" *ngIf="isUneducated==false">
+                                               <div class="email" style="padding:9px;font-size:20px">{{educ.school_name}}</div>
+                                               <div class="PhoneandLocation" style="padding:9px;display:flex;align-items:center;justify-content:space-between ">
+                                                  <span style="font-size:20px">{{educ.description}}</span>  <span style="font-size:20px"> {{educ.grade}}</span>
+                                               </div>
+                                               <div class="address" style="padding:9px;font-size:20px">{{educ.start_date}} {{educ.end_date}}</div>
+                                           </div>
+                                        </div>
+                                        </div>
+                                        <div class="card-body" *ngIf="issecond">
                                             <div class="section start-section">
 
                                                 <form class="section-form-content">
                                                     <div class="form-row form-group">
                                                         <div class="col">
                                                             <input type="text" class="form-control"
-                                                                placeholder="Designation"
-                                                                formControlName="Designation" />
+                                                                placeholder="School Name"
+                                                                formControlName="Designation" 
+                                                                (change)="updateUserField($event,'schoolName')"/>
                                                         </div>
                                                         <div class="col">
-                                                            <input type="text" placeholder="Company"
-                                                                formControlName="company" class="form-control" />
+                                                            <input type="text" placeholder="Grade"
+                                                                formControlName="company" class="form-control" 
+                                                                (change)="updateUserField($event,'schoolGrade')"
+
+                                                                />
                                                         </div>
                                                     </div>
-                                                    <div class="form-row form-group">
-                                                        <div class="col">
-                                                            <input type="text" class="form-control"
-                                                                placeholder="location" formControlName="location" />
-                                                        </div>
-                                                        <div class="col">
-                                                            <input type="text" placeholder="Country"
-                                                                formControlName="country" class="form-control" />
-                                                        </div>
-                                                    </div>
+                                                   
 
                                                     <div class="form-row form-group mt-3">
                                                         <div class="col">
                                                             <label for="exampleFormControlSelect2">Start Date</label>
                                                             <input type="date" placeholder="Country"
+                                                            (change)="updateUserField($event,'startDate')"
+
                                                                 formControlName="country" class="form-control" />
                                                         </div>
                                                         <div class="col">
                                                             <label for="exampleFormControlSelect2">End Date</label>
                                                             <input type="date" placeholder="Country"
+                                                            (change)="updateUserField($event,'endDate')"
+
                                                                 formControlName="country" class="form-control" />
                                                         </div>
                                                     </div>
@@ -176,8 +189,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group mt-3">
-                                                        <label for="exampleFormControlSelect2">Job Description</label>
-                                                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                        <label for="exampleFormControlSelect2">Education Description</label>
+                                                        <textarea (change)="updateUserField($event,'schoolDesc')"  class="form-control" id="exampleFormControlTextarea1"
                                                             rows="3"></textarea>
                                                     </div>
 
@@ -192,7 +205,7 @@
                                             <button class="btn btn-link btn-block text-left collapsed" type="button"
                                                 data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
                                                 aria-controls="collapseThree">
-                                                <span class="material-icons">add</span> Education
+                                                <span class="material-icons">add</span> Expereince
                                             </button>
                                         </h2>
                                     </div>
