@@ -30,7 +30,7 @@
                                     <div class="user-content my-3">
                                         <h5>{{userData.first_name}} {{userData.last_name}}</h5>
                                         <label>UX Design</label>
-                                        <label class="d-block"><i>Haryana India</i></label>
+                                        <label class="d-block"><i>{{personalData.address_details.state.name}}</i></label>
                                         <h2><span class="badge badge-secondary">Candidate</span></h2>
                                     </div>
                                     <div class="user-socials">
@@ -76,11 +76,11 @@
                                         <div style="position: relative;">
                                             <span style="position: absolute;top:5px;right:18px;font-size:16px" (click)="toggleFirstEdit()">Edit</span>
                                            <div style="padding:22px">
-                                               <div class="email" style="padding:9px;font-size:20px">Email:abc@yahoo.in</div>
-                                               <div class="PhoneandLocation" style="padding:9px;font-size:20px">
-                                                   Phone:9674554200
+                                               <div class="email" style="padding:9px;font-size:20px">Email:{{userData.email}}</div>
+                                               <div class="PhoneandLocation" style="padding:9px;display:flex;align-items:center;justify-content:space-between ">
+                                                  <span style="font-size:20px">Phone: {{userData.phone}}</span>  <span style="font-size:20px"> Location:{{personalData.address_details.state.name}}</span>
                                                </div>
-                                               <div class="address" style="padding:9px;font-size:20px"> Goa india</div>
+                                               <div class="address" style="padding:9px;font-size:20px"> address:{{personalData.address_details.landmark}} {{personalData.address_details.street}} {{personalData.address_details.zip_code}}</div>
                                            </div>
                                         </div>
                                         <div *ngIf="isfirst" class="card-body">
@@ -89,7 +89,7 @@
                                                 <form class="section-form-content">
                                                     <div class="form-group">
                                                         <div class="form-group">
-                                                            <input type="email" class="form-control"
+                                                            <input type="email" class="form-control" (change)="updateUserField($event,'email')"
                                                                 id="exampleInputEmail1" aria-describedby="emailHelp"
                                                                 placeholder="Enter email">
                                                         </div>
@@ -419,5 +419,6 @@
             </div>
 
         </section>
+        <button (click)="updateField()">Update</button>
     </main>
 </div>

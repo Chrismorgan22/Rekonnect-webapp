@@ -18,7 +18,28 @@ export class ProfileComponent implements OnInit {
   toggleFirstEdit() {
     this.isfirst = !this.isfirst;
   }
-  updateField() {}
+  updateUserField(event: Event, term: string) {
+    console.log('entered');
+
+    switch (term) {
+      case 'email': {
+        console.log('hello from email');
+        this.userData.email = (<HTMLInputElement>event.target).value;
+        break;
+      }
+      case 'phone': {
+        this.userData.phone = (<HTMLInputElement>event.target).value;
+      }
+    }
+  }
+
+  updateField() {
+    this._jobService
+      .updateUserData(this.userId, this.userData)
+      .subscribe((data) => {
+        console.log(data);
+      });
+  }
   ngOnInit(): void {
     this._jobService.fetchCandidate(this.userId).subscribe((data) => {
       this.personalData = data;
