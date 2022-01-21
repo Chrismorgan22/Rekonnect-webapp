@@ -7,6 +7,7 @@ import { EmployerComponent } from './employer/employer.component';
 import { InstituteComponent } from './institute/institute.component';
 import { CandidateProfileComponent } from './candidate-profile/candidate-profile.component';
 import { JobListComponent } from './job-list/job-list.component';
+import { ProfileComponent } from './profile/profile.component';
 import { ViewJobComponent } from './view-job/view-job.component';
 import { BgvFormDashboardComponent } from './bgv-form-dashboard/bgv-form-dashboard.component';
 import { CreateJobComponent } from './create-job/create-job.component';
@@ -38,6 +39,10 @@ const routes: Routes = [
         data: {
           role: '2',
         },
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
       },
       {
         path: 'institute',
