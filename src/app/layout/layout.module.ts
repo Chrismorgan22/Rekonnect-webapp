@@ -8,7 +8,6 @@ import { LayoutComponent } from './layout.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AboutComponent } from './about/about.component';
-import { ProfileComponent } from './profile/profile.component';
 import { ApplicantListComponent } from './applicant-list/applicant-list.component';
 import { NavscreenComponent } from './navscreen/navscreen.component';
 import { BgvlistComponent } from './bgvlist/bgvlist.component';
@@ -21,7 +20,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     PostJobComponent,
     UserListComponent,
     AboutComponent,
-    ProfileComponent,
     NavscreenComponent,
     BgvlistComponent,
   ],

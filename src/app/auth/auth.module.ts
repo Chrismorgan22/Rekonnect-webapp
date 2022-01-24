@@ -4,7 +4,11 @@ import { CommonModule } from '@angular/common';
 import { AuthRoutingModule } from './auth-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
+import {
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+  FacebookLoginProvider,
+} from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LinkedinResponseComponent } from './linkedin-response/linkedin-response.component';
@@ -15,7 +19,11 @@ import { SliderModule } from 'primeng/slider';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
-  declarations: [WelcomeComponent, LinkedinResponseComponent, PersonalizationComponent],
+  declarations: [
+    WelcomeComponent,
+    LinkedinResponseComponent,
+    PersonalizationComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -25,7 +33,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     SocialLoginModule,
     NgMultiSelectDropDownModule.forRoot(),
     SliderModule,
-    NgxSliderModule
+    NgxSliderModule,
     // NgbModule
   ],
   providers: [
@@ -38,19 +46,17 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
               '221831887863-smioflkrsmtc8fmveqm0mn99iuivois9.apps.googleusercontent.com'
-            )
+            ),
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider(
-              '1025684304911505'
-            )
-          }
-        ]
+            provider: new FacebookLoginProvider('233543928944187'),
+          },
+        ],
       } as SocialAuthServiceConfig,
-    }
+    },
   ],
   exports: [FormsModule, ReactiveFormsModule],
-  entryComponents: [PersonalizationComponent]
+  entryComponents: [PersonalizationComponent],
 })
-export class AuthModule { }
+export class AuthModule {}

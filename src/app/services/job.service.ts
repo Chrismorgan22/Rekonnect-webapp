@@ -15,7 +15,7 @@ export class JobService {
   }
   applyJob(jobData) {
     return this.http
-      .post<any>(`http://localhost:8000/job/application/applyForJob`, jobData)
+      .post<any>(`${environment.apiUrl}/job/application/applyForJob`, jobData)
       .pipe(
         map((response) => {
           return response;
@@ -46,14 +46,14 @@ export class JobService {
       );
   }
   getAllJobs() {
-    return this.http.get<any>(`http://localhost:8000/job/getAll`).pipe(
+    return this.http.get<any>(`${environment.apiUrl}/job/getAll`).pipe(
       map((response) => {
         return response;
       })
     );
   }
   getApplicants() {
-    return this.http.get<any>(`http://localhost:8000/job/application/`).pipe(
+    return this.http.get<any>(`${environment.apiUrl}/job/application/`).pipe(
       map((response) => {
         return response;
       })
@@ -62,7 +62,7 @@ export class JobService {
 
   getUserById(id: String) {
     return this.http
-      .get<any>(`http://localhost:8000/user/applicant/` + id)
+      .get<any>(`${environment.apiUrl}/user/applicant/` + id)
       .pipe(
         map((response) => {
           return response;
@@ -71,7 +71,7 @@ export class JobService {
   }
   fetchSkills(type: string) {
     return this.http
-      .post<any>(`http://localhost:8000/lookup/`, { lookup_type: type })
+      .post<any>(`${environment.apiUrl}/lookup/`, { lookup_type: type })
       .pipe(
         map((response) => {
           return response;
@@ -79,14 +79,14 @@ export class JobService {
       );
   }
   postBgv(body: any) {
-    return this.http.post<any>(`http://localhost:8000/report/apply`, body).pipe(
+    return this.http.post<any>(`${environment.apiUrl}/report/apply`, body).pipe(
       map((response) => {
         return response;
       })
     );
   }
   getBgv() {
-    return this.http.get<any>(`http://localhost:8000/report/users`).pipe(
+    return this.http.get<any>(`${environment.apiUrl}/report/users`).pipe(
       map((response) => {
         return response;
       })
@@ -95,7 +95,7 @@ export class JobService {
 
   postPdf(body: any) {
     return this.http
-      .post<any>(`http://localhost:8000/report/addPdf`, body)
+      .post<any>(`${environment.apiUrl}/report/addPdf`, body)
       .pipe(
         map((response) => {
           return response;
@@ -105,7 +105,7 @@ export class JobService {
 
   fetchSingle(id: string) {
     return this.http
-      .post<any>(`http://localhost:8000/report/single/`, { id })
+      .post<any>(`${environment.apiUrl}/report/single/`, { id })
       .pipe(
         map((response) => {
           return response;
@@ -113,7 +113,7 @@ export class JobService {
       );
   }
   fetchJobs() {
-    return this.http.get<any>(`http://localhost:8000/job/getALL`).pipe(
+    return this.http.get<any>(`${environment.apiUrl}/job/getALL`).pipe(
       map((response) => {
         return response;
       })
@@ -122,7 +122,7 @@ export class JobService {
 
   checkJobApplications(id: string) {
     return this.http
-      .post<any>(`http://localhost:8000/job/application/getApplicant`, {
+      .post<any>(`${environment.apiUrl}/job/application/getApplicant`, {
         userId: id,
       })
       .pipe(
@@ -134,7 +134,7 @@ export class JobService {
 
   fetchCandidate(id: string) {
     return this.http
-      .get<any>(`http://localhost:8000/candidate/findById/${id}`)
+      .get<any>(`${environment.apiUrl}/candidate/findById/${id}`)
       .pipe(
         map((response) => {
           return response;
@@ -143,7 +143,7 @@ export class JobService {
   }
   updateCandidate(id: string, body: any) {
     return this.http
-      .post<any>(`http://localhost:8000/candidate/update/${id}`, body)
+      .post<any>(`${environment.apiUrl}/candidate/update/${id}`, body)
       .pipe(
         map((response) => {
           return response;
@@ -152,7 +152,7 @@ export class JobService {
   }
   updateUserData(id: string, body: any) {
     return this.http
-      .post<any>(`http://localhost:8000/user/update/${id}`, body)
+      .post<any>(`${environment.apiUrl}/user/update/${id}`, body)
       .pipe(
         map((response) => {
           return response;
@@ -161,7 +161,7 @@ export class JobService {
   }
   fetchJobsPosted(id: string) {
     return this.http
-      .get<any>(`http://localhost:8000/job/getJobsPosted/${id}`)
+      .get<any>(`${environment.apiUrl}/job/getJobsPosted/${id}`)
       .pipe(
         map((response) => {
           return response;

@@ -10,6 +10,7 @@ import { InstituteComponent } from './institute/institute.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { TimelineModule } from 'primeng/timeline';
 import { AvatarModule } from 'primeng/avatar';
+import { ProfileComponent } from './profile/profile.component';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { CandidateProfileComponent } from './candidate-profile/candidate-profile.component';
 import { JobListComponent } from './job-list/job-list.component';
@@ -22,8 +23,22 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmployerViewJobComponent } from './employer-view-job/employer-view-job.component';
 @NgModule({
-  declarations: [DashboardComponent, CandidateComponent, ExpertComponent,
-    EmployerComponent, InstituteComponent, CandidateProfileComponent,JobListComponent, ViewJobComponent, BgvFormDashboardComponent, CreateJobComponent, CandidateJobViewComponent, ApplyForJobComponent, EmployerViewJobComponent],
+  declarations: [
+    DashboardComponent,
+    CandidateComponent,
+    ExpertComponent,
+    ProfileComponent,
+    EmployerComponent,
+    InstituteComponent,
+    CandidateProfileComponent,
+    JobListComponent,
+    ViewJobComponent,
+    BgvFormDashboardComponent,
+    CreateJobComponent,
+    CandidateJobViewComponent,
+    ApplyForJobComponent,
+    EmployerViewJobComponent,
+  ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -33,7 +48,7 @@ import { EmployerViewJobComponent } from './employer-view-job/employer-view-job.
     AvatarGroupModule,
     NgMultiSelectDropDownModule,
     ReactiveFormsModule,
-    FormsModule
-  ]
+    FormsModule,
+  ],
 })
-export class DashboardModule { }
+export class DashboardModule {}

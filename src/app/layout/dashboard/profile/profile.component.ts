@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { JobService } from '../../services/job.service';
+import { JobService } from '../../../services/job.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -43,6 +43,11 @@ export class ProfileComponent implements OnInit {
   issecond: boolean = false;
   constructor(private _jobService: JobService) {
     console.log(this.userData);
+  }
+  ngOnInit(): void {
+    this.fetchCandidate();
+    console.log(this.isUneducated);
+    console.log(this.personalData);
   }
 
   toggleEdit(term: string) {
@@ -186,7 +191,7 @@ export class ProfileComponent implements OnInit {
         console.log(data);
       });
   }
-  ngOnInit(): void {
+  fetchCandidate() {
     this._jobService.fetchCandidate(this.userId).subscribe((data) => {
       this.personalData = data;
       console.log(data);
@@ -196,6 +201,5 @@ export class ProfileComponent implements OnInit {
       if (data.experience_data.experience_type === 'Fresher')
         this.isFresher = true;
     });
-    console.log(this.isUneducated);
   }
 }
