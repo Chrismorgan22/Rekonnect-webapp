@@ -78,6 +78,7 @@ export class PersonalizationComponent implements OnInit {
   invert = false;
   showTicks = false;
   cannotGo: boolean;
+  isEmp: boolean;
   step = 1;
   thumbLabel = false;
   // value = 0;
@@ -465,6 +466,15 @@ export class PersonalizationComponent implements OnInit {
       });
     } else {
       return false;
+    }
+  }
+
+
+  toggleEmp(term:string){
+    if(term=="yes")
+    {this.isEmp=true;}
+    else{
+      this.isEmp=false;
     }
   }
   experienceTypeFormSubmit(currentModal, nextModal) {

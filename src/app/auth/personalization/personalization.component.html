@@ -30,7 +30,7 @@
                     <div class="container-fluid d-flex justify-content-center">
                         <div class="row modal-content-section">
                             <div class="col-md-6 col-sm-12">
-                                <div class="custom-control custom-radio custom--radio">
+                                <div class="custom-control custom-radio custom--radio" (click)="toggleEmp('no')">
                                     <input class="custom-control-input custom-radio-button" value=1 type="radio"
                                         name="user_role" formControlName="user_role" id="candidate">
                                     <!-- <span class="check"></span> -->
@@ -41,7 +41,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <div class="custom-control custom-radio custom--radio">
+                                <div class="custom-control custom-radio custom--radio" (click)="toggleEmp('yes')">
                                     <input class="custom-control-input custom-radio-button" value=2 type="radio"
                                         name="user_role" formControlName="user_role" id="employer">
                                     <!-- <span class="check"></span> -->
@@ -120,7 +120,7 @@
                                     <div class="col">
                                         <img *ngIf="profileImagUrl" [src]="profileImagUrl" width="100px" height="100px">
                                     </div>
-                                    <div class="col">
+                                    <div class="col" *ngIf="!isEmp">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="inputGroupFile01"
                                                 (change)="uploadFile($event.target.files,'profile_url')">
@@ -132,7 +132,9 @@
                             <!-- <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label> -->
                             <div class="form-group">
                                 <input type="text" aria-describedby="streetaddress" placeholder="Street Address"
-                                    size="lg" class="form-control" formControlName="street" />
+                                    size="lg" class="form-control" formControlName="street" *ngIf="!isEmp" />
+                                    <input type="text" aria-describedby="streetaddress" placeholder="Company Location"
+                                    size="lg" class="form-control" formControlName="street" *ngIf="isEmp"/>
                                 <div *ngIf="addressSubmit && userAddress.street.errors" class="invalid-feedback"
                                     style="display:block;">
                                     <div *ngIf="userAddress.street.errors.required">Street is required</div>
@@ -1215,11 +1217,11 @@
                                 </div>
                             </div>
                             <div class="form-row form-group">
-                                <div class="col">
-                                    <!-- <ng-multiselect-dropdown [placeholder]="'State'" [settings]="dropdownSettings1"
+                                <!-- <div class="col">
+                                    <ng-multiselect-dropdown [placeholder]="'State'" [settings]="dropdownSettings1"
                                             [data]="stateDrp" formControlName="state" (onSelect)="onItemSelect($event)"
                                             (onSelectAll)="onSelectAll($event)">
-                                        </ng-multiselect-dropdown> -->
+                                        </ng-multiselect-dropdown>
                                     <input type="text" class="form-control" placeholder="Designation"
                                         formControlName="designation" />
                                     <div *ngIf="companySubmit && companyDetails.designation.errors"
@@ -1227,7 +1229,7 @@
                                         <div *ngIf="companyDetails.designation.errors.required">Designation is
                                             required</div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col">
                                     <input type="text" placeholder="Number Of Employees" class="form-control"
                                         formControlName="no_of_employees" />
@@ -1266,6 +1268,13 @@
                                         Address
                                         is
                                         required</div>
+                                </div>
+                            </div>
+                            <div class="col" >
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                        (change)="uploadFile($event.target.files,'profile_url')">
+                                    <label class="custom-file-label" for="inputGroupFile01">Upload Image</label>
                                 </div>
                             </div>
                         </div>
