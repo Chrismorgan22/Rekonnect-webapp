@@ -4,11 +4,16 @@ footer {
             .row {
                 .icons {
                     display: flex;
-                    width: fit-content;
+                    width: 200px;
+                    justify-content: space-around;
                     height: fit-content;
 
                     .FB {
-                        background-image: url("https://rekonnect.in/assets/images/background-illustration-services.png");
+                        background-image: url("../../../assets/images/fb.png");
+                        background-repeat: no-repeat;
+                        width: 40px;
+                        height: 40px;
+                        background-color: #cccccc;
                     }
                     .insta {
                     }
