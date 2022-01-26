@@ -220,7 +220,7 @@ export class PersonalizationComponent implements OnInit {
     });
     this.companydetailsForm = this.formBuilder.group({
       company_name: ['', Validators.required],
-      designation: ['', Validators.required],
+
       no_of_employees: ['', Validators.required],
       company_website: ['', Validators.required],
       linkedin_url: ['', Validators.required],
@@ -301,7 +301,6 @@ export class PersonalizationComponent implements OnInit {
   }
   addExperienceDetails(): FormGroup {
     return this.formBuilder.group({
-      designation: ['', Validators.required],
       company: ['', Validators.required],
       state: ['', Validators.required],
       city: ['', Validators.required],
@@ -542,7 +541,6 @@ export class PersonalizationComponent implements OnInit {
       this.experienceDetailForm.controls.experienceDetails['controls'].map(
         (ele) => {
           const json = {
-            designation: ele.controls.designation.value,
             company: ele.controls.company.value,
             state: ele.controls.state.value[0],
             city: ele.controls.city.value[0],
@@ -1056,7 +1054,6 @@ export class PersonalizationComponent implements OnInit {
       this.experienceDetailForm.controls.experienceDetails['controls']?.map(
         (ele) => {
           const json = {
-            designation: ele.controls.designation.value,
             company: ele.controls.company.value,
             state: ele.controls.state.value[0],
             city: ele.controls.city.value[0],
@@ -1225,7 +1222,6 @@ export class PersonalizationComponent implements OnInit {
                   this.experienceDetailForm.get('experienceDetails')
                 )).push(
                   this.formBuilder.group({
-                    designation: [x.designation, Validators.required],
                     company: [x.company, Validators.required],
                     state: [[x.state], Validators.required],
                     city: [[x.city], Validators.required],
@@ -1436,7 +1432,6 @@ export class PersonalizationComponent implements OnInit {
           landmark: this.addressForm.controls.landmark.value,
           // "organization_strength": this.addressForm.controls.organization_strength.value
         },
-        designation: this.companydetailsForm.controls.designation.value,
         company_name: this.companydetailsForm.controls.company_name.value,
         no_of_employees: this.companydetailsForm.controls.no_of_employees.value,
         website: this.companydetailsForm.controls.company_website.value,
