@@ -1,0 +1,21 @@
+footer {
+    .container {
+        .accordion {
+            .row {
+                .icons {
+                    display: flex;
+                    width: fit-content;
+                    height: fit-content;
+
+                    .FB {
+                        background-image: url("https://rekonnect.in/assets/images/background-illustration-services.png");
+                    }
+                    .insta {
+                    }
+                    .linkedin {
+                    }
+                }
+            }
+        }
+    }
+}

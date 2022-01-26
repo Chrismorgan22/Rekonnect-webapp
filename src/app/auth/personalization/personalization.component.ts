@@ -41,6 +41,7 @@ export class PersonalizationComponent implements OnInit {
   educationTypeForm: FormGroup;
   educationDetailForm: FormGroup;
   ischange: boolean = false;
+  companyData: string[] = ['Goa', 'Mumbai', 'Pune'];
   lastFewBitsDetailForm: FormGroup;
   lastFewBitsJoinDetailForm: FormGroup;
   onBoardDetailForm: FormGroup;
@@ -76,8 +77,10 @@ export class PersonalizationComponent implements OnInit {
   autoTicks = false;
   disabled = false;
   invert = false;
+  companyLocations: any[];
   showTicks = false;
   cannotGo: boolean;
+  isEmp: boolean;
   step = 1;
   thumbLabel = false;
   // value = 0;
@@ -255,7 +258,11 @@ export class PersonalizationComponent implements OnInit {
       this.getCityList('City'),
     ]);
   }
-
+  onLocationItemSelect(event: Event) {
+    console.log((<HTMLInputElement>event.target).value);
+    // console.log(this.companyLocations);
+    // this.companyLocations.push(item);
+  }
   addButtonClick(): void {
     if (
       this.experienceDetailForm.controls.experienceDetails['controls'].length <
@@ -465,6 +472,14 @@ export class PersonalizationComponent implements OnInit {
       });
     } else {
       return false;
+    }
+  }
+
+  toggleEmp(term: string) {
+    if (term == 'yes') {
+      this.isEmp = true;
+    } else {
+      this.isEmp = false;
     }
   }
   experienceTypeFormSubmit(currentModal, nextModal) {
