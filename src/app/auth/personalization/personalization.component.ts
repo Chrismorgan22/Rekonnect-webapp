@@ -258,6 +258,8 @@ export class PersonalizationComponent implements OnInit {
       this.getCityList('City'),
     ]);
   }
+
+  onLocationSelectAll(event: any) {}
   onLocationItemSelect(event: Event) {
     console.log((<HTMLInputElement>event.target).value);
     // console.log(this.companyLocations);
