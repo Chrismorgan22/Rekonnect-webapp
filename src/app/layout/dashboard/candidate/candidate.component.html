@@ -1,6 +1,7 @@
 <div class="dashboard-section">
-    <button class="btn btn-primary" *ngIf="toShow" (click)="togglePopup()" > close popup</button>
-    <img src="../../../assets/images/popup.jpeg"  *ngIf="toShow" style="width: 100%; top:10px; left:10px;object-fit: contain; z-index:99; height: 100%; position: fixed" alt="">
+    <div style="background-image: url(../../../assets/images/popup.jpeg);width: 600px; top:10px; left:30%;object-fit: contain; z-index:99; height: 100%; position: fixed"  *ngIf="toShow"  alt="">
+        <button  class="btn btn-primary" *ngIf="toShow" (click)="togglePopup()"  style="position:absolute;top:10px;right:10px;"> close popup</button>
+</div>
     <!-- <div class="alert alert-warning profile-completion m-0 d-flex justify-content-space-between align-items-center"
         role="alert">
         <span><strong>Profile 75% completed</strong>Complete your profiile for better reach. </span>
@@ -12,7 +13,7 @@
             <img class="banner-img" src="../../../assets/images/candidate-banner.jpg" />
         </div>
     </header>
-
+<!-- <button class="btn btn-primary" (click)="openDialog()"> modal check</button> -->
     <main class="negative-top-offset">
         <section class="container">
             <div class="row parent-section-body">
