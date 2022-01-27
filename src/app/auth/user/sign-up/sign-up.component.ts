@@ -197,6 +197,8 @@ export class SignUpComponent implements OnInit {
         this.SpinnerService.hide();
         this.submitted = false;
         sessionStorage.setItem('_ud', JSON.stringify([response.data]));
+        sessionStorage.setItem('firstTime', 'true');
+
         this._router.navigate(['/auth/welcome']);
         this.form.reset();
         // this._toastrService.success(
@@ -207,6 +209,7 @@ export class SignUpComponent implements OnInit {
         this.SpinnerService.hide();
         // this._toastrService.error(response.message, response.result);
         sessionStorage.setItem('_ud', JSON.stringify([response.data]));
+        sessionStorage.setItem('firstTime', 'true');
 
         this._toastrService.success('Loggin you in');
         this._router.navigate(['/dashboard/candidate']);

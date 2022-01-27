@@ -42,6 +42,8 @@ export class CandidateComponent implements OnInit {
     name: string;
     profile: string;
   };
+
+  toShow: boolean;
   userProfileData: any;
   events1: any[];
   entireJob: {
@@ -118,7 +120,31 @@ export class CandidateComponent implements OnInit {
     link.click();
     link.remove();
   }
+  displayProp() {
+    console.log('bruh');
+    console.log(sessionStorage.getItem('firstTime'));
+
+    const validate = () => {
+      if (sessionStorage.getItem('firstTime') == 'true') {
+        this.toShow = true;
+      } else {
+        this.toShow = false;
+      }
+    };
+    setTimeout(() => {
+      validate();
+      if (this.toShow) {
+        document.body.style.backgroundColor = '#DCDCDC';
+        sessionStorage.removeItem('firstTime');
+      }
+    }, 3000);
+  }
+  togglePopup() {
+    this.toShow = false;
+    document.body.style.backgroundColor = 'unset';
+  }
   ngOnInit(): void {
+    this.displayProp();
     this.getUserProfileData();
     this.getJobDetails();
     this.jobDetails.fetchJobs().subscribe((data) => {
