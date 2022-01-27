@@ -134,10 +134,14 @@ export class CandidateComponent implements OnInit {
     setTimeout(() => {
       validate();
       if (this.toShow) {
-        window.alert('img!!');
+        document.body.style.backgroundColor = '#DCDCDC';
         sessionStorage.removeItem('firstTime');
       }
     }, 3000);
+  }
+  togglePopup() {
+    this.toShow = false;
+    document.body.style.backgroundColor = 'unset';
   }
   ngOnInit(): void {
     this.displayProp();

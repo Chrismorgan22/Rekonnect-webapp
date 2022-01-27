@@ -1,4 +1,6 @@
 <div class="dashboard-section">
+    <button class="btn btn-primary" *ngIf="toShow" (click)="togglePopup()" > close popup</button>
+    <img src="../../../assets/images/popup.jpeg"  *ngIf="toShow" style="width: 100%; object-fit: contain; z-index:99; height: 100%; position: fixed" alt="">
     <!-- <div class="alert alert-warning profile-completion m-0 d-flex justify-content-space-between align-items-center"
         role="alert">
         <span><strong>Profile 75% completed</strong>Complete your profiile for better reach. </span>
