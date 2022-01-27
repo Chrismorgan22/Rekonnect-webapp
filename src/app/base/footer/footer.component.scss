@@ -6,8 +6,12 @@ footer {
                     display: flex;
                     width: 200px;
                     justify-content: space-around;
-                    height: fit-content;
 
+                    align-items: center;
+                    height: fit-content;
+                    h4 {
+                        margin: unset;
+                    }
                     .FB {
                         background-image: url("../../../assets/images/fb.png");
                         background-repeat: no-repeat;
