@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LayoutService } from 'src/app/services/layout.service';
 import { JobService } from 'src/app/services/job.service';
 import { Router } from '@angular/router';
-
+import { MatDialog } from '@angular/material/dialog';
 import * as _ from 'lodash';
 import {
   ChartComponent,
@@ -63,6 +63,7 @@ export class CandidateComponent implements OnInit {
   userId: any = sessionStorage.getItem('_ud').substring(9, 33);
   constructor(
     private layoutService: LayoutService,
+
     private jobDetails: JobService,
     private router: Router
   ) {
@@ -120,6 +121,10 @@ export class CandidateComponent implements OnInit {
     link.click();
     link.remove();
   }
+  // openDialog() {
+  //   this.dialog.open(DialogElementsExampleDialog);
+  // }
+
   displayProp() {
     console.log('bruh');
     console.log(sessionStorage.getItem('firstTime'));
@@ -134,7 +139,7 @@ export class CandidateComponent implements OnInit {
     setTimeout(() => {
       validate();
       if (this.toShow) {
-        document.body.style.backgroundColor = '#DCDCDC';
+        // document.body.style.backgroundColor = '#DCDCDC';
         sessionStorage.removeItem('firstTime');
       }
     }, 3000);
@@ -243,3 +248,9 @@ export class CandidateComponent implements OnInit {
     this.designation = _.uniq(designationArr).join(', ');
   }
 }
+
+// @Component({
+//   selector: 'dialog-elements-example-dialog',
+//   templateUrl: 'dialog-elements-example-dialog.html',
+// })
+// export class DialogElementsExampleDialog {}
