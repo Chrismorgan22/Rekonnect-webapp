@@ -211,30 +211,30 @@ export class CandidateComponent implements OnInit {
   }
 
   fetchOwner() {
-    var jobGivers: any[];
+    var jobGivers: Array<any> = [];
     var idx = 0;
-    this.jobs.map((ele) => {
-      this.jobDetails.getUserById(ele.user_id).subscribe((data) => {
-        console.log(data);
+    for (let i = 0; i < this.jobs.length; i++) {
+      this.jobDetails.getUserById(this.jobs[i].user_id).subscribe((data) => {
+        console.log('Test1', data);
         this.jobPoster = data;
 
-        console.log(this.jobs);
+        console.log('Test2', this.jobs);
 
-        var detail: any = {
-          ...ele,
+        var detail = {
+          ...this.jobs[i],
           ...data[0],
         };
-        console.log(detail);
+        console.log('Test 3 ', JSON.stringify(detail));
 
-        jobGivers[idx] = detail;
-        idx = idx + 1;
+        jobGivers.push(detail);
+
         console.log('bruhhh');
 
         console.log(jobGivers);
+        this.entireJobDetails = jobGivers;
+        console.log(this.entireJobDetails);
       });
-      this.entireJobDetails = jobGivers;
-      console.log(this.entireJobDetails);
-    });
+    }
   }
   getUserProfileData() {
     const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
