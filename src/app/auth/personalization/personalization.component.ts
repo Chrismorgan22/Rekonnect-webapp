@@ -1457,6 +1457,8 @@ export class PersonalizationComponent implements OnInit {
     }
   }
   uploadFile(file, type) {
+    console.log(file);
+
     const contentType = file[0].type;
     if (file[0].size > 2200000) {
       window.alert('file too large');
