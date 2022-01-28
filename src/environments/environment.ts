@@ -4,14 +4,15 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8000',
+
+  apiUrl: 'https://api.rekonnect.in',
   accessKeyId: 'AKIA42VF6WEBPYW75S2D',
   secretAccessKey: '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',
   region: 'ap-south-1',
   Bucket: 'rekonnectfileupload',
 };
 // apiUrl: 'https://api.rekonnect.in',
-
+//http://localhost:8000
 /*
  * In development mode, to ignore zone related error stack frames such as
  * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can
