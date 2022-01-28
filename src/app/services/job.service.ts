@@ -141,6 +141,15 @@ export class JobService {
         })
       );
   }
+  fetchEmployer(id: string) {
+    return this.http
+      .get<any>(`http://localhost:8000/employer/findById/${id}`)
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
   updateCandidate(id: string, body: any) {
     return this.http
       .post<any>(`${environment.apiUrl}/candidate/update/${id}`, body)

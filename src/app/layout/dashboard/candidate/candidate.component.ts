@@ -242,10 +242,18 @@ export class CandidateComponent implements OnInit {
     console.log('bruh');
 
     for (let i = 0; i < this.entireJobDetails.length; i++) {
+      console.log('calling bruhh');
+
       this.jobDetails
-        .fetchCandidate(this.entireJobDetails[i].user_id)
+        .fetchEmployer(this.entireJobDetails[i].user_id)
         .subscribe((data) => {
           console.log(data);
+          this.entireJobDetails[i] = {
+            ...this.entireJobDetails[i],
+            company_logo: data[0].company_logo,
+          };
+
+          console.log(this.entireJobDetails);
         });
     }
   }
