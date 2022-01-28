@@ -224,7 +224,7 @@ export class CandidateComponent implements OnInit {
           ...this.jobs[i],
           ...data[0],
         };
-        console.log('Test 3 ', JSON.stringify(detail));
+        // console.log('Test 3 ', JSON.stringify(detail));
 
         jobGivers.push(detail);
 
@@ -233,7 +233,20 @@ export class CandidateComponent implements OnInit {
         console.log(jobGivers);
         this.entireJobDetails = jobGivers;
         console.log(this.entireJobDetails);
+        this.fetchPhoto();
       });
+    }
+  }
+
+  fetchPhoto() {
+    console.log('bruh');
+
+    for (let i = 0; i < this.entireJobDetails.length; i++) {
+      this.jobDetails
+        .fetchCandidate(this.entireJobDetails[i].user_id)
+        .subscribe((data) => {
+          console.log(data);
+        });
     }
   }
   getUserProfileData() {
