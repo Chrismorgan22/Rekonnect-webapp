@@ -291,7 +291,7 @@
                                         lorem.</p>
                                 </div>
                             </div> -->
-                            <div class="job-card" *ngFor="let job of jobs">
+                            <div class="job-card" *ngFor="let job of entireJobDetails">
                                 <div class="job-header d-flex align-items-center">
                                     <div class="d-flex align-items-center">
                                         <div class="user-profile">
@@ -299,7 +299,7 @@
                                         </div>
                                         <div class="user-main-content">
                                             <p class="d-flex m-0 align-items-center"><label
-                                                    class="font-bold"><span>Posted By </span> Sharman Singh</label>
+                                                    class="font-bold"><span>Posted By </span>  {{job.first_name}} {{job.last_name}}</label>
                                                 <span class="dot"></span>
                                                 <label>{{job.created_at}}</label>
                                             </p>

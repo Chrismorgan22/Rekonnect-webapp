@@ -33,6 +33,8 @@ export class CandidateComponent implements OnInit {
   @ViewChild('chart') chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
   jobs: any[];
+  jobPoster: any[];
+  entireJobDetails: any[];
   jobie: {
     id: string;
     created: string;
@@ -187,26 +189,52 @@ export class CandidateComponent implements OnInit {
   getJobDetails() {
     this.jobDetails.getJobs().subscribe((result: any) => {
       console.log(result);
-
+      this.jobs = result.data;
+      this.fetchOwner();
       if (result.result === 'success') {
-        result?.data.map((ele) => {
-          ele['created_at'] = moment(ele.created_at).fromNow();
-        });
-        this.jobs = result.data;
-        this.jobs.map((job: any) => {
-          this.jobie.id = job._id;
-          this.jobie.created = job.created_at;
-          this.jobie.description = job.job_description;
-          this.jobie.category = job.job_category;
-          this.jobie.city = job.city + ' ' + job.country;
-
-          this.entireJob.push(this.jobie);
-        });
-
-        console.log(this.entireJob);
+        // result?.data.map((ele) => {
+        //   ele['created_at'] = moment(ele.created_at).fromNow();
+        // });
+        // this.jobs.map((job: any) => {
+        //   this.jobie.id = job._id;
+        //   this.jobie.created = job.created_at;
+        //   this.jobie.description = job.job_description;
+        //   this.jobie.category = job.job_category;
+        //   this.jobie.city = job.city + ' ' + job.country;
+        //   console.log('Bruh  what');
+        //   this.entireJob.push(this.jobie);
+        // });
+        // console.log(this.entireJob);
       }
     });
     console.log(this.jobs);
+  }
+
+  fetchOwner() {
+    var jobGivers: any[];
+    var idx = 0;
+    this.jobs.map((ele) => {
+      this.jobDetails.getUserById(ele.user_id).subscribe((data) => {
+        console.log(data);
+        this.jobPoster = data;
+
+        console.log(this.jobs);
+
+        var detail: any = {
+          ...ele,
+          ...data[0],
+        };
+        console.log(detail);
+
+        jobGivers[idx] = detail;
+        idx = idx + 1;
+        console.log('bruhhh');
+
+        console.log(jobGivers);
+      });
+      this.entireJobDetails = jobGivers;
+      console.log(this.entireJobDetails);
+    });
   }
   getUserProfileData() {
     const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
