@@ -33,6 +33,8 @@ export class CandidateComponent implements OnInit {
   @ViewChild('chart') chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
   jobs: any[];
+  jobPoster: any[];
+  entireJobDetails: any[];
   jobie: {
     id: string;
     created: string;
@@ -187,26 +189,73 @@ export class CandidateComponent implements OnInit {
   getJobDetails() {
     this.jobDetails.getJobs().subscribe((result: any) => {
       console.log(result);
-
+      this.jobs = result.data;
+      this.fetchOwner();
       if (result.result === 'success') {
-        result?.data.map((ele) => {
-          ele['created_at'] = moment(ele.created_at).fromNow();
-        });
-        this.jobs = result.data;
-        this.jobs.map((job: any) => {
-          this.jobie.id = job._id;
-          this.jobie.created = job.created_at;
-          this.jobie.description = job.job_description;
-          this.jobie.category = job.job_category;
-          this.jobie.city = job.city + ' ' + job.country;
-
-          this.entireJob.push(this.jobie);
-        });
-
-        console.log(this.entireJob);
+        // result?.data.map((ele) => {
+        //   ele['created_at'] = moment(ele.created_at).fromNow();
+        // });
+        // this.jobs.map((job: any) => {
+        //   this.jobie.id = job._id;
+        //   this.jobie.created = job.created_at;
+        //   this.jobie.description = job.job_description;
+        //   this.jobie.category = job.job_category;
+        //   this.jobie.city = job.city + ' ' + job.country;
+        //   console.log('Bruh  what');
+        //   this.entireJob.push(this.jobie);
+        // });
+        // console.log(this.entireJob);
       }
     });
     console.log(this.jobs);
+  }
+
+  fetchOwner() {
+    var jobGivers: Array<any> = [];
+    var idx = 0;
+    for (let i = 0; i < this.jobs.length; i++) {
+      this.jobDetails.getUserById(this.jobs[i].user_id).subscribe((data) => {
+        console.log('Test1', data);
+        this.jobPoster = data;
+
+        console.log('Test2', this.jobs);
+
+        var detail = {
+          ...this.jobs[i],
+          ...data[0],
+        };
+        // console.log('Test 3 ', JSON.stringify(detail));
+
+        jobGivers.push(detail);
+
+        console.log('bruhhh');
+
+        console.log(jobGivers);
+        this.entireJobDetails = jobGivers;
+        console.log(this.entireJobDetails);
+        this.fetchPhoto();
+      });
+    }
+  }
+
+  fetchPhoto() {
+    console.log('bruh');
+
+    for (let i = 0; i < this.entireJobDetails.length; i++) {
+      console.log('calling bruhh');
+
+      this.jobDetails
+        .fetchEmployer(this.entireJobDetails[i].user_id)
+        .subscribe((data) => {
+          console.log(data);
+          this.entireJobDetails[i] = {
+            ...this.entireJobDetails[i],
+            company_logo: data[0].company_logo,
+          };
+
+          console.log(this.entireJobDetails);
+        });
+    }
   }
   getUserProfileData() {
     const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
