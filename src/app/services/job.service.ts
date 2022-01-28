@@ -143,7 +143,7 @@ export class JobService {
   }
   fetchEmployer(id: string) {
     return this.http
-      .get<any>(`http://localhost:8000/employer/findById/${id}`)
+      .get<any>(`${environment.apiUrl}/employer/findById/${id}`)
       .pipe(
         map((response) => {
           return response;
