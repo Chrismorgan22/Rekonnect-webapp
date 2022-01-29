@@ -141,6 +141,15 @@ export class JobService {
         })
       );
   }
+  deleteJob(id: string) {
+    return this.http
+      .delete<any>(`${environment.apiUrl}/job/deleteJobById/${id}`)
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
   fetchEmployer(id: string) {
     return this.http
       .get<any>(`${environment.apiUrl}/employer/findById/${id}`)
