@@ -45,9 +45,12 @@ export type ChartOptions1 = {
 export class EmployerComponent implements OnInit {
   appliedUserList: any = [];
   listOfJobs: any = [];
-  totalJobs: any[] = [];
+  employerInfo: any;
+  totalJobs: Array<any> = [];
   apppliedUserData: any[] = [];
   empID: string = JSON.parse(sessionStorage.getItem('_ud'))[0]._id;
+  jobPosters: any[];
+  entireJobInfo: Array<any> = [];
   jobData: {
     title: string;
     company: string;
@@ -249,13 +252,18 @@ export class EmployerComponent implements OnInit {
 
   ngOnInit() {
     this.getUserByJob();
-
+    this.getEmployerData();
     this.getUserProfileData();
     this.getTotalJobs();
     // console.log(this.empID);
     // console.log(this.listOfJobs);
   }
-
+  getEmployerData() {
+    this.jobService.fetchEmployer(this.empID).subscribe((data) => {
+      console.log(data);
+      this.employerInfo = data[0];
+    });
+  }
   getUserProfileData() {
     const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
     this.layoutService.getUserProfile(localData._id).subscribe((res) => {
@@ -266,11 +274,31 @@ export class EmployerComponent implements OnInit {
       console.log(this.userProfileData);
     });
   }
+  getPosters() {
+    this.totalJobs.map((job) => {
+      var tempData: Array<any> = [];
+      this.jobService.fetchEmployer(job.user_id).subscribe((data) => {
+        console.log(data[0]);
+        tempData.push(data[0]);
+      });
+
+      this.jobService.getUserById(job.user_id).subscribe((data) => {
+        console.log(data[0]);
+        tempData.push(data[0]);
+        console.log(tempData);
+
+        const tempuData = { ...job, ...tempData[0], ...tempData[1] };
+        this.entireJobInfo.push(tempuData);
+        console.log(tempuData);
+      });
+    });
+  }
   async getTotalJobs() {
     try {
       this.jobService.getAllJobs().subscribe((data) => {
         console.log(data);
         this.totalJobs = data;
+        this.getPosters();
         this.getApplicants();
       });
     } catch (error) {}

@@ -138,8 +138,15 @@
                                         data-parent="#accordionExample">
                                         <div class="card-body">
                                             <ul>
-                                                <li>
+                                                <li *ngFor="let a of topJobSkills">
                                                     <div class="input-group mb-1">
+                                                        <div class="mr-2">
+                                                            <input type="checkbox"
+                                                                aria-label="Checkbox for following text input">
+                                                        </div>
+                                                        <label>{{a}}</label>
+                                                    </div>
+                                                    <!-- <div class="input-group mb-1">
                                                         <div class="mr-2">
                                                             <input type="checkbox"
                                                                 aria-label="Checkbox for following text input">
@@ -173,20 +180,13 @@
                                                                 aria-label="Checkbox for following text input">
                                                         </div>
                                                         <label>Animation</label>
-                                                    </div>
-                                                    <div class="input-group mb-1">
-                                                        <div class="mr-2">
-                                                            <input type="checkbox"
-                                                                aria-label="Checkbox for following text input">
-                                                        </div>
-                                                        <label>Animation</label>
-                                                    </div>
+                                                    </div> -->
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card">
+                                <!-- <div class="card">
                                     <div class="card-header" id="headingTwo">
                                         <h2 class="mb-0">
                                             <button class="btn btn-link btn-block text-left collapsed" type="button"
@@ -248,7 +248,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
