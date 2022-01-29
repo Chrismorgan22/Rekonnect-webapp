@@ -279,7 +279,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row px-3">
-                                <div *ngFor="let job of totalJobs">
+                                <div *ngFor="let job of entireJobInfo">
                                 <div class="col-sm col-sm-12 mb-md-3 mb-2">
                                     <div class="posted-job-card mr-3">
                                         <div class="header-card">
@@ -291,10 +291,11 @@
                                             <div class="user-profile">
                                                 <div class="user-image">
                                                     <img
-                                                        src="../../../../assets/images/temporary-images/Cone-min.png" />
+                                                    width="90px"
+                                                       [src]="job.company_logo" />
                                                 </div>
                                                 <div class="user-content">
-                                                    <h5>ARMAN FINANCIAL SERVICES INC.</h5>
+                                                    <h5>{{job.first_name}} {{job.last_name}}</h5>
                                                     <label>{{job.city}} {{job.country}}</label>
                                                 </div>
                                             </div>
