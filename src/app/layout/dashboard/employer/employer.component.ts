@@ -45,6 +45,7 @@ export type ChartOptions1 = {
 export class EmployerComponent implements OnInit {
   appliedUserList: any = [];
   listOfJobs: any = [];
+  employerInfo: any;
   totalJobs: Array<any> = [];
   apppliedUserData: any[] = [];
   empID: string = JSON.parse(sessionStorage.getItem('_ud'))[0]._id;
@@ -251,13 +252,18 @@ export class EmployerComponent implements OnInit {
 
   ngOnInit() {
     this.getUserByJob();
-
+    this.getEmployerData();
     this.getUserProfileData();
     this.getTotalJobs();
     // console.log(this.empID);
     // console.log(this.listOfJobs);
   }
-
+  getEmployerData() {
+    this.jobService.fetchEmployer(this.empID).subscribe((data) => {
+      console.log(data);
+      this.employerInfo = data[0];
+    });
+  }
   getUserProfileData() {
     const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
     this.layoutService.getUserProfile(localData._id).subscribe((res) => {
