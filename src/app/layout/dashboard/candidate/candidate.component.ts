@@ -44,7 +44,17 @@ export class CandidateComponent implements OnInit {
     name: string;
     profile: string;
   };
-
+  topJobSkills: string[] = [
+    'Ownership',
+    'Creativity',
+    'Client handling',
+    'Analyst',
+    'HR',
+    'Talent Aquisition',
+    'Cumminication',
+    'IT',
+    'Marketing',
+  ];
   toShow: boolean;
   userProfileData: any;
   events1: any[];
