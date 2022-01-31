@@ -168,6 +168,8 @@ export class SignInComponent implements OnInit {
         this.submitted = false;
         sessionStorage.setItem('_ud', JSON.stringify([response.data]));
         sessionStorage.setItem('firstTime', 'true');
+        sessionStorage.setItem('firstTimeDate', 'true');
+
         this._router.navigate(['/auth/welcome']);
         this.form.reset();
         this._toastrService.success(

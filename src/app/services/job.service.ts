@@ -59,7 +59,17 @@ export class JobService {
       })
     );
   }
-
+  updateCandidateJoining(id: string, condi: Boolean) {
+    return this.http
+      .post<any>(`http://localhost:8000/candidate/urgentJoining/${id}`, {
+        condition: condi,
+      })
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
   getUserById(id: String) {
     return this.http
       .get<any>(`${environment.apiUrl}/user/applicant/` + id)

@@ -56,6 +56,8 @@ export class CandidateComponent implements OnInit {
     'Marketing',
   ];
   toShow: boolean;
+  toShowDate: boolean;
+  dateBruh = true;
   userProfileData: any;
   events1: any[];
   entireJob: {
@@ -160,8 +162,45 @@ export class CandidateComponent implements OnInit {
     this.toShow = false;
     document.body.style.backgroundColor = 'unset';
   }
+
+  displayJoiningDate() {
+    console.log(sessionStorage.getItem('firstTimeDate'));
+
+    const validate = () => {
+      this.jobDetails.getUserById(this.userId).subscribe((data) => {
+        const prevTime = Date.parse(data[0].created_at);
+
+        var timestamp = Number(new Date().getTime()) + 1 * 24 * 60 * 60 * 1000;
+
+        console.log(prevTime, 'earlierTime');
+        console.log(timestamp, 'currentTime');
+        console.log(sessionStorage.getItem('firstTimeDate') == 'true');
+
+        if (timestamp > prevTime) console.log('date please!');
+        if (sessionStorage.getItem('firstTimeDate') == 'true') {
+          if (timestamp > prevTime) {
+            this.toShowDate = true;
+
+            console.log('show that date bruh please');
+          } else {
+            this.toShowDate = false;
+          }
+        } else {
+          this.toShowDate = false;
+        }
+      });
+    };
+    setTimeout(() => {
+      validate();
+      if (this.toShowDate) {
+        // document.body.style.backgroundColor = '#DCDCDC';
+        sessionStorage.removeItem('firstTimeDate');
+      }
+    }, 3000);
+  }
   ngOnInit(): void {
     this.displayProp();
+    this.displayJoiningDate();
     this.getUserProfileData();
     this.getJobDetails();
     this.jobDetails.fetchJobs().subscribe((data) => {
@@ -226,6 +265,20 @@ export class CandidateComponent implements OnInit {
     for (let i = 0; i < this.jobs.length; i++) {
       this.jobDetails.getUserById(this.jobs[i].user_id).subscribe((data) => {
         console.log('Test1', data);
+        const prevTime = Date.parse(data[0].created_at);
+        var timestamp = Number(new Date().getTime()) + 15 * 24 * 60 * 60 * 1000;
+        console.log(prevTime, 'earlierTime');
+        console.log(timestamp, 'currentTime');
+
+        if (timestamp > prevTime) {
+          console.log('above 15days');
+        } else {
+          console.log('below 15days');
+        }
+        // console.log(newDate, 'is time??');
+
+        // console.log(typeof data[0].updated_at, 'typeof time');
+
         this.jobPoster = data;
 
         console.log('Test2', this.jobs);
@@ -269,6 +322,8 @@ export class CandidateComponent implements OnInit {
   }
   getUserProfileData() {
     const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
+    console.log(localData.created_at, 'userInfo');
+
     this.layoutService.getUserProfile(localData._id).subscribe((res) => {
       console.log(res);
       this.userProfileData = res.data[0];
