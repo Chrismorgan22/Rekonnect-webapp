@@ -57,7 +57,7 @@ export class CandidateComponent implements OnInit {
   ];
   toShow: boolean;
   toShowDate: boolean;
-
+  dateBruh = true;
   userProfileData: any;
   events1: any[];
   entireJob: {
