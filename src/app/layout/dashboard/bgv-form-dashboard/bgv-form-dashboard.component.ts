@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JobService } from '../../../services/job.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-bgv-form-dashboard',
   templateUrl: './bgv-form-dashboard.component.html',
@@ -23,7 +25,7 @@ export class BgvFormDashboardComponent implements OnInit {
   };
   __DEV__ = document.domain === 'localhost';
 
-  constructor(private _jobService: JobService) {}
+  constructor(private _jobService: JobService, private router: Router) {}
   setRecord() {
     console.log('called');
 
@@ -69,7 +71,8 @@ export class BgvFormDashboardComponent implements OnInit {
       description: 'Payment towards BGV report!',
       image: '',
       handler: async function (response) {
-        alert('payment success');
+        // alert('payment success');
+        this.confirmedPay = true;
         // const cred = await fetch('http://localhost:8000/report/apply', {
         //   method: 'POST',
 
@@ -97,7 +100,10 @@ export class BgvFormDashboardComponent implements OnInit {
     this.setRecord();
     paymentObject.open();
   }
-
+  handleModal() {
+    this.confirmedPay = false;
+    this.router.navigate(['/dashboard/candidate']);
+  }
   handleName(event: Event) {
     this.name = (<HTMLInputElement>event.target).value;
   }
