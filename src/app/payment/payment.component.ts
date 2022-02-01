@@ -37,7 +37,7 @@ export class PaymentComponent implements OnInit {
     console.log(data);
 
     const options = {
-      key: this.__DEV__ ? 'rzp_test_nBBe0QbVWt2oIh' : 'PRODUCTION_KEY',
+      key: this.__DEV__ ? 'rzp_live_Kvzf4vq5RV7FiC' : 'PRODUCTION_KEY',
       currency: data.currency,
       amount: data.amount.toString(),
       order_id: data.id,

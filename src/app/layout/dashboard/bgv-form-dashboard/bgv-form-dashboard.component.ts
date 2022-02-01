@@ -9,7 +9,7 @@ export class BgvFormDashboardComponent implements OnInit {
   name: String = '';
   email: String = '';
   user = JSON.parse(sessionStorage.getItem('_ud'));
-
+  confirmedPay: boolean = true;
   userData: {
     userId: String;
     fname: String;
@@ -61,7 +61,7 @@ export class BgvFormDashboardComponent implements OnInit {
     console.log(data);
 
     const options = {
-      key: this.__DEV__ ? 'rzp_test_nBBe0QbVWt2oIh' : 'PRODUCTION_KEY',
+      key: this.__DEV__ ? 'rzp_live_Kvzf4vq5RV7FiC' : 'PRODUCTION_KEY',
       currency: data.currency,
       amount: data.amount.toString(),
       order_id: data.id,
