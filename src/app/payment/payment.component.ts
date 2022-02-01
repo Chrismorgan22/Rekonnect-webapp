@@ -50,11 +50,6 @@ export class PaymentComponent implements OnInit {
         // alert(response.razorpay_signature);
         alert('payment success');
       },
-      prefill: {
-        name: 'alroy fernandes',
-        email: 'alroyfernandes07518@gmail.com@gmail.com',
-        phone_number: '9899999999',
-      },
     };
     const paymentObject = new (window as any).Razorpay(options);
     paymentObject.open();

@@ -11,7 +11,7 @@ export class BgvFormDashboardComponent implements OnInit {
   name: String = '';
   email: String = '';
   user = JSON.parse(sessionStorage.getItem('_ud'));
-  confirmedPay: boolean = true;
+  confirmedPay: boolean;
   userData: {
     userId: String;
     fname: String;
@@ -73,27 +73,22 @@ export class BgvFormDashboardComponent implements OnInit {
       handler: async function (response) {
         // alert('payment success');
         this.confirmedPay = true;
-        // const cred = await fetch('http://localhost:8000/report/apply', {
-        //   method: 'POST',
+        const cred = await fetch('http://localhost:8000/report/apply', {
+          method: 'POST',
 
-        //   body: JSON.stringify({
-        //     userId: this.userData.userId,
-        //     fname: this.userData.fname,
-        //     lname: this.userData.lname,
-        //     email: this.userData.email,
-        //   }),
-        // })
-        //   .then((response) => {
-        //     response.json();
-        //   })
-        //   .catch((err) => console.log(err));
+          body: JSON.stringify({
+            userId: this.userData.userId,
+            fname: this.userData.fname,
+            lname: this.userData.lname,
+            email: this.userData.email,
+          }),
+        })
+          .then((response) => {
+            response.json();
+          })
+          .catch((err) => console.log(err));
 
-        // console.log(cred);
-      },
-      prefill: {
-        name: 'alroy fernandes',
-        email: 'alroyfernandes07518@gmail.com',
-        phone_number: '9899999999',
+        console.log(cred);
       },
     };
     const paymentObject = new (window as any).Razorpay(options);
