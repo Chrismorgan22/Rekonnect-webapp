@@ -72,9 +72,11 @@ export class BgvFormDashboardComponent implements OnInit {
       description: 'Payment towards BGV report!',
       image: '',
       handler: async function (response) {
-        // alert('payment success');
+        alert('payment success');
         this.confirmedPay = true;
-        const cred = await fetch('http://localhost:8000/report/apply', {
+        console.log(this.confirmedPay);
+
+        const cred = await fetch('https://api.rekonnect.in/report/apply', {
           method: 'POST',
 
           body: JSON.stringify({
@@ -98,7 +100,7 @@ export class BgvFormDashboardComponent implements OnInit {
   }
   handleModal() {
     this.confirmedPay = false;
-    this.router.navigate(['/dashboard/candidate']);
+    // this.router.navigate(['/dashboard/candidate']);
   }
   handleName(event: Event) {
     this.name = (<HTMLInputElement>event.target).value;
