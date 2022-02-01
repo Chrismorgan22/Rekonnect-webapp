@@ -138,7 +138,22 @@ export class CandidateComponent implements OnInit {
   // openDialog() {
   //   this.dialog.open(DialogElementsExampleDialog);
   // }
-
+  updateJoining(condition: string) {
+    this.toShowDate = false;
+    if (condition == 'true') {
+      this.jobDetails
+        .updateCandidateJoining(this.userId, true)
+        .subscribe((data) => {
+          console.log(data);
+        });
+    } else if (condition == 'false') {
+      this.jobDetails
+        .updateCandidateJoining(this.userId, false)
+        .subscribe((data) => {
+          console.log(data);
+        });
+    }
+  }
   displayProp() {
     console.log('bruh');
     console.log(sessionStorage.getItem('firstTime'));
@@ -158,6 +173,10 @@ export class CandidateComponent implements OnInit {
       }
     }, 3000);
   }
+
+  // toggleShowDate(){
+
+  // }
   togglePopup() {
     this.toShow = false;
     document.body.style.backgroundColor = 'unset';
@@ -167,18 +186,23 @@ export class CandidateComponent implements OnInit {
     console.log(sessionStorage.getItem('firstTimeDate'));
 
     const validate = () => {
-      this.jobDetails.getUserById(this.userId).subscribe((data) => {
-        const prevTime = Date.parse(data[0].created_at);
+      this.jobDetails.fetchCandidate(this.userId).subscribe((data) => {
+        console.log(data);
+        let notThere: boolean = data.urgentDateInput == null;
+        console.log(notThere, 'paile aila');
+        const timeGap = 15 * 24 * 60 * 60 * 1000;
+        const prevTime = Date.parse(data.urgentDateInput);
 
-        var timestamp = Number(new Date().getTime()) + 1 * 24 * 60 * 60 * 1000;
+        var timestamp = Number(new Date().getTime());
 
         console.log(prevTime, 'earlierTime');
         console.log(timestamp, 'currentTime');
         console.log(sessionStorage.getItem('firstTimeDate') == 'true');
 
-        if (timestamp > prevTime) console.log('date please!');
+        if (timestamp - prevTime >= timeGap || notThere)
+          console.log('date please!');
         if (sessionStorage.getItem('firstTimeDate') == 'true') {
-          if (timestamp > prevTime) {
+          if (timestamp - prevTime >= timeGap || notThere) {
             this.toShowDate = true;
 
             console.log('show that date bruh please');
