@@ -11,7 +11,7 @@ export class BgvFormDashboardComponent implements OnInit {
   name: String = '';
   email: String = '';
   user = JSON.parse(sessionStorage.getItem('_ud'));
-  confirmedPay: boolean;
+  confirmedPay: boolean = true;
   hasApplied: boolean;
   userData: {
     userId: String;
