@@ -137,8 +137,10 @@ style="width:auto;height:600px;position:relative; border-radius:17px; -webkit-bo
                       </div>
                       <div class="d-flex align-items-center justify-content-flex-end my-4 py-4 button-group-section">
                         <button type="button" class="btn btn-secondary mr-4 btn-lg">Back</button>
-                        <button type="submit" class="btn btn-primary btn-lg" (click)="displayRazorpay()">Save & proceed</button>
+                        <button type="submit" class="btn btn-primary btn-lg" (click)="displayRazorpay()"  [disabled]="hasApplied">Save & proceed</button>
                       </div>
+                      <span style="color:red;font-size:17px;font-weight:bold;"  *ngIf="hasApplied"> *You have already applied for a bgv report.Our team will contact you shortly</span>
+
                     </div>
                   </div>
                 </div>

@@ -12,6 +12,7 @@ export class BgvFormDashboardComponent implements OnInit {
   email: String = '';
   user = JSON.parse(sessionStorage.getItem('_ud'));
   confirmedPay: boolean;
+  hasApplied: boolean;
   userData: {
     userId: String;
     fname: String;
@@ -106,15 +107,27 @@ export class BgvFormDashboardComponent implements OnInit {
     this.email = (<HTMLInputElement>event.target).value;
     this.userData.email = this.email;
   }
-
-  ngOnInit(): void {
-    console.log(this.user);
-    console.log(this.user[0]);
-
+  bgvStatus() {
+    this._jobService.getBgvStatus(this.user[0]._id).subscribe((data) => {
+      console.log(data);
+      if (data.length != 0) {
+        this.hasApplied = true;
+      } else {
+        this.hasApplied = false;
+      }
+    });
+  }
+  getUdates() {
     this.userData.userId = this.user[0]._id;
     this.userData.fname = this.user[0].first_name;
     this.userData.lname = this.user[0].last_name;
 
     console.log(this.userData);
+  }
+  ngOnInit(): void {
+    // console.log(this.user);
+    // console.log(this.user[0]);
+    this.getUdates();
+    this.bgvStatus();
   }
 }

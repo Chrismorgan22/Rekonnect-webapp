@@ -59,6 +59,14 @@ export class JobService {
       })
     );
   }
+
+  getBgvStatus(id: string) {
+    return this.http.get<any>(`${environment.apiUrl}/report/single/${id}`).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
   updateCandidateJoining(id: string, condi: Boolean) {
     return this.http
       .post<any>(`http://localhost:8000/candidate/urgentJoining/${id}`, {
