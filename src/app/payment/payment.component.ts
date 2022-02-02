@@ -37,7 +37,7 @@ export class PaymentComponent implements OnInit {
     console.log(data);
 
     const options = {
-      key: this.__DEV__ ? 'rzp_test_nBBe0QbVWt2oIh' : 'PRODUCTION_KEY',
+      key: this.__DEV__ ? 'rzp_live_Kvzf4vq5RV7FiC' : 'PRODUCTION_KEY',
       currency: data.currency,
       amount: data.amount.toString(),
       order_id: data.id,
@@ -49,11 +49,6 @@ export class PaymentComponent implements OnInit {
         // alert(response.razorpay_order_id);
         // alert(response.razorpay_signature);
         alert('payment success');
-      },
-      prefill: {
-        name: 'alroy fernandes',
-        email: 'alroyfernandes07518@gmail.com@gmail.com',
-        phone_number: '9899999999',
       },
     };
     const paymentObject = new (window as any).Razorpay(options);

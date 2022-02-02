@@ -57,7 +57,6 @@ export class CandidateComponent implements OnInit {
   ];
   toShow: boolean;
   toShowDate: boolean;
-  dateBruh = true;
   userProfileData: any;
   events1: any[];
   entireJob: {
@@ -216,8 +215,9 @@ export class CandidateComponent implements OnInit {
     };
     setTimeout(() => {
       validate();
+
+      // document.body.style.backgroundColor = '#DCDCDC';
       if (this.toShowDate) {
-        // document.body.style.backgroundColor = '#DCDCDC';
         sessionStorage.removeItem('firstTimeDate');
       }
     }, 3000);

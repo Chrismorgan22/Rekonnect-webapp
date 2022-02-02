@@ -13,6 +13,14 @@ export class JobService {
       })
     );
   }
+
+  updateBgv(json: any) {
+    return this.http.post<any>(`${environment.apiUrl}/report/apply`, json).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
   applyJob(jobData) {
     return this.http
       .post<any>(`${environment.apiUrl}/job/application/applyForJob`, jobData)
@@ -54,6 +62,14 @@ export class JobService {
   }
   getApplicants() {
     return this.http.get<any>(`${environment.apiUrl}/job/application/`).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
+
+  getBgvStatus(id: string) {
+    return this.http.get<any>(`${environment.apiUrl}/report/single/${id}`).pipe(
       map((response) => {
         return response;
       })
