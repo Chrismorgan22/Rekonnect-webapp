@@ -11,7 +11,7 @@ export class BgvFormDashboardComponent implements OnInit {
   name: String = '';
   email: String = '';
   user = JSON.parse(sessionStorage.getItem('_ud'));
-  confirmedPay: boolean = true;
+  confirmedPay: boolean;
   hasApplied: boolean;
   userData: {
     userId: String;
@@ -76,27 +76,42 @@ export class BgvFormDashboardComponent implements OnInit {
         this.confirmedPay = true;
         console.log(this.confirmedPay);
 
-        const cred = await fetch('https://api.rekonnect.in/report/apply', {
-          method: 'POST',
-
-          body: JSON.stringify({
+        this._jobService
+          .updateBgv({
             userId: this.userData.userId,
             fname: this.userData.fname,
             lname: this.userData.lname,
             email: this.userData.email,
-          }),
-        })
-          .then((response) => {
-            response.json();
           })
-          .catch((err) => console.log(err));
+          .subscribe((data) => {
+            console.log(data);
+          });
+        // const cred = await fetch('https://api.rekonnect.in/report/apply', {
+        //   method: 'POST',
 
-        console.log(cred);
+        //   body: JSON.stringify({
+        //     userId: this.userData.userId,
+        //     fname: this.userData.fname,
+        //     lname: this.userData.lname,
+        //     email: this.userData.email,
+        //   }),
+        // })
+        //   .then((response) => {
+        //     response.json();
+        //     this.confirmedPay = true;
+        //   })
+        //   .catch((err) => console.log(err));
+
+        // console.log(cred);
       },
     };
     const paymentObject = new (window as any).Razorpay(options);
     this.setRecord();
     paymentObject.open();
+  }
+
+  openConfirm() {
+    this.confirmedPay = true;
   }
   handleModal() {
     this.confirmedPay = false;

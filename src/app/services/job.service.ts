@@ -13,6 +13,14 @@ export class JobService {
       })
     );
   }
+
+  updateBgv(json: any) {
+    return this.http.post<any>(`${environment.apiUrl}/report/apply`, json).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
   applyJob(jobData) {
     return this.http
       .post<any>(`${environment.apiUrl}/job/application/applyForJob`, jobData)
