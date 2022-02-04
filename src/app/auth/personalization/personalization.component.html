@@ -795,10 +795,20 @@
                                 </div> -->
                             </div>
                             <div class="form-group">
-                                <ng-multiselect-dropdown [placeholder]="'Current Career'" [settings]="dropdownSettings1"
+                               
+                                <ng-multiselect-dropdown  [placeholder]="'Current Career'" [settings]="dropdownSettings1"
                                     [data]="currentCareerDrp" formControlName="current_career"
                                     (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+
+
                                 </ng-multiselect-dropdown>
+                                <div *ngIf="setCurrentCarrer">
+                                    <input  type="text" placeholder="Enter your current career" (keyup)="addCurrentCarrer($event)" style="width:100%;margin-top:9px;border:none;padding: 8px 12px; border:1px solid rgb(0, 225, 255);border-radius:8px">
+    
+                                    <!-- <div *ngFor="let job of currentCareerDrp">
+    {{job.name}}
+                                    </div> -->
+                                </div>
                                 <!-- <select formControlName="current_career" class="form-control">
                                     <option value="" selected disabled>Current Career</option>
                                     <option *ngFor="let career of currentCareerDrp" value="{{career | json}}">
