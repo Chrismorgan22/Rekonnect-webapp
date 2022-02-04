@@ -304,7 +304,7 @@ export class PersonalizationComponent implements OnInit {
     if (
       this.experienceDetailForm?.controls &&
       this.experienceDetailForm?.controls.experienceDetails['controls'].length >
-        1
+      1
     ) {
       return this.userExpDetails.experienceDetails['controls'][
         this.userExpDetails.experienceDetails['controls'].length - 2
@@ -514,17 +514,16 @@ export class PersonalizationComponent implements OnInit {
         temp_data: tempData,
       };
       console.log(body);
-      // this.authService.saveTempUser(body).subscribe((res) => {
+      this.authService.saveTempUser(body).subscribe((res) => {
       if (
         this.experienceTypeForm.controls.experience_type.value !== 'Experienced'
       ) {
-        // nextModal = 'candidateModalEducation';
-        this.authService.saveTempUser(body).subscribe((res) => {});
+        nextModal = 'candidateModallastbits';
+      }else{
+      nextModal = 'candidateModalcenterexperience';
       }
-      // nextModal = 'candidateModalEducation';
-      nextModal = 'candidate';
       this.moveToNextModal(currentModal, nextModal);
-      // })
+      })
     } else {
       return false;
     }
@@ -594,13 +593,14 @@ export class PersonalizationComponent implements OnInit {
           body.temp_data[
             'candidateModalExperience'
           ].experience_data.timeline_details;
-        if (
-          this.experienceTypeForm.controls.experience_type.value !==
-          'Experienced'
-        ) {
-          nextModal = 'candidateModallastbits';
-        }
-        nextModal = 'candidateModallastbits';
+        // if (
+        //   this.experienceTypeForm.controls.experience_type.value !==
+        //   'Experienced'
+        // ) {
+        //   nextModal = 'candidateModallastbits';
+        // }else{
+        // nextModal = 'candidateModalcenterexperience';
+        // }
         this.moveToNextModal(currentModal, nextModal);
       });
     } else {
@@ -650,12 +650,13 @@ export class PersonalizationComponent implements OnInit {
       console.log(body);
       // this.authService.saveTempUser(body).subscribe((res) => {
       if (this.educationTypeForm.controls.education_type.value !== 'Educated') {
-        nextModal = 'candidateModallastbits';
-        this.authService.saveTempUser(body).subscribe((res) => {});
+        nextModal = 'candidateModalExperience';
+        this.authService.saveTempUser(body).subscribe((res) => { });
       }
+      else {
 
-      nextModal = 'candidateModalExperience';
-
+        nextModal = 'candidateModalcentereducation';
+      }
       this.moveToNextModal(currentModal, nextModal);
       // })
     } else {
@@ -763,13 +764,13 @@ export class PersonalizationComponent implements OnInit {
       };
       console.log(body);
       this.authService.saveTempUser(body).subscribe((res) => {
-        if (
-          this.experienceTypeForm.controls.experience_type.value !==
-          'Experienced'
-        ) {
-          nextModal = 'candidateModallastbits';
-        }
-        nextModal = 'candidateModallastbits';
+        // if (
+        //   this.experienceTypeForm.controls.experience_type.value !==
+        //   'Experienced'
+        // ) {
+        //   nextModal = 'candidateModallastbits';
+        // }
+        // nextModal = 'candidateModallastbits';
         this.moveToNextModal(currentModal, nextModal);
       });
     } else {
@@ -795,6 +796,7 @@ export class PersonalizationComponent implements OnInit {
       const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
       console.log(localData);
       const tempData = {};
+
       if (this.setCurrentCarrer) {
         tempData[currentModal] = {
           last_few_bits: {
@@ -839,6 +841,9 @@ export class PersonalizationComponent implements OnInit {
           },
         };
       }
+
+    
+
       const body = {
         user_id: localData._id,
         user_token: localData.user_token,
@@ -1214,6 +1219,7 @@ export class PersonalizationComponent implements OnInit {
             description: this.educationDetailForm.controls.description.value,
           },
         },
+
         experience_data: {
           experience_type:
             this.experienceTypeForm.controls.experience_type.value,
@@ -1251,6 +1257,8 @@ export class PersonalizationComponent implements OnInit {
         on_board: this.onBoardDetailForm.controls.onboard.value,
       };
     }
+
+    
     console.log(json);
     this.SpinnerService.show();
     this.authService.saveCandidateRegistration(json).subscribe((res) => {
@@ -1474,7 +1482,7 @@ export class PersonalizationComponent implements OnInit {
                     this.tempFormData['candidateModallastbitsfinal']
                       .last_few_join.salary_range?.min !== undefined
                       ? this.tempFormData['candidateModallastbitsfinal']
-                          .last_few_join.salary_range.min
+                        .last_few_join.salary_range.min
                       : 0;
                   this.highValue =
                     this.tempFormData[
