@@ -30,6 +30,7 @@ export class PersonalizationComponent implements OnInit {
   userData: any;
   isSchoolNum: boolean = false;
   isPinError: boolean = false;
+
   goAhead: boolean = true;
   isDegreeNum: boolean = false;
   isStudyNum: boolean = false;
@@ -40,6 +41,7 @@ export class PersonalizationComponent implements OnInit {
   experienceDetailForm: FormGroup;
   educationTypeForm: FormGroup;
   educationDetailForm: FormGroup;
+  setCurrentCarrer: boolean = false;
   ischange: boolean = false;
   companyData: string[] = ['Goa', 'Mumbai', 'Pune'];
   lastFewBitsDetailForm: FormGroup;
@@ -86,6 +88,7 @@ export class PersonalizationComponent implements OnInit {
   // value = 0;
   vertical = false;
   tickInterval = 1;
+  currentCarrer: any;
   value: number = 1;
   todayDate: any;
   Dvalue: number = 1;
@@ -139,6 +142,15 @@ export class PersonalizationComponent implements OnInit {
   getValue(): number {
     if (this.completion === 100) return 100;
     else return 75;
+  }
+  addCurrentCarrer(event: Event) {
+    console.log('added');
+    this.currentCarrer = (<HTMLInputElement>event.target).value;
+    this.currentCareerDrp.push({
+      id: 'someid',
+      name: this.currentCarrer,
+    });
+    console.log(this.currentCareerDrp);
   }
   validatePin(event: Event) {
     const input = (<HTMLInputElement>event.target).value;
@@ -783,25 +795,50 @@ export class PersonalizationComponent implements OnInit {
       const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
       console.log(localData);
       const tempData = {};
-      tempData[currentModal] = {
-        last_few_bits: {
-          soft_skills: this.lastFewBitsDetailForm.controls.soft_skills.value,
-          technical_skills:
-            this.lastFewBitsDetailForm.controls.technical_skills.value,
-          current_career:
-            this.lastFewBitsDetailForm.controls.current_career.value[0],
-          changecareer: this.lastFewBitsDetailForm.controls.changecareer.value,
-          change_career:
-            this.lastFewBitsDetailForm.controls.change_career.value !==
-              undefined &&
-            this.lastFewBitsDetailForm.controls.change_career.value !== null &&
-            this.lastFewBitsDetailForm.controls.change_career.value !== ''
-              ? this.lastFewBitsDetailForm.controls.change_career.value[0]
-              : '',
-          passion: this.lastFewBitsDetailForm.controls.passion.value,
-          language: this.lastFewBitsDetailForm.controls.language.value,
-        },
-      };
+      if (this.setCurrentCarrer) {
+        tempData[currentModal] = {
+          last_few_bits: {
+            soft_skills: this.lastFewBitsDetailForm.controls.soft_skills.value,
+            technical_skills:
+              this.lastFewBitsDetailForm.controls.technical_skills.value,
+            current_career: this.currentCarrer,
+            changecareer:
+              this.lastFewBitsDetailForm.controls.changecareer.value,
+            change_career:
+              this.lastFewBitsDetailForm.controls.change_career.value !==
+                undefined &&
+              this.lastFewBitsDetailForm.controls.change_career.value !==
+                null &&
+              this.lastFewBitsDetailForm.controls.change_career.value !== ''
+                ? this.lastFewBitsDetailForm.controls.change_career.value[0]
+                : '',
+            passion: this.lastFewBitsDetailForm.controls.passion.value,
+            language: this.lastFewBitsDetailForm.controls.language.value,
+          },
+        };
+      } else {
+        tempData[currentModal] = {
+          last_few_bits: {
+            soft_skills: this.lastFewBitsDetailForm.controls.soft_skills.value,
+            technical_skills:
+              this.lastFewBitsDetailForm.controls.technical_skills.value,
+            current_career:
+              this.lastFewBitsDetailForm.controls.current_career.value[0],
+            changecareer:
+              this.lastFewBitsDetailForm.controls.changecareer.value,
+            change_career:
+              this.lastFewBitsDetailForm.controls.change_career.value !==
+                undefined &&
+              this.lastFewBitsDetailForm.controls.change_career.value !==
+                null &&
+              this.lastFewBitsDetailForm.controls.change_career.value !== ''
+                ? this.lastFewBitsDetailForm.controls.change_career.value[0]
+                : '',
+            passion: this.lastFewBitsDetailForm.controls.passion.value,
+            language: this.lastFewBitsDetailForm.controls.language.value,
+          },
+        };
+      }
       const body = {
         user_id: localData._id,
         user_token: localData.user_token,
@@ -1030,6 +1067,12 @@ export class PersonalizationComponent implements OnInit {
   }
   onItemSelect(item: any) {
     console.log(item);
+
+    if (item.name == 'others') {
+      this.setCurrentCarrer = true;
+    } else {
+      this.setCurrentCarrer = false;
+    }
   }
   onSelectAll(items: any) {
     console.log(items);
@@ -1067,71 +1110,147 @@ export class PersonalizationComponent implements OnInit {
         }
       );
     }
+    var json = {};
     // if (this.userRoleForm.controls.user_role.value === '1') {
-    const json = {
-      user_id: localData._id,
-      profile_url: this.profileImagUrl,
-      address_details: {
-        street: this.addressForm.controls.street.value,
-        state: this.addressForm.controls.state.value[0],
-        zip_code: this.addressForm.controls.zip_code.value,
-        landmark: this.addressForm.controls.landmark.value,
-        // "organization_strength": this.addressForm.controls.organization_strength.value
-      },
-      education_data: {
-        education_type: this.educationTypeForm.controls.education_type.value,
-        education_details: {
-          school_name: this.educationDetailForm.controls.school_name.value,
-          degree: this.educationDetailForm.controls.degree.value,
-          field_of_study:
-            this.educationDetailForm.controls.field_of_study.value,
-          start_date: {
-            month: this.educationDetailForm.controls.start_month.value,
-            year: this.educationDetailForm.controls.start_year.value,
-          },
-          end_date: {
-            month: this.educationDetailForm.controls.end_month.value,
-            year: this.educationDetailForm.controls.end_year.value,
-          },
-          grade: this.educationDetailForm.controls.grade.value,
-          currently_studying:
-            this.educationDetailForm.controls.currently_studying.value,
-          description: this.educationDetailForm.controls.description.value,
+    if (this.setCurrentCarrer) {
+      json = {
+        user_id: localData._id,
+        profile_url: this.profileImagUrl,
+        address_details: {
+          street: this.addressForm.controls.street.value,
+          state: this.addressForm.controls.state.value[0],
+          zip_code: this.addressForm.controls.zip_code.value,
+          landmark: this.addressForm.controls.landmark.value,
+          // "organization_strength": this.addressForm.controls.organization_strength.value
         },
-      },
-      experience_data: {
-        experience_type: this.experienceTypeForm.controls.experience_type.value,
-        experience_details: experienceArray,
-      },
-      soft_skills: this.lastFewBitsDetailForm.controls.soft_skills.value,
-      technical_skills:
-        this.lastFewBitsDetailForm.controls.technical_skills.value,
-      resume_url: this.resumeFileUrl,
-      visume_url: this.visumeFileUrl,
-      current_career:
-        this.lastFewBitsDetailForm.controls.current_career.value[0],
-      changecareer: this.lastFewBitsDetailForm.controls.changecareer.value,
-      change_career:
-        this.lastFewBitsDetailForm.controls.change_career.value !== undefined &&
-        this.lastFewBitsDetailForm.controls.change_career.value !== null &&
-        this.lastFewBitsDetailForm.controls.change_career.value !== ''
-          ? this.lastFewBitsDetailForm.controls.change_career.value[0]
-          : '',
-      passion: this.lastFewBitsDetailForm.controls.passion.value,
-      languages: this.lastFewBitsDetailForm.controls.language.value,
-      joining_status:
-        this.lastFewBitsJoinDetailForm.controls.joining_status.value,
-      join_within: this.lastFewBitsJoinDetailForm.controls.joining_within.value,
-      salary_range: {
-        min: this.value,
-        max: this.highValue,
-      },
-      last_drawn_salary_range: {
-        min: this.Dvalue,
-        max: this.DhighValue,
-      },
-      on_board: this.onBoardDetailForm.controls.onboard.value,
-    };
+        education_data: {
+          education_type: this.educationTypeForm.controls.education_type.value,
+          education_details: {
+            school_name: this.educationDetailForm.controls.school_name.value,
+            degree: this.educationDetailForm.controls.degree.value,
+            field_of_study:
+              this.educationDetailForm.controls.field_of_study.value,
+            start_date: {
+              month: this.educationDetailForm.controls.start_month.value,
+              year: this.educationDetailForm.controls.start_year.value,
+            },
+            end_date: {
+              month: this.educationDetailForm.controls.end_month.value,
+              year: this.educationDetailForm.controls.end_year.value,
+            },
+            grade: this.educationDetailForm.controls.grade.value,
+            currently_studying:
+              this.educationDetailForm.controls.currently_studying.value,
+            description: this.educationDetailForm.controls.description.value,
+          },
+        },
+        experience_data: {
+          experience_type:
+            this.experienceTypeForm.controls.experience_type.value,
+          experience_details: experienceArray,
+        },
+        soft_skills: this.lastFewBitsDetailForm.controls.soft_skills.value,
+        technical_skills:
+          this.lastFewBitsDetailForm.controls.technical_skills.value,
+        resume_url: this.resumeFileUrl,
+        visume_url: this.visumeFileUrl,
+        current_career: {
+          id: '61ea49cce6d0655fd08e759z',
+          name: this.currentCarrer,
+        },
+        changecareer: this.lastFewBitsDetailForm.controls.changecareer.value,
+        change_career:
+          this.lastFewBitsDetailForm.controls.change_career.value !==
+            undefined &&
+          this.lastFewBitsDetailForm.controls.change_career.value !== null &&
+          this.lastFewBitsDetailForm.controls.change_career.value !== ''
+            ? this.lastFewBitsDetailForm.controls.change_career.value[0]
+            : '',
+        passion: this.lastFewBitsDetailForm.controls.passion.value,
+        languages: this.lastFewBitsDetailForm.controls.language.value,
+        joining_status:
+          this.lastFewBitsJoinDetailForm.controls.joining_status.value,
+        join_within:
+          this.lastFewBitsJoinDetailForm.controls.joining_within.value,
+        salary_range: {
+          min: this.value,
+          max: this.highValue,
+        },
+        last_drawn_salary_range: {
+          min: this.Dvalue,
+          max: this.DhighValue,
+        },
+        on_board: this.onBoardDetailForm.controls.onboard.value,
+      };
+    } else {
+      json = {
+        user_id: localData._id,
+        profile_url: this.profileImagUrl,
+        address_details: {
+          street: this.addressForm.controls.street.value,
+          state: this.addressForm.controls.state.value[0],
+          zip_code: this.addressForm.controls.zip_code.value,
+          landmark: this.addressForm.controls.landmark.value,
+          // "organization_strength": this.addressForm.controls.organization_strength.value
+        },
+        education_data: {
+          education_type: this.educationTypeForm.controls.education_type.value,
+          education_details: {
+            school_name: this.educationDetailForm.controls.school_name.value,
+            degree: this.educationDetailForm.controls.degree.value,
+            field_of_study:
+              this.educationDetailForm.controls.field_of_study.value,
+            start_date: {
+              month: this.educationDetailForm.controls.start_month.value,
+              year: this.educationDetailForm.controls.start_year.value,
+            },
+            end_date: {
+              month: this.educationDetailForm.controls.end_month.value,
+              year: this.educationDetailForm.controls.end_year.value,
+            },
+            grade: this.educationDetailForm.controls.grade.value,
+            currently_studying:
+              this.educationDetailForm.controls.currently_studying.value,
+            description: this.educationDetailForm.controls.description.value,
+          },
+        },
+        experience_data: {
+          experience_type:
+            this.experienceTypeForm.controls.experience_type.value,
+          experience_details: experienceArray,
+        },
+        soft_skills: this.lastFewBitsDetailForm.controls.soft_skills.value,
+        technical_skills:
+          this.lastFewBitsDetailForm.controls.technical_skills.value,
+        resume_url: this.resumeFileUrl,
+        visume_url: this.visumeFileUrl,
+        current_career:
+          this.lastFewBitsDetailForm.controls.current_career.value[0],
+        changecareer: this.lastFewBitsDetailForm.controls.changecareer.value,
+        change_career:
+          this.lastFewBitsDetailForm.controls.change_career.value !==
+            undefined &&
+          this.lastFewBitsDetailForm.controls.change_career.value !== null &&
+          this.lastFewBitsDetailForm.controls.change_career.value !== ''
+            ? this.lastFewBitsDetailForm.controls.change_career.value[0]
+            : '',
+        passion: this.lastFewBitsDetailForm.controls.passion.value,
+        languages: this.lastFewBitsDetailForm.controls.language.value,
+        joining_status:
+          this.lastFewBitsJoinDetailForm.controls.joining_status.value,
+        join_within:
+          this.lastFewBitsJoinDetailForm.controls.joining_within.value,
+        salary_range: {
+          min: this.value,
+          max: this.highValue,
+        },
+        last_drawn_salary_range: {
+          min: this.Dvalue,
+          max: this.DhighValue,
+        },
+        on_board: this.onBoardDetailForm.controls.onboard.value,
+      };
+    }
     console.log(json);
     this.SpinnerService.show();
     this.authService.saveCandidateRegistration(json).subscribe((res) => {
