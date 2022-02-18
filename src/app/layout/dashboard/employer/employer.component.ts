@@ -264,6 +264,7 @@ export class EmployerComponent implements OnInit {
       this.employerInfo = data[0];
     });
   }
+
   getUserProfileData() {
     const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
     this.layoutService.getUserProfile(localData._id).subscribe((res) => {
@@ -274,6 +275,7 @@ export class EmployerComponent implements OnInit {
       console.log(this.userProfileData);
     });
   }
+  
   getPosters() {
     this.totalJobs.map((job) => {
       var tempData: Array<any> = [];

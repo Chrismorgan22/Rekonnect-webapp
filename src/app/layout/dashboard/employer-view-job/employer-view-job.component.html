@@ -1,34 +1,75 @@
-<button class="btn btn-primary" style="margin-bottom:18px;margin-left:10px"> <a href="/dashboard/employer" style="color: white;text-decoration: none; ">Dashboard</a> </button>
+<!-- <button class="btn btn-primary" style="margin-bottom:18px;margin-left:10px"> <a href="/dashboard/employer"
+    style="color: white;text-decoration: none; ">Dashboard</a> </button> -->
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Job Title</th>
-      <th scope="col">Job Category</th>
-      <th scope="col">Job Type</th>
-      <th scope="col">City</th>
-      <th scope="col">Vacancy</th>
-      <th scope="col">Action</th>
-      <th scope="col">Delete Job</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let job of jobData">
-      <td>{{ job?.job_title }}</td>
-      <td>{{ job?.job_category }}</td>
-      <td>{{ job?.job_type }}</td>
-      <td>{{ job?.city }}</td>
-      <td>{{ job?.post_vacancies }}</td>
-      <td>
-        <button class="btn btn-primary btn-sm mr-2" (click)="viewJob(job)">
-          View Job Post
-        </button>
-      </td>
-      <td>
-        <button class="btn btn-danger btn-sm mr-2" (click)="delJob(job._id)" >
-          Delete Job Post
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="alert alert-warning profile-completion m-0 d-flex justify-content-space-between align-items-center"
+  role="alert">
+  <span><strong>Profile 75% completed</strong>Complete your profile for better reach. </span>
+
+  <button class="btn btn-secondary">Edit Profile</button>
+</div>
+<header>
+  <div class="banner">
+    <img class="banner-img" src="../../../assets/images/employer-banner.jpg" />
+  </div>
+</header>
+
+
+<!-- 
+<div class="col-sm col-sm-12 col-md-12 col-lg-12 mb-3">
+  <div class="card profile-card">
+    <div class="card-header d-none">
+    </div>
+    <div class="card-body employer-header-band d-flex align-items-center justify-content-space-between">
+      <div class="user-profile mb-0">
+        <div class="user-image">
+          <img [src]="employerInfo.company_logo" />
+        </div>
+        <div class="user-content">
+          <h5>{{userProfileData?.first_name}} {{userProfileData?.last_name}}</h5>
+          <label>- {{userProfileData?.employer_details[0].designation | titlecase}}</label>
+        </div>
+      </div>
+      <div class="user-content-action">
+        <button class="btn btn-primary mr-3 btn-lg" (click)='postJob()'>Post new job listing</button>
+        <button class="btn btn-secondary btn-lg">Recommend Expert</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="table-div">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Job Title</th>
+        <th scope="col">Job Category</th>
+        <th scope="col">Job Type</th>
+        <th scope="col">City</th>
+        <th scope="col">Vacancy</th>
+        <th scope="col">Action</th>
+        <th scope="col">Delete Job</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let job of jobData">
+        <td>{{ job?.job_title }}</td>
+        <td>{{ job?.job_category }}</td>
+        <td>{{ job?.job_type }}</td>
+        <td>{{ job?.city }}</td>
+        <td>{{ job?.post_vacancies }}</td>
+        <td>
+
+          <button class=" Job btn btn-primary btn-sm mr-2" (click)="viewJob(job)">
+            View Job Post
+          </button>
+        </td>
+        <td>
+          <button class="Job btn btn-danger btn-sm mr-2" (click)="delJob(job._id)">
+            Delete Job Post
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
