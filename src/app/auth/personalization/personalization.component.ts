@@ -168,6 +168,16 @@ export class PersonalizationComponent implements OnInit {
     if (this.completion === 100) return '100%';
     else return '75%';
   }
+  submitEducation(value: string): void {
+    this.educationTypeForm.setValue({ education_type: value });
+  }
+  submitExp(value: string): void {
+    this.experienceTypeForm.setValue({ experience_type: value });
+  }
+  submitRole(value: string): void {
+    console.log(this.userRoleForm);
+    this.userRoleForm.setValue({ user_role: value });
+  }
   async ngOnInit() {
     this.monthDrp = moment.months();
     this.todayDate = moment(new Date()).format('yyyy-MM-DD');
@@ -304,7 +314,7 @@ export class PersonalizationComponent implements OnInit {
     if (
       this.experienceDetailForm?.controls &&
       this.experienceDetailForm?.controls.experienceDetails['controls'].length >
-      1
+        1
     ) {
       return this.userExpDetails.experienceDetails['controls'][
         this.userExpDetails.experienceDetails['controls'].length - 2
@@ -421,6 +431,8 @@ export class PersonalizationComponent implements OnInit {
   }
   userRoleFormSubmit(currentModal, nextModal) {
     this.userRoleSubmit = true;
+    console.log(this.isEmp);
+
     if (this.userRoleForm.valid) {
       console.log(this.userRoleForm);
       const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
@@ -515,15 +527,16 @@ export class PersonalizationComponent implements OnInit {
       };
       console.log(body);
       this.authService.saveTempUser(body).subscribe((res) => {
-      if (
-        this.experienceTypeForm.controls.experience_type.value !== 'Experienced'
-      ) {
-        nextModal = 'candidateModallastbits';
-      }else{
-      nextModal = 'candidateModalcenterexperience';
-      }
-      this.moveToNextModal(currentModal, nextModal);
-      })
+        if (
+          this.experienceTypeForm.controls.experience_type.value !==
+          'Experienced'
+        ) {
+          nextModal = 'candidateModallastbits';
+        } else {
+          nextModal = 'candidateModalcenterexperience';
+        }
+        this.moveToNextModal(currentModal, nextModal);
+      });
     } else {
       return false;
     }
@@ -651,10 +664,8 @@ export class PersonalizationComponent implements OnInit {
       // this.authService.saveTempUser(body).subscribe((res) => {
       if (this.educationTypeForm.controls.education_type.value !== 'Educated') {
         nextModal = 'candidateModalExperience';
-        this.authService.saveTempUser(body).subscribe((res) => { });
-      }
-      else {
-
+        this.authService.saveTempUser(body).subscribe((res) => {});
+      } else {
         nextModal = 'candidateModalcentereducation';
       }
       this.moveToNextModal(currentModal, nextModal);
@@ -841,8 +852,6 @@ export class PersonalizationComponent implements OnInit {
           },
         };
       }
-
-    
 
       const body = {
         user_id: localData._id,
@@ -1258,7 +1267,6 @@ export class PersonalizationComponent implements OnInit {
       };
     }
 
-    
     console.log(json);
     this.SpinnerService.show();
     this.authService.saveCandidateRegistration(json).subscribe((res) => {
@@ -1482,7 +1490,7 @@ export class PersonalizationComponent implements OnInit {
                     this.tempFormData['candidateModallastbitsfinal']
                       .last_few_join.salary_range?.min !== undefined
                       ? this.tempFormData['candidateModallastbitsfinal']
-                        .last_few_join.salary_range.min
+                          .last_few_join.salary_range.min
                       : 0;
                   this.highValue =
                     this.tempFormData[

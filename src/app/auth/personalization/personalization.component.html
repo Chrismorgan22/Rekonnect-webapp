@@ -29,7 +29,7 @@
                     (ngSubmit)="userRoleFormSubmit('candidateModalCenter','candidateModalCenterupload')" noValidate>
                     <div class="container-fluid d-flex justify-content-center">
                         <div class="row modal-content-section">
-                            <div class="col-md-6 col-sm-12">
+                            <div class="col-md-6 col-sm-12" (click)="submitRole('1')"  (click)="userRoleFormSubmit('candidateModalCenter','candidateModalCenterupload')">
                                 <div class="custom-control custom-radio custom--radio" (click)="toggleEmp('no')">
                                     <input class="custom-control-input custom-radio-button" value=1 type="radio"
                                         name="user_role" formControlName="user_role" id="candidate">
@@ -40,7 +40,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-12">
+                            <div class="col-md-6 col-sm-12" (click)="submitRole('2')" (click)="userRoleFormSubmit('candidateModalCenter','candidateModalCenterupload')">
                                 <div class="custom-control custom-radio custom--radio" (click)="toggleEmp('yes')">
                                     <input class="custom-control-input custom-radio-button" value=2 type="radio"
                                         name="user_role" formControlName="user_role" id="employer">
@@ -77,11 +77,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button> -->
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
                         <button type="submit" class="btn btn-primary">Save &
                             Continue</button>
-                    </div>
+                    </div> -->
                 </form>
             </div>
             <!-- <div class="modal-footer">
@@ -224,7 +224,7 @@
                     (ngSubmit)="educationTypeFormSubmit('candidateModalEducation','candidateModalExperience')"
                     noValidate>
                     <div class="row modal-content-section">
-                        <div class="custom-control custom-radio custom--radio">
+                        <div class="custom-control custom-radio custom--radio"  (click)="submitEducation('Educated')" (click)="educationTypeFormSubmit('candidateModalEducation','candidateModalExperience')">
                             <input class="custom-control-input experience-type-radio custom-radio-button"
                                 formControlName="education_type" value="Educated" type="radio" name="education_type"
                                 id="candidate">
@@ -234,7 +234,7 @@
                                 <div class="label">Add Education</div>
                             </div>
                         </div>
-                        <div class="custom-control custom-radio custom--radio">
+                        <div class="custom-control custom-radio custom--radio" (click)="submitEducation('Non-Educated')" (click)="educationTypeFormSubmit('candidateModalEducation','candidateModalExperience')">
                             <input class="custom-control-input experience-type-radio custom-radio-button"
                                 formControlName="education_type" value='Non-Educated' type="radio" name="education_type"
                                 id="candidate">
@@ -253,8 +253,8 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
                             (click)="moveToPreviousModal('candidateModalEducation','candidateModalCenterupload')">Back</button>
-                        <button type="submit" class="btn btn-primary">Save &
-                            Continue</button>
+                        <!-- <button type="submit" class="btn btn-primary">Save &
+                            Continue</button> -->
                     </div>
                 </form>
             </div>
@@ -465,7 +465,7 @@
                     (ngSubmit)="experienceTypeFormSubmit('candidateModalExperience','candidateModalcenterexperience')"
                     noValidate>
                     <div class="row modal-content-section">
-                        <div class="custom-control custom-radio custom--radio">
+                        <div class="custom-control custom-radio custom--radio" (click)="submitExp('Experienced')" (click)="experienceTypeFormSubmit('candidateModalExperience','candidateModalcenterexperience')">
                             <input class="custom-control-input experience-type-radio custom-radio-button"
                                 formControlName="experience_type" value="Experienced" type="radio"
                                 name="experience_type" id="candidate">
@@ -475,7 +475,7 @@
                                 <div class="label">Add Experience</div>
                             </div>
                         </div>
-                        <div class="custom-control custom-radio custom--radio">
+                        <div class="custom-control custom-radio custom--radio" (click)="submitExp('Fresher')" (click)="experienceTypeFormSubmit('candidateModalExperience','candidateModalcenterexperience')">
                             <input class="custom-control-input experience-type-radio custom-radio-button"
                                 formControlName="experience_type" value='Fresher' type="radio" name="experience_type"
                                 id="candidate">
@@ -494,8 +494,8 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
                             (click)="moveToPreviousModal('candidateModalExperience','candidateModalEducation')">Back</button>
-                        <button type="submit" class="btn btn-primary">Save &
-                            Continue</button>
+                        <!-- <button type="submit" class="btn btn-primary">Save &
+                            Continue</button> -->
                     </div>
                 </form>
             </div>
@@ -1137,8 +1137,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
                             (click)="moveToPreviousModal('gainmorevisibilitymodal','candidateModallastbitsfinal')">Back</button>
-                        <button type="submit" class="btn btn-primary" >Save &
-                            Continue</button>
+                        <button type="submit" class="btn btn-primary" >Next</button>
                     </div>
                 </form>
             </div>
