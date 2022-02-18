@@ -16,7 +16,7 @@ export class EmployerViewJobComponent implements OnInit {
 
   empID: string = JSON.parse(sessionStorage.getItem('_ud'))[0]._id;
   userProfileData: { first_name: ''; last_name: ''; employer_details: any[] };
-  
+
   constructor(
     public jobService: JobService,
     private layoutService: LayoutService,
@@ -27,6 +27,7 @@ export class EmployerViewJobComponent implements OnInit {
   ngOnInit(): void {
     this.getJobListData();
     this.getUserProfileData();
+    this.getEmployerData();
   }
   delJob(id: string) {
     this.jobService.deleteJob(id).subscribe((data) => {
@@ -51,7 +52,7 @@ export class EmployerViewJobComponent implements OnInit {
       console.log(this.userProfileData);
     });
   }
-  
+
   getJobListData() {
     this.jobData = [];
     const sessionData = sessionStorage.getItem('_ud');
