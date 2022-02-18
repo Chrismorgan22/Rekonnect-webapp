@@ -19,6 +19,7 @@
 }
 
 .table {
+  display: none;
   box-shadow: 1px 4px 19px -1px rgba(0, 0, 0, 0.95);
   -webkit-box-shadow: 1px 4px 19px -1px rgba(0, 0, 0, 0.95);
   -moz-box-shadow: 1px 4px 19px -1px rgba(0, 0, 0, 0.95);
@@ -28,6 +29,18 @@
 .Job {
   padding: 8px;
   border-radius: 20px;
+}
+
+.User-Info {
+  margin: 120px 0 0 0;
+  box-shadow: 1px 4px 19px -1px rgba(0, 0, 0, 0.95);
+  -webkit-box-shadow: 1px 4px 19px -1px rgba(0, 0, 0, 0.95);
+  -moz-box-shadow: 1px 4px 19px -1px rgba(0, 0, 0, 0.95);
+}
+
+.user-image img {
+  width: 110px;
+  border-radius: 50%;
 }
 
 @media screen and (max-width: "920px") {
@@ -41,9 +54,16 @@
   }
 
   .table {
+    display: inline-block;
     box-shadow: 1px 4px 19px -1px rgba(0, 0, 0, 0.95);
     -webkit-box-shadow: 1px 4px 19px -1px rgba(0, 0, 0, 0.95);
     -moz-box-shadow: 1px 4px 19px -1px rgba(0, 0, 0, 0.95);
     position: absolute;
   }
+}
+
+.Job-Box {
+  display: grid;
+  // width: 100%;
+  border: 1px solid red;
 }

@@ -27,7 +27,9 @@ export class EmployerViewJobComponent implements OnInit {
   ngOnInit(): void {
     this.getJobListData();
     this.getUserProfileData();
+    this.getEmployerData();
   }
+  
   delJob(id: string) {
     this.jobService.deleteJob(id).subscribe((data) => {
       console.log(data);
