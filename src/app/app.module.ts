@@ -7,16 +7,14 @@ import { BaseModule } from './base/base.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaymentComponent } from './payment/payment.component';
 @NgModule({
-  declarations: [
-    AppComponent,
-    PaymentComponent
-  ],
-  imports: [NgxPaginationModule,
+  declarations: [AppComponent, PaymentComponent],
+  imports: [
+    NgxPaginationModule,
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -27,6 +25,6 @@ import { PaymentComponent } from './payment/payment.component';
     ToastrModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

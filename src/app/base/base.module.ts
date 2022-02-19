@@ -6,18 +6,24 @@ import { BaseComponent } from './base.component';
 import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from '../auth/welcome/welcome.component';
 import { FooterComponent } from './footer/footer.component';
-import {SliderModule} from 'primeng/slider';
-import{EventService} from '../services/event.service';
-import {CarouselModule} from 'primeng/carousel';
+import { SliderModule } from 'primeng/slider';
+import { EventService } from '../services/event.service';
+import { CarouselModule } from 'primeng/carousel';
 @NgModule({
-  declarations: [BaseComponent, HeaderComponent, HomeComponent, FooterComponent],
-  imports: [
-    CommonModule,
-    BaseRoutingModule,
-    SliderModule,
-    CarouselModule
+  declarations: [
+    BaseComponent,
+    HeaderComponent,
+    HomeComponent,
+    FooterComponent,
   ],
-  exports: [BaseComponent, HeaderComponent, HomeComponent, FooterComponent,CarouselModule],
-  providers:[EventService]
+  imports: [CommonModule, BaseRoutingModule, SliderModule, CarouselModule],
+  exports: [
+    BaseComponent,
+    HeaderComponent,
+    HomeComponent,
+    FooterComponent,
+    CarouselModule,
+  ],
+  providers: [EventService],
 })
-export class BaseModule { }
+export class BaseModule {}
