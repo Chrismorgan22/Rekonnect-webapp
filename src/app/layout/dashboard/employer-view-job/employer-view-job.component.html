@@ -13,31 +13,6 @@
   </div>
 </header>
 
-<!-- 
-<div class="User-Info">
-  <div class="col-sm col-sm-12 col-md-12 col-lg-12 mb-3">
-    <div class="card profile-card">
-      <div class="card-header d-none">
-      </div>
-      <div class="card-body employer-header-band d-flex align-items-center justify-content-space-between">
-        <div class="user-profile mb-0">
-          <div class="user-image">
-            <img [src]="employerInfo?.company_logo" />
-          </div>
-          <div class="user-content">
-            <h5>{{userProfileData?.first_name}} {{userProfileData?.last_name}}</h5>
-            <label>- {{userProfileData?.employer_details[0].designation | titlecase}}</label>
-          </div>
-        </div>
-        <div class="user-content-action">
-          <button class="btn btn-primary mr-3 btn-lg" (click)='postJob()'>Post new job listing</button>
-          <button class="btn btn-secondary btn-lg">Recommend Expert</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 
 <div class="table-div">
 
@@ -64,6 +39,8 @@
       </div>
     </div>
   </div>
+
+
 
   <table class="table">
     <thead>
@@ -98,42 +75,132 @@
       </tr>
     </tbody>
   </table>
+
 </div>
 
 
 
 <!-- For Mobile View -->
 
-<!-- <div>
+<div>
+  <div class="Job-Box" *ngFor="let job of jobData">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Job Title</th>
+          <th scope="col">Job Category</th>
+          <th scope="col">Job Type</th>
+          <th scope="col">City</th>
+          <th scope="col">Vacancy</th>
+          <th scope="col">Action</th>
+          <th scope="col">Delete Job</th>
+        </tr>
+      </thead>
 
-  <div class="Job-Box">
-    <div *ngFor="let job of jobData" class="Jod-Desc">
-      <h3>Job Title</h3>
-      <p>{{ job?.job_title }}</p>
-    </div>
+      <div *ngIf="job; else elseBlock">
 
-    <div *ngFor="let job of jobData" class="Job-Type">
-      <h5>Job Category</h5>
-      <p>{{ job?.job_category }}</p>
-      <h5>Job Type</h5>
-      <p>{{ job?.job_type }}</p>
-      <h5>City</h5>
-      <p>{{ job?.city }}</p>
-    </div>
+        <tbody>
+          <tr>
+            <td>{{ job?.job_title }}</td>
+            <td>{{ job?.job_category }}</td>
+            <td>{{ job?.job_type }}</td>
+            <td>{{ job?.city }}</td>
+            <td>{{ job?.post_vacancies }}</td>
+            <td>
 
-    <div class="For-Btn">
-      <button class=" Job btn btn-primary btn-sm mr-2">
-        View Job Post
-      </button>
+              <button class=" Job btn btn-primary btn-sm mr-2" (click)="viewJob(job)">
+                View Job Post
+              </button>
+            </td>
+            <td>
+              <button class="Job btn btn-danger btn-sm mr-2" (click)="delJob(job._id)">
+                Delete Job Post
+              </button>
+            </td>
+          </tr>
+        </tbody>
 
-      <button class="Job btn btn-danger btn-sm mr-2">
-        Delete Job Post
-      </button>
+      </div>
+      <ng-template #elseBlock>Content to render when condition is false.</ng-template>
 
-    </div>
+    </table>
 
   </div>
-</div> -->
+
+  <!-- <table>
+
+      <tbody>
+        <tr *ngFor="let job of jobData">
+          <th>Jobs Title</th>
+          <td>{{job?.job_title}}</td>
+        </tr>
+
+        <tr *ngFor="let job of jobData">
+          <th>Job Category</th>
+          <td>{{job?.job_category}}</td>
+        </tr>
+
+        <tr *ngFor="let job of jobData">
+          <th>Jobs Type</th>
+          <td>{{job?.job_type}}</td>
+        </tr>
+
+        <tr *ngFor="let job of jobData">
+          <th>Jobs City</th>
+          <td>{{job?.city}}</td>
+        </tr>
+
+        <tr *ngFor="let job of jobData">
+          <th>Jobs Vacancy</th>
+          <td>{{job?.post_vacancies}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div> -->
+</div>
+
+
+\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

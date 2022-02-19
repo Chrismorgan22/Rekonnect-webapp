@@ -19,7 +19,7 @@
 }
 
 .table {
-  // display: none;
+  display: none;
   box-shadow: 1px 4px 19px -1px rgba(0, 0, 0, 0.95);
   -webkit-box-shadow: 1px 4px 19px -1px rgba(0, 0, 0, 0.95);
   -moz-box-shadow: 1px 4px 19px -1px rgba(0, 0, 0, 0.95);
@@ -43,6 +43,16 @@
   border-radius: 50%;
 }
 
+@media screen and (max-width: "800px") {
+  .table-div .table {
+    // border: 1px solid red;
+
+    // .table-name {
+    //   display: grid;
+    // }
+  }
+}
+
 @media screen and (max-width: "920px") {
   .table-div {
     margin: 10px 10px;
@@ -63,7 +73,7 @@
 }
 
 .Job-Box {
-  display: grid;
-  // width: 100%;
+  // display: grid;
+  width: 100%;
   border: 1px solid red;
 }
