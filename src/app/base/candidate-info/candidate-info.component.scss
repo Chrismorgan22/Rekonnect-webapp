@@ -1,0 +1,44 @@
+//write css here if needed
+
+.banner {
+  display: flex;
+  //   flex: 6;
+
+  .banner-Info {
+    margin: 10% 0 0 10%;
+    flex: 6;
+  }
+
+  .banner-Img {
+    flex: 6;
+  }
+}
+
+
+.cards {
+  display: grid;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+
+  .cards-head {
+      display: flex;
+    justify-content: center;
+    align-items: center;
+    // border: 1px solid red;
+  }
+
+  .cards-Content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 0 0;
+  }
+}
+
+
+// @media screen and (max-width:"1000px"){
+//    .cards-Content{
+//        display: grid;
+//    } 
+// }
