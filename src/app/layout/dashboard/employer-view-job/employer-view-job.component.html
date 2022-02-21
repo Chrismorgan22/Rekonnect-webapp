@@ -78,11 +78,118 @@
 
 </div>
 
+<!-- Card -->
+<!-- <div class="col-sm col-sm-12 col-md-12 col-lg-12 mt-3">
+  <div class="card experts-card">
+      <div class="card-header">
+          <h6>Recent Job Posts</h6>
+          <span></span>
+      </div>
+      <div class="card-body">
+          <div class="row px-3">
+              <div  *ngFor="let job of jobData">
+              <div class="col-sm col-sm-12 mb-md-3 mb-2">
+                  <div class="posted-job-card mr-3">
+                      <div class="header-card">
+                          <div class="header-image">
+                              <h5>{{job?.job_title}}</h5>
+                              <img
+                                  src="../../../../assets/images/temporary-images/smiley-image.jpg" />
+                          </div>
+                          <div class="user-profile">
+                              <div class="user-image">
+                                  <img
+                                  width="90px"
+                                     [src]="job.company_logo" />
+                              </div>
+                              <div class="user-content">
+                                  <h5>{{job?.first_name}} {{job?.last_name}}</h5>
+                                  <label>{{job?.city}} {{job?.country}}</label>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="content-card">
+                          <p>{{job?.job_description}}</p>
+                          <label>{{job?.job_type}} {{job?.job_category}}</label>
+                      </div>
+                  </div>
+              </div>
+          </div>
+              <div class="col-sm col-sm-12 col-lg-2 d-flex align-items-center">
+                  <a class="btn btn-link text-primary">See more <span class="material-icons">
+                          play_circle_filled
+                      </span></a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div> -->
 
 
 <!-- For Mobile View -->
 
-<div>
+<div class="Job-Box">
+
+  <div *ngFor="let job of jobData" class="Price-Card">
+    <div class="Card-1">
+      <div class="Card-header">
+        <h3>Job Title</h3>
+        <p>{{ job?.job_title }}</p>
+      </div>
+
+      <div class="Card-Content">
+
+        <div class="Card-Details">
+          <ul>
+            <li><b>Job Category:- </b> {{ job?.job_category }}</li>
+            <li><b>Job Type:- </b> {{ job?.job_type }}</li>
+            <li><b>City:- </b> {{ job?.city }}</li>
+            <li><b>Vacancy:- </b> {{ job?.post_vacancies }}</li>
+            <!-- <li>Action</li>
+            <li>Delete Job</li> -->
+          </ul>
+        </div>
+
+        <div class="Card-Button">
+          <button style="background-color: #15759A;" (click)="viewJob(job)">View Job</button>
+          <button style="background-color: #dc3545;" (click)="delJob(job._id)">Delete Job</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div>
   <div class="Job-Box" *ngFor="let job of jobData">
     <table>
       <thead>
@@ -126,39 +233,7 @@
     </table>
 
   </div>
-
-  <!-- <table>
-
-      <tbody>
-        <tr *ngFor="let job of jobData">
-          <th>Jobs Title</th>
-          <td>{{job?.job_title}}</td>
-        </tr>
-
-        <tr *ngFor="let job of jobData">
-          <th>Job Category</th>
-          <td>{{job?.job_category}}</td>
-        </tr>
-
-        <tr *ngFor="let job of jobData">
-          <th>Jobs Type</th>
-          <td>{{job?.job_type}}</td>
-        </tr>
-
-        <tr *ngFor="let job of jobData">
-          <th>Jobs City</th>
-          <td>{{job?.city}}</td>
-        </tr>
-
-        <tr *ngFor="let job of jobData">
-          <th>Jobs Vacancy</th>
-          <td>{{job?.post_vacancies}}</td>
-        </tr>
-      </tbody>
-    </table>
-
-  </div> -->
-</div>
+</div> -->
 
 
 \
