@@ -2,6 +2,7 @@
 
 .banner {
   display: flex;
+  width: 101%;
 
   .banner-Info {
     margin: 10% 0 0 10%;
@@ -10,37 +11,40 @@
 
   .banner-Img {
     flex: 6;
+    width: 100%;
   }
 }
 
 .inner-card {
   margin: 0 5% 0 0;
+  // border: 1px solid red;
 }
 
 .Price-Card {
   display: flex;
+  justify-content: center;
+  align-items: center;
   // border: 1px solid black;
   align-items: center;
   justify-content: space-evenly;
   height: 80vh;
 
   .Card-1 {
-    border: 1px solid #15759a;
+    border: 1px solid #d3d4d4;
     border-radius: 20px;
     overflow: hidden;
     width: 35%;
     height: 100%;
 
     .Card-header {
-      color: aliceblue;
+      color: #000;
       height: 30%;
       text-align: center;
-      border: 1px solid black;
       padding: 5% 8%;
-      background-color: #15759a;
+      background-color: #d3d4d4;
       font-family: "Poppins", Sans-serif;
       line-height: 30px;
-      border: 1px solid red;
+      // border: 1px solid red;
 
       h3 {
         font-size: 25px;
@@ -91,7 +95,7 @@
           border: none;
           cursor: pointer;
           color: #15759a;
-          border: 1px solid #15759a;
+          border: 1px solid #d3d4d4;
           margin: 5px 5px;
           padding: 15px 25px;
           border-radius: 10px;
@@ -106,16 +110,159 @@
   }
 }
 
-@media screen and (min-width: "1200px") {
-  .outer-card {
-    margin: 0 0 0 100px;
+.sliderCard {
+  width: 100%;
+  height: 80vh;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 }
 
-@media screen and (max-width:"1150px") {
-  .Price-Card{
-    display: grid;
+.down {
+  line-height: 25px;
+}
+
+@media screen and (max-width: "480px") {
+  .Price-Card {
+    .Card-1 {
+      border: 1px solid black;
+      width: 100%;
+      height: 100%;
+      // margin: 0px 0 0px 3px;
+
+      .Card-header {
+        color: #000;
+        height: 30%;
+        text-align: center;
+        background-color: #d3d4d4;
+        font-family: "Poppins", Sans-serif;
+        line-height: 30px;
+
+        h3 {
+          font-size: 20px;
+          letter-spacing: 1px;
+          font-weight: 700;
+        }
+
+        p {
+          font-size: 15px;
+          font-weight: 500;
+        }
+      }
+
+      .Card-Content {
+        position: relative;
+        height: 100%;
+        padding: 5% 0 5% 0;
+
+        .Card-Price {
+          text-align: center;
+          font-weight: 900;
+          h2 {
+            font-size: 30px;
+
+            small {
+              font-size: 18px;
+            }
+          }
+        }
+
+        .Card-Details {
+          height: 80%;
+          li {
+            line-height: 45px;
+            font-size: 20px;
+            font-weight: 500;
+          }
+        }
+
+        .Card-Button {
+          height: 20%;
+          width: 100%;
+          position: absolute;
+          bottom: 22%;
+          text-align: center;
+
+          button {
+            border: none;
+            cursor: pointer;
+            color: #15759a;
+            border: 1px solid #d3d4d4;
+            margin: 5px 5px;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 20px;
+          }
+          button:hover {
+            background-color: #15759a;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  .container {
+    
+      .dropSection {
+        text-align: left;
+      }
+    
+
+    .section-title {
+      small {
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: "770px") {
+  .banner {
+    height: 80vh;
+    width: 102%;
+    display: flex;
     justify-content: center;
     align-items: center;
+
+    .banner-Info {
+      margin: 0 0 0 20px;
+      p {
+        line-height: 40px;
+      }
+    }
+    ul {
+      li {
+        line-height: 40px;
+      }
+    }
+  }
+
+  .banner-Img {
+    display: none;
+  }
+}
+
+@media screen and (max-width: "1150px") {
+  .Price-Card {
+    display: grid;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    // margin: 15% 0;
+
+    .Card-1 {
+      width: 100%;
+      height: 100%;
+      // margin: 0px 0 0px 30px;
+    }
+  }
+}
+
+@media screen and (min-width: "1200px") {
+  .outer-card {
+    margin: 0 0 0 100px;
   }
 }

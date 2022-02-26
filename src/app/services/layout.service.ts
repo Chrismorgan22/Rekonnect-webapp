@@ -17,6 +17,7 @@ export class LayoutService {
       this.userToken = JSON.parse(sessionStorage.getItem('_ud'))[0].token;
     }
   }
+  
   getUserList(userRole) {
     return this._httpClient
       .get<any>(`${environment.apiUrl}/user/` + userRole)

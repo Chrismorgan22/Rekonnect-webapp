@@ -28,9 +28,9 @@ export class UserListComponent implements OnInit {
     this._layoutService.paginateUsers('1', '10').subscribe((response) => {
       this.userData = response.results;
       this.filterUser = this.userData;
-      console.log(response.results);
+      console.log("res ", response.results);
+      // console.log()
     });
-    console.log(this.userData);
 
     this.totalLength = this.userData.length;
   }
@@ -57,6 +57,8 @@ export class UserListComponent implements OnInit {
   paginateResult(event: Event) {
     console.log((<HTMLInputElement>event.target).value);
   }
+
+  // From here u getting both candidate_details + user_details
   getUserListData(userRole) {
     // console.log(userRole);
 
@@ -65,12 +67,12 @@ export class UserListComponent implements OnInit {
     this._layoutService.getUserList(userRole).subscribe((response) => {
       this.SpinnerService.hide();
       if (response.result !== 'fail') {
-        console.log(response.data);
+        console.log("A ",response.data);
         response.data.map((res: any) => {
           this.userData.push(res.user_details);
         });
         // this.userData = response.data;
-        console.log(this.userData);
+        console.log("B ",this.userData);
 
         this.filterUser = this.userData;
       } else {
@@ -81,6 +83,7 @@ export class UserListComponent implements OnInit {
       }
     });
   }
+
   changeUserRoleSwitch(event) {
     console.log(event, event.target.checked);
     if (event.target.checked) {

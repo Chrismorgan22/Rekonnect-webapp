@@ -1,11 +1,10 @@
-
-
-<div style="display: flex;"><div class="switch-button switch-button-lg">
-  <input type="checkbox" name="item3" id="item3" (change)="changeUserRoleSwitch($event)" checked />
-  <span><label for="item3"></label></span>
-</div>
-<span>Search </span>
-<input type="text" (keyup)="filterUsers($event)">
+<div style="display: flex;">
+  <div class="switch-button switch-button-lg">
+    <input type="checkbox" name="item3" id="item3" (change)="changeUserRoleSwitch($event)" checked />
+    <span><label for="item3"></label></span>
+  </div>
+  <span>Search </span>
+  <input type="text" (keyup)="filterUsers($event)">
 </div>
 <table class="table">
   <thead>
@@ -14,7 +13,8 @@
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
       <th scope="col">Mobile</th>
-     
+      <!-- <th scope="col">Resume</th>  -->
+
       <!-- <th scope="col">State</th>
       <th scope="col">Street</th>
       <th scope="col">Zip Code</th>
@@ -33,12 +33,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let candidate of filterUser ">
+    <tr *ngFor="let candidate of filterUser">
       <td>{{candidate?.first_name}}</td>
       <td>{{candidate?.last_name}}</td>
       <td>{{candidate?.email}}</td>
       <td>{{candidate?.phone}}</td>
-     
+      
+
       <!-- <td>{{candidate?.candidate_details?.address_details?.state.name}}</td>
       <td>{{candidate?.candidate_details?.address_details?.street}}</td>
       <td>{{candidate?.candidate_details?.address_details?.zip_code}}</td>
@@ -61,7 +62,7 @@
     </tr>
   </tbody>
 </table>
-<mat-paginator [pageSizeOptions]="[5,10,20]" (change)="paginateResult($event)" ></mat-paginator>
+<mat-paginator [pageSizeOptions]="[5,10,20]" (change)="paginateResult($event)"></mat-paginator>
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
   <p style="color: white">Please Wait. </p>
 </ngx-spinner>
