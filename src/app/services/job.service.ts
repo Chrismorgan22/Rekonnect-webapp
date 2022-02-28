@@ -14,6 +14,17 @@ export class JobService {
     );
   }
 
+  paginateCandidates(json: any) {
+    return this.http
+      .get<any>(
+        `${environment.apiUrl}/candidate/fetch/paginate?page=${json.page}&limit=${json.limit}`
+      )
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
   updateBgv(json: any) {
     return this.http.post<any>(`${environment.apiUrl}/report/apply`, json).pipe(
       map((response) => {

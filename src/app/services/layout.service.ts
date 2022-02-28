@@ -17,6 +17,7 @@ export class LayoutService {
       this.userToken = JSON.parse(sessionStorage.getItem('_ud'))[0].token;
     }
   }
+
   getUserList(userRole) {
     return this._httpClient
       .get<any>(`${environment.apiUrl}/user/` + userRole)
@@ -71,14 +72,25 @@ export class LayoutService {
         })
       );
   }
-  paginateUsers(page: string, limit: string) {
-    let params = new HttpParams();
-    params = params.append(page, limit);
+  paginateUsers(page: any, limit: any) {
     return this._httpClient
-      .post<any>('http://localhost:8000/user/paginate', {
-        page,
-        limit,
-      })
+      .post<any>(
+        `${environment.apiUrl}/user/paginate?page=${page}&limit=${limit}`,
+        {
+          null: '',
+        }
+      )
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
+  paginateCandidates(json: any) {
+    return this._httpClient
+      .get<any>(
+        `${environment.apiUrl}/candidate/fetch/paginate?page=${json.page}&limit=${json.limit}`
+      )
       .pipe(
         map((response) => {
           return response;
