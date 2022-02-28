@@ -107,7 +107,7 @@ export class UserListComponent implements OnInit {
       .subscribe((response) => {
         this.userData = response.results;
         this.userData.map((item, idx) => {
-          this.jobService.fetchCandidate(item.user_id).subscribe((res) => {
+          this.jobService.fetchCandidate(item._id).subscribe((res) => {
             var isThere = false;
             console.log(res);
 
