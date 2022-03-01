@@ -135,9 +135,6 @@ export class SignInComponent implements OnInit {
         console.log(sourceid);
       }
     }, 1500);
-    // } else {
-    //   this.userRoleValidation = true;
-    // }
   }
   callAuthAPI(sourceid, newWindow) {
     this.SpinnerService.show();

@@ -548,7 +548,7 @@
                                     <div class="col">
                                         <input type="text" class="form-control" placeholder="Designation"
                                             formControlName="designation" />
-                                        <div *ngIf="experienceDetailSubmit && experienceDetails.controls.designation.errors"
+                                        <div *ngIf="experienceDetailSubmit && experienceDetails.controls.designation?.errors"
                                             class="invalid-feedback" style="display:block;">
                                             <div *ngIf="experienceDetails.controls.designation.errors.required">
                                                 Designation

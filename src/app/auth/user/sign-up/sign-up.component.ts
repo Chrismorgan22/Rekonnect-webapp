@@ -36,9 +36,7 @@ export class SignUpComponent implements OnInit {
     private SpinnerService: NgxSpinnerService,
     private socialAuthService: SocialAuthService,
     private signUpService: SignupService
-  ) {
-    console.log('bruh');
-  }
+  ) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -98,14 +96,19 @@ export class SignUpComponent implements OnInit {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((x) => {
       this.socialAuthService.authState.subscribe((user) => {
         this.socialUser = user;
+        console.log(typeof user);
+
         console.log(this.socialUser);
-        if (this.socialUser !== null) {
+        if (true) {
+          console.log('not getting here!');
           const json = {};
-          json['first_name'] = this.socialUser.firstName;
-          json['last_name'] = this.socialUser.lastName;
-          json['email'] = this.socialUser.email;
+          json['first_name'] = user.firstName;
+          json['last_name'] = user.lastName;
+          json['email'] = user.email;
+          console.log(json);
+
           // json['role'] = Number(this.form.controls.user_role.value);
-          this.SpinnerService.show();
+          // this.SpinnerService.show();
           this.registerAPICall(json);
         } else {
           this.SpinnerService.hide();
@@ -192,7 +195,10 @@ export class SignUpComponent implements OnInit {
     });
   }
   registerAPICall(json) {
+    console.log(json);
+
     this._authService.userRegister(json).subscribe((response) => {
+      console.log(response);
       if (response.result !== 'fail') {
         this.SpinnerService.hide();
         this.submitted = false;
@@ -208,11 +214,14 @@ export class SignUpComponent implements OnInit {
       } else {
         this.SpinnerService.hide();
         // this._toastrService.error(response.message, response.result);
-        sessionStorage.setItem('_ud', JSON.stringify([response.data]));
+        sessionStorage.setItem(
+          '_ud',
+          JSON.stringify({ name: json.first_name })
+        );
         sessionStorage.setItem('firstTime', 'true');
-
-        this._toastrService.success('Loggin you in');
         this._router.navigate(['/dashboard/candidate']);
+        this._toastrService.success('Loggin you in');
+
         // this._toastrService.error('directing to login page');
         // this._router.navigate(['/auth/user/signin']);
       }

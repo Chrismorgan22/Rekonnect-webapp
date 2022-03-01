@@ -1276,6 +1276,7 @@ export class PersonalizationComponent implements OnInit {
         };
         this.authService.updateCandidateStatus(body).subscribe((res) => {
           this.SpinnerService.hide();
+          this.router.navigate(['/dashboard/candidate']);
           this._toastrService.success('Registration successfully', 'Success');
         });
         $('#almostdonemodal').modal('hide');
@@ -1584,6 +1585,7 @@ export class PersonalizationComponent implements OnInit {
           this.authService.updateCandidateStatus(body).subscribe((res) => {
             this.SpinnerService.hide();
             this._toastrService.success('Registration successfully', 'Success');
+            this.router.navigate(['/dashboard/employer']);
           });
           $('#companyDetailsModal').modal('hide');
           this.getUserTempData();
