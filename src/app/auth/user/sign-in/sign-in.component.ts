@@ -38,6 +38,8 @@ export class SignInComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log('hello from singin');
+
     this.socialUser = new SocialUser();
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
