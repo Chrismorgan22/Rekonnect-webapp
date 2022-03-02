@@ -66,7 +66,8 @@ export class AuthGuard
     console.log(this.authService.isLoggedIn());
     if (this.authService.isLoggedIn()) {
       console.log(this.authService.isLoggedIn());
-      const userRole = this.authService.getRole();
+      var userRole = this.authService.getRole();
+      if (userRole == null) userRole = 1;
       console.log(userRole, route.data.role);
       if (route.data.role && route.data.role.indexOf(userRole) === -1) {
         this.router.navigate(['/auth/signin']);

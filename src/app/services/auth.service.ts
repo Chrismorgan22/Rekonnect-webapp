@@ -152,6 +152,6 @@ export class AuthService {
     this.roleAs = sessionStorage.getItem('_ud');
     console.log(JSON.parse(this.roleAs));
 
-    return JSON.parse(this.roleAs)[0].role;
+    return JSON.parse(this.roleAs)[0]?.role;
   }
 }
