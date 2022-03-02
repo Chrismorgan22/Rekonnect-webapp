@@ -150,7 +150,8 @@ export class AuthService {
   getRole() {
     console.log('dssdsdsds');
     this.roleAs = sessionStorage.getItem('_ud');
-    console.log(this.roleAs);
-    // return JSON.parse(this.roleAs)?.role;
+    console.log(JSON.parse(this.roleAs));
+
+    return JSON.parse(this.roleAs)[0].role;
   }
 }

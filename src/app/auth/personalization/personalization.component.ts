@@ -1270,12 +1270,20 @@ export class PersonalizationComponent implements OnInit {
     console.log(json);
     this.SpinnerService.show();
     this.authService.saveCandidateRegistration(json).subscribe((res) => {
+      console.log('is it getting here?');
+
+      console.log(res, 'redirect');
+      // window.location.replace('/dashboard/candidate');
       if (res.result === 'success') {
+        this.router.navigate(['/dashboard/candidate']);
+
         const body = {
           user_id: localData._id,
         };
         this.authService.updateCandidateStatus(body).subscribe((res) => {
           this.SpinnerService.hide();
+          console.log(res);
+
           this.router.navigate(['/dashboard/candidate']);
           this._toastrService.success('Registration successfully', 'Success');
         });
