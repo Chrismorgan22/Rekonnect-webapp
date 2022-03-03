@@ -1,4 +1,4 @@
-<div class="modaledit" style="position: fixed;border: 1px solid black; height:unset;top:20px;left:27%;background:white; z-index:999; padding:30px; ">
+<div *ngIf="toggleModal" class="modaledit" style=" border-radius:10px;position: fixed;border: 1px solid black; height:unset;top:20px;left:27%;background:white; z-index:999; padding:30px; ">
   <div class="start-section">
     <div class="section-form-content">
       <form
@@ -250,7 +250,8 @@
             type="button"
             class="btn btn-secondary btn-lg"
             data-dismiss="modal"
-          >
+            (click)="showModal()">
+          
             Back
           </button>
           <button
@@ -258,7 +259,7 @@
             class="btn btn-primary w-min-250 btn-lg ml-2"
             (click)="handleUpdate()"
           >
-            Post Job listing
+            update job
           </button>
         </div>
       </form>
@@ -353,7 +354,7 @@
               >
             </div>
           </div>
-          <button class="btn btn-secondary" (click)="editJob()">
+          <button class="btn btn-secondary" (click)="showModal()">
             <span class="material-icons"> edit </span>
           </button>
         </div>
