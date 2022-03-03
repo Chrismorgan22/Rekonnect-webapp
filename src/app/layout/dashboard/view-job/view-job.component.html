@@ -2,6 +2,7 @@
   <div class="start-section">
     <div class="section-form-content">
       <form
+        [formGroup]="jobPostForm"
        
         noValidate
       >
@@ -14,24 +15,32 @@
             size="lg"
             class="form-control"
           />
-         
+        
         </div>
         <div class="form-row form-group">
           <div class="col">
             <ng-multiselect-dropdown
               [placeholder]="' Job Type'"
-              
+              [settings]="dropdownSettings1"
+              formControlName="job_type"
+              [data]="stateDrp"
+              (onSelect)="onItemSelect($event)"
+              (onSelectAll)="onSelectAll($event)"
             >
             </ng-multiselect-dropdown>
-           
+            
           </div>
           <div class="col">
             <ng-multiselect-dropdown
               [placeholder]="' Job Category'"
-             
+              [settings]="dropdownSettings1"
+              formControlName="job_category"
+              [data]="jobCategoryArray"
+              (onSelect)="onJobCategoryItemSelect($event)"
+              (onSelectAll)="onJobCategorySelectAll($event)"
             >
             </ng-multiselect-dropdown>
-           
+            
           </div>
         </div>
         <div class="form-row form-group">
@@ -40,8 +49,9 @@
               type="text"
               class="form-control"
               placeholder="City"
-              
+              formControlName="city"
             />
+           
             
           </div>
           <div class="col">
@@ -61,7 +71,23 @@
                 type="text"
                 class="form-control"
                 placeholder="Minimum Salary Expected"
-               
+                formControlName="min_salary"
+              />
+              <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2"
+                  >INR</span
+                >
+              </div>
+            </div>
+           
+          </div>
+          <div class="col">
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Maximum Salary Expected"
+                formControlName="max_salary"
               />
               <div class="input-group-append">
                 <span class="input-group-text" id="basic-addon2"
@@ -70,22 +96,6 @@
               </div>
             </div>
             
-          </div>
-          <div class="col">
-            <div class="input-group mb-3">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Maximum Salary Expected"
-               
-              />
-              <div class="input-group-append">
-                <span class="input-group-text" id="basic-addon2"
-                  >INR</span
-                >
-              </div>
-            </div>
-          
           </div>
         </div>
         <div
@@ -105,10 +115,14 @@
           <div class="col">
             <ng-multiselect-dropdown
               [placeholder]="'Full Time Remote'"
-             
+              [settings]="dropdownSettings1"
+              formControlName="is_remote"
+              [data]="remoteArray"
+              (onSelect)="onRemoteItemSelect($event)"
+              (onSelectAll)="onRemoteSelectAll($event)"
             >
             </ng-multiselect-dropdown>
-         
+          
           </div>
         </div>
         <div class="form-row form-group" style="align-items:center;justify-content:space-around">
@@ -121,7 +135,11 @@
            
             <ng-multiselect-dropdown
               [placeholder]="'Education Level'"
-             
+              [settings]="dropdownSettings1"
+              [data]="educationLevelArray"
+              (onSelect)="onEducationSelect($event)"
+              formControlName="education_level"
+              (onSelectAll)="onEducationSelectAll($event)"
             >
             </ng-multiselect-dropdown>
            
@@ -133,23 +151,23 @@
             <input
               type="text"
               placeholder="Minimum Experience Required"
-             
+              formControlName="min_experience"
               class="form-control"
             />
-         
+           
           </div>
           <div class="col">
             <input
               type="text"
-            
+              formControlName="max_experience"
               placeholder="Maximum Experience Required"
               class="form-control"
             />
-         
+           
           </div>
           <div class="col"></div>
         </div>
-     
+      
         <div
           class="
             form-row form-group
@@ -166,10 +184,14 @@
           <div class="col">
             <ng-multiselect-dropdown
               [placeholder]="'Select'"
-             
+              [settings]="dropdownSettings1"
+              [data]="postVacancyArray"
+              (onSelect)="onPostVacancySelect($event)"
+              formControlName="post_vacancy"
+              (onSelectAll)="onPostVacancySelectAll($event)"
             >
             </ng-multiselect-dropdown>
-            
+          
             <!-- <div class="btn-group custom-dropdown">
             <button class="btn w-100 btn-secondary btn-lg dropdown-toggle w-min-250" type="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -187,7 +209,7 @@
               class="form-check-input"
               type="checkbox"
               id="gridCheck"
-             
+              formControlName="isVisume"
             />
             <label
               class="form-check-label text-center"
@@ -219,9 +241,9 @@
             placeholder="Description"
             id="exampleFormControlTextarea1"
             rows="4"
-           
+            formControlName="job_description"
           ></textarea>
-         
+        
         </div>
         <div class="form-footer text-right my-4">
           <button
@@ -234,6 +256,7 @@
           <button
             type="submit"
             class="btn btn-primary w-min-250 btn-lg ml-2"
+            (click)="handleUpdate()"
           >
             Post Job listing
           </button>

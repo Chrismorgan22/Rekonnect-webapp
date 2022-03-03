@@ -78,7 +78,15 @@ export class JobService {
       })
     );
   }
-
+  updateJob(id, json) {
+    return this.http
+      .post<any>(`${environment.apiUrl}/job/updateJob/${id}`, json)
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
   getBgvStatus(id: string) {
     return this.http.get<any>(`${environment.apiUrl}/report/single/${id}`).pipe(
       map((response) => {
