@@ -37,7 +37,11 @@ export class CreateJobComponent implements OnInit {
     this.getSkills();
     this.stateDrp = ['Full-time', 'Part-time', 'Internship'];
     this.jobCategoryArray = ['Remote', 'On-site'];
-    this.remoteArray = ['Full Time Remote', 'Part Time Remote'];
+    this.remoteArray = [
+      'Full Time Remote',
+      'Part Time Remote',
+      'No remote work',
+    ];
     this.educationLevelArray = ['High', 'Medium', 'Low'];
     this.postVacancyArray = [1, 2, 3, 4, 5];
     this.jobPostForm = this.fb.group({
