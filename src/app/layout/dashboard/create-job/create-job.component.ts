@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { JobService } from '../../../services/job.service';
+import { Router } from '@angular/router';
 declare var $: any;
 @Component({
   selector: 'app-create-job',
@@ -8,7 +9,11 @@ declare var $: any;
   styleUrls: ['./create-job.component.scss'],
 })
 export class CreateJobComponent implements OnInit {
-  constructor(private applyJob: JobService, private fb: FormBuilder) {}
+  constructor(
+    private applyJob: JobService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
   dropdownSettings1 = {};
   current: any[] = ['full-time', 'part-time'];
   jobCategory: any;
@@ -95,6 +100,7 @@ export class CreateJobComponent implements OnInit {
       };
       this.applyJob.postJobs(json).subscribe((result: any) => {
         if (result.result === 'success') {
+          this.router.navigate(['/dashboard/employer-view-job']);
           this.submitted = false;
           console.log('Job created!!');
           $('.nav-link').removeClass('active');
