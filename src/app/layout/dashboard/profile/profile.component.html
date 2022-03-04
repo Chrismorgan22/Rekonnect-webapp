@@ -74,7 +74,7 @@
                                         data-parent="#accordionExample">
                                         <div style="position: relative;">
                                             <span style="position: absolute;top:5px;right:18px;font-size:16px" (click)="toggleEdit('first')">Edit</span>
-                                           <div style="padding:22px">
+                                           <div style="padding:22px" *ngIf="!isfirst">
                                                <div class="email" style="padding:9px;font-size:20px">Email:{{userData.email}}</div>
                                                <div class="PhoneandLocation" style="padding:9px;display:flex;align-items:center;justify-content:space-between ">
                                                   <span style="font-size:20px">Phone: {{userData.phone}}</span>  <span style="font-size:20px"> Location:{{personalData.address_details.state.name}}</span>

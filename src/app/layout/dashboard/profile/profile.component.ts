@@ -11,6 +11,7 @@ export class ProfileComponent implements OnInit {
   bruh: boolean;
   userData: any = JSON.parse(sessionStorage.getItem('_ud'))[0];
   isfirst: boolean = false;
+  isFirstComp: boolean = !this.isfirst;
   isthird: boolean = false;
   personalData: any = {};
   photUrl: string =
@@ -54,6 +55,7 @@ export class ProfileComponent implements OnInit {
     switch (term) {
       case 'first': {
         this.isfirst = !this.isfirst;
+
         break;
       }
       case 'second': {
