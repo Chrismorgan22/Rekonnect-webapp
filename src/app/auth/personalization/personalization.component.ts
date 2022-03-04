@@ -60,6 +60,10 @@ export class PersonalizationComponent implements OnInit {
   onBoardDetailSubmit: boolean = false;
   companySubmit: boolean = false;
   tempFormData: any = [];
+
+  isUpload = false;
+  payload = null;
+
   monthDrp: any = [];
   yearDrp: any = [];
   stateDrp: any = [];
@@ -1624,6 +1628,10 @@ export class PersonalizationComponent implements OnInit {
         return false;
       }
       console.log('Successfully uploaded file.', data);
+      this.payload = data?.key;
+      this.isUpload = true;
+      console.log(this.payload, this.isUpload);
+
       if (type === 'profile_url') {
         self.profileImagUrl = data.Location;
       }
