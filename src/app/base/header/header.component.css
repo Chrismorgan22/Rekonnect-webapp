@@ -1,1 +1,15 @@
-/* No CSS *//*# sourceMappingURL=header.component.css.map */
+@media screen and (max-width: 768px) {
+  #navbar .container {
+    -ms-flex-wrap: unset;
+        flex-wrap: unset;
+  }
+  #navbar .container #navbarNavDropdown {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  #navbar .container #navbarNavDropdown form button {
+    min-width: unset !important;
+  }
+}
+/*# sourceMappingURL=header.component.css.map */

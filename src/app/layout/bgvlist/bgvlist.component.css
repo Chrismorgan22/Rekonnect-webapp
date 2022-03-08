@@ -47,10 +47,6 @@ body {
           user-select: none;
 }
 
-table tbody tr td {
-  padding: 18px;
-}
-
 /*------------------------------------------------------------------
 [Inputs - Switcher]
 */
@@ -240,4 +236,4 @@ table tbody tr td {
 .table th {
   border: 1px solid #dee2e6;
 }
-/*# sourceMappingURL=user-list.component.css.map */
+/*# sourceMappingURL=bgvlist.component.css.map */
