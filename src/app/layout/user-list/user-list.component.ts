@@ -14,6 +14,8 @@ import { resolveSanitizationFn } from '@angular/compiler/src/render3/view/templa
 })
 export class UserListComponent implements OnInit {
   userData: any[];
+
+  userThere: any = false;
   moreInfo: any = {};
   toShowInfo: boolean = false;
   searchTerm: string;
@@ -164,6 +166,9 @@ export class UserListComponent implements OnInit {
     this.moreInfo = {};
     this.jobService.fetchCandidate(id).subscribe((res) => {
       console.log(res);
+      if (res != null) {
+        this.userThere = true;
+      }
       var isFresh = false;
       if (res.experience_data.experience_type == 'Fresher') {
         isFresh = true;
