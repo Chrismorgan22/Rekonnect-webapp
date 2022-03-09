@@ -301,23 +301,23 @@
 
 .section-main-title {
   font-family: "Inter", sans-serif;
-  font-size: 2.6rem;
+  font-size: 2.6rem !important;
   text-shadow: none;
-  font-weight: 700;
+  font-weight: 700 !important;
   line-height: 65px;
   padding: 2rem 0rem;
 }
 
 @media (max-width: 1200px) {
   .section-main-title {
-    font-size: 2.8rem;
+    font-size: 2.8rem !important;
     line-height: 48px;
   }
 }
 
 @media (max-width: 768px) {
   .section-main-title {
-    font-size: 2.4rem;
+    font-size: 2.4rem !important;
     line-height: 34px;
     padding: 1rem 0;
   }
@@ -325,7 +325,7 @@
 
 @media (max-width: 576px) {
   .section-main-title {
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
     line-height: 28px;
     padding: 0.5rem 0;
   }
@@ -341,6 +341,12 @@
 @media (max-width: 768px) {
   .section-title {
     font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-title {
+    font-size: 1.5rem;
   }
 }
 
@@ -379,14 +385,14 @@
 .section-content {
   font-weight: 300;
   line-height: 36px;
-  font-size: 1.5rem;
-  color: #949597;
+  font-size: 1.2rem;
+  color: #2f3142;
 }
 
 @media (max-width: 768px) {
   .section-content {
     line-height: 32px;
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 }
 

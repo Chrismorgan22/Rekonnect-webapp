@@ -302,23 +302,23 @@
 
 .section-main-title {
   font-family: "Inter", sans-serif;
-  font-size: 2.6rem;
+  font-size: 2.6rem !important;
   text-shadow: none;
-  font-weight: 700;
+  font-weight: 700 !important;
   line-height: 65px;
   padding: 2rem 0rem;
 }
 
 @media (max-width: 1200px) {
   .section-main-title {
-    font-size: 2.8rem;
+    font-size: 2.8rem !important;
     line-height: 48px;
   }
 }
 
 @media (max-width: 768px) {
   .section-main-title {
-    font-size: 2.4rem;
+    font-size: 2.4rem !important;
     line-height: 34px;
     padding: 1rem 0;
   }
@@ -326,7 +326,7 @@
 
 @media (max-width: 576px) {
   .section-main-title {
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
     line-height: 28px;
     padding: 0.5rem 0;
   }
@@ -342,6 +342,12 @@
 @media (max-width: 768px) {
   .section-title {
     font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-title {
+    font-size: 1.5rem;
   }
 }
 
@@ -380,14 +386,14 @@
 .section-content {
   font-weight: 300;
   line-height: 36px;
-  font-size: 1.5rem;
-  color: #949597;
+  font-size: 1.2rem;
+  color: #2f3142;
 }
 
 @media (max-width: 768px) {
   .section-content {
     line-height: 32px;
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 }
 
@@ -431,7 +437,6 @@
 }
 
 .dashboard-section .negative-top-offset {
-  position: absolute;
   top: 205px;
   width: 100%;
 }
@@ -531,7 +536,7 @@
 }
 
 .dashboard-section .profile-card .card-box .card-content span {
-  color: #1AA053;
+  color: #1aa053;
 }
 
 .dashboard-section .profile-card .card-box .card-image {
@@ -551,9 +556,9 @@
 }
 
 .dashboard-section .profile-card .upload-customised {
-  border: 1px dashed #1AA053;
+  border: 1px dashed #1aa053;
   background: #f0fcf5;
-  color: #1AA053;
+  color: #1aa053;
   position: relative;
 }
 
@@ -600,7 +605,7 @@
 }
 
 .dashboard-section .profile-card .employer-card-box .card-content span {
-  color: #1AA053;
+  color: #1aa053;
 }
 
 .dashboard-section .profile-card .employer-card-box .card-content .dropdown .btn.btn-secondary {
@@ -630,11 +635,11 @@
 }
 
 .dashboard-section .profile-card .employer-card-box .card-text .d-flex .light-blue {
-  background: #85F4FA;
+  background: #85f4fa;
 }
 
 .dashboard-section .profile-card .employer-card-box .card-text .d-flex .dark-blue {
-  background: #3A57E8;
+  background: #3a57e8;
 }
 
 .dashboard-section .profile-card .employer-card-box .card-image {
@@ -759,7 +764,8 @@
   display: none;
 }
 
-.dashboard-section .job-post-card .job-card .job-header .user-action-content a, .dashboard-section .job-post-card .job-card .job-header .user-action-content .btn {
+.dashboard-section .job-post-card .job-card .job-header .user-action-content a,
+.dashboard-section .job-post-card .job-card .job-header .user-action-content .btn {
   margin-right: 8px;
 }
 
@@ -943,7 +949,7 @@
   }
   .dashboard-section .employer-header-band .user-content-action .btn.btn-lg {
     padding: 0.8rem;
-    font-size: .875rem;
+    font-size: 0.875rem;
     line-height: 1;
     margin-top: 16px;
   }
@@ -1084,7 +1090,7 @@
 }
 
 .dashboard-section .expert-card-box .card-text.text-green {
-  color: #1AA053;
+  color: #1aa053;
 }
 
 .dashboard-section .expert-card-box .card-text.text-orange {
@@ -1156,7 +1162,7 @@
 
 .dashboard-section .job-tab-card .card-body .tab-content .session-card .card-body {
   border-radius: 0;
-  border-top: 4px solid #3A57E8;
+  border-top: 4px solid #3a57e8;
 }
 
 .dashboard-section .job-tab-card .card-body .tab-content .session-card .card-body .breadcrumb-label {
@@ -1199,11 +1205,11 @@
 }
 
 .dashboard-section .feedback-job-card .card-text .d-flex .light-blue {
-  background: #85F4FA;
+  background: #85f4fa;
 }
 
 .dashboard-section .feedback-job-card .card-text .d-flex .dark-blue {
-  background: #3A57E8;
+  background: #3a57e8;
 }
 
 .dashboard-section .feedback-job-card .card-image {
@@ -1281,11 +1287,11 @@
 }
 
 .dashboard-section .institute-card-box .card-text .card-pill.pill-orange {
-  background: #F16A1B;
+  background: #f16a1b;
 }
 
 .dashboard-section .institute-card-box .card-text .card-pill.pill-blue {
-  background: #3A57E8;
+  background: #3a57e8;
 }
 
 .candidate-apply-job-modal {
@@ -1869,6 +1875,7 @@ body::-webkit-scrollbar-thumb {
 .services-section .service-card h5 {
   padding: 16px 8px 8px;
   text-align: center;
+  font-size: 1.25rem;
 }
 
 .services-section .flip-card {
@@ -1938,6 +1945,14 @@ body::-webkit-scrollbar-thumb {
 
 .onboarding-section .onboard-card .onboard-title {
   margin-top: 24px;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 576px) {
+  .onboarding-section .onboard-card .onboard-title {
+    font-size: 1.3rem !important;
+    font-weight: 500;
+  }
 }
 
 .onboarding-section .onboard-card .onboarding-content {
@@ -3026,5 +3041,102 @@ body::-webkit-scrollbar-thumb {
 
 .organisation-section .team-section .user-profile .user {
   text-align: center;
+}
+
+.home-testimonial {
+  background-color: #231834;
+  height: auto;
+}
+
+@media (max-width: 576px) {
+  .home-testimonial {
+    text-align: center;
+  }
+}
+
+.home-testimonial .home-testimonial-bottom {
+  -webkit-transition: background 0.3s, border 0.3s, border-radius 0.3s, -webkit-box-shadow 0.3s;
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, -webkit-box-shadow 0.3s;
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s, -webkit-box-shadow 0.3s;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  position: relative;
+  height: auto;
+}
+
+.home-testimonial .link-name {
+  font-size: 1rem !important;
+}
+
+.home-testimonial .link-position {
+  font-size: 12px;
+  color: #6c83a2;
+}
+
+.home-testimonial h3 {
+  color: var(--orange);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.home-testimonial h2 {
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.home-testimonial .testimonial-pos {
+  position: relative;
+  top: 24px;
+}
+
+.home-testimonial .testimonial-inner .tour-desc {
+  border-radius: 5px;
+  padding: 40px;
+}
+
+.home-testimonial .testimonial-inner img.tm-people {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  max-width: none;
+}
+
+.under-ordered-list-page-fold {
+  list-style: none;
+  padding: 0;
+}
+
+.footer .icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 200px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+@media (max-width: 768px) {
+  .footer .icons {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+}
+
+.footer .icons .FB {
+  background-image: url("../src/assets/images/fb.png");
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
 }
 /*# sourceMappingURL=styles.css.map */
