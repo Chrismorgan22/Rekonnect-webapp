@@ -437,8 +437,10 @@
 }
 
 .dashboard-section .negative-top-offset {
+  position: absolute;
   top: 205px;
   width: 100%;
+  border-radius: 16px;
 }
 
 .dashboard-section .negative-top-offset.negative-top-offset-bg {
@@ -2998,6 +3000,13 @@ body::-webkit-scrollbar-thumb {
 
 .organisation-section .badge-pills .badge.badge-secondary {
   background: #FCE1D1;
+}
+
+.organisation-section .top-content .image-section img {
+  height: 150px;
+  width: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .organisation-section .top-content .content {

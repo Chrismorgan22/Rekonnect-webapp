@@ -1502,6 +1502,13 @@ body {
     
     .top-content {
       
+        .image-section {
+            & img {
+                height: 150px;
+                width: 150px;
+                object-fit: cover;    
+            }
+        }
 
         .content {
             margin-top: 80px;
@@ -1528,6 +1535,10 @@ body {
                     color: $text-color;
                 }
             }
+        }
+
+        .expert-language-section {
+            
         }
     }
 
