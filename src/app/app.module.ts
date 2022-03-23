@@ -11,10 +11,11 @@ import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaymentComponent } from './payment/payment.component';
-import { TestComponentComponent } from './test-component/test-component.component';
-import { TestComponent2Component } from './test-component2/test-component2.component';
+
+import { Test1Component } from './test1/test1.component';
+import { Test2Component } from './test2/test2.component';
 @NgModule({
-  declarations: [AppComponent, PaymentComponent, TestComponentComponent, TestComponent2Component],
+  declarations: [AppComponent, PaymentComponent, Test1Component, Test2Component],
   imports: [
     NgxPaginationModule,
     BrowserModule,
