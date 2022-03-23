@@ -141,6 +141,10 @@ body {
                 }
             }
         }
+
+        textarea {
+            border: 1px solid #EEEEEE !important;
+        }
     }
 
     .section-footer {
@@ -1772,4 +1776,24 @@ body {
         }
 }
 
+
+.review-item {
+    .user-profile {
+        display: flex;
+        align-items: center;
+        margin-top: 32px;
+
+        & img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 16px;
+        }
+    }
+
+    .btn {
+        border-radius: 6px;
+    }
+}
 //ends here

@@ -1637,6 +1637,10 @@ body::-webkit-scrollbar-thumb {
   font-size: inherit;
 }
 
+.start-section .section-form-content textarea {
+  border: 1px solid #EEEEEE !important;
+}
+
 .start-section .section-footer {
   padding: 16px 0;
 }
@@ -3273,5 +3277,28 @@ body::-webkit-scrollbar-thumb {
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline;
+}
+
+.review-item .user-profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 32px;
+}
+
+.review-item .user-profile img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 16px;
+}
+
+.review-item .btn {
+  border-radius: 6px;
 }
 /*# sourceMappingURL=styles.css.map */
