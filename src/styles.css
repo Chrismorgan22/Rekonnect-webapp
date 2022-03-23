@@ -3250,4 +3250,28 @@ body::-webkit-scrollbar-thumb {
 .charge-modal .modal-body .banner h4 {
   color: #FF6400;
 }
+
+.expert-accordian .card {
+  margin-bottom: 24px;
+  border-radius: 16px !important;
+  border: none;
+}
+
+.expert-accordian .card .card-header h2 > button {
+  color: #121212;
+}
+
+.expert-accordian .card .card-body .image-section img {
+  width: 100%;
+  height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 4px;
+}
+
+.expert-accordian .card .card-body .side-content-section {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
 /*# sourceMappingURL=styles.css.map */

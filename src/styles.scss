@@ -1717,6 +1717,9 @@ body {
 }
 
 
+
+//expert module scss
+
 .availability-modal {
     .modal-body {
         .checkbox {
@@ -1739,3 +1742,34 @@ body {
         }
     }
 }
+
+.expert-accordian {
+        .card {
+            margin-bottom: 24px;
+            border-radius: 16px !important;
+            border: none;
+
+            .card-header {
+                h2 > button{
+                    color: #121212;
+                }
+            }
+
+            .card-body {
+                .image-section {
+                    & img {
+                        width: 100%;
+                        height: 150px;
+                        object-fit: cover;
+                        border-radius: 4px;
+                    }
+                }
+
+                .side-content-section  {
+                    align-items: baseline;
+                }
+            }
+        }
+}
+
+//ends here
