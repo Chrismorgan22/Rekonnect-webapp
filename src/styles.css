@@ -119,7 +119,7 @@
 }
 
 .text-primary {
-  color: #15759A;
+  color: #15759A !important;
 }
 
 .text-secondary {
@@ -2451,7 +2451,7 @@ body::-webkit-scrollbar-thumb {
   color: inherit;
   font-size: 1.2rem;
   font-weight: 700;
-  background: #F6F6F6;
+  background: #f6f6f6;
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 0px;
 }
@@ -2769,11 +2769,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 .job-list-section .parent-section-body .bottom-card-content .job-list-content .card .card-content .badge-pills .badge.badge-primary {
-  background: #DBEED0;
+  background: #dbeed0;
 }
 
 .job-list-section .parent-section-body .bottom-card-content .job-list-content .card .card-content .badge-pills .badge.badge-secondary {
-  background: #FCE1D1;
+  background: #fce1d1;
 }
 
 @media (max-width: 576px) {
@@ -2799,22 +2799,22 @@ body::-webkit-scrollbar-thumb {
 }
 
 .view-job-section .job-left-content .top-content .badge-group .badge-job-type {
-  background: #FDD839;
+  background: #fdd839;
   color: #0C1A27;
 }
 
 .view-job-section .job-left-content .top-content .badge-group .badge-job-level {
-  background: #D3E4F1;
+  background: #d3e4f1;
   color: #0C1A27;
 }
 
 .view-job-section .job-left-content .top-content .badge-group .badge-location {
-  background: #DBF0E5;
+  background: #dbf0e5;
   color: #0C1A27;
 }
 
 .view-job-section .job-left-content .top-content .badge-group .badge-vacancy {
-  background: #F9EFDE;
+  background: #f9efde;
   color: #0C1A27;
 }
 
@@ -2858,19 +2858,19 @@ body::-webkit-scrollbar-thumb {
 }
 
 .view-job-section .job-left-content .graph-cards .card .arrow-space.red {
-  background: #FFC199;
+  background: #ffc199;
 }
 
 .view-job-section .job-left-content .graph-cards .card .arrow-space.green {
-  background: #D1ECDD;
+  background: #d1ecdd;
 }
 
 .view-job-section .job-left-content .graph-cards .card .arrow-space.blue {
-  background: #CCDEE3;
+  background: #ccdee3;
 }
 
 .view-job-section .job-left-content .graph-cards .card .progress.red .progress-bar {
-  background-color: #FF6400;
+  background-color: #ff6400;
 }
 
 .view-job-section .job-left-content .graph-cards .card .progress.green .progress-bar {
@@ -2878,7 +2878,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .view-job-section .job-left-content .graph-cards .card .progress.blue .progress-bar {
-  background-color: #005A74;
+  background-color: #005a74;
 }
 
 .view-job-section .job-right-content .profile-basic-card .profile-user-block .user-profile {
@@ -2977,7 +2977,7 @@ body::-webkit-scrollbar-thumb {
 
 .area-grey {
   padding: 16px;
-  background: #EEF4F9;
+  background: #eef4f9;
 }
 
 .organisation-section .badge-pills .badge {
@@ -2995,11 +2995,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 .organisation-section .badge-pills .badge.badge-primary {
-  background: #DBEED0;
+  background: #dbeed0;
 }
 
 .organisation-section .badge-pills .badge.badge-secondary {
-  background: #FCE1D1;
+  background: #fce1d1;
 }
 
 .organisation-section .top-content .image-section img {
@@ -3007,6 +3007,7 @@ body::-webkit-scrollbar-thumb {
   width: 150px;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 16px;
 }
 
 .organisation-section .top-content .content {
@@ -3024,6 +3025,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .organisation-section .custom-organisation-tab .nav .nav-item .nav-link {
+  font-size: 1rem;
+  text-transform: uppercase;
   color: #0C1A27;
 }
 
@@ -3033,6 +3036,86 @@ body::-webkit-scrollbar-thumb {
   color: #0C1A27;
   font-weight: 700;
   border-radius: 0;
+}
+
+.organisation-section .custom-organisation-tab .expertise-badge .badge-pills .badge {
+  padding: 8px 16px;
+}
+
+.organisation-section .custom-organisation-tab .expertise-badge .badge-pills .badge-primary {
+  background: #cfe3eb;
+}
+
+.organisation-section .custom-organisation-tab .expertise-badge .badge-pills .badge-secondary {
+  background: #fbe0d1;
+}
+
+.organisation-section .custom-organisation-tab .expertise-badge .badge-pills .badge-info {
+  background: #d0e9fc;
+}
+
+.organisation-section .custom-organisation-tab .fluent-badge .badge-pills .badge-primary {
+  background: #cfdde7;
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+
+.organisation-section .custom-organisation-tab .experience-border-card {
+  border-radius: 6px;
+  border: 1px solid #eee;
+  padding: 8px;
+  max-width: 500px;
+  margin-left: 0px;
+}
+
+.organisation-section .custom-organisation-tab .experience-border-card .section-image img {
+  width: 150px;
+  height: auto;
+}
+
+.organisation-section .custom-organisation-tab .experience-border-card .blue-pill {
+  background: rgba(160, 195, 255, 0.1);
+  border: 1px solid #15759a;
+  border-radius: 4px;
+  padding: 2px 4px;
+  max-width: 60px;
+  margin-bottom: 10px;
+  font-size: 0.6rem;
+  text-align: center;
+}
+
+.organisation-section .custom-organisation-tab .social-pill {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #e0e7ec;
+  border-radius: 4px;
+  padding: 8px 16px;
+  max-width: 150px;
+}
+
+.organisation-section .custom-organisation-tab .social-pill img {
+  width: 16px;
+  height: auto;
+  margin-right: 6px;
+}
+
+.organisation-section .custom-organisation-tab .background-card {
+  background: rgba(179, 206, 226, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.organisation-section .custom-organisation-tab .left-content-side {
+  padding-bottom: 16px;
+}
+
+.organisation-section .custom-organisation-tab .left-content-side button {
+  border-radius: 4px;
+  padding: 6px 16px;
 }
 
 .organisation-section .team-section .user-profile .image-section {
