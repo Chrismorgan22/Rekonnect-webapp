@@ -4,10 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { SignInComponent } from './auth/Admin/sign-in/sign-in.component';
 import { NavscreenComponent } from './layout/navscreen/navscreen.component';
 import { ApplicantListComponent } from './layout/applicant-list/applicant-list.component';
-import { TestComponentComponent } from './test-component/test-component.component';
-import { TestComponent2Component } from './test-component2/test-component2.component';
+
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 import { PaymentComponent } from './payment/payment.component';
+import { Test1Component } from './test1/test1.component';
+import { Test2Component } from './test2/test2.component';
 const routes: Routes = [
   {
     path: 'auth',
@@ -43,14 +44,16 @@ const routes: Routes = [
     path: 'payment',
     component: PaymentComponent,
   },
+
   {
-    path: 'test1',
-    component: TestComponentComponent,
+    path:'test1',
+    component:Test1Component
   },
   {
-    path: 'test2',
-    component: TestComponent2Component,
-  },
+    path:'test2',
+    component:Test2Component
+  }
+  
 
   // {
   //   path: '',
