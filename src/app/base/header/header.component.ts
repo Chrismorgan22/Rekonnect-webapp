@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
       console.log(localData);
 
       if (localData[0] != null) {
-        console.log('bruh accept kr');
+       
 
         this.loginFlag = true;
       } else {
