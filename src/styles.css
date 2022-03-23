@@ -3239,4 +3239,15 @@ body::-webkit-scrollbar-thumb {
 .availability-modal .modal-body .checkbox {
   min-width: 200px;
 }
+
+.charge-modal .modal-body .banner {
+  background: rgba(241, 106, 27, 0.09);
+  border-radius: 16px;
+  padding: 8px 24px;
+  margin-bottom: 24px;
+}
+
+.charge-modal .modal-body .banner h4 {
+  color: #FF6400;
+}
 /*# sourceMappingURL=styles.css.map */

@@ -1724,3 +1724,18 @@ body {
         }
     }
 }
+
+.charge-modal {
+    .modal-body {
+        .banner {
+            background: rgba(241, 106, 27, 0.09);
+            border-radius: 16px;
+            padding: 8px 24px;
+            margin-bottom: 24px;
+
+            h4 {
+                color: #FF6400;
+            }
+        }
+    }
+}
