@@ -134,6 +134,10 @@
   color: #949597 !important;
 }
 
+.text-danger {
+  color: #F05454 !important;
+}
+
 .text-uppercase {
   text-transform: uppercase;
 }
@@ -3230,5 +3234,9 @@ body::-webkit-scrollbar-thumb {
   background-repeat: no-repeat;
   width: 40px;
   height: 40px;
+}
+
+.availability-modal .modal-body .checkbox {
+  min-width: 200px;
 }
 /*# sourceMappingURL=styles.css.map */
