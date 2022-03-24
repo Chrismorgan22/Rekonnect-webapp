@@ -1606,6 +1606,16 @@ body {
                 padding: 6px 16px;
             }
         }
+
+        .start-section {
+            @media (max-width: $information-mobile-md) {
+                padding: 0 !important;
+            }
+
+            @media (max-width: $information-mobile-sm) {
+                padding: 0 !important;
+            }
+        }
     }
 
     .team-section {
@@ -1729,9 +1739,35 @@ body {
         .checkbox {
             min-width: 200px;
         }
+
+        .list-group-item {
+            & > .d-flex {
+                @media (max-width: $information-mobile-sm) {
+                   flex-direction: column;
+                   align-items: flex-start !important;
+                   position: relative;
+
+                   & .d-flex {
+                       margin:0 !important;
+                   }
+
+                   .action-buttons {
+                    position: absolute;
+                    right: -9px;
+                    top: -12px;
+                   }
+                }
+            }
+        }
     }
 }
-
+.side-content-section {
+    @media (max-width: $information-mobile-sm) { 
+        flex-direction: column;
+        align-items: flex-start !important;
+        margin: 8px 0;
+    }
+}
 .charge-modal {
     .modal-body {
         .banner {

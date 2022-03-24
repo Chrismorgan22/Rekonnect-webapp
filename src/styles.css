@@ -3126,6 +3126,18 @@ body::-webkit-scrollbar-thumb {
   padding: 6px 16px;
 }
 
+@media (max-width: 768px) {
+  .organisation-section .custom-organisation-tab .start-section {
+    padding: 0 !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .organisation-section .custom-organisation-tab .start-section {
+    padding: 0 !important;
+  }
+}
+
 .organisation-section .team-section .user-profile .image-section {
   width: 100%;
   height: auto;
@@ -3242,6 +3254,40 @@ body::-webkit-scrollbar-thumb {
 
 .availability-modal .modal-body .checkbox {
   min-width: 200px;
+}
+
+@media (max-width: 576px) {
+  .availability-modal .modal-body .list-group-item > .d-flex {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start !important;
+        -ms-flex-align: start !important;
+            align-items: flex-start !important;
+    position: relative;
+  }
+  .availability-modal .modal-body .list-group-item > .d-flex .d-flex {
+    margin: 0 !important;
+  }
+  .availability-modal .modal-body .list-group-item > .d-flex .action-buttons {
+    position: absolute;
+    right: -9px;
+    top: -12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .side-content-section {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start !important;
+        -ms-flex-align: start !important;
+            align-items: flex-start !important;
+    margin: 8px 0;
+  }
 }
 
 .charge-modal .modal-body .banner {
