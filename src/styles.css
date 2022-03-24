@@ -1638,7 +1638,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .start-section .section-form-content textarea {
-  border: 1px solid #EEEEEE !important;
+  border: 1px solid #eeeeee !important;
 }
 
 .start-section .section-footer {
@@ -3298,7 +3298,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .charge-modal .modal-body .banner h4 {
-  color: #FF6400;
+  color: #ff6400;
 }
 
 .expert-accordian .card {
@@ -3351,7 +3351,7 @@ body::-webkit-scrollbar-thumb {
 .accordian-guideline .card {
   margin-bottom: 24px;
   border-radius: 16px !important;
-  background: #F4F4F4;
+  background: #f4f4f4;
 }
 
 .accordian-guideline .card .card-header h2 > button {
@@ -3361,8 +3361,14 @@ body::-webkit-scrollbar-thumb {
 
 .write-review-banner {
   position: relative;
-  background: #FCFCFC;
+  background: #fcfcfc;
   border-radius: 16px;
+}
+
+@media (max-width: 576px) {
+  .write-review-banner {
+    margin: 0 16px;
+  }
 }
 
 .write-review-banner img {
@@ -3373,12 +3379,18 @@ body::-webkit-scrollbar-thumb {
   height: 200px;
 }
 
+@media (max-width: 576px) {
+  .write-review-banner img {
+    display: none;
+  }
+}
+
 .availability-section {
   padding: 32px;
 }
 
 .availability-section > .price-banner {
-  background: #ECEBEB;
+  background: #ecebeb;
   border-radius: 16px;
   padding: 24px;
 }
@@ -3392,6 +3404,12 @@ body::-webkit-scrollbar-thumb {
   margin-right: 10px;
   text-align: center;
   width: 100%;
+}
+
+@media (max-width: 576px) {
+  .availability-section .slot-date-pill {
+    margin-bottom: 8px;
+  }
 }
 
 .availability-section .slot-date-pill:hover {
@@ -3426,6 +3444,12 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
 }
 
+@media (max-width: 576px) {
+  .availability-section .slot-time-pill {
+    margin-bottom: 8px;
+  }
+}
+
 .availability-section .slot-time-pill:hover {
   border: 1px solid #15759A;
 }
@@ -3436,5 +3460,11 @@ body::-webkit-scrollbar-thumb {
 
 .section-approve-modal {
   padding: 32px;
+}
+
+@media (max-width: 576px) {
+  .section-approve-modal .start-section {
+    padding: 24px !important;
+  }
 }
 /*# sourceMappingURL=styles.css.map */
