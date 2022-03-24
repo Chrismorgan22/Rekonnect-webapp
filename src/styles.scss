@@ -1811,4 +1811,18 @@ body {
         }
     }
 }
+
+.write-review-banner {
+    position: relative;
+    background: #FCFCFC;
+    border-radius: 16px;
+
+    & img {
+        position: absolute;
+        bottom: -51px;
+        right: -36px;
+        width: 200px;
+        height: 200px;
+    }
+}
 //ends here

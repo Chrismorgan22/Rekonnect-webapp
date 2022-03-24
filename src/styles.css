@@ -3312,4 +3312,18 @@ body::-webkit-scrollbar-thumb {
   color: #121212;
   font-weight: 700;
 }
+
+.write-review-banner {
+  position: relative;
+  background: #FCFCFC;
+  border-radius: 16px;
+}
+
+.write-review-banner img {
+  position: absolute;
+  bottom: -51px;
+  right: -36px;
+  width: 200px;
+  height: 200px;
+}
 /*# sourceMappingURL=styles.css.map */
