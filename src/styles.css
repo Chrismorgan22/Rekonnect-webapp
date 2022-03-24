@@ -3363,6 +3363,7 @@ body::-webkit-scrollbar-thumb {
   position: relative;
   background: #fcfcfc;
   border-radius: 16px;
+  padding: 32px;
 }
 
 @media (max-width: 576px) {
