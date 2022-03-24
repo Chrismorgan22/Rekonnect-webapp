@@ -1826,3 +1826,64 @@ body {
     }
 }
 //ends here
+
+//candidate expert pages css
+.availability-section {
+    padding: 32px;
+
+    & > .price-banner {
+        background: #ECEBEB;
+        border-radius: 16px;
+        padding: 24px;
+    }
+
+    .slot-date-pill {
+        border: 1px solid #eee;
+        box-sizing: border-box;
+        border-radius: 16px;
+        padding: 8px;
+        margin-right: 10px;
+        text-align: center;
+        width: 100%;
+
+        &:hover {
+            border: 1px solid $color-primary;
+        }
+
+        span {
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            color: $text-grey;
+        }
+
+        h3 {
+            font-weight: $font-bold;
+            margin: 8px 0;
+            font-size: 1rem;
+        }
+
+        label {
+            font-size: 0.8rem;
+            color: rgba(22, 128, 5, 0.95);
+        }
+    }
+
+    .slot-time-pill {
+        border: 1px solid #eee;
+        box-sizing: border-box;
+        border-radius: 16px;
+        padding: 8px;
+        margin-right: 10px;
+        text-align: center;
+        width: 100%;
+
+        &:hover {
+            border: 1px solid $color-primary;
+        }
+
+        label {
+            font-size: 1rem;
+        }
+    }
+}
+
