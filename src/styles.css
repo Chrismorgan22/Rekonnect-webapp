@@ -3387,4 +3387,8 @@ body::-webkit-scrollbar-thumb {
 .availability-section .slot-time-pill label {
   font-size: 1rem;
 }
+
+.section-approve-modal {
+  padding: 32px;
+}
 /*# sourceMappingURL=styles.css.map */
