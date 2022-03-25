@@ -47,19 +47,18 @@ const routes: Routes = [
   },
 
   {
-    path:'test1',
-    component:Test1Component
+    path: 'test1',
+    component: Test1Component,
   },
   {
-    path:'test2',
-    component:Test2Component
+    path: 'test2',
+    component: Test2Component,
   },
+
   {
     path:'newhome',
     component:NewhomeComponent
   }
-  
-
   // {
   //   path: '',
   //   redirectTo: '/',
