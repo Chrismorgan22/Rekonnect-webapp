@@ -9,6 +9,7 @@ import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 import { PaymentComponent } from './payment/payment.component';
 import { Test1Component } from './test1/test1.component';
 import { Test2Component } from './test2/test2.component';
+import { NewhomeComponent } from './newhome/newhome.component';
 const routes: Routes = [
   {
     path: 'auth',
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path:'test2',
     component:Test2Component
+  },
+  {
+    path:'newhome',
+    component:NewhomeComponent
   }
   
 
