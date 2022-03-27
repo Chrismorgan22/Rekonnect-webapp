@@ -1555,15 +1555,11 @@ body {
 //testmonial
 
 .home-testimonial {
-    background-color: #231834;
-    height: auto;
-
     @media (max-width: $information-mobile-sm) {
         text-align: center;
     }
 
     .home-testimonial-bottom {
-        // background-color: #f8f8f8;
         transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
         margin-top: 20px;
         margin-bottom: 0px;
@@ -1598,10 +1594,33 @@ body {
         top: 24px;
     }
 
+    .tour-item {
+        border: 1px solid #eee;
+        border-radius: 16px;
+    }
+
     .testimonial-inner {
       &  .tour-desc {
             border-radius: 5px;
-            padding: 40px;
+            position: relative;
+
+            .tour-text {
+                padding: 24px 24px 40px;
+                min-height: 250px;
+            }
+
+            .card-footer {
+                display: flex;
+                align-items: center;
+                border: none;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+
+                & img {
+                    margin-right: 16px;
+                }
+            }
         }
 
         & img.tm-people {
@@ -1639,6 +1658,50 @@ body {
             background-repeat: no-repeat;
             width: 40px;
             height: 40px;
+        }
+    }
+}
+
+
+.new-landing {
+    .image-transform-section {
+        & > img {
+            height: 700px;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .partner-band {
+         background: rgba(230, 230, 230, 0.22);
+    }
+
+    .webinar-section {
+        .section-content {
+            color: $text-white;
+        }
+
+
+       
+
+        .image-sectionn {
+            margin-right: 1.5rem;
+        }
+
+        .webinar-image{
+            width: 100%;
+            height: auto;
+        }
+
+
+        .separate-img {
+            width: 60px !important;
+        }
+
+        .webinar-content-section {
+            .image-sectionn > img {
+                width: 90px;
+            }
         }
     }
 }
