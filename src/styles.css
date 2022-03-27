@@ -2454,7 +2454,7 @@ body::-webkit-scrollbar-thumb {
   color: inherit;
   font-size: 1.2rem;
   font-weight: 700;
-  background: #F6F6F6;
+  background: #f6f6f6;
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 0px;
 }
@@ -2772,11 +2772,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 .job-list-section .parent-section-body .bottom-card-content .job-list-content .card .card-content .badge-pills .badge.badge-primary {
-  background: #DBEED0;
+  background: #dbeed0;
 }
 
 .job-list-section .parent-section-body .bottom-card-content .job-list-content .card .card-content .badge-pills .badge.badge-secondary {
-  background: #FCE1D1;
+  background: #fce1d1;
 }
 
 @media (max-width: 576px) {
@@ -2802,22 +2802,22 @@ body::-webkit-scrollbar-thumb {
 }
 
 .view-job-section .job-left-content .top-content .badge-group .badge-job-type {
-  background: #FDD839;
+  background: #fdd839;
   color: #0C1A27;
 }
 
 .view-job-section .job-left-content .top-content .badge-group .badge-job-level {
-  background: #D3E4F1;
+  background: #d3e4f1;
   color: #0C1A27;
 }
 
 .view-job-section .job-left-content .top-content .badge-group .badge-location {
-  background: #DBF0E5;
+  background: #dbf0e5;
   color: #0C1A27;
 }
 
 .view-job-section .job-left-content .top-content .badge-group .badge-vacancy {
-  background: #F9EFDE;
+  background: #f9efde;
   color: #0C1A27;
 }
 
@@ -2861,19 +2861,19 @@ body::-webkit-scrollbar-thumb {
 }
 
 .view-job-section .job-left-content .graph-cards .card .arrow-space.red {
-  background: #FFC199;
+  background: #ffc199;
 }
 
 .view-job-section .job-left-content .graph-cards .card .arrow-space.green {
-  background: #D1ECDD;
+  background: #d1ecdd;
 }
 
 .view-job-section .job-left-content .graph-cards .card .arrow-space.blue {
-  background: #CCDEE3;
+  background: #ccdee3;
 }
 
 .view-job-section .job-left-content .graph-cards .card .progress.red .progress-bar {
-  background-color: #FF6400;
+  background-color: #ff6400;
 }
 
 .view-job-section .job-left-content .graph-cards .card .progress.green .progress-bar {
@@ -2881,7 +2881,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .view-job-section .job-left-content .graph-cards .card .progress.blue .progress-bar {
-  background-color: #005A74;
+  background-color: #005a74;
 }
 
 .view-job-section .job-right-content .profile-basic-card .profile-user-block .user-profile {
@@ -2980,7 +2980,7 @@ body::-webkit-scrollbar-thumb {
 
 .area-grey {
   padding: 16px;
-  background: #EEF4F9;
+  background: #eef4f9;
 }
 
 .organisation-section .badge-pills .badge {
@@ -2998,11 +2998,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 .organisation-section .badge-pills .badge.badge-primary {
-  background: #DBEED0;
+  background: #dbeed0;
 }
 
 .organisation-section .badge-pills .badge.badge-secondary {
-  background: #FCE1D1;
+  background: #fce1d1;
 }
 
 .organisation-section .top-content .content {
@@ -3197,5 +3197,21 @@ body::-webkit-scrollbar-thumb {
 
 .new-landing .webinar-section .webinar-content-section .image-sectionn > img {
   width: 90px;
+}
+
+.new-landing .custom-service-tab .nav-item .nav-pills {
+  padding: 16px 24px;
+}
+
+.new-landing .custom-service-tab .nav-item .nav-link {
+  background-color: #eee;
+  margin-right: 24px;
+  color: #727374;
+}
+
+.new-landing .custom-service-tab .nav-item .nav-link.active {
+  background-color: #15759A;
+  color: #fff;
+  font-size: 1rem;
 }
 /*# sourceMappingURL=styles.css.map */
