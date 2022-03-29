@@ -3266,4 +3266,11 @@ body::-webkit-scrollbar-thumb {
 .new-landing .job-listing-section .content-card .action-footer .btn {
   margin-right: 8px;
 }
+
+.new-landing .background-testimonial {
+  background-image: url("./assets/images/new-landing/testimonial.jpg");
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: 100%;
+}
 /*# sourceMappingURL=styles.css.map */
