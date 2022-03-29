@@ -1649,6 +1649,7 @@ body {
 }
 
 .new-landing {
+    overflow-x: hidden;
     .image-transform-section {
         & > img {
             height: 700px;

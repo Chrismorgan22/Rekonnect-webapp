@@ -3174,6 +3174,10 @@ body::-webkit-scrollbar-thumb {
   height: 40px;
 }
 
+.new-landing {
+  overflow-x: hidden;
+}
+
 .new-landing .image-transform-section > img {
   height: 700px;
   width: 100%;
