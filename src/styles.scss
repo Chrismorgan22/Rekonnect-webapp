@@ -1572,19 +1572,21 @@ body {
         top: 24px;
     }
 
-    .tour-item {
-        border: 1px solid #eee;
-        border-radius: 16px;
-    }
-
     .testimonial-inner {
         & .tour-desc {
             border-radius: 5px;
             position: relative;
 
+            .text-secondary {
+                .material-icons {
+                    transform: rotate(180deg);
+                }
+            }
+
             .tour-text {
                 padding: 24px 24px 40px;
                 min-height: 250px;
+                font-weight: $font-semibold;
             }
 
             .card-footer {
@@ -1594,6 +1596,12 @@ body {
                 position: absolute;
                 bottom: 0;
                 width: 100%;
+                font-size: 24px;
+                background: none;
+
+                & h6 {
+                    font-weight: $font-semibold;
+                }
 
                 & img {
                     margin-right: 16px;

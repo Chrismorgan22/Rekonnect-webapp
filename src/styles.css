@@ -3092,19 +3092,20 @@ body::-webkit-scrollbar-thumb {
   top: 24px;
 }
 
-.home-testimonial .tour-item {
-  border: 1px solid #eee;
-  border-radius: 16px;
-}
-
 .home-testimonial .testimonial-inner .tour-desc {
   border-radius: 5px;
   position: relative;
 }
 
+.home-testimonial .testimonial-inner .tour-desc .text-secondary .material-icons {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
 .home-testimonial .testimonial-inner .tour-desc .tour-text {
   padding: 24px 24px 40px;
   min-height: 250px;
+  font-weight: 600;
 }
 
 .home-testimonial .testimonial-inner .tour-desc .card-footer {
@@ -3118,6 +3119,12 @@ body::-webkit-scrollbar-thumb {
   position: absolute;
   bottom: 0;
   width: 100%;
+  font-size: 24px;
+  background: none;
+}
+
+.home-testimonial .testimonial-inner .tour-desc .card-footer h6 {
+  font-weight: 600;
 }
 
 .home-testimonial .testimonial-inner .tour-desc .card-footer img {
