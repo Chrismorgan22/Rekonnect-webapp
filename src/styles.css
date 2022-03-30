@@ -3108,6 +3108,12 @@ body::-webkit-scrollbar-thumb {
   font-weight: 600;
 }
 
+@media (max-width: 768px) {
+  .home-testimonial .testimonial-inner .tour-desc .tour-text {
+    min-height: auto;
+  }
+}
+
 .home-testimonial .testimonial-inner .tour-desc .card-footer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3121,6 +3127,12 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
   font-size: 24px;
   background: none;
+}
+
+@media (max-width: 768px) {
+  .home-testimonial .testimonial-inner .tour-desc .card-footer {
+    position: relative;
+  }
 }
 
 .home-testimonial .testimonial-inner .tour-desc .card-footer h6 {
@@ -3178,11 +3190,22 @@ body::-webkit-scrollbar-thumb {
   overflow-x: hidden;
 }
 
+.new-landing .text-primary-site {
+  color: #15759A !important;
+}
+
 .new-landing .image-transform-section > img {
   height: 700px;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .new-landing .image-transform-section > img {
+    height: 550px;
+    margin-bottom: 24px;
+  }
 }
 
 .new-landing .page-fold-image {
@@ -3240,8 +3263,20 @@ body::-webkit-scrollbar-thumb {
   right: 40px;
 }
 
+@media (max-width: 576px) {
+  .new-landing .page-fold-image .card-pill.image-content-4 {
+    bottom: 158px;
+  }
+}
+
 .new-landing .partner-band {
   background: rgba(230, 230, 230, 0.22);
+}
+
+@media (max-width: 768px) {
+  .new-landing .partner-band {
+    display: none;
+  }
 }
 
 .new-landing .webinar-section .section-content {
@@ -3250,6 +3285,12 @@ body::-webkit-scrollbar-thumb {
 
 .new-landing .webinar-section .image-sectionn {
   margin-right: 1.5rem;
+}
+
+@media (max-width: 576px) {
+  .new-landing .webinar-section .image-sectionn {
+    display: none;
+  }
 }
 
 .new-landing .webinar-section .webinar-image {
@@ -3273,6 +3314,18 @@ body::-webkit-scrollbar-thumb {
   background-color: #eee;
   margin-right: 24px;
   color: #727374;
+}
+
+@media (max-width: 1200px) {
+  .new-landing .custom-service-tab .nav-item .nav-link {
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .new-landing .custom-service-tab .nav-item .nav-link {
+    margin-bottom: 8px;
+  }
 }
 
 .new-landing .custom-service-tab .nav-item .nav-link.active {
@@ -3299,9 +3352,33 @@ body::-webkit-scrollbar-thumb {
   font-size: 1rem;
 }
 
+@media (max-width: 1200px) {
+  .new-landing .job-listing-section .display-none-xl {
+    display: none;
+  }
+}
+
 .new-landing .job-listing-section .content-card {
   border: 1px solid #eee;
   border-radius: 16px;
+}
+
+@media (max-width: 1200px) {
+  .new-landing .job-listing-section .content-card {
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .new-landing .job-listing-section .content-card .d-flex:not(.action-footer) {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: left;
+        -ms-flex-align: left;
+            align-items: left;
+  }
 }
 
 .new-landing .job-listing-section .content-card .image-section-tab {
@@ -3338,5 +3415,11 @@ body::-webkit-scrollbar-thumb {
   background-repeat: no-repeat;
   background-position: top right;
   background-size: 100%;
+}
+
+@media (max-width: 768px) {
+  .new-landing .background-testimonial {
+    background-size: auto;
+  }
 }
 /*# sourceMappingURL=styles.css.map */
