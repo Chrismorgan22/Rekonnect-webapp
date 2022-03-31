@@ -3334,6 +3334,12 @@ body::-webkit-scrollbar-thumb {
   font-size: 1rem;
 }
 
+@media (max-width: 768px) {
+  .new-landing .service-tab .img-fluid {
+    display: none;
+  }
+}
+
 .new-landing .job-listing-section .nav-pills {
   padding: 16px 24px;
 }

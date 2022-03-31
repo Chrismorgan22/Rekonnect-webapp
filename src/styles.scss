@@ -1799,6 +1799,14 @@ body {
         }
     }
 
+    .service-tab {
+        & .img-fluid {
+            @media (max-width: $information-mobile-md) {
+                display: none;
+            }
+        }
+    }
+
     //job listing section
     .job-listing-section {
         .nav-pills {
