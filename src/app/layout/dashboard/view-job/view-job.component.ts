@@ -34,7 +34,7 @@ export class ViewJobComponent implements OnInit {
   }[];
   expe: {}[] = null;
   educ: {}[] = null;
-
+  jobStatus: string = 'Active';
   current: any[] = ['full-time', 'part-time'];
   jobCategory: any;
   education: any;
@@ -137,6 +137,10 @@ export class ViewJobComponent implements OnInit {
   showModal() {
     this.toggleModal = !this.toggleModal;
   }
+  toggleStatus(type: string): void {
+    this.jobStatus = type;
+    console.log(this.jobStatus);
+  }
   handleUpdate() {
     const json = {
       user_id: JSON.parse(sessionStorage.getItem('_ud'))[0]['_id'],
@@ -144,6 +148,7 @@ export class ViewJobComponent implements OnInit {
       job_type: this.jobPostForm.controls.job_type.value.toString(),
       job_category: this.jobPostForm.controls.job_category.value.toString(),
       city: this.jobPostForm.controls.city.value,
+      jobStatus: this.jobStatus,
       country: this.jobPostForm.controls.country.value,
       salary_range: {
         min: this.jobPostForm.controls.min_salary.value,

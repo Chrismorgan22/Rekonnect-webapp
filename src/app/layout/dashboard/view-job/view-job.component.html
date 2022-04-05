@@ -343,15 +343,16 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <span class="active"></span> Active
+            <span class="inactive" *ngIf="jobStatus=='In-Active'" ></span>  <span   *ngIf="jobStatus=='Active'" class="active" ></span> {{jobStatus}}
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item inactive">
+              <a class="dropdown-item inactive"   (click)="toggleStatus('In-Active')">
                 <span class="inactive"></span>In-Active</a
               >
-              <a class="dropdown-item archive">
-                <span class="archieve"></span>Archive</a
+              <a class="dropdown-item inactive"   (click)="toggleStatus('Active')">
+                <span class="active"></span>Active</a
               >
+             
             </div>
           </div>
           <button class="btn btn-secondary" (click)="showModal()">
