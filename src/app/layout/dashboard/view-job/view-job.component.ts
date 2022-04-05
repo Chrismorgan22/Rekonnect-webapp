@@ -82,7 +82,7 @@ export class ViewJobComponent implements OnInit {
       if (data.result === 'success') {
         this.jobDetail = data.data[0];
         console.log(this.jobDetail);
-
+        this.jobStatus = this.jobDetail.status ? 'Active' : 'In-Active';
         this.dropdownSettings1 = {
           singleSelection: true,
           idField: 'id',
@@ -148,7 +148,7 @@ export class ViewJobComponent implements OnInit {
       job_type: this.jobPostForm.controls.job_type.value.toString(),
       job_category: this.jobPostForm.controls.job_category.value.toString(),
       city: this.jobPostForm.controls.city.value,
-      jobStatus: this.jobStatus,
+      status: this.jobStatus == 'Active' ? true : false,
       country: this.jobPostForm.controls.country.value,
       salary_range: {
         min: this.jobPostForm.controls.min_salary.value,
@@ -209,8 +209,6 @@ export class ViewJobComponent implements OnInit {
   }
 
   fetchProper() {
-    console.log('fuck');
-
     for (let i = 0; i < this.appliedUserList.length; i++) {
       this.jobService
         .getUserById(this.appliedUserList[i].candidate_id)

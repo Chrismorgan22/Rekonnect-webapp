@@ -47,6 +47,7 @@
         <th scope="col">Job Type</th>
         <th scope="col">City</th>
         <th scope="col">Vacancy</th>
+        <th scope="col">Job Status</th>
         <th scope="col">Action</th>
         <th scope="col">Delete Job</th>
       </tr>
@@ -58,6 +59,7 @@
         <td>{{ job?.job_type }}</td>
         <td>{{ job?.city }}</td>
         <td>{{ job?.post_vacancies }}</td>
+        <td>{{job?.status? "Active":"In-Active" }}</td>
         <td>
 
           <button class=" Job btn btn-primary btn-sm mr-2" (click)="viewJob(job)">
