@@ -308,8 +308,8 @@ export class CandidateComponent implements OnInit {
         console.log('Test2', this.jobs);
 
         var detail = {
-          ...this.jobs[i],
           ...data[0],
+          ...this.jobs[i],
         };
         // console.log('Test 3 ', JSON.stringify(detail));
 
