@@ -17,8 +17,9 @@ export class CreateJobComponent implements OnInit {
   dropdownSettings1 = {};
   current: any[] = ['full-time', 'part-time'];
   jobCategory: any;
+  topSkillsSelected: any[];
   education: any;
-  topSkills: [];
+  topSkills: any[];
   jobType: any;
   remote: any;
   postVacancy: any;
@@ -47,7 +48,7 @@ export class CreateJobComponent implements OnInit {
       'Part Time Remote',
       'No remote work',
     ];
-    this.educationLevelArray = ['High', 'Medium', 'Low'];
+    this.educationLevelArray = ['Diploma', 'Bachelors', 'Masters'];
     this.postVacancyArray = [1, 2, 3, 4, 5];
     this.jobPostForm = this.fb.group({
       title: ['', Validators.required],
@@ -69,6 +70,9 @@ export class CreateJobComponent implements OnInit {
   }
   get f() {
     return this.jobPostForm.controls;
+  }
+  addSkills(item: any) {
+    this.topSkillsSelected.push(item);
   }
   submitData() {
     console.log(this.jobPostForm);
@@ -92,7 +96,7 @@ export class CreateJobComponent implements OnInit {
           this.jobPostForm.controls.min_experience.value,
         maximum_experience_required:
           this.jobPostForm.controls.max_experience.value,
-        top_skills: 'LeaderShip',
+        top_skills: this.topSkillsSelected,
         post_vacancies: this.jobPostForm.controls.post_vacancy.value.toString(),
         is_visume: this.jobPostForm.controls.isVisume.value,
         is_scandidate: this.jobPostForm.controls.is_candidate_report.value,
