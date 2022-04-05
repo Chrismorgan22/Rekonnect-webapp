@@ -342,14 +342,35 @@
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
+              *ngIf="jobStatus=='Active'"
             >
-            <span class="inactive" *ngIf="jobStatus=='In-Active'" ></span>  <span   *ngIf="jobStatus=='Active'" class="active" ></span> {{jobStatus}}
+             <span   *ngIf="jobStatus=='Active'" class="active" ></span> {{jobStatus}}
             </button>
+            <button
+            class="
+              btn
+              w-100
+              btn-secondary
+              dropdown-toggle
+              text-primary
+              inactive
+            "
+            style="display:flex;align-items:center;justify-content:center"
+            type="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            *ngIf="jobStatus=='In-Active'"
+          >
+          <span class="inactive" *ngIf="jobStatus=='In-Active'" ></span> {{jobStatus}}
+         
+          </button>
+
             <div class="dropdown-menu">
               <a class="dropdown-item inactive"   (click)="toggleStatus('In-Active')">
                 <span class="inactive"></span>In-Active</a
               >
-              <a class="dropdown-item inactive"   (click)="toggleStatus('Active')">
+              <a class="dropdown-item active"   (click)="toggleStatus('Active')">
                 <span class="active"></span>Active</a
               >
              
