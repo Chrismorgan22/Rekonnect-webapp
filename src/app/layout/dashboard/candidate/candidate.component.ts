@@ -289,7 +289,7 @@ export class CandidateComponent implements OnInit {
     for (let i = 0; i < this.jobs.length; i++) {
       this.jobDetails.getUserById(this.jobs[i].user_id).subscribe((data) => {
         console.log('Test1', data);
-        const prevTime = Date.parse(data[0].created_at);
+        const prevTime = Date.parse(data[0]?.created_at);
         var timestamp = Number(new Date().getTime()) + 15 * 24 * 60 * 60 * 1000;
         console.log(prevTime, 'earlierTime');
         console.log(timestamp, 'currentTime');
@@ -346,7 +346,7 @@ export class CandidateComponent implements OnInit {
   }
   getUserProfileData() {
     const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
-    console.log(localData.created_at, 'userInfo');
+    // console.log(localData?.created_at, 'userInfo');
 
     this.layoutService.getUserProfile(localData._id).subscribe((res) => {
       console.log(res);
