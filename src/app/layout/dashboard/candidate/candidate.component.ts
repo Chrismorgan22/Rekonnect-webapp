@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LayoutService } from 'src/app/services/layout.service';
 import { JobService } from 'src/app/services/job.service';
 import { Router } from '@angular/router';
+import { environment } from '../../../../environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import * as _ from 'lodash';
 import {
@@ -34,6 +35,7 @@ export class CandidateComponent implements OnInit {
   public chartOptions: Partial<ChartOptions>;
   jobs: any[];
   jobPoster: any[];
+  jobApplied: number;
   entireJobDetails: any[];
   jobie: {
     id: string;
@@ -222,11 +224,23 @@ export class CandidateComponent implements OnInit {
       }
     }, 3000);
   }
+  async fetchAppliedJobs() {
+    try {
+      const data = await (
+        await fetch(`${environment.apiUrl}/job/getJobApplied/${this.userId}`)
+      ).json();
+      console.log(data, 'jobs applied');
+      this.jobApplied = data.length;
+    } catch (error) {
+      console.log(error);
+    }
+  }
   ngOnInit(): void {
     this.displayProp();
     this.displayJoiningDate();
     this.getUserProfileData();
     this.getJobDetails();
+    this.fetchAppliedJobs();
     this.jobDetails.fetchJobs().subscribe((data) => {
       console.log(data);
 
