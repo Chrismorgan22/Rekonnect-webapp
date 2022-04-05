@@ -29,9 +29,10 @@ export class EmployerViewJobComponent implements OnInit {
     this.getUserProfileData();
     this.getEmployerData();
   }
-  delJob(id: string) {
+  delJob(id: string): void {
     this.jobService.deleteJob(id).subscribe((data) => {
       console.log(data);
+      window.location.reload();
     });
   }
 

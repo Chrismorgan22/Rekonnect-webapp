@@ -17,7 +17,7 @@ export class CreateJobComponent implements OnInit {
   dropdownSettings1 = {};
   current: any[] = ['full-time', 'part-time'];
   jobCategory: any;
-  topSkillsSelected: any[];
+  topSkillsSelected: any[] = [];
   education: any;
   topSkills: any[];
   jobType: any;
@@ -72,6 +72,8 @@ export class CreateJobComponent implements OnInit {
     return this.jobPostForm.controls;
   }
   addSkills(item: any) {
+    console.log(item, this.topSkillsSelected);
+
     this.topSkillsSelected.push(item);
   }
   submitData() {
