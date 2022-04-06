@@ -42,7 +42,17 @@ export class EmployerViewJobComponent implements OnInit {
       this.employerInfo = data[0];
     });
   }
+  toggleStatus(id: string) {
+    // console.log(this.jobData);
+    var json = this.jobData.filter((jb) => jb._id == id);
+    console.log(json);
+    json[0].status = !json[0].status;
+    console.log(json);
 
+    this.jobService.updateJob(id, json[0]).subscribe((res) => {
+      console.log(res);
+    });
+  }
   getUserProfileData() {
     const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
     this.layoutService.getUserProfile(localData._id).subscribe((res) => {
@@ -51,6 +61,7 @@ export class EmployerViewJobComponent implements OnInit {
       // this.empID = this.userProfileData;
       this.empID = this.userProfileData.employer_details[0]._id;
       console.log(this.userProfileData);
+      // window.location.reload();
     });
   }
 

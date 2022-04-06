@@ -59,7 +59,7 @@
         <td>{{ job?.job_type }}</td>
         <td>{{ job?.city }}</td>
         <td>{{ job?.post_vacancies }}</td>
-        <td>{{job?.status? "Active":"In-Active" }}</td>
+        <td><button  *ngIf="job?.status" (click)="toggleStatus(job?._id)" class="btn btn-primary">Active</button><button  *ngIf="!job?.status" (click)="toggleStatus(job?._id)" class="btn btn-outline">In-Active</button></td>
         <td>
 
           <button class=" Job btn btn-primary btn-sm mr-2" (click)="viewJob(job)">
