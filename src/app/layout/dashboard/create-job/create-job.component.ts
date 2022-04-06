@@ -74,7 +74,7 @@ export class CreateJobComponent implements OnInit {
   addSkills(item: any) {
     console.log(item, this.topSkillsSelected);
 
-    this.topSkillsSelected.push(item);
+    this.topSkillsSelected = [...this.topSkillsSelected, item];
   }
   submitData() {
     console.log(this.jobPostForm);

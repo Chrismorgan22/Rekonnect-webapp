@@ -300,11 +300,35 @@
                         <section style="display:flex;flex-wrap:wrap">
                         <div class="parent" *ngFor="let skill of topSkills" style="display:flex;">
                          
-                        <div class="selected-pill my-3"   style="width:fit-content !important">
+                        <div class="selected-pill my-3"    (click)="addSkills(skill.name)"  style="width:fit-content !important">
                           <button class="btn btn-selected-pill mr-3"
-                           (click)="addSkills(skill.name)"  
+                          
                           >{{skill.name}}
                             <span class="material-icons"> add </span></button
+                          >
+                          <!-- <span class="btn btn-selected-pill mr-3"
+                            >Management
+                            <span class="material-icons"> add </span></span
+                          > -->
+                        </div>
+                      </div>
+                      </section>
+                    
+                      </div>
+                      <div class="form-group py-2">
+                        <h5 class="bold">Top Skills Selected</h5>
+                        <!-- <label class="text-color-light"
+                          >This skills helps us curate to the prospective
+                          candidates</label
+                        > -->
+                        <section style="display:flex;flex-wrap:wrap">
+                        <div class="parent" *ngFor="let skill of topSkillsSelected" style="display:flex;">
+                         
+                        <div class="selected-pill my-3"   style="width:fit-content !important">
+                          <button class="btn btn-selected-pill mr-3"
+                          
+                          >{{skill}}
+                           </button
                           >
                           <!-- <span class="btn btn-selected-pill mr-3"
                             >Management
