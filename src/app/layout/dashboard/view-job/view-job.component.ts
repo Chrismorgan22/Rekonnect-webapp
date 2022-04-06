@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
 import { JobService } from 'src/app/services/job.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -50,6 +52,7 @@ export class ViewJobComponent implements OnInit {
   postVacancyArray: any = [];
   submitted: boolean = false;
   constructor(
+    private _toastService: ToastrService,
     private jobService: JobService,
     private route: ActivatedRoute,
     private jobApplicationService: JobApplicationService,
@@ -140,6 +143,7 @@ export class ViewJobComponent implements OnInit {
   toggleStatus(type: string): void {
     this.jobStatus = type;
     console.log(this.jobStatus);
+    this.handleUpdate();
   }
   handleUpdate() {
     const json = {
@@ -170,6 +174,10 @@ export class ViewJobComponent implements OnInit {
     console.log(json);
     this.jobService.updateJob(this.jobDetail._id, json).subscribe((res) => {
       console.log(res);
+      this._toastService.success('Job updated successfully', res.result, {
+        toastClass: 'toast ngx-toastr',
+        closeButton: true,
+      });
     });
     this.toggleModal = false;
   }
