@@ -106,7 +106,7 @@ export class CreateJobComponent implements OnInit {
       };
       this.applyJob.postJobs(json).subscribe((result: any) => {
         if (result.result === 'success') {
-          this.router.navigate(['/dashboard/employer-view-job']);
+          // this.router.navigate(['/dashboard/employer-view-job']);
           this.submitted = false;
           console.log('Job created!!');
           $('.nav-link').removeClass('active');
