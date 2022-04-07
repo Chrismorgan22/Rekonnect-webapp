@@ -13,10 +13,10 @@
     }
 
     .negative-top-offset {
-        // position: absolute;
+        position: absolute;
         top: 205px;
         width: 100%;
-
+        border-radius: 16px;
         &.negative-top-offset-bg {
             top: 290px !important;
         }
