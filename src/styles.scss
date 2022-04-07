@@ -1604,7 +1604,7 @@ body {
                 background: none;
 
                 @media (max-width: $information-mobile-md) {
-                   position: relative;
+                    position: relative;
                 }
 
                 & h6 {
@@ -1656,7 +1656,6 @@ body {
     }
 }
 
-
 //new landing scss
 .new-landing {
     overflow-x: hidden;
@@ -1677,7 +1676,6 @@ body {
             }
         }
     }
-
 
     .page-fold-image {
         position: relative;
@@ -1727,7 +1725,7 @@ body {
 
                 @media (max-width: $information-mobile-sm) {
                     bottom: 158px;
-                  }
+                }
             }
         }
     }
@@ -1735,7 +1733,7 @@ body {
     .partner-band {
         background: rgba(230, 230, 230, 0.22);
 
-         @media (max-width: $information-mobile-md) {
+        @media (max-width: $information-mobile-md) {
             display: none;
         }
     }
@@ -1744,7 +1742,6 @@ body {
         .section-content {
             color: $text-white;
         }
-
 
         .image-sectionn {
             margin-right: 1.5rem;
@@ -1770,13 +1767,13 @@ body {
         }
     }
 
-     //service tab
-     .custom-service-tab {
+    //service tab
+    .custom-service-tab {
         .nav-item {
             .nav-pills {
                 padding: 16px 24px;
             }
-           
+
             .nav-link {
                 background-color: #eee;
                 margin-right: 24px;
@@ -1813,7 +1810,7 @@ body {
             padding: 16px 24px;
 
             .nav-link {
-               border: 1px solid #8A92A6;
+                border: 1px solid #8a92a6;
                 margin-bottom: 8px;
                 color: $text-grey;
                 border-radius: 4px;
@@ -1838,7 +1835,7 @@ body {
             border-radius: 16px;
 
             @media (max-width: $information-mobile-xl) {
-              margin-bottom: 16px;
+                margin-bottom: 16px;
             }
 
             @media (max-width: $information-mobile-md) {
@@ -1851,7 +1848,6 @@ body {
             .image-section-tab {
                 height: 80px;
                 width: auto;
-               
 
                 img {
                     width: 100%;
@@ -1861,8 +1857,6 @@ body {
                     border-top-right-radius: 16px;
                 }
             }
-
-          
 
             .text-emphasis {
                 color: $emphasis-color;
