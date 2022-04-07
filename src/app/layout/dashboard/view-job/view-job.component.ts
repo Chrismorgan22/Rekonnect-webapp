@@ -174,10 +174,25 @@ export class ViewJobComponent implements OnInit {
     console.log(json);
     this.jobService.updateJob(this.jobDetail._id, json).subscribe((res) => {
       console.log(res);
-      this._toastService.success('Job updated successfully', res.result, {
-        toastClass: 'toast ngx-toastr',
-        closeButton: true,
-      });
+      if (this.jobStatus == 'Active')
+        this._toastService.success(
+          `Job status changed to ${this.jobStatus} `,
+          res.result,
+          {
+            toastClass: 'toast ngx-toastr',
+            closeButton: true,
+          }
+        );
+      else {
+        this._toastService.error(
+          `Job status changed to ${this.jobStatus} `,
+          res.result,
+          {
+            toastClass: 'toast ngx-toastr',
+            closeButton: true,
+          }
+        );
+      }
     });
     this.toggleModal = false;
   }
