@@ -51,7 +51,7 @@
                   <div class="section-form-content">
                     <form
                       [formGroup]="jobPostForm"
-                      (ngSubmit)="submitData()"
+                   
                       noValidate
                     >
                       <div class="form-group">
@@ -439,8 +439,9 @@
                           Back
                         </button>
                         <button
-                          type="submit"
                           class="btn btn-primary w-min-250 btn-lg ml-2"
+
+                          (click)="submitData()"
                         >
                           Post Job listing
                         </button>

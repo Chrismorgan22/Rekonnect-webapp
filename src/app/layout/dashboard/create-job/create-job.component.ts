@@ -71,10 +71,11 @@ export class CreateJobComponent implements OnInit {
   get f() {
     return this.jobPostForm.controls;
   }
-  addSkills(item: any) {
+  addSkills(item: any): void {
     console.log(item, this.topSkillsSelected);
 
     this.topSkillsSelected = [...this.topSkillsSelected, item];
+    return;
   }
   submitData() {
     console.log(this.jobPostForm);
