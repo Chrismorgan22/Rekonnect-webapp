@@ -175,7 +175,7 @@ h6 {
 }
 
 .text-primary {
-    color: $color-primary !important;
+    color: $color-primary;
 }
 
 .text-secondary {
@@ -188,10 +188,6 @@ h6 {
 
 .text-color-light {
     color: $text-color-light !important;
-}
-
-.text-danger {
-    color: $emphasis-color !important;
 }
 
 .text-uppercase {
