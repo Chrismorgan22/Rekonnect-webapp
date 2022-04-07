@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
 import { JobService } from 'src/app/services/job.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -34,7 +36,7 @@ export class ViewJobComponent implements OnInit {
   }[];
   expe: {}[] = null;
   educ: {}[] = null;
-
+  jobStatus: string = 'Active';
   current: any[] = ['full-time', 'part-time'];
   jobCategory: any;
   education: any;
@@ -50,6 +52,7 @@ export class ViewJobComponent implements OnInit {
   postVacancyArray: any = [];
   submitted: boolean = false;
   constructor(
+    private _toastService: ToastrService,
     private jobService: JobService,
     private route: ActivatedRoute,
     private jobApplicationService: JobApplicationService,
@@ -82,7 +85,7 @@ export class ViewJobComponent implements OnInit {
       if (data.result === 'success') {
         this.jobDetail = data.data[0];
         console.log(this.jobDetail);
-
+        this.jobStatus = this.jobDetail.status ? 'Active' : 'In-Active';
         this.dropdownSettings1 = {
           singleSelection: true,
           idField: 'id',
@@ -137,6 +140,11 @@ export class ViewJobComponent implements OnInit {
   showModal() {
     this.toggleModal = !this.toggleModal;
   }
+  toggleStatus(type: string): void {
+    this.jobStatus = type;
+    console.log(this.jobStatus);
+    this.handleUpdate();
+  }
   handleUpdate() {
     const json = {
       user_id: JSON.parse(sessionStorage.getItem('_ud'))[0]['_id'],
@@ -144,6 +152,7 @@ export class ViewJobComponent implements OnInit {
       job_type: this.jobPostForm.controls.job_type.value.toString(),
       job_category: this.jobPostForm.controls.job_category.value.toString(),
       city: this.jobPostForm.controls.city.value,
+      status: this.jobStatus == 'Active' ? true : false,
       country: this.jobPostForm.controls.country.value,
       salary_range: {
         min: this.jobPostForm.controls.min_salary.value,
@@ -165,6 +174,25 @@ export class ViewJobComponent implements OnInit {
     console.log(json);
     this.jobService.updateJob(this.jobDetail._id, json).subscribe((res) => {
       console.log(res);
+      if (this.jobStatus == 'Active')
+        this._toastService.success(
+          `Job status changed to ${this.jobStatus} `,
+          res.result,
+          {
+            toastClass: 'toast ngx-toastr',
+            closeButton: true,
+          }
+        );
+      else {
+        this._toastService.error(
+          `Job status changed to ${this.jobStatus} `,
+          res.result,
+          {
+            toastClass: 'toast ngx-toastr',
+            closeButton: true,
+          }
+        );
+      }
     });
     this.toggleModal = false;
   }
@@ -204,8 +232,6 @@ export class ViewJobComponent implements OnInit {
   }
 
   fetchProper() {
-    console.log('fuck');
-
     for (let i = 0; i < this.appliedUserList.length; i++) {
       this.jobService
         .getUserById(this.appliedUserList[i].candidate_id)

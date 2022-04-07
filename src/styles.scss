@@ -1494,6 +1494,8 @@ body {
             }
         }
 
+
+    .top-content {
         .content {
             margin-top: 80px;
         }
@@ -1642,15 +1644,11 @@ body {
 //testmonial
 
 .home-testimonial {
-    background-color: #231834;
-    height: auto;
-
     @media (max-width: $information-mobile-sm) {
         text-align: center;
     }
 
     .home-testimonial-bottom {
-        // background-color: #f8f8f8;
         transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
         margin-top: 20px;
         margin-bottom: 0px;
@@ -1688,7 +1686,46 @@ body {
     .testimonial-inner {
         & .tour-desc {
             border-radius: 5px;
-            padding: 40px;
+            position: relative;
+
+            .text-secondary {
+                .material-icons {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .tour-text {
+                padding: 24px 24px 40px;
+                min-height: 250px;
+                font-weight: $font-semibold;
+
+                @media (max-width: $information-mobile-md) {
+                    min-height: auto;
+                }
+            }
+
+            .card-footer {
+                display: flex;
+                align-items: center;
+                border: none;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                font-size: 24px;
+                background: none;
+
+                @media (max-width: $information-mobile-md) {
+                   position: relative;
+                }
+
+                & h6 {
+                    font-weight: $font-semibold;
+                }
+
+                & img {
+                    margin-right: 16px;
+                }
+            }
         }
 
         & img.tm-people {
@@ -1948,3 +1985,238 @@ body {
 }
 
 //ends here
+
+//new landing scss
+.new-landing {
+    overflow-x: hidden;
+
+    .text-primary-site {
+        color: $color-primary !important;
+    }
+
+    .image-transform-section {
+        & > img {
+            height: 700px;
+            width: 100%;
+            object-fit: cover;
+
+            @media (max-width: $information-mobile-md) {
+                height: 550px;
+                margin-bottom: 24px;
+            }
+        }
+    }
+
+
+    .page-fold-image {
+        position: relative;
+
+        .card-pill {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            padding: 16px 24px;
+            background: $text-white;
+            border-bottom-left-radius: 16px;
+            border-top-right-radius: 16px;
+            box-shadow: 0px 0px 28px 7px rgba(51, 51, 51, 0.03), 0px 0px 34px 15px rgba(0, 0, 0, 0.02);
+
+            img {
+                width: 24px;
+                height: 24px;
+                margin-right: 16px;
+            }
+
+            h6 {
+                font-size: 1rem;
+                margin-bottom: 0;
+            }
+
+            &.image-content-1 {
+                position: absolute;
+                top: 22px;
+                left: 2px;
+            }
+
+            &.image-content-2 {
+                position: absolute;
+                top: 250px;
+                right: 40px;
+            }
+
+            &.image-content-3 {
+                position: absolute;
+                top: 450px;
+                left: 40px;
+            }
+            &.image-content-4 {
+                position: absolute;
+                bottom: 90px;
+                right: 40px;
+
+                @media (max-width: $information-mobile-sm) {
+                    bottom: 158px;
+                  }
+            }
+        }
+    }
+
+    .partner-band {
+        background: rgba(230, 230, 230, 0.22);
+
+         @media (max-width: $information-mobile-md) {
+            display: none;
+        }
+    }
+
+    .webinar-section {
+        .section-content {
+            color: $text-white;
+        }
+
+
+        .image-sectionn {
+            margin-right: 1.5rem;
+
+            @media (max-width: $information-mobile-sm) {
+                display: none;
+            }
+        }
+
+        .webinar-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .separate-img {
+            width: 60px !important;
+        }
+
+        .webinar-content-section {
+            .image-sectionn > img {
+                width: 90px;
+            }
+        }
+    }
+
+     //service tab
+     .custom-service-tab {
+        .nav-item {
+            .nav-pills {
+                padding: 16px 24px;
+            }
+           
+            .nav-link {
+                background-color: #eee;
+                margin-right: 24px;
+                color: $text-grey;
+
+                @media (max-width: $information-mobile-xl) {
+                    margin-bottom: 24px;
+                }
+
+                @media (max-width: $information-mobile-xl) {
+                    margin-bottom: 8px;
+                }
+
+                &.active {
+                    background-color: $color-primary;
+                    color: $text-white;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
+    .service-tab {
+        & .img-fluid {
+            @media (max-width: $information-mobile-md) {
+                display: none;
+            }
+        }
+    }
+
+    //job listing section
+    .job-listing-section {
+        .nav-pills {
+            padding: 16px 24px;
+
+            .nav-link {
+               border: 1px solid #8A92A6;
+                margin-bottom: 8px;
+                color: $text-grey;
+                border-radius: 4px;
+                text-align: center;
+
+                &.active {
+                    background-color: $color-primary;
+                    color: $text-white;
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        .display-none-xl {
+            @media (max-width: $information-mobile-xl) {
+                display: none;
+            }
+        }
+
+        .content-card {
+            border: 1px solid #eee;
+            border-radius: 16px;
+
+            @media (max-width: $information-mobile-xl) {
+              margin-bottom: 16px;
+            }
+
+            @media (max-width: $information-mobile-md) {
+                .d-flex:not(.action-footer) {
+                    flex-direction: column;
+                    align-items: left;
+                }
+            }
+
+            .image-section-tab {
+                height: 80px;
+                width: auto;
+               
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-top-left-radius: 16px;
+                    border-top-right-radius: 16px;
+                }
+            }
+
+          
+
+            .text-emphasis {
+                color: $emphasis-color;
+            }
+
+            .action-footer {
+                margin: 24px 0;
+                justify-content: flex-end;
+
+                .btn {
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+
+    //testimonial
+    .background-testimonial {
+        background-image: url("./assets/images/new-landing/testimonial.jpg");
+        background-repeat: no-repeat;
+        background-position: top right;
+        background-size: 100%;
+
+        @media (max-width: $information-mobile-md) {
+            background-size: auto;
+        }
+    }
+}

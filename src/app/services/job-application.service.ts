@@ -11,7 +11,7 @@ export class JobApplicationService {
   getUserByJob(job_id: any) {
     const params = new HttpParams().set('job_id', job_id);
     return this.http
-      .post<any>(`http://localhost:8000/job/application/getUserByJob`, {
+      .post<any>(`${environment.apiUrl}/job/application/getUserByJob`, {
         job_id: job_id,
       })
       .pipe(

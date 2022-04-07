@@ -141,6 +141,12 @@ h6 {
     background: $background-light-green;
 }
 
+.background-primary {
+    background: $color-primary;
+    color: $text-white;
+}
+
+
 .background-dark {
     background-color: $color-footer;
     color: #fff;

@@ -51,7 +51,7 @@
                   <div class="section-form-content">
                     <form
                       [formGroup]="jobPostForm"
-                      (ngSubmit)="submitData()"
+                   
                       noValidate
                     >
                       <div class="form-group">
@@ -300,10 +300,35 @@
                         <section style="display:flex;flex-wrap:wrap">
                         <div class="parent" *ngFor="let skill of topSkills" style="display:flex;">
                          
-                        <div class="selected-pill my-3"   style="width:fit-content !important">
-                          <span class="btn btn-selected-pill mr-3"
-                            >{{skill.name}}
+                        <div class="selected-pill my-3"    (click)="addSkills(skill.name)"  style="width:fit-content !important">
+                          <button class="btn btn-selected-pill mr-3"
+                          
+                          >{{skill.name}}
+                            <span class="material-icons"> add </span></button
+                          >
+                          <!-- <span class="btn btn-selected-pill mr-3"
+                            >Management
                             <span class="material-icons"> add </span></span
+                          > -->
+                        </div>
+                      </div>
+                      </section>
+                    
+                      </div>
+                      <div class="form-group py-2">
+                        <h5 class="bold">Top Skills Selected</h5>
+                        <!-- <label class="text-color-light"
+                          >This skills helps us curate to the prospective
+                          candidates</label
+                        > -->
+                        <section style="display:flex;flex-wrap:wrap">
+                        <div class="parent" *ngFor="let skill of topSkillsSelected" style="display:flex;">
+                         
+                        <div class="selected-pill my-3"   style="width:fit-content !important">
+                          <button class="btn btn-selected-pill mr-3"
+                          
+                          >{{skill}}
+                           </button
                           >
                           <!-- <span class="btn btn-selected-pill mr-3"
                             >Management
@@ -414,8 +439,9 @@
                           Back
                         </button>
                         <button
-                          type="submit"
                           class="btn btn-primary w-min-250 btn-lg ml-2"
+
+                          (click)="submitData()"
                         >
                           Post Job listing
                         </button>
@@ -437,13 +463,13 @@
                   >
                     Job Listed Sucessfully
                   </h5>
-                  <p class="section-content font-16">
+                  <!-- <p class="section-content font-16">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
                     eget sapien ut erat vestibulum ultrices in vel lorem. Morbi
                     leo lacus. Lorem ipsum dolor sit amet, consectetur
                     adipiscing elit. Nam eget sapien ut erat vestibulum ultrices
                     in vel lorem.
-                  </p>
+                  </p> -->
                   <div class="image-section">
                     <img
                       class=""
@@ -463,7 +489,9 @@
                       type="button"
                       class="btn btn-primary w-min-250 btn-lg ml-2"
                     >
+                    <a href="/dashboard/employer-view-job" style="text-decoration: none;color:#fff">
                       Done
+                    </a>
                     </button>
                   </div>
                 </div>

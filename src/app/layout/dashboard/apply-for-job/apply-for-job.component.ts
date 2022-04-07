@@ -88,6 +88,8 @@ export class ApplyForJobComponent implements OnInit {
   }
 
   getJobDetails() {
+    console.log('getting job from server');
+
     this.jobApply.getJobDetails(this.jobId).subscribe((data) => {
       console.log('Job applied', data);
       if (data.result === 'success') {
@@ -99,7 +101,7 @@ export class ApplyForJobComponent implements OnInit {
     this.SpinnerService.show();
     const json = {};
     this.json = {
-      job_id: this.jobDetail._id,
+      job_id: this.jobDetail?._id,
       candidate_id: this.userId,
       resumeLink:
         'https://rekonnectfileupload.s3.ap-south-1.amazonaws.com/RekonnectAlroyResume%20%286%29.pdf',
