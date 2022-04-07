@@ -124,7 +124,7 @@
 }
 
 .text-primary {
-  color: #15759A !important;
+  color: #15759A;
 }
 
 .text-secondary {
@@ -137,10 +137,6 @@
 
 .text-color-light {
   color: #949597 !important;
-}
-
-.text-danger {
-  color: #F05454 !important;
 }
 
 .text-uppercase {
@@ -446,10 +442,8 @@
 }
 
 .dashboard-section .negative-top-offset {
-  position: absolute;
   top: 205px;
   width: 100%;
-  border-radius: 16px;
 }
 
 .dashboard-section .negative-top-offset.negative-top-offset-bg {
@@ -1640,10 +1634,6 @@ body::-webkit-scrollbar-thumb {
 
 .start-section .section-form-content .form-text > button > span {
   font-size: inherit;
-}
-
-.start-section .section-form-content textarea {
-  border: 1px solid #eeeeee !important;
 }
 
 .start-section .section-footer {
@@ -3015,15 +3005,6 @@ body::-webkit-scrollbar-thumb {
   background: #fce1d1;
 }
 
-.organisation-section .top-content .image-section img {
-  height: 150px;
-  width: 150px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 16px;
-
-}
-
 .organisation-section .top-content .content {
   margin-top: 80px;
 }
@@ -3039,8 +3020,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 .organisation-section .custom-organisation-tab .nav .nav-item .nav-link {
-  font-size: 1rem;
-  text-transform: uppercase;
   color: #0C1A27;
 }
 
@@ -3050,98 +3029,6 @@ body::-webkit-scrollbar-thumb {
   color: #0C1A27;
   font-weight: 700;
   border-radius: 0;
-}
-
-.organisation-section .custom-organisation-tab .expertise-badge .badge-pills .badge {
-  padding: 8px 16px;
-}
-
-.organisation-section .custom-organisation-tab .expertise-badge .badge-pills .badge-primary {
-  background: #cfe3eb;
-}
-
-.organisation-section .custom-organisation-tab .expertise-badge .badge-pills .badge-secondary {
-  background: #fbe0d1;
-}
-
-.organisation-section .custom-organisation-tab .expertise-badge .badge-pills .badge-info {
-  background: #d0e9fc;
-}
-
-.organisation-section .custom-organisation-tab .fluent-badge .badge-pills .badge-primary {
-  background: #cfdde7;
-  border-radius: 8px;
-  padding: 8px 16px;
-}
-
-.organisation-section .custom-organisation-tab .experience-border-card {
-  border-radius: 6px;
-  border: 1px solid #eee;
-  padding: 8px;
-  max-width: 500px;
-  margin-left: 0px;
-}
-
-.organisation-section .custom-organisation-tab .experience-border-card .section-image img {
-  width: 150px;
-  height: auto;
-}
-
-.organisation-section .custom-organisation-tab .experience-border-card .blue-pill {
-  background: rgba(160, 195, 255, 0.1);
-  border: 1px solid #15759a;
-  border-radius: 4px;
-  padding: 2px 4px;
-  max-width: 60px;
-  margin-bottom: 10px;
-  font-size: 0.6rem;
-  text-align: center;
-}
-
-.organisation-section .custom-organisation-tab .social-pill {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background: #e0e7ec;
-  border-radius: 4px;
-  padding: 8px 16px;
-  max-width: 150px;
-}
-
-.organisation-section .custom-organisation-tab .social-pill img {
-  width: 16px;
-  height: auto;
-  margin-right: 6px;
-}
-
-.organisation-section .custom-organisation-tab .background-card {
-  background: rgba(179, 206, 226, 0.2);
-  border-radius: 16px;
-  padding: 24px;
-}
-
-.organisation-section .custom-organisation-tab .left-content-side {
-  padding-bottom: 16px;
-}
-
-.organisation-section .custom-organisation-tab .left-content-side button {
-  border-radius: 4px;
-  padding: 6px 16px;
-}
-
-@media (max-width: 768px) {
-  .organisation-section .custom-organisation-tab .start-section {
-    padding: 0 !important;
-  }
-}
-
-@media (max-width: 576px) {
-  .organisation-section .custom-organisation-tab .start-section {
-    padding: 0 !important;
-  }
 }
 
 .organisation-section .team-section .user-profile .image-section {
@@ -3299,81 +3186,6 @@ body::-webkit-scrollbar-thumb {
   height: 40px;
 }
 
-.availability-modal .modal-body .checkbox {
-  min-width: 200px;
-}
-
-@media (max-width: 576px) {
-  .availability-modal .modal-body .list-group-item > .d-flex {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: start !important;
-        -ms-flex-align: start !important;
-            align-items: flex-start !important;
-    position: relative;
-  }
-  .availability-modal .modal-body .list-group-item > .d-flex .d-flex {
-    margin: 0 !important;
-  }
-  .availability-modal .modal-body .list-group-item > .d-flex .action-buttons {
-    position: absolute;
-    right: -9px;
-    top: -12px;
-  }
-}
-
-@media (max-width: 576px) {
-  .side-content-section {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: start !important;
-        -ms-flex-align: start !important;
-            align-items: flex-start !important;
-    margin: 8px 0;
-  }
-}
-
-.charge-modal .modal-body .banner {
-  background: rgba(241, 106, 27, 0.09);
-  border-radius: 16px;
-  padding: 8px 24px;
-  margin-bottom: 24px;
-}
-
-.charge-modal .modal-body .banner h4 {
-  color: #ff6400;
-}
-
-.expert-accordian .card {
-  margin-bottom: 24px;
-  border-radius: 16px !important;
-  border: none;
-}
-
-.expert-accordian .card .card-header h2 > button {
-  color: #121212;
-}
-
-.expert-accordian .card .card-body .image-section img {
-  width: 100%;
-  height: 150px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 4px;
-}
-
-.expert-accordian .card .card-body .side-content-section {
-  -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
-}
-
-.review-item .user-profile {
-=======
 .new-landing {
   overflow-x: hidden;
 }
@@ -3402,64 +3214,12 @@ body::-webkit-scrollbar-thumb {
 
 .new-landing .page-fold-image .card-pill {
   position: absolute;
-
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 32px;
-}
-
-.review-item .user-profile img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  margin-right: 16px;
-}
-
-.review-item .btn {
-  border-radius: 6px;
-}
-
-.accordian-guideline .card {
-  margin-bottom: 24px;
-  border-radius: 16px !important;
-  background: #f4f4f4;
-}
-
-.accordian-guideline .card .card-header h2 > button {
-  color: #121212;
-  font-weight: 700;
-}
-
-.write-review-banner {
-  position: relative;
-  background: #fcfcfc;
-  border-radius: 16px;
-  padding: 32px;
-}
-
-@media (max-width: 576px) {
-  .write-review-banner {
-    margin: 0 16px;
-  }
-}
-
-.write-review-banner img {
-  position: absolute;
-  bottom: -51px;
-  right: -36px;
-  width: 200px;
-  height: 200px;
-}
-
-@media (max-width: 576px) {
-  .write-review-banner img {
-=======
   padding: 16px 24px;
   background: #fff;
   border-bottom-left-radius: 16px;
@@ -3519,30 +3279,6 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-.availability-section {
-  padding: 32px;
-}
-
-.availability-section > .price-banner {
-  background: #ecebeb;
-  border-radius: 16px;
-  padding: 24px;
-}
-
-.availability-section .slot-date-pill {
-  border: 1px solid #eee;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border-radius: 16px;
-  padding: 8px;
-  margin-right: 10px;
-  text-align: center;
-  width: 100%;
-}
-
-@media (max-width: 576px) {
-  .availability-section .slot-date-pill {
-=======
 .new-landing .webinar-section .section-content {
   color: #fff;
 }
@@ -3592,59 +3328,6 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-.availability-section .slot-date-pill:hover {
-  border: 1px solid #15759A;
-}
-
-.availability-section .slot-date-pill span {
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  color: #727374;
-}
-
-.availability-section .slot-date-pill h3 {
-  font-weight: 700;
-  margin: 8px 0;
-  font-size: 1rem;
-}
-
-.availability-section .slot-date-pill label {
-  font-size: 0.8rem;
-  color: rgba(22, 128, 5, 0.95);
-}
-
-.availability-section .slot-time-pill {
-  border: 1px solid #eee;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border-radius: 16px;
-  padding: 8px;
-  margin-right: 10px;
-  text-align: center;
-  width: 100%;
-}
-
-@media (max-width: 576px) {
-  .availability-section .slot-time-pill {
-    margin-bottom: 8px;
-  }
-}
-
-.availability-section .slot-time-pill:hover {
-  border: 1px solid #15759A;
-}
-
-.availability-section .slot-time-pill label {
-  font-size: 1rem;
-}
-
-.section-approve-modal {
-  padding: 32px;
-}
-
-@media (max-width: 576px) {
-  .section-approve-modal .start-section {
-    padding: 24px !important;
 .new-landing .custom-service-tab .nav-item .nav-link.active {
   background-color: #15759A;
   color: #fff;
