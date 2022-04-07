@@ -123,7 +123,7 @@
 }
 
 .text-primary {
-  color: #15759A;
+  color: #15759A !important;
 }
 
 .text-secondary {
@@ -136,6 +136,10 @@
 
 .text-color-light {
   color: #949597 !important;
+}
+
+.text-danger {
+  color: #F05454 !important;
 }
 
 .text-uppercase {
