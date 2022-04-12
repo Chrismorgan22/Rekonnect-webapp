@@ -203,7 +203,7 @@ export class PersonalizationComponent implements OnInit {
       state: ['', Validators.required],
       zip_code: ['', Validators.required],
       landmark: ['', Validators.required],
-      description: ['', Validators.required],
+      description: [''],
       experties: [[]],
       // organization_strength: ['', Validators.required]
     });
@@ -700,10 +700,13 @@ export class PersonalizationComponent implements OnInit {
 
     console.log(body);
     console.log(JSON.stringify(body));
+    this.SpinnerService.show();
     this.authService.mentorRegister(body).subscribe((res) => {
       console.log(res);
+      this.SpinnerService.hide();
       if (res.message === 'Mentor registered succesfully')
-        this.router.navigate(['/dashboard/candidate']);
+        this.router.navigate(['/test1']);
+      this._toastrService.success('Registration successfully', 'Success');
     });
   }
   checkEducationStatus(event) {
