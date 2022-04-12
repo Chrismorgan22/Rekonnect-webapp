@@ -70,7 +70,12 @@ export class PersonalizationComponent implements OnInit {
   locationDrp: any = [];
   countryDrp: any = [];
   dropdownList = [];
-  expertiseList = ['motivating', 'heling', 'caring'];
+  expertiseList = [
+    'Accounting',
+    'Information Technology',
+    'Human resources',
+    'Marketing',
+  ];
   cityDrp: any = [];
   technicaldropdownList = [];
   currentCareerDrp: any = [];
