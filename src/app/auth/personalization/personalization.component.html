@@ -29,25 +29,36 @@
                     (ngSubmit)="userRoleFormSubmit('candidateModalCenter','candidateModalCenterupload')" noValidate>
                     <div class="container-fluid d-flex justify-content-center">
                         <div class="row modal-content-section">
-                            <div class="col-md-6 col-sm-12" (click)="submitRole('1')"  (click)="userRoleFormSubmit('candidateModalCenter','candidateModalCenterupload')">
+                            <div style="width:33.3% !important" class="Card" (click)="submitRole('1')"  (click)="userRoleFormSubmit('candidateModalCenter','candidateModalCenterupload')">
                                 <div class="custom-control custom-radio custom--radio" (click)="toggleEmp('no')">
                                     <input class="custom-control-input custom-radio-button" value=1 type="radio"
                                         name="user_role" formControlName="user_role" id="candidate">
                                     <!-- <span class="check"></span> -->
                                     <div class="custom-control-radio-area border-0" for="candidate">
-                                        <img src="../../../assets/images/Connect_as_Candidate.png" />
+                                        <img src="../../../assets/images/Connect_as_Candidate.png"  style="width:100%;object-fit: contain;"/>
                                         <label class="text-center">Konnect as Candidate</label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-12" (click)="submitRole('2')" (click)="userRoleFormSubmit('candidateModalCenter','candidateModalCenterupload')">
+                            <div style="width:33.3% !important" class="Card" (click)="submitRole('2')" (click)="userRoleFormSubmit('candidateModalCenter','candidateModalCenterupload')">
                                 <div class="custom-control custom-radio custom--radio" (click)="toggleEmp('yes')">
                                     <input class="custom-control-input custom-radio-button" value=2 type="radio"
                                         name="user_role" formControlName="user_role" id="employer">
                                     <!-- <span class="check"></span> -->
                                     <div class="custom-control-radio-area border-0" for="employer">
-                                        <img src="../../../assets/images/Connect_as_an_Employer.png" />
+                                        <img src="../../../assets/images/Connect_as_an_Employer.png" style="width:100%;object-fit: contain;"/>
                                         <label class="text-center">Konnect as Employer</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="width:33.3% !important" class="Card">
+                                <div class="custom-control custom-radio custom--radio" >
+                                    <input class="custom-control-input custom-radio-button" value=2 type="radio"
+                                        name="user_role" formControlName="user_role" id="employer">
+                                    <!-- <span class="check"></span> -->
+                                    <div class="custom-control-radio-area border-0" for="employer">
+                                        <img src="../../../assets/images/Connect_as_Candidate.png" style="width:100%;object-fit: contain;" />
+                                        <label class="text-center">Konnect as Mentor</label>
                                     </div>
                                 </div>
                             </div>
