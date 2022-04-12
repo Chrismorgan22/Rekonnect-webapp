@@ -1937,6 +1937,15 @@ body::-webkit-scrollbar-thumb {
   height: 520px;
 }
 
+.webinar-section .pos-r {
+  position: relative;
+}
+
+.webinar-section .pos-a.image-offset {
+  position: absolute;
+  right: -40px;
+}
+
 @media (max-width: 768px) {
   .onboarding-section .onboard-card {
     text-align: center;
@@ -3298,12 +3307,23 @@ body::-webkit-scrollbar-thumb {
   height: auto;
 }
 
-.new-landing .webinar-section .separate-img {
-  width: 60px !important;
+.new-landing .webinar-section .webinar-content-section {
+  -ms-grid-columns: 0.05fr 1fr;
+      grid-template-columns: 0.05fr 1fr;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  display: -ms-grid !important;
+  display: grid !important;
+  grid-gap: 20px;
+}
+
+.new-landing .webinar-section .webinar-content-section .image-sectionn {
+  width: 60px;
 }
 
 .new-landing .webinar-section .webinar-content-section .image-sectionn > img {
-  width: 90px;
+  width: 100%;
 }
 
 .new-landing .custom-service-tab .nav-item .nav-pills {
@@ -3328,10 +3348,46 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
+@media (max-width: 768px) {
+  .new-landing .custom-service-tab .nav-item .nav-link > label {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .new-landing .custom-service-tab .nav-item .nav-link > label {
+    display: none;
+  }
+}
+
 .new-landing .custom-service-tab .nav-item .nav-link.active {
   background-color: #15759A;
   color: #fff;
   font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .new-landing .custom-service-tab .nav-item .nav-link.active {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .new-landing .custom-service-tab .nav-item .nav-link.active > label {
+    display: block;
+  }
+}
+
+@media (max-width: 576px) {
+  .new-landing .custom-service-tab .nav-item .nav-link.active > label {
+    display: none;
+  }
+}
+
+.new-landing .service-tab .img-fluid {
+  max-height: 408px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 @media (max-width: 768px) {
@@ -3345,7 +3401,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .new-landing .job-listing-section .nav-pills .nav-link {
-  border: 1px solid #8A92A6;
+  border: 1px solid #8a92a6;
   margin-bottom: 8px;
   color: #727374;
   border-radius: 4px;
