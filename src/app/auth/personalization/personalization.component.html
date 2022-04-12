@@ -51,7 +51,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div style="width:33.3% !important" class="Card">
+                            <div style="width:33.3% !important" class="Card" (click)="submitRole('3')" (click)="userRoleFormSubmit('candidateModalCenter','mentorCenterupload')">
                                 <div class="custom-control custom-radio custom--radio" >
                                     <input class="custom-control-input custom-radio-button" value=2 type="radio"
                                         name="user_role" formControlName="user_role" id="employer">
@@ -1325,4 +1325,127 @@
 
         </div>
     </div>
+</div>
+
+
+
+<!-- mentor modal -->
+<div class="modal fade" id="mentorCenterupload" tabindex="-2" role="dialog"
+    aria-labelledby="candidateModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog custom-modal modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="header-background">
+                    <!-- <img class="" src="../../../assets/images/header-background.png" /> -->
+                </div>
+                <div class="text-center pt-5">
+                    <h5 class="modal-title section-main-title mb-3" id="exampleModalLongTitle">Lets get the basic set
+                    </h5>
+                    <p class="section-content font-16"> We are glad you are here.
+                         We need a few more details to customise your ReKonnect experience for you. Please provide the requested information and get set to ReKonnect.</p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form class="section-form-content" [formGroup]="addressForm"
+                    (ngSubmit)="addressFormSubmit('candidateModalCenterupload','candidateModalEducation')" noValidate>
+                    <div class="container-fluid start-section  w-100">
+                        <div class="section-form-content">
+                            <div class="input-group mb-3">
+                                <div class="form-row form-group py-4">
+                                    <div class="col">
+                                        <img *ngIf="profileImagUrl" [src]="profileImagUrl" width="100px" height="100px">
+                                    </div>
+                                    <div class="col" *ngIf="!isEmp">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                                (change)="uploadFile($event.target.files,'profile_url')">
+                                            <label class="custom-file-label" for="inputGroupFile01">Upload Image</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <label class="font-12 my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label> -->
+                            <div class="form-group">
+                                <input type="text" aria-describedby="streetaddress" placeholder="Street Address"
+                                    size="lg" class="form-control" formControlName="street" *ngIf="!isEmp" />
+                                    <input type="text" aria-describedby="streetaddress" placeholder="Company Location"
+                                    size="lg" class="form-control" formControlName="street" *ngIf="isEmp"/>
+                                <div *ngIf="addressSubmit && userAddress.street.errors" class="invalid-feedback"
+                                    style="display:block;">
+                                    <div *ngIf="userAddress.street.errors.required">Street is required</div>
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col">
+                                    <!-- <select formControlName="state" class="form-control">
+                                        <option value="" selected disabled>State</option>
+                                        <option *ngFor="let state of stateDrp" value="{{state | json}}">{{state.name}}
+                                        </option>
+                                    </select> -->
+                                    <ng-multiselect-dropdown [placeholder]="'State'" [settings]="dropdownSettings1"
+                                        [data]="stateDrp" formControlName="state" (onSelect)="onItemSelect($event)"
+                                        (onSelectAll)="onSelectAll($event)">
+                                    </ng-multiselect-dropdown>
+                                    <!-- <input type="text" class="form-control" placeholder="State"
+                                        formControlName="state" /> -->
+                                    <div *ngIf="addressSubmit && userAddress.state.errors" class="invalid-feedback"
+                                        style="display:block;">
+                                        <div *ngIf="userAddress.state.errors.required">State is required</div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <input type="text" placeholder="Zip Code" class="form-control"
+                                        formControlName="zip_code" (keyup)="validatePin($event)"/>
+                                    <div *ngIf="addressSubmit && userAddress.zip_code.errors" class="invalid-feedback"
+                                        style="display:block;">
+                                        <div *ngIf="userAddress.zip_code.errors.required">Zip Code is required</div>
+                                        
+                                    </div>
+                                    <span *ngIf="isPinError" style="color:red">Zip Code should be in number</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" size="lg" placeholder="Landmark"
+                                    formControlName="landmark">
+                                <div *ngIf="addressSubmit && userAddress.landmark.errors" class="invalid-feedback"
+                                    style="display:block;">
+                                    <div *ngIf="userAddress.landmark.errors.required">Landmark is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea type="text" class="form-control" size="lg" placeholder="Description"
+                                    formControlName="description">
+                                    </textarea>
+                                    <ng-multiselect-dropdown [placeholder]="'Expertise'"
+                                    [settings]="dropdownSettings" [data]="expertiseList" formControlName="experties"
+                                    (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                                </ng-multiselect-dropdown>
+                                <!-- <div *ngIf="addressSubmit && userAddress.description.errors" class="invalid-feedback"
+                                    style="display:block;">
+                                    <div *ngIf="userAddress.description.errors.required">Description is required</div>
+                                </div> -->
+                            </div>
+
+                            <!-- <div class="form-group">
+                                <input type="text" class="form-control" size="lg" placeholder="Organisational Strength"
+                                    formControlName="organization_strength">
+                                <div *ngIf="addressSubmit && userAddress.organization_strength.errors"
+                                    class="invalid-feedback" style="display:block;">
+                                    <div *ngIf="userAddress.organization_strength.errors.required">Organization Strength
+                                        is required</div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            (click)="moveToPreviousModal('mentorCenterupload','candidateModalCenter')">Back</button>
+                        <button  class="btn btn-primary" (click)="handleMentor()">Proceed</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  
 </div>

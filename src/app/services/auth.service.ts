@@ -23,6 +23,15 @@ export class AuthService {
         })
       );
   }
+  mentorRegister(body) {
+    return this._httpClient
+      .post<any>(`${environment.apiUrl}/mentor/registration`, body)
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
   userRegister(body) {
     return this._httpClient
       .post<any>(`${environment.apiUrl}/user/registration`, body)

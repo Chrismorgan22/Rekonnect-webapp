@@ -70,6 +70,7 @@ export class PersonalizationComponent implements OnInit {
   locationDrp: any = [];
   countryDrp: any = [];
   dropdownList = [];
+  expertiseList = ['motivating', 'heling', 'caring'];
   cityDrp: any = [];
   technicaldropdownList = [];
   currentCareerDrp: any = [];
@@ -202,6 +203,8 @@ export class PersonalizationComponent implements OnInit {
       state: ['', Validators.required],
       zip_code: ['', Validators.required],
       landmark: ['', Validators.required],
+      description: ['', Validators.required],
+      experties: [[]],
       // organization_strength: ['', Validators.required]
     });
     this.experienceTypeForm = this.formBuilder.group({
@@ -677,6 +680,31 @@ export class PersonalizationComponent implements OnInit {
     } else {
       return false;
     }
+  }
+  handleMentor() {
+    const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];
+    console.log(this.addressForm);
+    const body = {
+      user_id: localData._id,
+      user_profile: this.profileImagUrl,
+      expertise: this.addressForm.value.experties,
+      address_details: {
+        street: this.addressForm.value.street,
+        zip_code: this.addressForm.value.zip_code,
+        state: this.addressForm.value.state[0],
+
+        landmark: this.addressForm.value.landmark,
+      },
+      description: this.addressForm.value.description,
+    };
+
+    console.log(body);
+    console.log(JSON.stringify(body));
+    this.authService.mentorRegister(body).subscribe((res) => {
+      console.log(res);
+      if (res.message === 'Mentor registered succesfully')
+        this.router.navigate(['/dashboard/candidate']);
+    });
   }
   checkEducationStatus(event) {
     if (!event.target.checked) {
