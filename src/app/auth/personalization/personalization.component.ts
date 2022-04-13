@@ -214,6 +214,9 @@ export class PersonalizationComponent implements OnInit {
       languages: [[]],
       company: [''],
       designation: [''],
+      linkedin: [''],
+      instagram: [''],
+      facebook: [''],
       // organization_strength: ['', Validators.required]
     });
     this.experienceTypeForm = this.formBuilder.group({
@@ -404,7 +407,7 @@ export class PersonalizationComponent implements OnInit {
       console.log(data);
       // if (data.data[0].temp_data.candidateModalCenter.user_role === 3) {
       //   this.router.navigate(['/test1']);
-      //   return;
+      //   // return;
       // }
       if (data?.data[0].temp_data !== undefined) {
         this.tempFormData = data.data[0].temp_data;
@@ -709,6 +712,14 @@ export class PersonalizationComponent implements OnInit {
         landmark: this.addressForm.value.landmark,
       },
       description: this.addressForm.value.description,
+      designation: this.addressForm.value.designation,
+      company: this.addressForm.value.company,
+      languages: this.addressForm.value.languages,
+      socials: {
+        linkedin: this.addressForm.value.linkedin,
+        instagram: this.addressForm.value.instagram,
+        facebook: this.addressForm.value.facebook,
+      },
     };
 
     console.log(body);
@@ -718,8 +729,8 @@ export class PersonalizationComponent implements OnInit {
       console.log(res);
       this.SpinnerService.hide();
       if (res.message === 'Mentor registered succesfully')
-        window.location.replace('/test1');
-      this._toastrService.success('Registration successfully', 'Success');
+        // window.location.replace('/test1');
+        this._toastrService.success('Registration successfully', 'Success');
     });
   }
   checkEducationStatus(event) {
