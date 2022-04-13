@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JobService } from 'src/app/services/job.service';
 import * as AOS from 'aos';
 declare var $: any;
 @Component({
@@ -8,8 +9,9 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit {
   values1: string[];
+  entireJobDetails: any[];
   testimonialArray: any = [];
-  constructor() {}
+  constructor(private _jobService: JobService) {}
 
   check() {
     setTimeout(() => {
@@ -23,6 +25,7 @@ export class HomeComponent implements OnInit {
     }, 1000);
   }
   ngOnInit(): void {
+    this.fetchJobs();
     this.check();
     AOS.init();
     this.getTestimonialArrayData();
@@ -109,6 +112,19 @@ export class HomeComponent implements OnInit {
       },
     ];
     this.testimonialArray = dataArray;
+  }
+  fetchJobs() {
+    this._jobService.getAllJobs().subscribe((res) => {
+      console.log(res);
+      this.entireJobDetails = res;
+    });
+  }
+  applyJob(jobId: any) {
+    if (sessionStorage.getItem('_ud') == null) {
+      alert('You are not logged in,Please Login in to apply for a job');
+      return;
+    }
+    window.location.replace(`/dashboard/apply-for-job/${jobId}`);
   }
   changeImage(event) {
     console.log(event.page);
