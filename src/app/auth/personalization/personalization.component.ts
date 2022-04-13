@@ -405,50 +405,50 @@ export class PersonalizationComponent implements OnInit {
     console.log(localData);
     this.authService.getTempUser(body).subscribe((data) => {
       console.log(data);
-      // if (data.data[0].temp_data.candidateModalCenter.user_role === 3) {
-      //   this.router.navigate(['/test1']);
-      //   // return;
-      // }
-      if (data?.data[0].temp_data !== undefined) {
-        this.tempFormData = data.data[0].temp_data;
-        console.log(this.tempFormData);
-        // $('#candidateModalCenter').modal('hide')
-        const objectKeys = Object.keys(data.data[0].temp_data);
-        console.log(objectKeys);
-        let currentFormId;
-        let openFormId;
-        currentFormId = objectKeys[objectKeys.length - 1];
-        console.log(this.userRoleForm.controls.user_role.value);
-        if (
-          this.tempFormData['candidateModalCenter']?.user_role === '1' ||
-          this.tempFormData['candidateModalCenter']?.user_role === 1 ||
-          this.userRoleForm.controls.user_role.value === '1' ||
-          this.userRoleForm.controls.user_role.value === 1
-        ) {
+      if (data.data[0].temp_data?.candidateModalCenter?.user_role === 3) {
+        window.location.replace('/test1');
+      } else {
+        if (data?.data[0].temp_data !== undefined) {
+          this.tempFormData = data.data[0].temp_data;
+          console.log(this.tempFormData);
+          // $('#candidateModalCenter').modal('hide')
+          const objectKeys = Object.keys(data.data[0].temp_data);
+          console.log(objectKeys);
+          let currentFormId;
+          let openFormId;
+          currentFormId = objectKeys[objectKeys.length - 1];
+          console.log(this.userRoleForm.controls.user_role.value);
           if (
-            objectKeys.length !== 7 &&
-            localData.register_complete === false
+            this.tempFormData['candidateModalCenter']?.user_role === '1' ||
+            this.tempFormData['candidateModalCenter']?.user_role === 1 ||
+            this.userRoleForm.controls.user_role.value === '1' ||
+            this.userRoleForm.controls.user_role.value === 1
           ) {
-            openFormId = this.formIdArray[objectKeys.length];
-            this.setUpFormData();
-            this.moveToNextModal(currentFormId, openFormId);
+            if (
+              objectKeys.length !== 7 &&
+              localData.register_complete === false
+            ) {
+              openFormId = this.formIdArray[objectKeys.length];
+              this.setUpFormData();
+              this.moveToNextModal(currentFormId, openFormId);
+            } else {
+              this.router.navigate(['/dashboard/candidate']);
+            }
           } else {
-            this.router.navigate(['/dashboard/candidate']);
+            if (
+              objectKeys.length !== 2 &&
+              localData.register_complete === false
+            ) {
+              openFormId = this.employerIdArray[objectKeys.length];
+              this.setUpEmployerFormData();
+              this.moveToNextModal(currentFormId, openFormId);
+            } else {
+              this.router.navigate(['/dashboard/employer']);
+            }
           }
         } else {
-          if (
-            objectKeys.length !== 2 &&
-            localData.register_complete === false
-          ) {
-            openFormId = this.employerIdArray[objectKeys.length];
-            this.setUpEmployerFormData();
-            this.moveToNextModal(currentFormId, openFormId);
-          } else {
-            this.router.navigate(['/dashboard/employer']);
-          }
+          $('#candidateModalCenter').modal('show');
         }
-      } else {
-        $('#candidateModalCenter').modal('show');
       }
     });
   }
