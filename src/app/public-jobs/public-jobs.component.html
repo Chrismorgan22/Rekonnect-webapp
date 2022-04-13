@@ -1,1 +1,70 @@
-<p>public-jobs works!</p>
+<div class="  mt-3" style="width:100% !important">
+    <div class="card job-post-card">
+        <div class="card-header">
+            <h6>Recent Job Posts</h6>
+        </div>
+        <div class="card-body">
+            <!-- <div class="job-card">
+                <div class="job-header d-flex align-items-center">
+                    <div class="d-flex align-items-center">
+                        <div class="user-profile">
+                            <img class="" src="../../../assets/images/user-profile-placeholder.png" />
+                        </div>
+                        <div class="user-main-content">
+                            <p class="d-flex m-0 align-items-center"><label
+                                    class="font-bold"><span>Posted By </span> Sharman Singh</label>
+                                <span class="dot"></span>
+                                <label>3 hours ago</label>
+                            </p>
+                            <p class="d-flex m-0"><label class="mr-3"><span
+                                        class="material-icons">work</span> Full Time</label><label
+                                    class="mr-3"><span class="material-icons">location_on</span> Mumbai,
+                                    India</label> </p>
+                        </div>
+                    </div>
+                    <div class="user-action-content">
+                        <a><span class="material-icons">share</span></a>
+                        <button class="btn btn-primary btn-sm" size="small" data-toggle="modal"
+                            data-target="#applyModal">Apply for job</button>
+                        <button class="btn btn-secondary btn-sm" size="small">View job</button>
+                    </div>
+                </div>
+                <div class="job-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget sapien ut erat
+                        vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel
+                        lorem.</p>
+                </div>
+            </div> -->
+            <div class="job-card" *ngFor="let job of entireJobDetails">
+                <div class="job-header d-flex align-items-center" style="width:100%;justify-content:space-between">
+                    <div class="d-flex align-items-center">
+                        <div class="user-profile">
+                            <img class="" [src]="job.company_logo" />
+                        </div>
+                        <div class="user-main-content">
+                            <p class="d-flex m-0 align-items-center"><label
+                                    class="font-bold"><span>Posted By </span>  {{job.first_name}} {{job.last_name}}</label>
+                                <span class="dot"></span>
+                                <label>{{job.created_at}}</label>
+                            </p>
+                            <p class="d-flex m-0"><label class="mr-3"><span
+                                        class="material-icons">work</span> {{job.job_category}}</label><label
+                                    class="mr-3"><span class="material-icons">location_on</span> {{job.city}}</label> </p>
+                        </div>
+                    </div>
+                    <div class="user-action-content" style="width:16%;display: flex;align-items: center;justify-content:space-around;">
+                        <a><span class="material-icons">share</span></a>
+                        <button class="btn btn-primary btn-sm" size="small" data-toggle="modal"
+                        (click)='applyJob(job._id)'>Apply for job</button>
+                        <button class="btn btn-secondary btn-sm" size="small">View job</button>
+                    </div>
+                </div>
+                <div class="job-content" style="margin-bottom:30px">
+                    <p>{{job.job_description}}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
