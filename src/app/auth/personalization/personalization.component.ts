@@ -398,6 +398,10 @@ export class PersonalizationComponent implements OnInit {
     console.log(localData);
     this.authService.getTempUser(body).subscribe((data) => {
       console.log(data);
+      if (data.data[0].temp_data.candidateModalCenter.user_role === 3) {
+        this.router.navigate(['/test1']);
+        return;
+      }
       if (data?.data[0].temp_data !== undefined) {
         this.tempFormData = data.data[0].temp_data;
         console.log(this.tempFormData);
