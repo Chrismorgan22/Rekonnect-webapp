@@ -44,6 +44,7 @@ export class PersonalizationComponent implements OnInit {
   setCurrentCarrer: boolean = false;
   ischange: boolean = false;
   companyData: string[] = ['Goa', 'Mumbai', 'Pune'];
+  lanArr: string[] = ['Hindi', 'English', 'Marathi'];
   lastFewBitsDetailForm: FormGroup;
   lastFewBitsJoinDetailForm: FormGroup;
   onBoardDetailForm: FormGroup;
@@ -210,6 +211,9 @@ export class PersonalizationComponent implements OnInit {
       landmark: ['', Validators.required],
       description: [''],
       experties: [[]],
+      languages: [[]],
+      company: [''],
+      designation: [''],
       // organization_strength: ['', Validators.required]
     });
     this.experienceTypeForm = this.formBuilder.group({
@@ -398,10 +402,10 @@ export class PersonalizationComponent implements OnInit {
     console.log(localData);
     this.authService.getTempUser(body).subscribe((data) => {
       console.log(data);
-      if (data.data[0].temp_data.candidateModalCenter.user_role === 3) {
-        this.router.navigate(['/test1']);
-        return;
-      }
+      // if (data.data[0].temp_data.candidateModalCenter.user_role === 3) {
+      //   this.router.navigate(['/test1']);
+      //   return;
+      // }
       if (data?.data[0].temp_data !== undefined) {
         this.tempFormData = data.data[0].temp_data;
         console.log(this.tempFormData);

@@ -1417,10 +1417,33 @@
                                 <textarea type="text" class="form-control" style="margin-bottom:15px" size="lg" placeholder="Description"
                                     formControlName="description">
                                     </textarea>
-                                    <ng-multiselect-dropdown [placeholder]="'Expertise'"
+                                    <input type="text" class="form-control" size="lg" placeholder="Company Name"
+                                formControlName="company">
+                                <input type="text" class="form-control" size="lg" placeholder="designation"  style="margin-top:10px;margin-bottom:10px;"
+                                formControlName="designation">
+                               
+                                <div style="height:100px;display:flex;flex-direction:column;justify-content:space-around">
+                                    <ng-multiselect-dropdown [placeholder]="'Expertise'"  style="margin-top:10px"
                                     [settings]="dropdownSettings" [data]="expertiseList" formControlName="experties"
                                     (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
                                 </ng-multiselect-dropdown>
+                                    <ng-multiselect-dropdown [placeholder]="'Languages'"  style="margin-top:10px"
+                                    [settings]="dropdownSettings" [data]="lanArr" formControlName="experties"
+                                    (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                                </ng-multiselect-dropdown>
+                            </div>
+                                <div style="margin-top:10px">
+                                    <h3>Enter your Socials</h3>
+                                                                    <div style="display: flex;align-items: center;justify-content:space-between;width:100%;">
+                                                                        <input type="text" class="form-control" style="width:30%" size="lg" placeholder="LinkedIn"
+                                                                        formControlName="linkedin">
+                                                                        <input type="text" class="form-control" style="width:30%" size="lg" placeholder="Instagram"
+                                                                        formControlName="instagram">
+                                                                        <input type="text" class="form-control" style="width:30%" size="lg" placeholder="Facebook"
+                                                                        formControlName="facebook">
+                                                                    </div>
+                                                                </div>
+
                                 <!-- <div *ngIf="addressSubmit && userAddress.description.errors" class="invalid-feedback"
                                     style="display:block;">
                                     <div *ngIf="userAddress.description.errors.required">Description is required</div>
