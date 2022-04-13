@@ -729,8 +729,8 @@ export class PersonalizationComponent implements OnInit {
       console.log(res);
       this.SpinnerService.hide();
       if (res.message === 'Mentor registered succesfully')
-        // window.location.replace('/test1');
-        this._toastrService.success('Registration successfully', 'Success');
+        window.location.replace('/test1');
+      this._toastrService.success('Registration successfully', 'Success');
     });
   }
   checkEducationStatus(event) {
