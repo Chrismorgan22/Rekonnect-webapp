@@ -15,8 +15,9 @@ import { PaymentComponent } from './payment/payment.component';
 import { Test1Component } from './test1/test1.component';
 import { Test2Component } from './test2/test2.component';
 import { NewhomeComponent } from './newhome/newhome.component';
+import { PublicJobsComponent } from './public-jobs/public-jobs.component';
 @NgModule({
-  declarations: [AppComponent, PaymentComponent, Test1Component, Test2Component, NewhomeComponent],
+  declarations: [AppComponent, PaymentComponent, Test1Component, Test2Component, NewhomeComponent, PublicJobsComponent],
   imports: [
     NgxPaginationModule,
     BrowserModule,

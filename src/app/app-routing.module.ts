@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SignInComponent } from './auth/Admin/sign-in/sign-in.component';
 import { NavscreenComponent } from './layout/navscreen/navscreen.component';
 import { ApplicantListComponent } from './layout/applicant-list/applicant-list.component';
-
+import { PublicJobsComponent } from './public-jobs/public-jobs.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 import { PaymentComponent } from './payment/payment.component';
 import { Test1Component } from './test1/test1.component';
@@ -50,15 +50,16 @@ const routes: Routes = [
     path: 'test1',
     component: Test1Component,
   },
+  { path: 'alljobs', component: PublicJobsComponent },
   {
     path: 'test2',
     component: Test2Component,
   },
 
   {
-    path:'newhome',
-    component:NewhomeComponent
-  }
+    path: 'newhome',
+    component: NewhomeComponent,
+  },
   // {
   //   path: '',
   //   redirectTo: '/',
