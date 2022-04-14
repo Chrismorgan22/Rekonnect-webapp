@@ -24,4 +24,7 @@ export class PublicJobsComponent implements OnInit {
     }
     window.location.replace(`/dashboard/apply-for-job/${jobId}`);
   }
+  viewJob(jobId: string) {
+    window.location.replace(`/job/public/${jobId}`);
+  }
 }
