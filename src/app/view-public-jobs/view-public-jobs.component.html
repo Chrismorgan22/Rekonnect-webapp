@@ -12,12 +12,12 @@
                         <div class="top-content">
                             <div class="section-sub-small-title my-4">View job</div>
                            
-                            <div style="width:100%"> <h1>{{jobDetails.job_title}}({{jobDetails.job_category}})</h1> <h5 style="font-size:17px;color:rgb(115, 113, 113)">{{jobDetails.city}},{{jobDetails.country}}   <span style="margin-left:10px">2 hours ago</span></h5></div>
+                            <div style="width:100%"> <h1>{{jobDetails.job_title}}({{jobDetails.job_category}})</h1> <h5 style="font-size:17px;color:rgb(115, 113, 113)">{{jobDetails.city}},{{jobDetails.country}}   <span style="margin-left:10px"></span></h5></div>
                             <div style="margin-bottom:18px;margin-top:7%">
                                 <h4 style="font-size:17px">posted by</h4>
                                 <div style="display:flex">
-                                    <img  style="border-radius: 50%; width:80px;object-fit:cover;margin-right: 15px; " src="https://media-exp1.licdn.com/dms/image/C4E03AQHU7mHgpd0DnA/profile-displayphoto-shrink_100_100/0/1517060106309?e=1655337600&v=beta&t=OsDQZ0iACigeICZKUDLDDdzJY4EE72tPC2EoIKFEljM" alt="">
-                                    <div><h3 style="margin:unset;font-weight: 500;">Alroy Fernandes</h3> <span>Infotech software pvt</span></div>
+                                    <img  style="border-radius: 20%; width:80px;object-fit:cover;margin-right: 15px; " [src]="companyData.logo" alt="company logo">
+                                    <div><h3 style="margin:unset;font-weight: 500;">{{jobDetails.user_id.first_name}} {{jobDetails.user_id.last_name}}</h3> <span>{{companyData.name}}</span></div>
                                 </div>
                             </div>
                             <p class="text-grey mt-1 mb-4 font-16">{{jobDetails.job_description}}</p>

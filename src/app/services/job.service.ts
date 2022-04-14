@@ -49,11 +49,13 @@ export class JobService {
     );
   }
   getJobDetails(id) {
-    return this.http.get<any>(`${environment.apiUrl}/job/details/` + id).pipe(
-      map((response) => {
-        return response;
-      })
-    );
+    return this.http
+      .get<any>(`${environment.apiUrl}/job/entireDetails/` + id)
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
   }
   getJobAppliedStatus(body) {
     return this.http

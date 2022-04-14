@@ -36,6 +36,7 @@ export class LayoutService {
         })
       );
   }
+
   getUserProfile(userId) {
     const httpOptions = {
       headers: new HttpHeaders().set('token', `${this.userToken}`),
