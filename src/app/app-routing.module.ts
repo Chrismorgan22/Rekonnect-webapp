@@ -7,6 +7,7 @@ import { ApplicantListComponent } from './layout/applicant-list/applicant-list.c
 import { PublicJobsComponent } from './public-jobs/public-jobs.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 import { PaymentComponent } from './payment/payment.component';
+import { ViewPublicJobsComponent } from './view-public-jobs/view-public-jobs.component';
 import { Test1Component } from './test1/test1.component';
 import { Test2Component } from './test2/test2.component';
 import { NewhomeComponent } from './newhome/newhome.component';
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'dashboard/apply-for-job/:id',
     component: ApplyForJobComponent,
+  },
+  {
+    path: 'viewjob/public/:id',
+    component: ViewPublicJobsComponent,
   },
   {
     path: 'admin',
