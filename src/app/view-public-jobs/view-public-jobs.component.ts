@@ -14,6 +14,7 @@ export class ViewPublicJobsComponent implements OnInit {
   ngOnInit(): void {
     this._jobService.getJobDetails(this.jobId).subscribe((data) => {
       console.log(data);
+      this.jobDetails = data.data[0];
     });
   }
 }

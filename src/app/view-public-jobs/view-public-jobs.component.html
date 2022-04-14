@@ -12,7 +12,7 @@
                         <div class="top-content">
                             <div class="section-sub-small-title my-4">View job</div>
                            
-                            <div style="width:100%"> <h1>Full stack developer(remote)</h1> <h5 style="font-size:17px;color:rgb(115, 113, 113)">Bangaluru,Karnataka,India   <span style="margin-left:10px">2 hours ago</span></h5></div>
+                            <div style="width:100%"> <h1>{{jobDetails.job_title}}({{jobDetails.job_category}})</h1> <h5 style="font-size:17px;color:rgb(115, 113, 113)">{{jobDetails.city}},{{jobDetails.country}}   <span style="margin-left:10px">2 hours ago</span></h5></div>
                             <div style="margin-bottom:18px;margin-top:7%">
                                 <h4 style="font-size:17px">posted by</h4>
                                 <div style="display:flex">
@@ -20,7 +20,21 @@
                                     <div><h3 style="margin:unset;font-weight: 500;">Alroy Fernandes</h3> <span>Infotech software pvt</span></div>
                                 </div>
                             </div>
-                            <p class="text-grey mt-1 mb-4 font-16">The Stack: Frontend - React/React Native, TypeScript, and Apollo GraphQL. Backend - Node.js, TypeScript, Apollo GraphQL, AWS and Docker. Databases - DynamoDB as our primary datastore, Redis and Elasticsearch for caching/websockets and search. Operations - Our AWS services are fully managed via AWS CDK, and we use GitLab CI/CD extensively *Roles and job descriptions at our stage are necessarily ambiguous and cover a huge portfolio of responsibilities, so we need someone who thrives in that environment. </p>
+                            <p class="text-grey mt-1 mb-4 font-16">{{jobDetails.job_description}}</p>
+                            <div>
+                                <h4 style="font-size:17px">Salary Range</h4>
+                                <div style="display:flex;width:30%;align-items:center;justify-content:space-between">
+                                    <span> Minimum: {{jobDetails.salary_range.min}}</span>
+                                    <span>Maximum:{{jobDetails.salary_range.max}}</span>
+                                </div>
+                            </div>
+                            <div style="margin-top:30px">
+                                <h4 style="font-size:17px">Experience Required</h4>
+                                <div style="display:flex;width:30%;align-items:center;justify-content:space-between">
+                                    <span> Minimum: {{jobDetails.minimum_experience_required}} years</span>
+                                    <span>Maximum:{{jobDetails.maximum_experience_required}} years</span>
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <button class="btn btn-secondary ">Easy Apply</button>
