@@ -31,7 +31,7 @@ const routes: Routes = [
     component: ApplyForJobComponent,
   },
   {
-    path: 'viewjob/public/:id',
+    path: 'job/public/:id',
     component: ViewPublicJobsComponent,
   },
   {

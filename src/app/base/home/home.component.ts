@@ -126,6 +126,10 @@ export class HomeComponent implements OnInit {
     }
     window.location.replace(`/dashboard/apply-for-job/${jobId}`);
   }
+
+  viewJob(jobId: any) {
+    window.location.replace(`/job/public/${jobId}`);
+  }
   changeImage(event) {
     console.log(event.page);
   }

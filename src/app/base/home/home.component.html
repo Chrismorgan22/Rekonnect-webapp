@@ -272,7 +272,7 @@
                                         -webkit-box-orient: vertical;  
                                         overflow: hidden;">{{job?.job_description}}</p>
                                         <div class="action-footer d-flex">
-                                            <button class="btn btn-secondary"><span class="material-icons">
+                                            <button class="btn btn-secondary" (click)="viewJob(job._id)"><span class="material-icons">
                                                     visibility
                                                 </span></button>
                                             <button class="btn btn-primary" (click)="applyJob(job._id)">Apply For Job</button>
