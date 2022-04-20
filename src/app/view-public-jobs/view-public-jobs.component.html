@@ -41,27 +41,27 @@ style="width:auto;max-height:fit-content;min-height:600px;position:relative; bor
 <div style="display:flex;flex-direction:column;width:100%;margin-top: 10px;" class="form-address">
     <h3 style="align-self:flex-start">Education</h3>
     <div style="width:100%;justify-content:space-between;display:flex;" class="form-address-container">
-       <input type="text" style="border:0.7px solid #888; width:50%;border-radius: 18px;padding:6px;" placeholder="School name">
-       <input type="date" style=" width:23%; padding:6px;"  placeholder="Enter start date"/>
+       <input type="text" (change)="handleEducation($event,'school_name')" style="border:0.7px solid #888; width:50%;border-radius: 18px;padding:6px;" placeholder="School name">
+       <input type="date" (change)="handleEducation($event,'start_date')" style=" width:23%; padding:6px;"  placeholder="Enter start date"/>
 
-    <input type="date" style=" width:23%;padding:6px;"  placeholder="Enter end date"/>
+    <input type="date" (change)="handleEducation($event,'end_date')" style=" width:23%;padding:6px;"  placeholder="Enter end date"/>
 </div>
-<input type="text" style="border:0.7px solid #888; width:58%;border-radius: 18px;padding:6px;margin-top:10px"  placeholder="Enter Description"/>
+<input type="text" (change)="handleEducation($event,'description')" style="border:0.7px solid #888; width:58%;border-radius: 18px;padding:6px;margin-top:10px"  placeholder="Enter Description"/>
 
 </div>
 <div style="display:flex;flex-direction:column;width:100%;margin-top: 10px;margin-bottom: 10px" class="form-address">
     <h3 style="align-self:flex-start">Skills</h3>
     <div style="display:flex;align-items:center;justify-content:space-between">
     <ng-multiselect-dropdown style="width:31%" [placeholder]="'Soft Skills'"
-                                    [settings]="dropdownSettings1" [data]="dropdownList" formControlName="soft_skills"
+                                    [settings]="dropdownSettings1" [data]="dropdownList"
                                     (onSelect)="onItemSelect($event)">
                                 </ng-multiselect-dropdown>
                                 <ng-multiselect-dropdown style="width:31%"  [placeholder]="'Behavioural Skills'"
-                                [settings]="dropdownSettings1" [data]="dropdownList" formControlName="soft_skills"
+                                [settings]="dropdownSettings1" [data]="dropdownList"
                                 (onSelect)="onItemSelect($event)">
                             </ng-multiselect-dropdown>
                             <ng-multiselect-dropdown style="width:31%"  [placeholder]="'Technical Skills'"
-                            [settings]="dropdownSettings1" [data]="dropdownList" formControlName="soft_skills"
+                            [settings]="dropdownSettings1" [data]="dropdownList"
                             (onSelect)="onItemSelect($event)">
                         </ng-multiselect-dropdown>
                     </div>

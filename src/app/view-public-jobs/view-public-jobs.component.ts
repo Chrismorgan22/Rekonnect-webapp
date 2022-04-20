@@ -131,4 +131,13 @@ export class ViewPublicJobsComponent implements OnInit {
     this.json2.address_details[type] = (<HTMLInputElement>event.target).value;
     console.log(this.json2.address_details);
   }
+  handleEducation(event: any, type: string): void {
+    console.log(<HTMLInputElement>event.target.value);
+
+    this.json2.education_data.education_type = 'Educated';
+    this.json2.education_data.education_details[0][type] = (<HTMLInputElement>(
+      event.target
+    )).value;
+    console.log(this.json2.education_data);
+  }
 }
