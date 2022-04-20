@@ -1,0 +1,19 @@
+.applicationsModal {
+    .container {
+        .form-address {
+            &-container {
+                ng-multiselect-dropdown {
+                    .multiselect-dropdown {
+                        div {
+                            .dropdown-btn {
+                                .selected-item {
+                                    max-width: unset;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

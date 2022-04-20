@@ -7,6 +7,8 @@ import { BaseModule } from './base/base.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,8 +20,18 @@ import { NewhomeComponent } from './newhome/newhome.component';
 import { PublicJobsComponent } from './public-jobs/public-jobs.component';
 import { ViewPublicJobsComponent } from './view-public-jobs/view-public-jobs.component';
 @NgModule({
-  declarations: [AppComponent, PaymentComponent, Test1Component, Test2Component, NewhomeComponent, PublicJobsComponent, ViewPublicJobsComponent],
+  declarations: [
+    AppComponent,
+    PaymentComponent,
+    Test1Component,
+    Test2Component,
+    NewhomeComponent,
+    PublicJobsComponent,
+    ViewPublicJobsComponent,
+  ],
   imports: [
+    NgMultiSelectDropDownModule,
+
     NgxPaginationModule,
     BrowserModule,
     HttpClientModule,
