@@ -25,6 +25,41 @@ export class ViewPublicJobsComponent implements OnInit {
     phone: '8904344828',
     password: '',
   };
+  json2 = {
+    user_id: '',
+    address_details: {
+      street: '',
+      zip_code: '',
+      state: {
+        id: '',
+        name: '',
+      },
+    },
+    education_data: {
+      education_type: '',
+      education_details: [
+        {
+          school_name: '',
+          start_date: '',
+          end_date: '',
+          description: '',
+        },
+      ],
+    },
+    experience_data: {
+      experience_type: '',
+      experience_details: [
+        {
+          company: '',
+          start_date: '',
+          end_date: '',
+          job_description: '',
+        },
+      ],
+    },
+    soft_skills: [{ id: '', name: '' }],
+    technical_skills: [{ id: '', name: '' }],
+  };
   dropdownList = [];
   stateDrop: any[];
   dropdownSettings1 = {
@@ -84,7 +119,16 @@ export class ViewPublicJobsComponent implements OnInit {
 
       this._authService.userRegister(this.json).subscribe((res) => {
         console.log(res);
+        this.json2.user_id = res.data._id;
       });
     }
+  }
+  handleAddress(event: any, type: string): void {
+    if (type == 'state') {
+      this.json2.address_details[type] = event;
+      return;
+    }
+    this.json2.address_details[type] = (<HTMLInputElement>event.target).value;
+    console.log(this.json2.address_details);
   }
 }

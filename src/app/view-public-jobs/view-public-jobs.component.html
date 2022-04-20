@@ -19,12 +19,12 @@ style="width:auto;max-height:fit-content;min-height:600px;position:relative; bor
     <h3 style="align-self:flex-start">Address</h3>
     <div style="width:100%;justify-content:space-between;display:flex;" class="form-address-container">
         <ng-multiselect-dropdown [placeholder]="'State'" [settings]="dropdownSettings1" style="width:60%"
-        [data]="stateDrop"  (onSelect)="onItemSelect($event)"
+        [data]="stateDrop"  (onSelect)="handleAddress($event,'state')"
         >
         </ng-multiselect-dropdown>
-    <input type="number" style="border:0.7px solid #888; width:37%;border-radius: 18px;padding:6px;"  placeholder="Enter Zipcode"/>
+    <input type="number" (change)="handleAddress($event,'zip_code')" style="border:0.7px solid #888; width:37%;border-radius: 18px;padding:6px;"  placeholder="Enter Zipcode"/>
 </div>
-<input type="text" style=" border:0.7px solid #888;width:58%;border-radius: 18px;padding:6px;margin-top:10px"  placeholder="Enter Street"/>
+<input type="text" (change)="handleAddress($event,'street')" style=" border:0.7px solid #888;width:58%;border-radius: 18px;padding:6px;margin-top:10px"  placeholder="Enter Street"/>
 
 </div>
 <div style="display:flex;flex-direction:column;width:100%;margin-top: 10px;" class="form-address">
