@@ -36,7 +36,7 @@ export class ViewPublicJobsComponent implements OnInit {
       },
     },
     education_data: {
-      education_type: '',
+      education_type: 'Non-Educated',
       education_details: [
         {
           school_name: '',
@@ -50,6 +50,7 @@ export class ViewPublicJobsComponent implements OnInit {
       experience_type: '',
       experience_details: [
         {
+          designation: '',
           company: '',
           start_date: '',
           end_date: '',
@@ -139,5 +140,14 @@ export class ViewPublicJobsComponent implements OnInit {
       event.target
     )).value;
     console.log(this.json2.education_data);
+  }
+  handleExp(event: any, type: string): void {
+    console.log(<HTMLInputElement>event.target.value);
+
+    this.json2.experience_data.experience_type = 'Experienced';
+    this.json2.experience_data.experience_details[0][type] = (<
+      HTMLInputElement
+    >event.target).value;
+    console.log(this.json2.experience_data);
   }
 }

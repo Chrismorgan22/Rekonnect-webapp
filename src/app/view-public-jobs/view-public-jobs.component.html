@@ -30,13 +30,15 @@ style="width:auto;max-height:fit-content;min-height:600px;position:relative; bor
 <div style="display:flex;flex-direction:column;width:100%;margin-top: 10px;" class="form-address">
     <h3 style="align-self:flex-start">Employment</h3>
     <div style="width:100%;justify-content:space-between;display:flex;" class="form-address-container">
-       <input type="text" style="border:0.7px solid #888; width:50%;border-radius: 18px;padding:6px;" placeholder="Company name">
-       <input type="date" style=" width:23%; padding:6px;"  placeholder="Enter start date"/>
+       <input type="text" (change)="handleExp($event,'company')" style="border:0.7px solid #888; width:50%;border-radius: 18px;padding:6px;" placeholder="Company name">
+       <input type="date" style=" width:23%; padding:6px;" (change)="handleExp($event,'start_date')" placeholder="Enter start date"/>
 
-    <input type="date" style=" width:23%;padding:6px;"  placeholder="Enter end date"/>
+    <input type="date" style=" width:23%;padding:6px;" (change)="handleExp($event,'end_date')" placeholder="Enter end date"/>
 </div>
-<input type="text" style="border:0.7px solid #888; width:58%;border-radius: 18px;padding:6px;margin-top:10px"  placeholder="Enter Description"/>
-
+<div style="display:flex;align-items:center;justify-content:space-between;width:100%">
+<input type="text" (change)="handleExp($event,'designation')" style="border:0.7px solid #888; width:48%;border-radius: 18px;padding:6px;margin-top:10px"  placeholder="Enter Designation"/>
+<input type="text" (change)="handleExp($event,'job_description')" style="border:0.7px solid #888; width:48%;border-radius: 18px;padding:6px;margin-top:10px"  placeholder="Enter Description"/>
+</div>
 </div>
 <div style="display:flex;flex-direction:column;width:100%;margin-top: 10px;" class="form-address">
     <h3 style="align-self:flex-start">Education</h3>
