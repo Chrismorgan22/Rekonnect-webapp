@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { JobService } from '../services/job.service';
 import { LayoutService } from '../services/layout.service';
+// import { JobService } from 'src/app/services/job.service';
+
 import { environment } from '../../environments/environment';
 import { AuthService } from '../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
@@ -81,7 +83,8 @@ export class ViewPublicJobsComponent implements OnInit {
   constructor(
     private _jobService: JobService,
     private layoutService: LayoutService,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -198,7 +201,23 @@ export class ViewPublicJobsComponent implements OnInit {
     console.log(this.json2);
     this._authService.candidateRegister(this.json2).subscribe((data) => {
       console.log(data);
-      this.showModal = false;
+      if (data.status == 200) {
+        this.showModal = false;
+
+        this._jobService
+          .applyJob({
+            job_id: this.jobDetails?._id,
+            candidate_id: data.data.user_id,
+            resumeLink: '',
+            vesumeLink: '',
+            coverLetterLink: '',
+          })
+          .subscribe((data) => {
+            console.log(data);
+
+            this._toastrService.success('job applied successfully', 'success');
+          });
+      }
     });
   }
 }

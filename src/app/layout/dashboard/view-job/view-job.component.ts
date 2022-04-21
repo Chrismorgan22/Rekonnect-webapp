@@ -18,7 +18,7 @@ export class ViewJobComponent implements OnInit {
   jobDetail: any;
   entireUser: any[];
   toggleModal: boolean = false;
-  image: string;
+  image: string = '';
   current_job: any;
 
   name: string;
@@ -82,59 +82,52 @@ export class ViewJobComponent implements OnInit {
   getJobDetails() {
     this.jobService.getJobDetails(this.jobId).subscribe((data) => {
       console.log('Job applied', data);
-      if (data.result === 'success') {
-        this.jobDetail = data.data[0];
-        console.log(this.jobDetail);
-        this.jobStatus = this.jobDetail.status ? 'Active' : 'In-Active';
-        this.dropdownSettings1 = {
-          singleSelection: true,
-          idField: 'id',
-          textField: 'name',
-          selectAllText: 'Select All',
-          unSelectAllText: 'UnSelect All',
-          allowSearchFilter: true,
-        };
 
-        this.stateDrp = ['Full-time', 'Part-time', 'Internship'];
-        this.jobCategoryArray = ['Remote', 'On-site'];
-        this.remoteArray = [
-          'Full Time Remote',
-          'Part Time Remote',
-          'No remote work',
-        ];
-        this.educationLevelArray = ['High', 'Medium', 'Low'];
-        this.postVacancyArray = [1, 2, 3, 4, 5];
-        this.jobPostForm = this.fb.group({
-          title: [this.jobDetail.job_title, Validators.required],
-          job_type: [this.jobDetail.job_type, Validators.required],
-          job_category: [this.jobDetail.job_category, Validators.required],
-          city: [this.jobDetail.city, Validators.required],
-          country: [this.jobDetail.country, Validators.required],
-          min_salary: [this.jobDetail.salary_range.min, Validators.required],
-          max_salary: [this.jobDetail.salary_range.max, Validators.required],
-          is_remote: [this.jobDetail.remote_type, Validators.required],
-          education_level: [
-            this.jobDetail.education_level,
-            Validators.required,
-          ],
-          min_experience: [
-            this.jobDetail.minimum_experience_required,
-            Validators.required,
-          ],
-          max_experience: [
-            this.jobDetail.maximum_experience_required,
-            Validators.required,
-          ],
-          post_vacancy: [this.jobDetail.post_vacancies, Validators.required],
-          isVisume: [false],
-          is_candidate_report: [false],
-          job_description: [
-            this.jobDetail.job_description,
-            Validators.required,
-          ],
-        });
-        this.jobDetail['skills'] = this.jobDetail.top_skills.split(',');
-      }
+      this.jobDetail = data.data;
+      console.log(this.jobDetail);
+      this.jobStatus = this.jobDetail.status ? 'Active' : 'In-Active';
+      this.dropdownSettings1 = {
+        singleSelection: true,
+        idField: 'id',
+        textField: 'name',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        allowSearchFilter: true,
+      };
+
+      this.stateDrp = ['Full-time', 'Part-time', 'Internship'];
+      this.jobCategoryArray = ['Remote', 'On-site'];
+      this.remoteArray = [
+        'Full Time Remote',
+        'Part Time Remote',
+        'No remote work',
+      ];
+      this.educationLevelArray = ['High', 'Medium', 'Low'];
+      this.postVacancyArray = [1, 2, 3, 4, 5];
+      this.jobPostForm = this.fb.group({
+        title: [this.jobDetail.job_title, Validators.required],
+        job_type: [this.jobDetail.job_type, Validators.required],
+        job_category: [this.jobDetail.job_category, Validators.required],
+        city: [this.jobDetail.city, Validators.required],
+        country: [this.jobDetail.country, Validators.required],
+        min_salary: [this.jobDetail.salary_range.min, Validators.required],
+        max_salary: [this.jobDetail.salary_range.max, Validators.required],
+        is_remote: [this.jobDetail.remote_type, Validators.required],
+        education_level: [this.jobDetail.education_level, Validators.required],
+        min_experience: [
+          this.jobDetail.minimum_experience_required,
+          Validators.required,
+        ],
+        max_experience: [
+          this.jobDetail.maximum_experience_required,
+          Validators.required,
+        ],
+        post_vacancy: [this.jobDetail.post_vacancies, Validators.required],
+        isVisume: [false],
+        is_candidate_report: [false],
+        job_description: [this.jobDetail.job_description, Validators.required],
+      });
+      this.jobDetail['skills'] = this.jobDetail.top_skills.split(',');
     });
   }
   showModal() {
