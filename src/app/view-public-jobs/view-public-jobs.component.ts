@@ -3,6 +3,8 @@ import { JobService } from '../services/job.service';
 import { LayoutService } from '../services/layout.service';
 import { environment } from '../../environments/environment';
 import { AuthService } from '../services/auth.service';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-view-public-jobs',
   templateUrl: './view-public-jobs.component.html',
@@ -12,6 +14,9 @@ export class ViewPublicJobsComponent implements OnInit {
   jobDetails: any;
   jobId = window.location.pathname.split('/')[3];
   companyData: any;
+  showModal: boolean = false;
+  softdropdownList: any[];
+  technicaldropdownList: any[];
   json: {
     first_name: string;
     last_name: string;
@@ -98,11 +103,18 @@ export class ViewPublicJobsComponent implements OnInit {
 
       this.stateDrop = drpJson;
     });
+    this.getSoftSkillsList('Soft_skills');
+    this.getTechnicalList('Technical_skills');
+  }
+  toggleModal() {
+    this.showModal = !this.showModal;
   }
   applyJob() {
     if (this.userData == null) {
-      alert('ypou are not logged in');
-      window.location.replace('/');
+      // alert('ypou are not logged in');
+      // window.location.replace('/');
+      this.showModal = true;
+      return;
     }
     console.log(this.jobDetails._id);
 
@@ -141,6 +153,38 @@ export class ViewPublicJobsComponent implements OnInit {
     )).value;
     console.log(this.json2.education_data);
   }
+  async getSoftSkillsList(type) {
+    const body = {
+      lookup_type: type,
+    };
+    const drpJson = [];
+    this.layoutService.getLookupList(body).subscribe((res) => {
+      res.data?.map((ele) => {
+        const json = {
+          id: ele._id,
+          name: ele.name,
+        };
+        drpJson.push(json);
+      });
+      this.softdropdownList = drpJson;
+    });
+  }
+  async getTechnicalList(type) {
+    const body = {
+      lookup_type: type,
+    };
+    const drpJson = [];
+    this.layoutService.getLookupList(body).subscribe((res) => {
+      res.data?.map((ele) => {
+        const json = {
+          id: ele._id,
+          name: ele.name,
+        };
+        drpJson.push(json);
+      });
+      this.technicaldropdownList = drpJson;
+    });
+  }
   handleExp(event: any, type: string): void {
     console.log(<HTMLInputElement>event.target.value);
 
@@ -149,5 +193,12 @@ export class ViewPublicJobsComponent implements OnInit {
       HTMLInputElement
     >event.target).value;
     console.log(this.json2.experience_data);
+  }
+  handleSubmit() {
+    console.log(this.json2);
+    this._authService.candidateRegister(this.json2).subscribe((data) => {
+      console.log(data);
+      this.showModal = false;
+    });
   }
 }
