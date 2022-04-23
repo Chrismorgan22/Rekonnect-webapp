@@ -21,6 +21,20 @@ export class Test1Component implements OnInit {
     const res = await (
       await fetch(`${environment.apiUrl}/mentor/fetch/${this.userData[0]._id}`)
     ).json();
+    console.log(res);
+    const mainArr = [];
+    res.bookings.forEach(async (item) => {
+      const user_id = item.user_id;
+      const res = await (
+        await fetch(`${environment.apiUrl}/candidate/findById/${user_id}`)
+      ).json();
+      const newData = { ...item, ...res };
+      mainArr.push(newData);
+      console.log(newData);
+    });
+    res.bookings = mainArr;
+    console.log(res);
+
     this.mentorData = res;
   }
 }
