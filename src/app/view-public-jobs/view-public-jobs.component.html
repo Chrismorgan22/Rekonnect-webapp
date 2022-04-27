@@ -69,7 +69,21 @@ style="width:auto;max-height:fit-content;height:600px; overflow-y:scroll;positio
 
 
 </div>
-    <div class="buttons">
+<div style="margin-top:10px;display:flex;align-items:center;justify-content:space-between;width:100%;">
+    <div style="width:28%;display:flex;align-items:center;justify-content:space-between">
+    <label for="joinsoon">Immediate joining</label>
+    <input id="joinsoon" type="checkbox">
+</div>
+<div style="width:30%;display:flex;align-items:center;justify-content:space-between">
+    <label for="30days"> Notice peroid 30days</label>
+    <input id="30days" type="checkbox">
+</div>
+<div style="width:30%;display:flex;align-items:center;justify-content:space-between">
+    <label for="60days">Notice peroid 60days</label>
+    <input id="60days" type="checkbox">
+</div>
+</div>
+    <div class="buttons" style="margin-top:18px">
         <button class="btn btn-primary" style="margin-right: 12px;" (click)="handleSubmit()" >Submit </button>
      
     </div>
