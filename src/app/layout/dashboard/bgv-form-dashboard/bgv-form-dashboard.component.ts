@@ -57,7 +57,7 @@ export class BgvFormDashboardComponent implements OnInit {
       return;
     }
 
-    const data = await fetch('http://localhost:8000/api/razorpay', {
+    const data = await fetch('http://localhost:8080/api/razorpay', {
       method: 'POST',
     }).then((t) => t.json());
 

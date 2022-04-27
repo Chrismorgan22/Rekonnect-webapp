@@ -75,6 +75,8 @@ export class CandidateComponent implements OnInit {
   }[] = [];
   designation: any = '';
   isBgv: boolean = false;
+  __DEV__ = document.domain === 'localhost';
+
   fileUrl: string;
   numberOfJobs: any;
   appliedJobs: any;
@@ -190,6 +192,82 @@ export class CandidateComponent implements OnInit {
   togglePopup() {
     this.toShow = false;
     document.body.style.backgroundColor = 'unset';
+  }
+
+  loadScript(src) {
+    return new Promise((resolve) => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  }
+  async displayRazorpay() {
+    const res = await this.loadScript(
+      'https://checkout.razorpay.com/v1/checkout.js'
+    );
+
+    if (!res) {
+      alert('Razorpay SDK failed to load. Are you online?');
+      return;
+    }
+
+    const data = await fetch('http://localhost:8080/api/razorpay', {
+      method: 'POST',
+    }).then((t) => t.json());
+
+    console.log(data);
+
+    const options = {
+      key: this.__DEV__ ? 'rzp_live_Kvzf4vq5RV7FiC' : 'PRODUCTION_KEY',
+      currency: data.currency,
+      amount: data.amount.toString(),
+      order_id: data.id,
+      name: 'Meeting Booking',
+      description: 'Payment towards your booking',
+      image: '',
+      handler: async function (response) {
+        alert('payment success');
+        this.confirmedPay = true;
+        console.log(this.confirmedPay);
+
+        this._jobService
+          .updateBgv({
+            userId: this.userData.userId,
+            fname: this.userData.fname,
+            lname: this.userData.lname,
+            email: this.userData.email,
+          })
+          .subscribe((data) => {
+            console.log(data);
+          });
+        // const cred = await fetch('https://api.rekonnect.in/report/apply', {
+        //   method: 'POST',
+
+        //   body: JSON.stringify({
+        //     userId: this.userData.userId,
+        //     fname: this.userData.fname,
+        //     lname: this.userData.lname,
+        //     email: this.userData.email,
+        //   }),
+        // })
+        //   .then((response) => {
+        //     response.json();
+        //     this.confirmedPay = true;
+        //   })
+        //   .catch((err) => console.log(err));
+
+        // console.log(cred);
+      },
+    };
+    const paymentObject = new (window as any).Razorpay(options);
+    // this.setRecord();
+    paymentObject.open();
   }
 
   displayJoiningDate() {
