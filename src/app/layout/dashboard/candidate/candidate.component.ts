@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LayoutService } from 'src/app/services/layout.service';
 import { JobService } from 'src/app/services/job.service';
+
 import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import { MatDialog } from '@angular/material/dialog';
@@ -180,6 +181,12 @@ export class CandidateComponent implements OnInit {
   // toggleShowDate(){
 
   // }
+
+  toggleModal() {
+    console.log('bruhhh??');
+
+    this.bookingOpen = !this.bookingOpen;
+  }
   togglePopup() {
     this.toShow = false;
     document.body.style.backgroundColor = 'unset';

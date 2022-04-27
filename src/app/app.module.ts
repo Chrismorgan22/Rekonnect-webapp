@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
@@ -31,7 +32,7 @@ import { ViewPublicJobsComponent } from './view-public-jobs/view-public-jobs.com
   ],
   imports: [
     NgMultiSelectDropDownModule,
-
+    MatDatepickerModule,
     NgxPaginationModule,
     BrowserModule,
     HttpClientModule,

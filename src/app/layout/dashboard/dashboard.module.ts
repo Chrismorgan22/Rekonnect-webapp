@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { CandidateComponent } from './candidate/candidate.component';
@@ -46,6 +47,7 @@ import { UpdateJobComponent } from './update-job/update-job.component';
     DashboardRoutingModule,
     NgApexchartsModule,
     TimelineModule,
+    MatDatepickerModule,
     AvatarModule,
     AvatarGroupModule,
     NgMultiSelectDropDownModule,
