@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LayoutService } from 'src/app/services/layout.service';
 import { JobService } from 'src/app/services/job.service';
-
 import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import { MatDialog } from '@angular/material/dialog';
@@ -217,7 +216,7 @@ export class CandidateComponent implements OnInit {
       return;
     }
 
-    const data = await fetch('http://localhost:8080/api/razorpay', {
+    const data = await fetch(`${environment.apiUrl}/api/razorpay`, {
       method: 'POST',
     }).then((t) => t.json());
 
