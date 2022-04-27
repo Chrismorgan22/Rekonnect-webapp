@@ -35,6 +35,8 @@ export class CandidateComponent implements OnInit {
   public chartOptions: Partial<ChartOptions>;
   jobs: any[];
   jobPoster: any[];
+  bookingOpen: boolean = false;
+
   jobApplied: number;
   entireJobDetails: any[];
   jobie: {
