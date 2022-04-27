@@ -1414,14 +1414,20 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <textarea type="text" class="form-control" style="margin-bottom:15px" size="lg" placeholder="Description"
-                                    formControlName="description">
-                                    </textarea>
+                               
                                     <input type="text" class="form-control" size="lg" placeholder="Company Name"
                                 formControlName="company">
+                                <input type="text" class="form-control" size="lg" placeholder="Industry" style="margin-top:10px"
+                                formControlName="industry">
+                                <textarea type="text" class="form-control" style="margin-bottom:15px;margin-top: 10px;" size="lg" placeholder=" Company description"
+                                    formControlName="description">
+                                    </textarea>
                                 <input type="text" class="form-control" size="lg" placeholder="designation"  style="margin-top:10px;margin-bottom:10px;"
-                                formControlName="designation">
-                               
+                                formControlName="Designation">
+                                <ng-multiselect-dropdown [placeholder]="'Select company size'"  style="margin-top:10px"
+                                [settings]="dropdownSettings" [data]="sizeList" formControlName="experties"
+                                (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                            </ng-multiselect-dropdown>
                                 <div style="height:100px;display:flex;flex-direction:column;justify-content:space-around">
                                     <ng-multiselect-dropdown [placeholder]="'Expertise'"  style="margin-top:10px"
                                     [settings]="dropdownSettings" [data]="expertiseList" formControlName="experties"

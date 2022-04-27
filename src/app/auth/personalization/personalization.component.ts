@@ -30,7 +30,7 @@ export class PersonalizationComponent implements OnInit {
   userData: any;
   isSchoolNum: boolean = false;
   isPinError: boolean = false;
-
+  sizeList: any[] = ['2-5', '10-20', '30+'];
   goAhead: boolean = true;
   isDegreeNum: boolean = false;
   isStudyNum: boolean = false;
