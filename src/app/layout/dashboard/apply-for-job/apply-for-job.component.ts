@@ -37,7 +37,8 @@ export class ApplyForJobComponent implements OnInit {
 
   jobDetail: any;
   jobAppliedFlag: boolean = false;
-  Resume: string;
+  isResume: boolean = false;
+  Resume: any = undefined;
   Vesume: string;
   Cover: string;
   isExp: boolean;
@@ -91,20 +92,24 @@ export class ApplyForJobComponent implements OnInit {
     console.log('getting job from server');
 
     this.jobApply.getJobDetails(this.jobId).subscribe((data) => {
-      console.log('Job applied', data);
-      if (data.result === 'success') {
-        this.jobDetail = data.data[0];
-      }
+      console.log('Job applied', data.data);
+
+      this.jobDetail = data.data;
     });
   }
   applyForjob() {
     this.SpinnerService.show();
+    console.log(this.jobDetail);
+
+    if (this.Resume == undefined) {
+      alert('please upload your resume!');
+      return;
+    }
     const json = {};
     this.json = {
       job_id: this.jobDetail?._id,
       candidate_id: this.userId,
-      resumeLink:
-        'https://rekonnectfileupload.s3.ap-south-1.amazonaws.com/RekonnectAlroyResume%20%286%29.pdf',
+      resumeLink: this.Resume?.Location,
       vesumeLink: this.Vesume,
       coverLetterLink: this.Cover,
     };
@@ -140,6 +145,7 @@ export class ApplyForJobComponent implements OnInit {
     region: environment.region,
   });
   async uploadFileResume(file) {
+    console.log(file);
     try {
       const contentType = file[0].type;
       if (file[0].size > 2200000) {
@@ -153,16 +159,32 @@ export class ApplyForJobComponent implements OnInit {
         ACL: 'public-read',
         ContentType: contentType,
       };
+      const self = this;
       await this.bucket.upload(params, async function (err, data) {
+        // if (err) {
+        //   console.log('There was an error uploading your file: ', err);
+        //   return false;
+        // }
+        // console.log('Successfully uploaded file.', data);
+        // this.Resume = data;
+        // this.isResume = true;
+
+        // console.log(this.Resume, this.isResume);
         if (err) {
           console.log('There was an error uploading your file: ', err);
           return false;
         }
         console.log('Successfully uploaded file.', data);
-        this.Resume = await data.location;
-        console.log(this.Resume);
+        // this.payload = data?.key;
+        this.isResume = true;
+        console.log(this.payload, this.isUpload);
+
+        self.Resume = data;
+
+        console.log(self.Resume);
       });
-      console.log(this.Resume);
+      this._toastrService.success('Resume uploaded successfully');
+      // console.log(this.Resume);
     } catch (error) {
       console.log(error);
     }
