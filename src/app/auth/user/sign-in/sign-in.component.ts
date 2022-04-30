@@ -172,8 +172,8 @@ export class SignInComponent implements OnInit {
         this._router.navigate(['/auth/welcome']);
         this.form.reset();
         this._toastrService.success(
-          'User LoggedIn successfully',
-          response.result,
+          'User has logged in successfully',
+          'Success',
           { toastClass: 'toast ngx-toastr', closeButton: true }
         );
       } else {
