@@ -1,1 +1,9 @@
-<p>jobpage works!</p>
+<div style="height:100%;width:100%">
+
+    <ul style="margin-top:20px">
+        <h1>Jobs</h1>
+        <li *ngFor="let job of jobData" style="border:1px solid #eee;padding:10px;cursor: pointer;margin-top:10px;width:98%;list-style:none;" >
+            {{job.job_title}}
+        </li>
+    </ul>
+</div>

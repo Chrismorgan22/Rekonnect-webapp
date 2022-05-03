@@ -62,7 +62,7 @@ const routes: Routes = [
     component: Test2Component,
   },
   {
-    path: 'jobPage',
+    path: 'jobPage/:search',
     component: JobpageComponent,
   },
   {

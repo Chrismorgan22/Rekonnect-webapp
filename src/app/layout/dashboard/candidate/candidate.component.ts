@@ -448,7 +448,7 @@ export class CandidateComponent implements OnInit {
     }
   }
   directJob() {
-    window.location.replace(`/jobPage`);
+    window.location.replace(`/jobPage/${this.jobSearch}`);
     // this.router.navigate([`/jobPage`]);
   }
   getUserProfileData() {

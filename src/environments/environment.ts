@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-
-  apiUrl: 'https://api.rekonnect.in',
+  apiUrl: 'http://localhost:8080',
   accessKeyId: 'AKIA42VF6WEBPYW75S2D',
   secretAccessKey: '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',
   region: 'ap-south-1',
