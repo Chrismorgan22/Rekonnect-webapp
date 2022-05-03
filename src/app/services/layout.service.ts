@@ -64,7 +64,7 @@ export class LayoutService {
 
   filterUser(search: string) {
     return this._httpClient
-      .post<any>('http://localhost:8000/user/filter', {
+      .post<any>(`${environment.apiUrl}/user/filter`, {
         search,
       })
       .pipe(
