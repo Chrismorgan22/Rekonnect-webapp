@@ -23,7 +23,7 @@ const routes: Routes = [
       {
         path: 'candidate',
         component: CandidateComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
         data: {
           role: '1',
         },

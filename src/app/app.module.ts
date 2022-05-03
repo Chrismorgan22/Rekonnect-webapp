@@ -19,6 +19,7 @@ import { Test2Component } from './test2/test2.component';
 import { NewhomeComponent } from './newhome/newhome.component';
 import { PublicJobsComponent } from './public-jobs/public-jobs.component';
 import { ViewPublicJobsComponent } from './view-public-jobs/view-public-jobs.component';
+import { JobpageComponent } from './jobpage/jobpage.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { ViewPublicJobsComponent } from './view-public-jobs/view-public-jobs.com
     NewhomeComponent,
     PublicJobsComponent,
     ViewPublicJobsComponent,
+    JobpageComponent,
   ],
   imports: [
     NgMultiSelectDropDownModule,

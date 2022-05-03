@@ -318,7 +318,18 @@ style="width:auto;height:600px;position:relative; border-radius:17px; -webkit-bo
                         </div>
                     </div>
                 </div>
+               
                 <div class="col-sm col-sm-12 col-md-8 col-lg-9 mt-3">
+                    <div style="padding:12px;margin-bottom:15px;">
+                        <h1>Search for Jobs</h1>
+                        <div style="width:100%;display:flex;align-items:center;justify-content:space-between">
+                        <input type="text" style="width:90%" class="form-control mr-sm-2" (change)="storeSearch($event)">
+                        <button class="btn" (click)="directJob()">
+                           search
+                        </button>
+                    </div>
+                    </div>
+                    
                     <div class="card job-post-card">
                         <div class="card-header">
                             <h6>Recent Job Posts</h6>

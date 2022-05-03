@@ -36,7 +36,7 @@ export class CandidateComponent implements OnInit {
   jobs: any[];
   jobPoster: any[];
   bookingOpen: boolean = false;
-
+  jobSearch: string;
   jobApplied: number;
   entireJobDetails: any[];
   jobie: {
@@ -310,6 +310,9 @@ export class CandidateComponent implements OnInit {
       }
     }, 3000);
   }
+  storeSearch(event: Event): void {
+    this.jobSearch = (<HTMLInputElement>event.target).value;
+  }
   async fetchAppliedJobs() {
     try {
       const data = await (
@@ -443,6 +446,10 @@ export class CandidateComponent implements OnInit {
           console.log(this.entireJobDetails);
         });
     }
+  }
+  directJob() {
+    window.location.replace(`/jobPage`);
+    // this.router.navigate([`/jobPage`]);
   }
   getUserProfileData() {
     const localData = JSON.parse(sessionStorage.getItem('_ud'))[0];

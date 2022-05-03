@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { ApplyForJobComponent } from './layout/dashboard/apply-for-job/apply-for-job.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SignInComponent } from './auth/Admin/sign-in/sign-in.component';
+import { JobpageComponent } from './jobpage/jobpage.component';
 import { NavscreenComponent } from './layout/navscreen/navscreen.component';
 import { ApplicantListComponent } from './layout/applicant-list/applicant-list.component';
 import { PublicJobsComponent } from './public-jobs/public-jobs.component';
@@ -60,7 +61,10 @@ const routes: Routes = [
     path: 'test2',
     component: Test2Component,
   },
-
+  {
+    path: 'jobPage',
+    component: JobpageComponent,
+  },
   {
     path: 'newhome',
     component: NewhomeComponent,
