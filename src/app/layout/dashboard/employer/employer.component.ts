@@ -118,6 +118,7 @@ export class EmployerComponent implements OnInit {
     private router: Router,
     private jobApplicationService: JobApplicationService
   ) {
+    alert('Welcome To Rekonnect');
     this.events1 = [
       {
         designation: 'HR',
@@ -275,7 +276,7 @@ export class EmployerComponent implements OnInit {
       console.log(this.userProfileData);
     });
   }
-  
+
   getPosters() {
     this.totalJobs.map((job) => {
       var tempData: Array<any> = [];

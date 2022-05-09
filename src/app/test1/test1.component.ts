@@ -8,7 +8,9 @@ import { environment } from '../../environments/environment';
 export class Test1Component implements OnInit {
   userData: any = JSON.parse(sessionStorage.getItem('_ud'));
   mentorData: any;
-  constructor() {}
+  constructor() {
+    alert('Welcome To Rekonnect');
+  }
 
   ngOnInit(): void {
     if (this.userData == null) {

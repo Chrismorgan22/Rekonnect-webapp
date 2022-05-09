@@ -86,6 +86,7 @@ export class CandidateComponent implements OnInit {
     private jobDetails: JobService,
     private router: Router
   ) {
+    alert('Welcome To Rekonnect');
     // this.events1 = [
     //   { status: 'Ordered', date: '15/10/2020 10:30', icon: PrimeIcons.SHOPPING_CART, color: '#9C27B0', image: 'game-controller.jpg' },
     //   { status: 'Processing', date: '15/10/2020 14:00', icon: PrimeIcons.COG, color: '#673AB7' },
