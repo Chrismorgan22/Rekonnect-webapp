@@ -54,7 +54,7 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0 float-right ">
-                <input class="form-control mr-sm-2" type="search" (focus)="toggleSearch()" (focusout)="toggleSearch()"  (keyup)="searchUser($event)" placeholder="Search" aria-label="Search">
+                <!-- <input class="form-control mr-sm-2" type="search" (focus)="toggleSearch()" (focusout)="toggleSearch()"  (keyup)="searchUser($event)" placeholder="Search" aria-label="Search"> -->
 
                 <div class="search-dropdown" *ngIf="userList.length!==0&&searchDrop">
                    <div class="search-item" *ngFor="let user of userList">

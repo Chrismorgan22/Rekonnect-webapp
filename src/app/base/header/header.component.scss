@@ -28,6 +28,9 @@
             position: relative;
             form {
                 input {
+                    @media screen and (max-width: 450px) {
+                        display: none;
+                    }
                 }
                 .search-dropdown {
                     width: 300px;
