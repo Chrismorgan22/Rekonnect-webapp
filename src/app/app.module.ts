@@ -20,6 +20,7 @@ import { NewhomeComponent } from './newhome/newhome.component';
 import { PublicJobsComponent } from './public-jobs/public-jobs.component';
 import { ViewPublicJobsComponent } from './view-public-jobs/view-public-jobs.component';
 import { JobpageComponent } from './jobpage/jobpage.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,7 @@ import { JobpageComponent } from './jobpage/jobpage.component';
     AppRoutingModule,
     BaseModule,
     ToastrModule.forRoot(),
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

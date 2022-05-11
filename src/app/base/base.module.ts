@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SliderModule } from 'primeng/slider';
 import { EventService } from '../services/event.service';
 import { CarouselModule } from 'primeng/carousel';
+
 @NgModule({
   declarations: [
     BaseComponent,
