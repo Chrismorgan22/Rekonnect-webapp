@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { JobService } from 'src/app/services/job.service';
 import * as AOS from 'aos';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
+import { EventService } from '../../services/event.service';
+
+import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { SocialAuthService } from 'angularx-social-login';
 declare var $: any;
 @Component({
   selector: 'app-home',
@@ -11,7 +20,22 @@ export class HomeComponent implements OnInit {
   values1: string[];
   entireJobDetails: any[];
   testimonialArray: any = [];
-  constructor(private _jobService: JobService) {}
+  form: FormGroup;
+  loading = false;
+  submitted = false;
+  isLoggedin: boolean;
+  userRoleValidation: boolean = false;
+  constructor(
+    private _jobService: JobService,
+    private _router: Router,
+    private _authService: AuthService,
+    private _route: ActivatedRoute,
+    public http: HttpClient,
+    private eventService: EventService,
+    private _toastrService: ToastrService,
+    private SpinnerService: NgxSpinnerService,
+    private formBuilder: FormBuilder
+  ) {}
 
   check() {
     setTimeout(() => {
@@ -25,6 +49,11 @@ export class HomeComponent implements OnInit {
     }, 1000);
   }
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      // user_role: ['']
+    });
     this.fetchJobs();
     this.check();
     AOS.init();
@@ -62,6 +91,46 @@ export class HomeComponent implements OnInit {
           },
         },
       });
+    });
+  }
+  get f() {
+    return this.form.controls;
+  }
+
+  onSubmit() {
+    this.userRoleValidation = false;
+    this.submitted = true;
+    console.log(this.form);
+    if (this.form.valid) {
+      this.SpinnerService.show();
+      const json = {};
+      json['email'] = this.form.controls.email.value;
+      json['password'] = this.form.controls.password.value;
+      this.loginAPICall(json, false);
+    }
+  }
+  loginAPICall(json, isSocialLogin) {
+    this._authService.userLogin(json).subscribe((response) => {
+      console.log('***************************');
+      this.eventService.updateHeader(true);
+      this.SpinnerService.hide();
+      if (response.result !== 'fail') {
+        this.submitted = false;
+        sessionStorage.setItem('_ud', JSON.stringify([response.data]));
+        sessionStorage.setItem('firstTime', 'true');
+        sessionStorage.setItem('firstTimeDate', 'true');
+
+        this._router.navigate(['/auth/welcome']);
+        this.form.reset();
+        this._toastrService.success(
+          'User has logged in successfully',
+          'Success',
+          { toastClass: 'toast ngx-toastr', closeButton: true }
+        );
+      } else {
+        this.SpinnerService.hide();
+        // newWindow.close();
+      }
     });
   }
   getTestimonialArrayData() {
