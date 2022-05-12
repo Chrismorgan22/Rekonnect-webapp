@@ -1,6 +1,6 @@
 //DO  NOT ADD RANDOM CSS AT RANDOM PLACES
 
-.new-landing {
+div.new-landing {
     section {
         .top-section {
             .left-col {
@@ -9,6 +9,58 @@
                     margin: auto;
                 }
             }
+        }
+    }
+    section.onboarding-section {
+        div.list {
+            div.tab-content {
+                div.tab-pane {
+                    div.row.section {
+                        div.Left {
+                            width: 44%;
+                            @media screen and (max-width: 769px) {
+                                width: 98% !important;
+                                padding: 8px;
+                            }
+                        }
+                        div.Right {
+                            width: 45%;
+                            @media screen and (max-width: 768px) {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    section.webinar-section {
+        div.row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            div.Left {
+                width: 46%;
+                div.section-alignment {
+                    div.section-title {
+                    }
+                    div.row {
+                        div {
+                            div {
+                                .image-section {
+                                    width: 60px;
+                                }
+                            }
+                        }
+                    }
+                }
+                @media screen and (max-width: 1068px) {
+                    width: 98%;
+                }
+            }
+        }
+        @media screen and (max-width: 768px) {
+            padding: 12px;
         }
     }
 }
