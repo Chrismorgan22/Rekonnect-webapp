@@ -13,6 +13,11 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./view-public-jobs.component.scss'],
 })
 export class ViewPublicJobsComponent implements OnInit {
+  entireJobDetails: any[];
+
+
+
+
   jobDetails: any;
   jobId = window.location.pathname.split('/')[3];
   companyData: any;
@@ -108,6 +113,13 @@ export class ViewPublicJobsComponent implements OnInit {
     });
     this.getSoftSkillsList('Soft_skills');
     this.getTechnicalList('Technical_skills');
+
+
+    this._jobService.getAllJobs().subscribe((data)=>{
+      console.log("entire jobs");
+      this.entireJobDetails = data;
+      console.log(this.entireJobDetails)
+    })
   }
   toggleModal() {
     this.showModal = !this.showModal;

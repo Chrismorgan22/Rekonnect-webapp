@@ -17,3 +17,82 @@
         }
     }
 }
+
+
+
+
+// for making card component with minor adjustments
+.jobCard{
+  border: 1px solid #C9D4E1;
+  border-radius: 25px;
+  padding-left:20px ;
+  padding-top: 10px;
+  padding-right: 25px;
+  padding-bottom: 30px;
+  margin-left:16px ;
+
+}
+
+.salary-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  div{
+    button{
+      margin-right: 0;
+    }
+  }
+}
+
+
+
+.list{
+  border: 1px solid #C9D4E1;
+  border-radius: 25px;
+
+
+  margin-left: 16px;
+  margin-top: 20px;
+
+  .listHeader{
+    padding: 15px;
+    background-color: #15759A;
+    color: white;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+  }
+
+
+
+  .listCont{
+    height: fit-content;
+    max-height: 500px;
+    padding: 15px;
+    padding-top: 0px;
+
+    .listItem{
+      display: flex;
+      border-bottom: 1px solid #15759A;
+      padding: 10px;
+      justify-content: space-between;
+
+    }
+  }
+}
+
+
+.jobDetailsScroll{
+  display: flex;
+
+
+}
+
+
+.viewJob{
+  background-color: transparent;
+    border: 1px solid #15759A;
+    color: #15759A;
+    border-radius: 15px;
+    padding:10px;
+
+  }
