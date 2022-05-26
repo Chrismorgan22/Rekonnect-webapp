@@ -477,6 +477,13 @@ export class CandidateComponent implements OnInit {
     this.router.navigate([`/dashboard/apply-for-job/${jobId}`]);
   }
 
+  viewJob(jobId: String) {
+    console.log(this.userId);
+    console.log(jobId);
+    this.router.navigate([`/job/public/${jobId}`]);
+  }
+
+
   getTimelineData() {
     const timelineArray = [];
     const designationArr: any = [];
