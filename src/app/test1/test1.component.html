@@ -19,6 +19,7 @@
                         <div class="content d-flex align-items-center justify-content-space-between pt-4">
                             <div class="">
                                 <h2 class="font-bold">{{userData[0].first_name}} {{userData[0].last_name}}</h2>
+                                <p>{{mentorData.description}}</p>
                                 <h3>{{mentorData.designation}}  <a class="btn btn-link text-primary px-0">@{{mentorData.company}}</a></h3>
                             </div>
                         </div>
@@ -50,21 +51,21 @@
                                         <div class="">
                                             <h3 class="mb-3">Description</h3>
                                             <div class="body">
-                                                <p style="font-size:15px" class="text-grey">{{mentorData.description}} 
+                                                <p style="font-size:15px" class="text-grey">{{mentorData.description}}
                                                 </p>
                                             </div>
                                             <div class="my-4 pys-3 expertise-badge" style="display:flex;flex-wrap:wrap;gap:13px">
                                                 <h3 class="mb-3">Expertise</h3>
                                                 <div class="badge-pills mb-3" *ngFor="let exper of mentorData.expertise">
                                                     <h4 class="badge badge-primary">{{exper}}</h4>
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="my-4 pys-3 fluent-badge" style="display:flex;flex-wrap:wrap;gap:13px">
                                                 <h3 class="mb-3">Fluent In</h3>
                                                 <div class="badge-pills mb-3" *ngFor="let lan of mentorData.languages" >
                                                     <h4 class="badge badge-primary">{{lan}}</h4>
-                                                  
+
                                                 </div>
                                             </div>
                                             <div class="my-4 pys-3 ">
@@ -144,6 +145,20 @@
                                 role="tabpanel" aria-labelledby="pills-profile-tab">
                                 <div class="">
                                     <div class="accordion expert-accordian mb-4" id="accordionExample">
+                                        <div class="background-card mb-4">
+                                          <h4>You have {{mentorData.bookings.length}} new bookings</h4>
+                                          <a class="btn btn-link text-primary px-0">View all bookings ></a>
+                                        </div>
+                                        <div class="user-profile card p-4">
+                                          <div class="user">
+                                            <div class="d-flex justify-content-space-between">
+                                              <h4> Availability</h4>
+                                              <button class="btn btn-secondary" data-toggle="modal" data-target="#availabilityModal">Edit</button>
+                                            </div>
+                                            <label class="font-14 text-grey">You can set your availability based
+                                              on your convenience.</label>
+                                          </div>
+                                        </div>
                                         <div class="card">
                                             <div class="card-header d-flex justify-content-space-between"
                                                 id="headingOne">
@@ -487,6 +502,16 @@
                             <div class="tab-pane posting-complete fade job-list-section" id="pills-session"
                                 role="tabpanel" aria-labelledby="pills-profile-tab">
                                 <div class="">
+                                    <div class="user-profile p-4 card">
+                                      <div class="user">
+                                        <div class="d-flex justify-content-space-between">
+                                          <h4> Session Charge</h4>
+                                          <button class="btn btn-secondary" data-toggle="modal" data-target="#chargeModal">Edit</button>
+                                        </div>
+                                        <label class="font-14 text-grey">You can set your per session (45
+                                          minutes) charges upto Rs 800.</label>
+                                      </div>
+                                    </div>
                                     <!-- Section card view -->
                                     <!-- <div class="card-view">
                                         <div class="card p-4">
@@ -516,7 +541,7 @@
                                             </div>
                                         </div>
                                     </div> -->
-                                    
+
 
                                     <!-- one-on-one section form view step 1 -->
                                     <!-- <div class="one-on-one-session">

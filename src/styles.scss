@@ -501,12 +501,8 @@ body {
     .partner-image {
         width: 150px;
         height: auto;
-        filter: grayscale(100%);
-        cursor: pointer;
 
-        &:hover {
-            filter: grayscale(0%);
-        }
+        cursor: pointer;
     }
 }
 
@@ -1971,7 +1967,7 @@ body {
         background: rgba(230, 230, 230, 0.22);
 
         @media (max-width: $information-mobile-md) {
-            display: none;
+            display: flex;
         }
     }
 
