@@ -118,7 +118,6 @@ export class EmployerComponent implements OnInit {
     private router: Router,
     private jobApplicationService: JobApplicationService
   ) {
-    alert('Welcome To Rekonnect');
     this.events1 = [
       {
         designation: 'HR',
