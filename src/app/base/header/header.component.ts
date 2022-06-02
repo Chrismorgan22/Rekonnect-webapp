@@ -54,4 +54,7 @@ export class HeaderComponent implements OnInit {
   dismiss() {
     $('#logoutmodal').modal('hide');
   }
+  btnClick= function () {
+    this.router.navigateByUrl('/list-jobs');
+};
 }

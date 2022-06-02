@@ -7,6 +7,7 @@ import { PostJobComponent } from './post-job/post-job.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { AuthGuardService as AuthGuard } from '../services/auth-guard.service';
 import { BgvlistComponent } from './bgvlist/bgvlist.component';
+import { ListJobsComponent } from './dashboard/list-jobs/list-jobs.component';
 const routes: Routes = [
   {
     path: '',
@@ -15,6 +16,10 @@ const routes: Routes = [
       {
         path: 'post-job',
         component: PostJobComponent,
+      },
+      {
+        path: 'list-jobs',
+        component: ListJobsComponent,
       },
       {
         path: 'bgvapplicant-list',
@@ -41,6 +46,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+
+exports: [RouterModule],
 })
 export class LayoutRoutingModule {}

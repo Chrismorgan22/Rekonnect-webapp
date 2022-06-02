@@ -1,0 +1,98 @@
+<div class="container">
+
+
+<div class="search">
+  <h1>Search for Jobs</h1>
+  <div style="width:45%;display:flex;">
+  <input type="text" style="width: 40%;" class="form-control mr-sm-2">
+  <button class="btn">
+     Search
+  </button>
+
+</div>
+</div>
+
+
+<div class="card job-post-card">
+  <div class="card-header">
+      <h1>Recent Job Posts</h1>
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Filter
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <button class="dropdown-item" href="#">All</button>
+          <button class="dropdown-item" href="#">Marketing</button>
+          <button class="dropdown-item" href="#">Designing</button>
+          <button class="dropdown-item" href="#">Development</button>
+        </div>
+      </div>
+
+  </div>
+  <div class="card-body">
+      <!-- <div class="job-card">
+          <div class="job-header d-flex align-items-center">
+              <div class="d-flex align-items-center">
+                  <div class="user-profile">
+                      <img class="" src="../../../assets/images/user-profile-placeholder.png" />
+                  </div>
+                  <div class="user-main-content">
+                      <p class="d-flex m-0 align-items-center"><label
+                              class="font-bold"><span>Posted By </span> Sharman Singh</label>
+                          <span class="dot"></span>
+                          <label>3 hours ago</label>
+                      </p>
+                      <p class="d-flex m-0"><label class="mr-3"><span
+                                  class="material-icons">work</span> Full Time</label><label
+                              class="mr-3"><span class="material-icons">location_on</span> Mumbai,
+                              India</label> </p>
+                  </div>
+              </div>
+              <div class="user-action-content">
+                  <a><span class="material-icons">share</span></a>
+                  <button class="btn btn-primary btn-sm" size="small" data-toggle="modal"
+                      data-target="#applyModal">Apply for job</button>
+                  <button class="btn btn-secondary btn-sm" size="small">View job</button>
+              </div>
+          </div>
+          <div class="job-content">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget sapien ut erat
+                  vestibulum ultrices in vel lorem. Morbi leo lacus. Lorem ipsum dolor sit amet,
+                  consectetur adipiscing elit. Nam eget sapien ut erat vestibulum ultrices in vel
+                  lorem.</p>
+          </div>
+      </div> -->
+      <div class="job-card" *ngFor="let job of entireJobDetails">
+          <div class="job-header d-flex align-items-center">
+              <div class="d-flex align-items-center">
+                  <div class="user-profile">
+                      <img class="logo" [src]="job.company_logo" />
+                  </div>
+                  <div class="user-main-content">
+                      <p class="d-flex m-0 align-items-center"><label
+                              class="font-bold"><span>Posted By </span>  {{job.first_name}} {{job.last_name}}</label>
+                          <span class="dot"></span>
+                          <label>{{job.created_at}}</label>
+                      </p>
+                      <p class="d-flex m-0"><label class="mr-3"><span
+                                  class="material-icons">work</span> {{job.job_category}}</label><label
+                              class="mr-3"><span class="material-icons">location_on</span> {{job.city}}</label> </p>
+                  </div>
+              </div>
+              <div class="user-action-content">
+                  <a><span class="material-icons">share</span></a>
+                  <button class="btnjob btn btn-primary btn-sm" size="small" data-toggle="modal"
+                  (click)='applyJob(job._id)'>Apply for job</button>
+                  <button class="btnjob btn btn-secondary btn-sm" size="small" (click)="viewJob(job._id)">View job</button>
+              </div>
+          </div>
+          <div class="job-content">
+              <p>{{job.job_description}}</p>
+          </div>
+      </div>
+
+  </div>
+</div>
+
+</div>
