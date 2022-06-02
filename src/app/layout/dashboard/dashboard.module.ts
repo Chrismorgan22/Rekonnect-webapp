@@ -24,6 +24,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmployerViewJobComponent } from './employer-view-job/employer-view-job.component';
 import { UpdateJobComponent } from './update-job/update-job.component';
+import { ListJobsComponent } from './list-jobs/list-jobs.component';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -41,6 +42,7 @@ import { UpdateJobComponent } from './update-job/update-job.component';
     ApplyForJobComponent,
     EmployerViewJobComponent,
     UpdateJobComponent,
+    ListJobsComponent,
   ],
   imports: [
     CommonModule,
