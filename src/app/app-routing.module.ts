@@ -12,6 +12,7 @@ import { ViewPublicJobsComponent } from './view-public-jobs/view-public-jobs.com
 import { Test1Component } from './test1/test1.component';
 import { Test2Component } from './test2/test2.component';
 import { NewhomeComponent } from './newhome/newhome.component';
+import { HomepageRedesignComponent } from './homepage-redesign/homepage-redesign.component'
 const routes: Routes = [
   {
     path: 'auth',
@@ -55,6 +56,10 @@ const routes: Routes = [
   {
     path: 'test1',
     component: Test1Component,
+  },
+  {
+    path: 'redesign',
+    component: HomepageRedesignComponent,
   },
   { path: 'alljobs', component: PublicJobsComponent },
   {

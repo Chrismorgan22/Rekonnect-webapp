@@ -21,6 +21,7 @@ import { PublicJobsComponent } from './public-jobs/public-jobs.component';
 import { ViewPublicJobsComponent } from './view-public-jobs/view-public-jobs.component';
 import { JobpageComponent } from './jobpage/jobpage.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HomepageRedesignComponent } from './homepage-redesign/homepage-redesign.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PublicJobsComponent,
     ViewPublicJobsComponent,
     JobpageComponent,
+    HomepageRedesignComponent,
   ],
   imports: [
     NgMultiSelectDropDownModule,
