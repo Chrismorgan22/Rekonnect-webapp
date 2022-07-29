@@ -1,3 +1,7 @@
+
+*{
+  font-family: 'Inter';
+}
 .partner-band{
   background-color: white;
 }
@@ -10,9 +14,14 @@
 .equal-opportunity{
   text-align: center;
  padding-top: 40px;
+ margin-bottom: 50px;
+ background-color: white;
 }
 .find-job-text{
   text-align: center;
+}
+.find-job-heading{
+  font-weight: bold;
 }
 .roadmap-image{
   padding-left: 70px;
@@ -27,10 +36,15 @@
 .orange{
   color: #FF6400;
   text-align: center;
+  font-weight: bold;
 }
 .blue{
   color: #157499;
   text-align: center;
+  font-weight: bold;
+}
+.section-title{
+  font-weight: bold;
 }
 .card-deck{
 /*   justify-content: space-between;
@@ -44,12 +58,22 @@
   justify-content: center;
 }
 .nav{
-  font-size: 22px;
-  margin: 30px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  margin-top: 40px;
 
 }
 .nav-link{
   color: black;
+  font-weight: bold;
+}
+
+.act-link {
+  color: #157499;
+  text-decoration: underline;
+  text-decoration-color: #FF6400;
+  text-decoration-thickness: 5px;
+  text-underline-offset: 10px;
 }
 .flex-column{
   display: inline;
@@ -63,6 +87,63 @@
   text-align: center;
   font-size: 80px;
   margin-right: 180px;
+  margin-top: 80px;
+}
+.card-title{
+  font-weight: bold;
+}
+.carousel-item{
+  justify-content: center;
+  width: 60%;
+  height: 300px;
+}
+.imgtest{
+  object-fit: contain;
+}
+.carousel-item{
+  margin-top: 0%;
+  padding-top: 0%;
+}
+.abc{
+  border-radius: 17px;
+  margin: 10px;
+}
+.compname{
+  font-weight: bold;
+}
+.category{
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 18px;
+  background-color: #FAF9DD;
+  font-size: 10px;
+  float: left;
+}
+/* **************************Hero Section ********************************** */
+.how-section1{
+padding-left: 15%;
+padding-right: 0%;
+margin-bottom: 50px;
+}
+.how-section1 h4{
+  color: #ffa500;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.how-section1 .row
+{
+  margin-top: 10%;
+}
+.how-img
+{
+  height: 500px;
+  width: 460px;
+  align-self: flex-end;
+  justify-content: right;
+}
+.btn{
+  border-radius: 0%;
 }
 
 /* Roadmap Timeline*********************************************************************************** */
@@ -90,7 +171,7 @@
 
 /* Container Css Start  */
 
-.container {
+.time {
 	width: 70%;
 	height: auto;
 	margin-top: -20px;
